@@ -205,7 +205,7 @@ fetch('/example.com/openapi/exchange/{symbol}/assets',
 
 ```json
 {
-  "available": 0,
+  "available": 0, 
   "baseBTC": 0,
   "brokerId": 0,
   "hold": 0,
@@ -225,6 +225,23 @@ fetch('/example.com/openapi/exchange/{symbol}/assets',
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<h3 id="获取资产信息-responseschema">Response Schema</h3>
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[UserAssetsDTO](#schemauserassetsdto)]|false|none|[交易资产]|
+|» UserAssetsDTO|[UserAssetsDTO](#schemauserassetsdto)|false|none|交易资产|
+|»» available|number|false|none|余额|
+|»» baseBTC|number|false|none|none|
+|»» brokerId|integer(int32)|false|none|业务方ID|
+|»» hold|number|false|none|冻结|
+|»» sort|integer(int32)|false|none|none|
+|»» symbol|string|false|none|币种|
+|»» transfer|boolean|false|none|none|
+|»» userId|integer(int64)|false|none|none|
+|»» withdrawLimit|number|false|none|提币限额|
 
 <aside class="success">
 This operation does not require authentication
@@ -292,7 +309,16 @@ fetch('/example.com/openapi/exchange/billTypes',
 
 ```json
 [
-  {}
+  {
+    "code": "BUY",//买入
+    "name": "",
+    "id": 7
+  },
+  {
+    "code": "SELL",//卖出
+    "name": "",
+    "id": 8
+  }
 ]
 ```
 
@@ -409,15 +435,36 @@ fetch('/example.com/openapi/exchange/bills',
   }
 }
 ```
-
-<h3 id="获取账单信息-responses">Responses</h3>
-
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[BillResult](#schemabillresult)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
 |403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<h3 id="获取账单信息-responses">Responses</h3>
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|afterAssets|number|false|none|事后余额|
+|amount|number|false|none|变换金额  +增加 -减少|
+|assets|number|false|none|余额|
+|beforeAssets|number|false|none|事前余额|
+|brokerId|integer(int32)|false|none|业务方ID|
+|createOn|integer(int64)|false|none|none|
+|fee|number|false|none|手续费|
+|id|integer(int64)|false|none|none|
+|makerTaker|string|false|none|成交类型|
+|pairCode|string|false|none|交易对|
+|price|number|false|none|成交价|
+|referId|integer(int64)|false|none|关联id|
+|symbol|string|false|none|币种|
+|tradeNo|string|false|none|订单号|
+|type|integer(int32)|false|none|账单类型 1:充值 2:提现 3:由借款账户转入 4:转入借款账户 5:由放款账户转入 6:转入放款账户|
+|updateOn|integer(int64)|false|none|none|
+|userId|integer(int64)|false|none|none|
+
+
 
 <aside class="success">
 This operation does not require authentication
@@ -1185,7 +1232,7 @@ fetch('/example.com/openapi/exchange/{pairCode}/orders',
 > 200 Response
 
 ```json
-0
+118001244083232 //订单号
 ```
 
 <h3 id="添加交易对订单-responses">Responses</h3>
@@ -1512,7 +1559,17 @@ fetch('/example.com/openapi/exchange/public/billTypes',
 
 ```json
 [
-  {}
+  {
+    "code": "BUY", //买入
+    "name": "",
+    "id": 7
+  },
+  {
+    "code": "SELL", //卖出
+    "name": "",
+    "id": 8
+  }
+  }
 ]
 ```
 
@@ -1801,7 +1858,9 @@ fetch('/example.com/openapi/exchange/public/symbol',
 
 ```json
 [
-  "string"
+  "BTC",
+  "USDT",
+  "ETH"
 ]
 ```
 
@@ -1878,9 +1937,9 @@ fetch('/example.com/openapi/exchange/public/time',
 
 ```json
 {
-  "epoch": "string",
-  "iso": "string",
-  "timestamp": 0
+  "epoch": "1629971589.471",
+  "iso": "2021-08-26T09:53:09.471Z",
+  "timestamp": 1629971589471
 }
 ```
 
@@ -1965,7 +2024,20 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/candles?interval=string',
 ```json
 [
   [
-    {}
+    1629971700000, //时间戳
+    "3332.0400", //最低价
+    "3332.0400", //最高价
+    "3332.0400", //开盘价
+    "3332.0400", //收盘价
+    "0" //成交量
+  ],
+  [
+    1629971400000,
+    "3332.0400",
+    "3332.0400",
+    "3332.0400",
+    "3332.0400",
+    "0"
   ]
 ]
 ```
@@ -2138,12 +2210,30 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/orderBook',
 {
   "asks": [
     [
-      "string"
+      "3335.0000", //价格
+      "1.0000" //数量
+    ],
+    [
+      "3336.0000",
+      "1.0000"
     ]
   ],
   "bids": [
     [
-      "string"
+      "2712.0000",
+      "0.0100"
+    ],
+    [
+      "2710.0000",
+      "91.6706"
+    ],
+    [
+      "2700.0000",
+      "84.6012"
+    ],
+    [
+      "2685.0000",
+      "100.0000"
     ]
   ]
 }
