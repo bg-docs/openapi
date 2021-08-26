@@ -1,0 +1,36 @@
+Orders(id=116827159418896, pairCode=ETH_USDT, userId=10121240, brokerId=null, clazz=0, side=null, entrustPrice=null, amount=null, dealAmount=9.0000, quoteAmount=null, dealQuoteAmount=9.0000, sourceInfo=null, systemOrderType=null, relationOrderId=116827303901200, matchingStatus=1, status=2, systemType=null, createOn=null, updateOn=Thu Jan 01 08:00:00 CST 1970, dealSide=maker, currentDealAmount=0, currentDealPrice=100.99000, currentQuoteDealAmount=0)
+
+
+Orders(id=116827163909136, pairCode=ETH_USDT, userId=10121240, brokerId=null, clazz=0, side=null, entrustPrice=null, amount=null, dealAmount=11.0000, quoteAmount=null, dealQuoteAmount=11.0000, sourceInfo=null, systemOrderType=null, relationOrderId=116827303901200, matchingStatus=1, status=1, systemType=null, createOn=null, updateOn=Thu Jan 01 08:00:00 CST 1970, dealSide=maker, currentDealAmount=0, currentDealPrice=100.99000, currentQuoteDealAmount=0)
+
+Orders(id=116827303901200, pairCode=ETH_USDT, userId=10121240, brokerId=null, clazz=0, side=null, entrustPrice=null, amount=null, dealAmount=20.0000, quoteAmount=null, dealQuoteAmount=20.0000, sourceInfo=null, systemOrderType=null, relationOrderId=null, matchingStatus=1, status=2, systemType=null, createOn=null, updateOn=Thu Jan 01 08:00:00 CST 1970, dealSide=taker, currentDealAmount=0, currentDealPrice=100.99000, currentQuoteDealAmount=0)
+
+
+
+
+
+
+Orders(id=116827163909136, pairCode=ETH_USDT, userId=10121240, brokerId=10000, clazz=0, side=sell, entrustPrice=100.9900000000000000, amount=22.0000000000000000, dealAmount=22.0000000000000000, quoteAmount=0E-16, dealQuoteAmount=1121.89000000000000000000000000000000, sourceInfo=web, systemOrderType=0, relationOrderId=116827303901200, matchingStatus=1, status=2, systemType=0, createOn=Fri Aug 13 11:23:47 CST 2021, updateOn=Fri Aug 13 11:26:07 CST 2021, dealSide=maker, currentDealAmount=11.0000000000000000, currentDealPrice=100.9900000000000000, currentQuoteDealAmount=1110.89000000000000000000000000000000)
+
+Orders(id=116827632314384, pairCode=ETH_USDT, userId=10121240, brokerId=10000, clazz=0, side=buy, entrustPrice=100.9900000000000000, amount=11.0000000000000000, dealAmount=11.0000000000000000, quoteAmount=0E-16, dealQuoteAmount=1110.89000000000000000000000000000000, sourceInfo=web, systemOrderType=0, relationOrderId=0, matchingStatus=1, status=2, systemType=0, createOn=Fri Aug 13 11:31:25 CST 2021, updateOn=Fri Aug 13 11:31:24 CST 2021, dealSide=taker, currentDealAmount=11.0000000000000000, currentDealPrice=100.9900000000000000, currentQuoteDealAmount=1110.89000000000000000000000000000000)
+
+
+select * from eth_usdt_orders where id=116772187293712
+
+
+select * from eth_usdt_orders;
+
+
+select id, user_id, broker_id, symbol, available, hold, withdraw_limit, create_on, update_on from user_assets where user_id = 10121240 and symbol = 'ETH' and broker_id = 10000 ;
+
+
+delete  from orders_all
+delete from eth_usdt_orders
+delete from eth_usdt_order_fulfillment
+delete from eth_usdt_pending
+delete from eth_usdt_candle
+
+
+delete from btc_usdt_orders
+delete from btc_usdt_order_fulfillment
+delete from btc_usdt_pending
