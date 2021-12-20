@@ -1,27 +1,51 @@
-*.gem
-*.rbc
-.bundle
-.config
-coverage
-InstalledFiles
-lib/bundler/man
-pkg
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
-*.DS_STORE
+# Compiled class file
+*.class
+
+# Log file
+*.log
+logs/
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
 build/
-.cache
-.vagrant
-.sass-cache
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
-.idea/
-
-# Vagrant artifacts
-ubuntu-*-console.log
+dev.properties
+vendor
