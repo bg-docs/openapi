@@ -4,8 +4,6 @@
 
 ## 获取资产信息
 
-<a id="opIdgetUserAllCurrencyAssetUsingGET"></a>
-
 > Code samples
 
 ```java
@@ -75,6 +73,7 @@ fetch('/example.com/openapi/exchange/assets',
   }
 ]
 ```
+
 
 <h3 id="获取资产信息-responses">Responses</h3>
 
