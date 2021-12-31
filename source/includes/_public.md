@@ -506,40 +506,67 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/candles?interval=string',
 
 ```
 
-`GET /openapi/exchange/public/{pairCode}/candles`
+`GET /openapi/exchange/public/products/{pairCode}/candles`
 
 <h3 id="获取交易对k线图信息-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |end|query|string|false|结束时间|
-|interval|query|string|true|interval|
+|interval|query|string|true|interval["1min", "5min", "15min", "30min", "60min", "4hour", "1day", "1week", "1mon"]|
 |pairCode|path|string|true|交易对|
-|start|query|string|false|开始时间|
+|start|query|string|true|开始时间|
+|size|query|string|true|[1,2000]|
 
 > Example responses
 
 > 200 Response
 
 ```json
-[
-  [
-    1629971700000, //时间戳
-    "3332.0400", //最低价
-    "3332.0400", //最高价
-    "3332.0400", //开盘价
-    "3332.0400", //收盘价
-    "0" //成交量
-  ],
-  [
-    1629971400000,
-    "3332.0400",
-    "3332.0400",
-    "3332.0400",
-    "3332.0400",
-    "0"
-  ]
-]
+{
+	"code": 200,
+	"data": [{
+		"close": 11.9,
+		"count": 0,
+		"high": 11.9,
+		"id": 1640932860,
+		"low": 11.9,
+		"open": 11.9,
+		"turnOver": 0,
+		"vol": 0
+	}, {
+		"close": 11.9,
+		"count": 0,
+		"high": 11.9,
+		"id": 1640932920,
+		"low": 11.9,
+		"open": 11.9,
+		"turnOver": 0,
+		"vol": 0
+	}, {
+		"close": 11.9,
+		"count": 0,
+		"high": 11.9,
+		"id": 1640932980,
+		"low": 11.9,
+		"open": 11.9,
+		"turnOver": 0,
+		"vol": 0
+	}, {
+		"close": 11.9,
+		"count": 0,
+		"high": 11.9,
+		"id": 1640933040,
+		"low": 11.9,
+		"open": 11.9,
+		"turnOver": 0,
+		"vol": 0
+	}],
+	"interval": "1min",
+	"msg": "success",
+	"productId": "ETH_USDT",
+	"ts": 1640933046424
+}
 ```
 
 <h3 id="获取交易对k线图信息-responses">Responses</h3>
@@ -667,7 +694,7 @@ System.out.println(response.toString());
 ```
 
 ```http
-GET /example.com/openapi/exchange/public/{pairCode}/orderBook HTTP/1.1
+GET /example.com/openapi/exchange/public/products/{pairCode}/orderBook HTTP/1.1
 
 Accept: application/json
 
@@ -679,7 +706,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/example.com/openapi/exchange/public/{pairCode}/orderBook',
+fetch('/example.com/openapi/exchange/public/products/{pairCode}/orderBook',
 {
   method: 'GET',
 
@@ -700,7 +727,7 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/orderBook',
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |pairCode|path|string|true|pairCode|
-|size|query|integer(int32)|false|size|
+|interval|query|string|false|step[`5`,`10`,`15`,`30`]|
 
 > Example responses
 
@@ -708,34 +735,22 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/orderBook',
 
 ```json
 {
-  "asks": [
-    [
-      "3335.0000", //价格
-      "1.0000" //数量
-    ],
-    [
-      "3336.0000",
-      "1.0000"
-    ]
-  ],
-  "bids": [
-    [
-      "2712.0000",
-      "0.0100"
-    ],
-    [
-      "2710.0000",
-      "91.6706"
-    ],
-    [
-      "2700.0000",
-      "84.6012"
-    ],
-    [
-      "2685.0000",
-      "100.0000"
-    ]
-  ]
+	"interval": "step5",
+	"status": "ok",
+	"ts": 1640932627885,
+	"type": "orderBook",
+	"tick": {
+		"seqId": 2875,
+		"id": 1640932627,
+		"bids": [
+			[12, 0.10124]
+		],
+		"ts": 1640932627020,
+		"version": 1640932627,
+		"type": "orderBook",
+		"pairCode": "ETH_USDT",
+		"interval": "5"
+	}
 }
 ```
 
@@ -954,7 +969,7 @@ This operation does not require authentication
 > Code samples
 
 ```java
-URL obj = new URL("/example.com/openapi/exchange/public/{pairCode}/ticker");
+URL obj = new URL("/example.com/openapi/exchange/public/products/{pairCode}/trade");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -971,7 +986,7 @@ System.out.println(response.toString());
 ```
 
 ```http
-GET /example.com/openapi/exchange/public/{pairCode}/ticker HTTP/1.1
+GET /example.com/openapi/exchange/public/products/{pairCode}/trade HTTP/1.1
 
 Accept: application/json
 
@@ -1011,22 +1026,19 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/ticker',
 
 ```json
 {
-  "buy": "string",
-  "change24": "string",
-  "changePercentage": "string",
-  "changeRate24": "string",
-  "close": "string",
-  "createOn": "2019-08-24T14:15:22Z",
-  "high": "string",
-  "high24": "string",
-  "last": "string",
-  "low": "string",
-  "low24": "string",
-  "open": "string",
-  "pairCode": "string",
-  "quoteVolume": "string",
-  "sell": "string",
-  "volume": "string"
+	"status": "ok",
+	"tick": {
+		"data": [{
+			"direction": "sell",
+			"id": 28730000,
+			"price": "11.9",
+			"ts": 1639585820376,
+			"vol": "1"
+		}],
+		"id": 1640933236175,
+		"ts": 1640933236175
+	},
+	"ts": 1640933236175
 }
 ```
 
@@ -1042,3 +1054,104 @@ fetch('/example.com/openapi/exchange/public/{pairCode}/ticker',
 <aside class="success">
 This operation does not require authentication
 </aside>
+
+
+## 获取交易对24小时交易信息
+
+<a id="opIdtickerUsingGET"></a>
+
+> Code samples
+
+```java
+URL obj = new URL("/example.com/openapi/exchange/public/products/{pairCode}/ticker");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```http
+GET /example.com/openapi/exchange/public/products/{pairCode}/ticker HTTP/1.1
+
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('/example.com/openapi/exchange/public/{pairCode}/ticker',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+`GET /openapi/exchange/public/{pairCode}/ticker`
+
+<h3 id="获取交易对获取交易对24小时交易信息-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|pairCode|path|string|true|pairCode|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+	"ch": "market.ETH_USDT.detail",
+	"status": "ok",
+	"tick": {
+		"open": "11.9",
+		"close": "11.9",
+		"low": "11.9",
+		"high": "11.9",
+		"turnOver": "0",
+		"count": 0,
+		"vol": "0",
+		"pairCode": "ETH_USDT",
+		"change": "0",
+		"changePercent": "0"
+	},
+	"ts": 1640933141753
+}
+```
+
+<h3 id="获取交易对最新成交信息-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[TickerDTO](#schematickerdto)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+
+
+
+
