@@ -17,6 +17,7 @@ toc_footers: []
 includes:
   - bill
   - product
+  - ws
   - errors
 
 
