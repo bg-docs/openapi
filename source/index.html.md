@@ -9,12 +9,14 @@ language_clients:
 toc_footers: []
 includes:
   - introduce
-  - asset
-  - bill
-  - exchange
-  - public
+  - accounts
+  - bg-accounts
+  - transfers
+  - products
+  - currencys
   - market
-  - errors
+  - orders
+  - auth
 
 
 search: false
@@ -22,3 +24,4 @@ highlight_theme: darkula
 headingLevel: 2
 
 ---
+
