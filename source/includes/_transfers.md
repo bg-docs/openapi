@@ -2,9 +2,7 @@
 
 ## 资金账户划转到交易账户
 
-**请求方式**:`POST` 
-
-**接口地址**:`/deposits/account` 
+**POST**: `/deposits/account`
 
 **请求数据类型**:`application/json`
 
@@ -71,9 +69,7 @@ RESPONSE PARAMETERS
 
 ## 交易账户划转到资金账户
 
-**请求方式**:`POST` 
-
-**接口地址**:`/withdrawals/account` 
+**POST**: `/withdrawals/account`
 
 **请求数据类型**:`application/json`
 

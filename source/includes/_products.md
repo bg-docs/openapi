@@ -2,9 +2,7 @@
 
 ## 获取所有已知的交易产品
 
-**请求方式**:`GET`
-
-**接口地址**:`/products`
+**GET**: `/products`
 
 
 <aside>
@@ -79,9 +77,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个产品详情
 
-**请求方式**:`GET`
-
-**接口地址**:`/products/{product_id}`
+**GET**: `/products/{product_id}`
 
 
 <aside>

@@ -2,9 +2,8 @@
 
 ## 获取所有账户余额信息
 
-**请求方式**:`GET`
+<div class="httpget">GET</div> */accounts*
 
-**接口地址**:`/accounts`
 
 获取用户所有的交易账户信息
 
@@ -35,7 +34,7 @@ RESPONSE PARAMETERS
 |available|可用额度|string||
 |hold|冻结额度|string||
 |balance|余额,包含 可用额度为冻结额度之和|string||
-|currency|资产ID|string||
+|currency|资产名称|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -53,9 +52,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个账户余额信息
 
-**请求方式**:`GET`
-
-**接口地址**:`/accounts/{account_id}`
+**GET**: `/accounts/{account_id}`
 
 获取用户指定的交易账户信息
 
@@ -96,7 +93,7 @@ RESPONSE PARAMETERS
 |available|可用额度|string||
 |hold|冻结额度|string||
 |balance|余额,包含 可用额度为冻结额度之和|string||
-|currency|资产ID|string||
+|currency|资产名称|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 

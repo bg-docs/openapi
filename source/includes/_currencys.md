@@ -2,9 +2,7 @@
 
 ## 获取所有已知货币
 
-**请求方式**:`GET`
-
-**接口地址**:`/currencies`
+**GET**: `/currencies`
 
 
 <aside>
@@ -65,9 +63,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个币种信息
 
-**请求方式**:`GET`
-
-**接口地址**:`/currencies/{currency_id}`
+**GET**: `/currencies/{currency_id}`
 
 
 <aside>
@@ -106,22 +102,20 @@ RESPONSE PARAMETERS
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
-[
-  {
-    "id": "USDT",
-    "min_size": "0",
-    "status": "online",
-    "max_precision": "10",
-    "type": "crypto",
-    "details": [
-      {
-        "symbol": "USDT",
-        "network_confirmations": "12",
-        "sort_order": "5",
-        "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",
-        "display_name": "USDT"
-      }
-    ]
-  }
-]
+{
+  "id": "USDT",
+  "min_size": "0",
+  "status": "online",
+  "max_precision": "10",
+  "type": "crypto",
+  "details": [
+    {
+      "symbol": "USDT",
+      "network_confirmations": "12",
+      "sort_order": "5",
+      "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",
+      "display_name": "USDT"
+    }
+  ]
+}
 ```

@@ -2,9 +2,7 @@
 
 ## 创建新订单
 
-**请求方式**:`POST`
-
-**接口地址**:`/orders`
+**POST**: `/orders`
 
 <aside>
 REQUEST PARAMETERS
@@ -86,9 +84,7 @@ RESPONSE PARAMETERS
 
 <a name="order_detail"></a>
 
-**请求方式**:`GET`
-
-**接口地址**:`/orders/{order_id}`
+**GET**: `/orders/{order_id}`
 
 <aside>
 PATH VARIABLES
@@ -159,10 +155,7 @@ RESPONSE EXAMPLE
 
 ## 获取交易明细
 
-**请求方式**:`GET`
-
-**接口地址**:`/fills`
-
+**GET**: `/fills`
 
 <aside>
 REQUEST PARAMETERS
@@ -230,10 +223,7 @@ RESPONSE EXAMPLE
 
 ## 获取当前的未完结订单
 
-**请求方式**:`GET`
-
-**接口地址**:`/orders`
-
+**GET**: `/orders`
 
 <aside>
 REQUEST PARAMETERS
@@ -313,9 +303,7 @@ RESPONSE EXAMPLE
 
 ## 撤销单个订单
 
-**请求方式**:`DELETE`
-
-**接口地址**:`/orders/{order_id}`
+**DELETE**: `/orders/{order_id}`
 
 
 <aside>
@@ -396,9 +384,7 @@ RESPONSE EXAMPLE
 
 ## 取消所有订单
 
-**请求方式**:`DELETE`
-
-**接口地址**:`/orders`
+**DELETE**: `/orders`
 
 此方法为异步方法，当用户收到接口返回时，并不代表所有订单已经取消成功。BGE收到请求之后，会查询用户账户下对应商品ID的所有未成交订单，并对这些订单异步进行取消操作。
 用户可以通过[/orders/{order_id}](#order_detail) 查询单个订单的成交状态。
