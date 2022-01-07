@@ -23,6 +23,7 @@ includes:
   - currencys
   - orders
   - ws
+  - ws-private
   - auth
 
 

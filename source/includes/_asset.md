@@ -66,7 +66,7 @@ fetch('/example.com/openapi/exchange/assets',
     "brokerId": 0,
     "hold": 0,
     "sort": 0,
-    "symbol": "string",
+    "currency": "string",
     "transfer": true,
     "userId": 0,
     "withdrawLimit": 0
@@ -97,7 +97,7 @@ Status Code **200**
 |»» brokerId|integer(int32)|false|none|业务方ID|
 |»» hold|number|false|none|冻结|
 |»» sort|integer(int32)|false|none|none|
-|»» symbol|string|false|none|币种|
+|»» currency|string|false|none|币种|
 |»» transfer|boolean|false|none|none|
 |»» userId|integer(int64)|false|none|none|
 |»» withdrawLimit|number|false|none|提币限额|
@@ -113,7 +113,7 @@ This operation does not require authentication
 > Code samples
 
 ```java
-URL obj = new URL("/example.com/openapi/exchange/{symbol}/assets");
+URL obj = new URL("/example.com/openapi/exchange/{currency}/assets");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -130,7 +130,7 @@ System.out.println(response.toString());
 ```
 
 ```http
-GET /example.com/openapi/exchange/{symbol}/assets HTTP/1.1
+GET /example.com/openapi/exchange/{currency}/assets HTTP/1.1
 
 Accept: application/json
 
@@ -142,7 +142,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('/example.com/openapi/exchange/{symbol}/assets',
+fetch('/example.com/openapi/exchange/{currency}/assets',
 {
   method: 'GET',
 
@@ -156,7 +156,7 @@ fetch('/example.com/openapi/exchange/{symbol}/assets',
 
 ```
 
-`GET /openapi/exchange/{symbol}/assets`
+`GET /openapi/exchange/{currency}/assets`
 
 获取币种下的资产信息
 
@@ -164,7 +164,7 @@ fetch('/example.com/openapi/exchange/{symbol}/assets',
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|symbol|path|string|true|币种|
+|currency|path|string|true|币种|
 
 > Example responses
 
@@ -177,7 +177,7 @@ fetch('/example.com/openapi/exchange/{symbol}/assets',
   "brokerId": 0,
   "hold": 0,
   "sort": 0,
-  "symbol": "string",
+  "currency": "string",
   "transfer": true,
   "userId": 0,
   "withdrawLimit": 0
@@ -205,7 +205,7 @@ Status Code **200**
 |»» brokerId|integer(int32)|false|none|业务方ID|
 |»» hold|number|false|none|冻结|
 |»» sort|integer(int32)|false|none|none|
-|»» symbol|string|false|none|币种|
+|»» currency|string|false|none|币种|
 |»» transfer|boolean|false|none|none|
 |»» userId|integer(int64)|false|none|none|
 |»» withdrawLimit|number|false|none|提币限额|

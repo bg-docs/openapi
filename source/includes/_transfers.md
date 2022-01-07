@@ -2,7 +2,9 @@
 
 ## 资金账户划转到交易账户
 
-**POST**: `/deposits/account`
+
+<font class="httppost">POST</font> */deposits/account*
+
 
 **请求数据类型**:`application/json`
 
@@ -69,7 +71,7 @@ RESPONSE PARAMETERS
 
 ## 交易账户划转到资金账户
 
-**POST**: `/withdrawals/account`
+<font class="httppost">POST</font> */withdrawals/account*
 
 **请求数据类型**:`application/json`
 

@@ -2,7 +2,8 @@
 
 ## 获取所有已知货币
 
-**GET**: `/currencies`
+<font class="httpget">GET</font> */currencies*
+
 
 
 <aside>
@@ -33,10 +34,9 @@ RESPONSE PARAMETERS
 
 `details`: 链信息，只有数字币类型才会有此部分信息
 
-- `crypto_address_link`: 加密地址链接
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
-- `symbol`: 数字币标识符
+- `currency`: 数字币标识符
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -50,7 +50,7 @@ RESPONSE PARAMETERS
     "type": "crypto",
     "details": [
       {
-        "symbol": "USDT",
+        "currency": "USDT",
         "network_confirmations": "12",
         "sort_order": "5",
         "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",
@@ -63,7 +63,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个币种信息
 
-**GET**: `/currencies/{currency_id}`
+<font class="httpget">GET</font> */currencies/{currency_id}*
 
 
 <aside>
@@ -94,10 +94,9 @@ RESPONSE PARAMETERS
 
 `details`: 链信息，只有数字币类型才会有此部分信息
 
-- `crypto_address_link`: 加密地址链接
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
-- `symbol`: 数字币标识符
+- `currency`: 数字币标识符
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -110,7 +109,7 @@ RESPONSE PARAMETERS
   "type": "crypto",
   "details": [
     {
-      "symbol": "USDT",
+      "currency": "USDT",
       "network_confirmations": "12",
       "sort_order": "5",
       "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",

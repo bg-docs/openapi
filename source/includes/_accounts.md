@@ -2,7 +2,7 @@
 
 ## 获取所有账户余额信息
 
-<div class="httpget">GET</div> */accounts*
+<font class="httpget">GET</font> */accounts*
 
 
 获取用户所有的交易账户信息
@@ -52,7 +52,9 @@ RESPONSE PARAMETERS
 
 ## 获取单个账户余额信息
 
-**GET**: `/accounts/{account_id}`
+
+<font class="httpget">GET</font> */accounts/{account_id}*
+
 
 获取用户指定的交易账户信息
 

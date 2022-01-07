@@ -91,7 +91,7 @@ fetch('/example.com/openapi/exchange/orders',
     "side": "string",
     "sourceInfo": "string",
     "status": 0,
-    "symbol": "string",
+    "currency": "string",
     "systemOrderType": 0,
     "trunOver": "string",
     "updateOn": 0,
@@ -132,7 +132,7 @@ Status Code **200**
 |»» side|string|false|none|仓位类型，buy买，sell卖|
 |»» sourceInfo|string|false|none|下单来源|
 |»» status|integer(int32)|false|none|0:未成交 1:部分成交 2:完全成交 3:撤单中 -1:已撤单'|
-|»» symbol|string|false|none|币种|
+|»» currency|string|false|none|币种|
 |»» systemOrderType|integer(int32)|false|none|10:限价 11:市价|
 |»» trunOver|string|false|none|none|
 |»» updateOn|integer(int64)|false|none|none|
@@ -249,7 +249,7 @@ fetch('/example.com/openapi/exchange/{pairCode}/bulkOrders',
     "side": "string",
     "sourceInfo": "string",
     "status": 0,
-    "symbol": "string",
+    "currency": "string",
     "systemOrderType": 0,
     "trunOver": "string",
     "updateOn": 0,
@@ -291,7 +291,7 @@ Status Code **200**
 |»» side|string|false|none|仓位类型，buy买，sell卖|
 |»» sourceInfo|string|false|none|下单来源|
 |»» status|integer(int32)|false|none|0:未成交 1:部分成交 2:完全成交 3:撤单中 -1:已撤单'|
-|»» symbol|string|false|none|币种|
+|»» currency|string|false|none|币种|
 |»» systemOrderType|integer(int32)|false|none|10:限价 11:市价|
 |»» trunOver|string|false|none|none|
 |»» updateOn|integer(int64)|false|none|none|
@@ -622,7 +622,7 @@ fetch('/example.com/openapi/exchange/{pairCode}/fulfillment',
     "side": "string",
     "sourceInfo": "string",
     "status": 0,
-    "symbol": "string",
+    "currency": "string",
     "systemOrderType": 0,
     "trunOver": "string",
     "updateOn": 0,
@@ -663,7 +663,7 @@ Status Code **200**
 |»» side|string|false|none|仓位类型，buy买，sell卖|
 |»» sourceInfo|string|false|none|下单来源|
 |»» status|integer(int32)|false|none|0:未成交 1:部分成交 2:完全成交 3:撤单中 -1:已撤单'|
-|»» symbol|string|false|none|币种|
+|»» currency|string|false|none|币种|
 |»» systemOrderType|integer(int32)|false|none|10:限价 11:市价|
 |»» trunOver|string|false|none|none|
 |»» updateOn|integer(int64)|false|none|none|

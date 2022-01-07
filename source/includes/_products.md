@@ -2,7 +2,8 @@
 
 ## 获取所有已知的交易产品
 
-**GET**: `/products`
+<font class="httpget">GET</font> */products*
+
 
 
 <aside>
@@ -77,7 +78,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个产品详情
 
-**GET**: `/products/{product_id}`
+<font class="httpget">GET</font> */products/{product_id}*
 
 
 <aside>

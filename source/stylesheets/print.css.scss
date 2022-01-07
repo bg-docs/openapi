@@ -147,13 +147,40 @@ body {
     @extend %icon-ok-sign;
   }
 
-  div.httpget {
+
+  .httpget {
     background-color: #0e9b71;
     text-shadow: 1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;
     border-radius: 5px;
+    color: white;
+    padding: 5px;
+  }
+
+  .httppost {
+    background-color: #0066cc;
+    text-shadow: 1px 1px 0px #0066cc, 0 1px 0 #0066cc, 1px 0 0 #0066cc;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+  }
+
+  .httpdelete {
+    background-color: #bb1122;
+    text-shadow: 1px 1px 0px #bb1122, 0 1px 0 #bb1122, 1px 0 0 #bb1122;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+  }
+  .httpput {
+    background-color: #554499;
+    text-shadow: 1px 1px 0px #554499, 0 1px 0 #554499, 1px 0 0 #554499;
+    border-radius: 5px;
+    color: white;
     padding: 5px;
   }
 }
+
+
 
 .copy-clipboard {
   @media print {

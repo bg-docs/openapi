@@ -81,7 +81,7 @@ func main() {
 
 }
 ```
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */public/v1/products/{product}/candles*
+<font class="httpget">GET</font> */public/v1/products/{product}/candles*
 
 历史产品的k 线图， 数据以数组形式返回，每个对象保函[`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
 
@@ -227,7 +227,7 @@ func main() {
 }
 ```
 
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */public/v1/products/{product}/orderbook*
+<font class="httpget">GET</font> */public/v1/products/{product}/orderbook*
 
 Get a list of open orders for a product. The amount of detail shown can be customized with the level parameter.
 
@@ -425,7 +425,7 @@ func main() {
 }
 ```
 
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */public/v1/products/{product}/tickers*
+<font class="httpget">GET</font> */public/v1/products/{product}/tickers*
 
 Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
 
@@ -569,7 +569,7 @@ func main() {
 }
 ```
 
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */public/v1/products/{product}/ticker*
+<font class="httpget">GET</font> */public/v1/products/{product}/ticker*
 
 Gets snapshot information about the last trade (tick), best bid/ask and 24h volume.
 
@@ -700,7 +700,7 @@ func main() {
 }
 ```
 
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */products/{product}/trade*
+<font class="httpget">GET</font> */products/{product}/trade*
 
 Gets a list the latest trades for a product.
 
@@ -828,7 +828,7 @@ func main() {
 }
 ```
 
-<font style="background-color: #0e9b71;text-shadow:1px 1px 0px #0d8d67, 0 1px 0 #0d8d67, 1px 0 0 #0d8d67;border-radius:5px;padding:5px">GET</font> */public/v1/products/{product}/trades*
+<font class="httpget">GET</font> */public/v1/products/{product}/trades*
 
 Gets a list the latest trades for a product.
 

@@ -147,7 +147,7 @@ fetch('/example.com/openapi/exchange/bills',
 |page|query|integer(int32)|false|page|
 |pageSize|query|integer(int32)|false|pageSize|
 |startDate|query|string|false|开始时间|
-|symbol|query|string|false|币种|
+|currency|query|string|false|币种|
 |type|query|string|false|账单类型|
 
 > Example responses
@@ -170,7 +170,7 @@ fetch('/example.com/openapi/exchange/bills',
       "pairCode": "string",
       "price": 0,
       "referId": 0,
-      "symbol": "string",
+      "currency": "string",
       "tradeNo": "string",
       "type": 0,
       "updateOn": 0,
@@ -207,7 +207,7 @@ fetch('/example.com/openapi/exchange/bills',
 |pairCode|string|false|none|交易对|
 |price|number|false|none|成交价|
 |referId|integer(int64)|false|none|关联id|
-|symbol|string|false|none|币种|
+|currency|string|false|none|币种|
 |tradeNo|string|false|none|订单号|
 |type|integer(int32)|false|none|账单类型 1:充值 2:提现 3:由借款账户转入 4:转入借款账户 5:由放款账户转入 6:转入放款账户|
 |updateOn|integer(int64)|false|none|none|
