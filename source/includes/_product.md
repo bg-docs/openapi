@@ -700,7 +700,7 @@ func main() {
 }
 ```
 
-<font class="httpget">GET</font> */products/{product}/trade*
+<font class="httpget">GET</font> */public/v1/products/{product}/trade*
 
 Gets a list the latest trades for a product.
 

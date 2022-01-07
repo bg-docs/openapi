@@ -1,8 +1,8 @@
-# Orders
+# 交易和订单
 
 ## 创建新订单
 
-<font class="httppost">POST</font> */orders*
+<font class="httppost">POST</font> */v1/orders*
 
 
 <aside>
@@ -85,7 +85,7 @@ RESPONSE PARAMETERS
 
 <a name="order_detail"></a>
 
-<font class="httpget">GET</font> */orders/{order_id}*
+<font class="httpget">GET</font> */v1/orders/{order_id}*
 
 <aside>
 PATH VARIABLES
@@ -156,7 +156,7 @@ RESPONSE EXAMPLE
 
 ## 获取交易明细
 
-<font class="httpget">GET</font> */fills*
+<font class="httpget">GET</font> */v1/fills*
 
 
 <aside>
@@ -225,7 +225,7 @@ RESPONSE EXAMPLE
 
 ## 获取当前的未完结订单
 
-<font class="httpget">GET</font> */orders*
+<font class="httpget">GET</font> */v1/orders*
 
 
 <aside>
@@ -306,7 +306,7 @@ RESPONSE EXAMPLE
 
 ## 撤销单个订单
 
-<font class="httpdelete">DELETE</font> */orders/{order_id}*
+<font class="httpdelete">DELETE</font> */v1/orders/{order_id}*
 
 
 <aside>
@@ -387,7 +387,7 @@ RESPONSE EXAMPLE
 
 ## 取消所有订单
 
-<font class="httpdelete">DELETE</font> */orders*
+<font class="httpdelete">DELETE</font> */v1/orders*
 
 
 此方法为异步方法，当用户收到接口返回时，并不代表所有订单已经取消成功。BGE收到请求之后，会查询用户账户下对应商品ID的所有未成交订单，并对这些订单异步进行取消操作。

@@ -1,9 +1,9 @@
-# Transfers
+# 资金划转
 
 ## 资金账户划转到交易账户
 
 
-<font class="httppost">POST</font> */deposits/account*
+<font class="httppost">POST</font> */v1/deposits/account*
 
 
 **请求数据类型**:`application/json`
@@ -71,7 +71,7 @@ RESPONSE PARAMETERS
 
 ## 交易账户划转到资金账户
 
-<font class="httppost">POST</font> */withdrawals/account*
+<font class="httppost">POST</font> */v1/withdrawals/account*
 
 **请求数据类型**:`application/json`
 

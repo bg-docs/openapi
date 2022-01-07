@@ -1,4 +1,4 @@
-# WEBSOCKET FEED
+# WEBSOCKET FEED PUBLIC
 
 - ` {host}/ws`
 

@@ -1,8 +1,8 @@
-# Products
+# 产品及行情
 
 ## 获取所有已知的交易产品
 
-<font class="httpget">GET</font> */products*
+<font class="httpget">GET</font> */v1/products*
 
 
 
@@ -78,7 +78,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个产品详情
 
-<font class="httpget">GET</font> */products/{product_id}*
+<font class="httpget">GET</font> */v1/products/{product_id}*
 
 
 <aside>

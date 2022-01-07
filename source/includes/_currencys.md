@@ -1,8 +1,8 @@
-# Currencies
+# 币种信息
 
 ## 获取所有已知货币
 
-<font class="httpget">GET</font> */currencies*
+<font class="httpget">GET</font> */v1/currencies*
 
 
 
@@ -63,7 +63,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个币种信息
 
-<font class="httpget">GET</font> */currencies/{currency_id}*
+<font class="httpget">GET</font> */v1/currencies/{currency_id}*
 
 
 <aside>
