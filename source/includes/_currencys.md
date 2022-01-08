@@ -19,7 +19,7 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`id`: 币种名称，可唯一标识币种
+`currency`: 币种名称，可唯一标识币种
 
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
@@ -34,27 +34,36 @@ RESPONSE PARAMETERS
 
 `details`: 链信息，只有数字币类型才会有此部分信息
 
+`deposit_status`: fiat 存款状态
+
+`withdraw_status`: fiat  取款状态
+
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
 - `currency`: 数字币标识符
+- `deposit_status`: crypto 存款状态 
+- `withdraw_status`: crypto  取款状态
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
 [
   {
-    "id": "USDT",
+    "currency": "ETH",
     "min_size": "0",
-    "status": "online",
+    "status": "on",
     "max_precision": "10",
     "type": "crypto",
+    "deposit_status": "on",
+    "withdraw_status": "on",
+    "accuracy": 8,
     "details": [
       {
-        "currency": "USDT",
         "network_confirmations": "12",
-        "sort_order": "5",
-        "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",
-        "display_name": "USDT"
+        "sort_order": "3",
+        "display_name": "ETH",
+        "deposit_status": "on",
+        "withdraw_status": "on"
       }
     ]
   }
@@ -63,7 +72,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个币种信息
 
-<font class="httpget">GET</font> */v1/currencies/{currency_id}*
+<font class="httpget">GET</font> */v1/currencies/{currency}*
 
 
 <aside>
@@ -79,7 +88,7 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`id`: 币种名称，可唯一标识币种
+`currency`: 币种名称，可唯一标识币种
 
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
@@ -94,27 +103,37 @@ RESPONSE PARAMETERS
 
 `details`: 链信息，只有数字币类型才会有此部分信息
 
+`deposit_status`: fiat 存款状态
+
+`withdraw_status`: fiat  取款状态
+
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
 - `currency`: 数字币标识符
+- `deposit_status`: crypto 存款状态
+- `withdraw_status`: crypto  取款状态
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
-{
-  "id": "USDT",
-  "min_size": "0",
-  "status": "online",
-  "max_precision": "10",
-  "type": "crypto",
-  "details": [
-    {
-      "currency": "USDT",
-      "network_confirmations": "12",
-      "sort_order": "5",
-      "crypto_address_link": "0xf71fc630730cf866a95aebc2744452c76903f7a",
-      "display_name": "USDT"
-    }
-  ]
-}
+[
+  {
+    "currency": "ETH",
+    "min_size": "0",
+    "status": "on",
+    "max_precision": "10",
+    "type": "crypto",
+    "deposit_status": "on",
+    "withdraw_status": "on",
+    "accuracy": 8,
+    "details": [
+      {
+        "network_confirmations": "12",
+        "display_name": "ETH",
+        "deposit_status": "on",
+        "withdraw_status": "on"
+      }
+    ]
+  }
+]
 ```

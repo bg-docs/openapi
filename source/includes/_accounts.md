@@ -53,7 +53,7 @@ RESPONSE PARAMETERS
 ## 获取单个账户余额信息
 
 
-<font class="httpget">GET</font> */v1/accounts/{account_id}*
+<font class="httpget">GET</font> */v1/accounts/{currency}*
 
 
 获取用户指定的交易账户信息
@@ -69,7 +69,7 @@ REQUEST PARAMETERS
 
 | 参数名称 | 参数说明 | 是否必须 | 数据类型 | schema |
 | -------- | -------- | -------- | -------- | ------ |
-|account_id|账户ID，例:BTC||true|string||
+|currency|资产名称，例:BTC||true|string||
 
 
 > 鉴权信息
