@@ -14,7 +14,7 @@ Header Name | Meaning
 ---------- | -------
 ACCESS-KEY | 用户在BGE平台创建的API KEY
 ACCESS-SIGN | 根据用户创建的API KEY 对请求所作出的签名信息，以验证请求的合法性 [ACCESS-SING生成算法](#access-sign-gen)
-ACCESS-TIMESTAMP | 请求时间，一般为当前的好描述
+ACCESS-TIMESTAMP | 请求时间，一般为当前的毫秒数时间戳
 
 <a name="access-sign-gen">ACCESS-SING生成算法</a>
 
