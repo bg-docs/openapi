@@ -2464,9 +2464,20 @@ RESPONSE PARAMETERS
 <blockquote>
 <p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128527387912385665"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="s2">"1.000000000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="s2">"BTC_USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"129149436110880967"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"funds"</span><span class="p">:</span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filled_fees"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='327ddc77cb'>查询单个订单</h2>
 <p><a name="order_detail"></a></p>
 
@@ -5109,66 +5120,69 @@ RESPONSE PARAMETERS
     <span class="k">return</span> <span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
   <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createSign</span><span class="o">(</span><span class="nc">String</span> <span class="n">method</span><span class="o">,</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">,</span> <span class="nc">String</span> <span class="n">requestPath</span><span class="o">,</span> <span class="nc">String</span> <span class="n">params</span><span class="o">,</span> <span class="nc">String</span> <span class="n">timestamp</span><span class="o">)</span> <span class="o">{</span>
+  <span class="cm">/**
+   * 获取当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @return
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createTimestamp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+   * 计算签名
+   * @param method POST or GET or DELETE
+   * @param secretKey 例：HKBGE-xxxxx
+   * @param requestPath 例：/v1/orders
+   * @param queryString 请求参数
+   * @param body string GET时为空
+   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @return string
+   */</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createSign</span><span class="o">(</span><span class="nc">String</span> <span class="n">method</span><span class="o">,</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">,</span> <span class="nc">String</span> <span class="n">requestPath</span><span class="o">,</span> <span class="nc">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="nc">String</span> <span class="n">body</span><span class="o">,</span> <span class="nc">String</span> <span class="n">timestamp</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
     <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">timestamp</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">timestamp</span> <span class="o">=</span> <span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
     <span class="o">}</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"POST"</span><span class="o">))</span> <span class="o">{</span>
-      <span class="kd">final</span> <span class="nc">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">params</span><span class="o">;</span>
-
-      <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="nc">HmacAlgorithmEnum</span><span class="o">.</span><span class="na">HMAC_SHA_256</span><span class="o">);</span>
+      <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">body</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
     <span class="o">}</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"GET"</span><span class="o">)</span> <span class="o">||</span> <span class="n">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">))</span> <span class="o">{</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
-        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">jsonObject</span> <span class="o">=</span> <span class="nc">GsonUtils</span><span class="o">.</span><span class="na">parseMap</span><span class="o">(</span><span class="n">params</span><span class="o">);</span>
-        <span class="n">requestPath</span> <span class="o">+=</span> <span class="s">"?"</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kd">final</span> <span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">jsonObject</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-          <span class="n">queryString</span> <span class="o">+=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">"="</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">+</span> <span class="s">"&amp;"</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">queryString</span> <span class="o">=</span> <span class="n">queryString</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">queryString</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
-        <span class="n">requestPath</span> <span class="o">+=</span> <span class="n">queryString</span><span class="o">;</span>
-
-      <span class="o">}</span>
-      <span class="kd">final</span> <span class="nc">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span><span class="o">;</span>
-      <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="nc">HmacAlgorithmEnum</span><span class="o">.</span><span class="na">HMAC_SHA_256</span><span class="o">);</span>
+      <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="n">queryString</span><span class="o">,</span> <span class="s">""</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="k">return</span> <span class="n">sign</span><span class="o">;</span>
-
   <span class="o">}</span>
 
   <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">generate</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="nc">String</span> <span class="n">method</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">requestPath</span><span class="o">,</span>
-                                <span class="nc">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="nc">String</span> <span class="n">body</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">secret</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">HmacAlgorithmEnum</span> <span class="n">alg</span><span class="o">)</span> <span class="o">{</span>
+                                <span class="nc">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="nc">String</span> <span class="n">body</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">secret</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">alg</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">body</span> <span class="o">=</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="na">defaultIfBlank</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">);</span>
     <span class="n">queryString</span> <span class="o">=</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">queryString</span><span class="o">)</span> <span class="o">?</span> <span class="s">""</span> <span class="o">:</span> <span class="s">"?"</span> <span class="o">+</span> <span class="n">queryString</span><span class="o">;</span>
     <span class="kd">final</span> <span class="nc">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
     <span class="k">return</span> <span class="nf">encodeBase64</span><span class="o">(</span><span class="n">alg</span><span class="o">,</span> <span class="n">secret</span><span class="o">,</span> <span class="n">preHash</span><span class="o">);</span>
   <span class="o">}</span>
 
-  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">encodeBase64</span><span class="o">(</span><span class="kd">final</span> <span class="nc">HmacAlgorithmEnum</span> <span class="n">alg</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">secret</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">encodeBase64</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">alg</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">secret</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
     <span class="nc">Validate</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">alg</span><span class="o">,</span> <span class="s">"SignatureAlgorithm cannot be null."</span><span class="o">);</span>
     <span class="nc">Validate</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="s">"Signing Secret cannot be null."</span><span class="o">);</span>
     <span class="k">switch</span> <span class="o">(</span><span class="n">alg</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">case</span> <span class="nl">HMAC_MD5:</span>
-        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_MD5</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
-      <span class="k">case</span> <span class="nl">HMAC_SHA_1:</span>
-        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_SHA_1</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
-      <span class="k">case</span> <span class="nl">HMAC_SHA_224:</span>
-        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_SHA_224</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
-      <span class="k">case</span> <span class="nl">HMAC_SHA_256:</span>
+      <span class="k">case</span> <span class="s">"HmacMD5"</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacMD5"</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+      <span class="k">case</span> <span class="s">"HmacSHA1"</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacSHA1"</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+      <span class="k">case</span> <span class="s">"HmacSHA224"</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacSHA224"</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+      <span class="k">case</span> <span class="s">"HmacSHA256"</span><span class="o">:</span>
         <span class="k">try</span> <span class="o">{</span>
-          <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_SHA_256</span><span class="o">,</span>
+          <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacSHA256"</span><span class="o">,</span>
             <span class="n">secret</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)));</span>
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
           <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
         <span class="o">}</span>
-      <span class="k">case</span> <span class="nl">HMAC_SHA_384:</span>
-        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_SHA_384</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
-      <span class="k">case</span> <span class="nl">HMAC_SHA_512:</span>
-        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="nc">HmacAlgorithms</span><span class="o">.</span><span class="na">HMAC_SHA_512</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+      <span class="k">case</span> <span class="s">"HmacSHA384"</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacSHA384"</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+      <span class="k">case</span> <span class="s">"HmacSHA512"</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encodeBase64String</span><span class="o">(</span><span class="k">new</span> <span class="nc">HmacUtils</span><span class="o">(</span><span class="s">"HmacSHA512"</span><span class="o">,</span> <span class="n">secret</span><span class="o">).</span><span class="na">hmac</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
       <span class="k">default</span><span class="o">:</span>
         <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"The '"</span> <span class="o">+</span> <span class="n">alg</span><span class="o">.</span><span class="na">name</span><span class="o">()</span> <span class="o">+</span> <span class="s">"' algorithm cannot be used for signing."</span><span class="o">);</span>
     <span class="o">}</span>
