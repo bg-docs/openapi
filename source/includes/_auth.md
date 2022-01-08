@@ -57,66 +57,69 @@ public class OpenAPiUtils {
     return Instant.now().toString();
   }
 
-  public static String createSign(String method, String secretKey, String requestPath, String params, String timestamp) {
+  /**
+   * 获取当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @return
+   */
+  public static String createTimestamp() {
+    return Instant.now().toString();
+  }
+
+  /**
+   * 计算签名
+   * @param method POST or GET or DELETE
+   * @param secretKey 例：HKBGE-xxxxx
+   * @param requestPath 例：/v1/orders
+   * @param queryString 请求参数
+   * @param body string GET时为空
+   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @return string
+   */
+  public static String createSign(String method, String secretKey, String requestPath, String queryString, String body, String timestamp) {
     String sign = "";
     method = method.toUpperCase();
     if (timestamp == null) {
       timestamp = Instant.now().toString();
     }
     if (method.equals("POST")) {
-      final String preHash = timestamp + method + requestPath + params;
-
-      sign = generate(timestamp, method, requestPath, null, params, secretKey, HmacAlgorithmEnum.HMAC_SHA_256);
+      sign = generate(timestamp, method, requestPath, queryString, body, secretKey, "HmacSHA256");
     }
     if (method.equals("GET") || method.equals("DELETE")) {
-      if (params != null) {
-        String queryString = "";
-        Map<String, Object> jsonObject = GsonUtils.parseMap(params);
-        requestPath += "?";
-        for (final Map.Entry<String, Object> entry : jsonObject.entrySet()) {
-          queryString += entry.getKey() + "=" + entry.getValue() + "&";
-        }
-        queryString = queryString.substring(0, queryString.length() - 1);
-        requestPath += queryString;
-
-      }
-      final String preHash = timestamp + method + requestPath;
-      sign = generate(timestamp, method, requestPath, null, null, secretKey, HmacAlgorithmEnum.HMAC_SHA_256);
+      sign = generate(timestamp, method, requestPath, queryString, "", secretKey, "HmacSHA256");
     }
 
     return sign;
-
   }
 
   public static String generate(final String timestamp, String method, final String requestPath,
-                                String queryString, String body, final String secret, final HmacAlgorithmEnum alg) {
+                                String queryString, String body, final String secret, final String alg) {
     body = StringUtils.defaultIfBlank(body, StringUtils.EMPTY);
     queryString = StringUtils.isEmpty(queryString) ? "" : "?" + queryString;
     final String preHash = timestamp + method + requestPath + queryString + body;
     return encodeBase64(alg, secret, preHash);
   }
 
-  public static String encodeBase64(final HmacAlgorithmEnum alg, final String secret, final String data) {
+  public static String encodeBase64(final String alg, final String secret, final String data) {
     Validate.notNull(alg, "SignatureAlgorithm cannot be null.");
     Validate.notNull(data, "Signing Secret cannot be null.");
     switch (alg) {
-      case HMAC_MD5:
-        return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_MD5, secret).hmac(data));
-      case HMAC_SHA_1:
-        return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_1, secret).hmac(data));
-      case HMAC_SHA_224:
-        return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_224, secret).hmac(data));
-      case HMAC_SHA_256:
+      case "HmacMD5":
+        return Base64.encodeBase64String(new HmacUtils("HmacMD5", secret).hmac(data));
+      case "HmacSHA1":
+        return Base64.encodeBase64String(new HmacUtils("HmacSHA1", secret).hmac(data));
+      case "HmacSHA224":
+        return Base64.encodeBase64String(new HmacUtils("HmacSHA224", secret).hmac(data));
+      case "HmacSHA256":
         try {
-          return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_256,
+          return Base64.encodeBase64String(new HmacUtils("HmacSHA256",
             secret.getBytes("UTF-8")).hmac(data.getBytes("UTF-8")));
         } catch (UnsupportedEncodingException e) {
           throw new RuntimeException(e.getMessage());
         }
-      case HMAC_SHA_384:
-        return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_384, secret).hmac(data));
-      case HMAC_SHA_512:
-        return Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_512, secret).hmac(data));
+      case "HmacSHA384":
+        return Base64.encodeBase64String(new HmacUtils("HmacSHA384", secret).hmac(data));
+      case "HmacSHA512":
+        return Base64.encodeBase64String(new HmacUtils("HmacSHA512", secret).hmac(data));
       default:
         throw new IllegalArgumentException("The '" + alg.name() + "' algorithm cannot be used for signing.");
     }
