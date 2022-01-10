@@ -32,7 +32,8 @@ Request request = new Request.Builder()
 .build();
 Response response = client.newCall(request).execute();
 ```
-```JavaScript
+
+```javascript
 var settings = {
 "url": "http://${host}/v1/products",
 "method": "GET",
@@ -49,8 +50,8 @@ console.log(response);
 });
 ```
 
-```Python
-import http.client
+```java
+import http.client;
 
 conn = http.client.HTTPSConnection("127.0.0.1", 6920)
 payload = ''
@@ -65,7 +66,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-```Php
+```phpregexp
 <?php
 
 $curl = curl_init();
@@ -143,6 +144,7 @@ fmt.Println(string(body))
 `display_name`: 交易产品展示名，下单时，作为交易产品唯一标识
 
 `status` : 交易产品状态
+
 - `on`: 已上线，该产品开放交易，可以正常下单交易。
 - `off`: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
 - `pause`: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消
