@@ -20,120 +20,6 @@ RESPONSE PARAMETERS
 
 </aside>
 
-```java
-OkHttpClient client = new OkHttpClient().newBuilder()
-.build();
-Request request = new Request.Builder()
-.url("http://${host}/v1/products")
-.method("GET", null)
-.addHeader("ACCESS-KEY", "1")
-.addHeader("ACCESS-SIGN", "1")
-.addHeader("ACCESS-TIMESTAMP", "1")
-.build();
-Response response = client.newCall(request).execute();
-```
-```JavaScript
-var settings = {
-"url": "http://${host}/v1/products",
-"method": "GET",
-"timeout": 0,
-"headers": {
-"ACCESS-KEY": "1",
-"ACCESS-SIGN": "1",
-"ACCESS-TIMESTAMP": "1"
-},
-};
-
-$.ajax(settings).done(function (response) {
-console.log(response);
-});
-```
-
-```Python
-import http.client
-
-conn = http.client.HTTPSConnection("127.0.0.1", 6920)
-payload = ''
-headers = {
-'ACCESS-KEY': '1',
-'ACCESS-SIGN': '1',
-'ACCESS-TIMESTAMP': '1'
-}
-conn.request("GET", "/v1/products", payload, headers)
-res = conn.getresponse()
-data = res.read()
-print(data.decode("utf-8"))
-```
-
-```Php
-<?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://${host}/v1/products',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-  CURLOPT_HTTPHEADER => array(
-    'ACCESS-KEY: 1',
-    'ACCESS-SIGN: 1',
-    'ACCESS-TIMESTAMP: 1'
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
-```
-
-```Go
-package main
-
-import (
-"fmt"
-"net/http"
-"io/ioutil"
-)
-
-func main() {
-
-url := "http://${host}/v1/products"
-method := "GET"
-
-client := &http.Client {
-}
-req, err := http.NewRequest(method, url, nil)
-
-if err != nil {
-fmt.Println(err)
-return
-}
-req.Header.Add("ACCESS-KEY", "1")
-req.Header.Add("ACCESS-SIGN", "1")
-req.Header.Add("ACCESS-TIMESTAMP", "1")
-
-res, err := client.Do(req)
-if err != nil {
-fmt.Println(err)
-return
-}
-defer res.Body.Close()
-
-body, err := ioutil.ReadAll(res.Body)
-if err != nil {
-fmt.Println(err)
-return
-}
-fmt.Println(string(body))
-}
-```
-
 `product_id`: 商品
 
 `base_currency`: 基础资产名
@@ -153,6 +39,10 @@ fmt.Println(string(body))
 `quote_precision`: 计价货币数量单位精度
 
 `trade_precision`: 交易货币价格单位精度
+
+`maker_fees_rate`: 卖单方费率
+
+`taker_fees_rate`: 买单方费率
 
 `max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
 
@@ -179,6 +69,8 @@ fmt.Println(string(body))
 |amount_precision|交易货币数量单位精度|string||
 |quote_precision|计价货币数量单位精度|string||
 |trade_precision|	交易货币价格单位精度|string||
+|maker_fees_rate|卖单方费率|string||
+|taker_fees_rate|买单方费率|string||
 |max_buy_price_rate|买入价格不能高于最新价(%)|string||
 |max_sell_price_rate|卖出价格不能低于最新价(%)|string||
 |max_trade_usd_per_order|单笔最大下单金额|string||
@@ -200,9 +92,11 @@ fmt.Println(string(body))
     "quote_currency": "USD",
     "display_name": "ETH_USD",
     "status": "on",
-    "quote_precision": 5,
-    "trade_precision": 8,
-    "amount_precision": 6,
+    "maker_fees_rate": "0.01",
+    "taker_fees_rate": "0.02",
+    "quote_precision": "5",
+    "trade_precision": "8",
+    "amount_precision": "6",
     "max_buy_price_rate": "1.000000",
     "max_sell_price_rate": "1.000000",
     "max_trade_usd_per_order": "",
@@ -254,6 +148,10 @@ RESPONSE PARAMETERS
 
 `trade_precision`: 交易货币价格单位精度
 
+`maker_fees_rate`: 卖单方费率
+
+`taker_fees_rate`: 买单方费率
+
 `max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
 
 `max_sell_price_rate`: 限价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
@@ -279,6 +177,8 @@ RESPONSE PARAMETERS
 |amount_precision|交易货币数量单位精度|string||
 |quote_precision|计价货币数量单位精度|string||
 |trade_precision|	交易货币价格单位精度|string||
+|maker_fees_rate|卖单方费率|string||
+|taker_fees_rate|买单方费率|string||
 |max_buy_price_rate|买入价格不能高于最新价(%)|string||
 |max_sell_price_rate|卖出价格不能低于最新价(%)|string||
 |max_trade_usd_per_order|单笔最大下单金额|string||
@@ -300,9 +200,11 @@ RESPONSE PARAMETERS
     "quote_currency": "USD",
     "display_name": "ETH_USD",
     "status": "on",
-    "quote_precision": 5,
-    "trade_precision": 8,
-    "amount_precision": 6,
+    "maker_fees_rate": "0.01",
+    "taker_fees_rate": "0.02",
+    "quote_precision": "5",
+    "trade_precision": "8",
+    "amount_precision": "6",
     "max_buy_price_rate": "1.000000",
     "max_sell_price_rate": "1.000000",
     "max_trade_usd_per_order": "",

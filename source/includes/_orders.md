@@ -143,12 +143,12 @@ RESPONSE EXAMPLE
 ```json
 {
   "filled_size": "0.000000000000000000",
-  "filled_fees": null,
+  "filled_fees": "1.00",
   "filled_amount": "0.000000000000000000",
   "filled_average_price": "0",
   "created_at": "2021-12-14T03:19:15Z",
   "updated_at": "2022-01-04T06:57:34Z",
-  "price": null,
+  "price": "2.00",
   "size": "3.300000000000000000",
   "product_id": "BTC_USDT",
   "order_id": "127738628653088481",

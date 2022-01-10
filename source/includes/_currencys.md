@@ -21,7 +21,7 @@ RESPONSE PARAMETERS
 
 `currency`: 币种名称，可唯一标识币种
 
-`accuracy`: 取款出金精度
+`accuracy`: fiat存取款精度
 
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
@@ -43,8 +43,9 @@ RESPONSE PARAMETERS
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
 - `currency`: 数字币标识符
-- `deposit_status`: crypto 存款状态 
-- `withdraw_status`: crypto  取款状态
+- `accuracy`: crypto存取款精度
+- `deposit_status`: crypto 存款状态
+- `withdraw_status`: crypto 取款状态
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -52,20 +53,20 @@ RESPONSE PARAMETERS
 [
   {
     "currency": "ETH",
-    "accuracy": 2,
     "min_size": "0",
     "status": "on",
     "max_precision": "10",
     "type": "crypto",
     "deposit_status": "on",
     "withdraw_status": "on",
-    "accuracy": 8,
+    "accuracy": "8",
     "details": [
       {
         "network_confirmations": "12",
         "sort_order": "3",
         "display_name": "ETH",
         "deposit_status": "on",
+        "accuracy": "8",
         "withdraw_status": "on"
       }
     ]
@@ -93,7 +94,7 @@ RESPONSE PARAMETERS
 
 `currency`: 币种名称，可唯一标识币种
 
-`accuracy`: 取款出金精度
+`accuracy`: fiat存取款精度
 
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
@@ -115,8 +116,9 @@ RESPONSE PARAMETERS
 - `dispaly_name`: 显示名称
 - `network_confirmations`: 最低网络确认次数
 - `currency`: 数字币标识符
+- `accuracy`: crypto存取款精度
 - `deposit_status`: crypto 存款状态
-- `withdraw_status`: crypto  取款状态
+- `withdraw_status`: crypto 取款状态
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -124,18 +126,18 @@ RESPONSE PARAMETERS
 [
   {
     "currency": "ETH",
-    "accuracy": 2,
     "min_size": "0",
     "status": "on",
     "max_precision": "10",
     "type": "crypto",
     "deposit_status": "on",
     "withdraw_status": "on",
-    "accuracy": 8,
+    "accuracy": "8",
     "details": [
       {
         "network_confirmations": "12",
         "display_name": "ETH",
+        "accuracy": "8",
         "deposit_status": "on",
         "withdraw_status": "on"
       }
