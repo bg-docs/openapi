@@ -449,6 +449,9 @@
             <a href="#42f2f63a84" class="toc-h1 toc-link" data-title="数据字典">数据字典</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#be4cf2ebfe" class="toc-h2 toc-link" data-title="用户认证错误码对照表">用户认证错误码对照表</a>
+                  </li>
+                  <li>
                     <a href="#8627d7970b" class="toc-h2 toc-link" data-title="下单错误码对照表">下单错误码对照表</a>
                   </li>
               </ul>
@@ -2702,8 +2705,7 @@ RESPONSE PARAMETERS
 <blockquote>
 <p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="w"> </span><span class="err">HEAD</span><span class="w">
-</span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="s2">"1.000000000000000000"</span><span class="p">,</span><span class="w">
@@ -2717,11 +2719,6 @@ RESPONSE PARAMETERS
     </span><span class="nl">"status"</span><span class="p">:</span><span class="kc">null</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span><span class="err">=======</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128527387912385665"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="err">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="w"> </span><span class="err">v</span><span class="mi">1</span><span class="w">
 </span></code></pre></div><h2 id='327ddc77cb'>查询单个订单</h2>
 <p><a name="order_detail"></a></p>
 
@@ -5323,7 +5320,67 @@ RESPONSE PARAMETERS
                         <span class="o">.</span><span class="na">characterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)</span>
                         <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">))</span>
                         <span class="o">.</span><span class="na">contentType</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">)</span>
-</code></pre></div><h1 id='42f2f63a84'>数据字典</h1><h2 id='8627d7970b'>下单错误码对照表</h2>
+</code></pre></div><h1 id='42f2f63a84'>数据字典</h1><h2 id='be4cf2ebfe'>用户认证错误码对照表</h2>
+<table><thead>
+<tr>
+<th>错误码</th>
+<th>示意</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>40001</td>
+<td>ACCESS_KEY不能为空</td>
+</tr>
+<tr>
+<td>40002</td>
+<td>ACCESS_SIGN不能为空</td>
+</tr>
+<tr>
+<td>40003</td>
+<td>ACCESS_TIMESTAMP不能为空</td>
+</tr>
+<tr>
+<td>40005</td>
+<td>无效的ACCESS_TIMESTAMP</td>
+</tr>
+<tr>
+<td>40006</td>
+<td>无效的ACCESS_KEY</td>
+</tr>
+<tr>
+<td>40007</td>
+<td>无效的Content_Type，请使用“application/json”格式</td>
+</tr>
+<tr>
+<td>40008</td>
+<td>请求时间戳过期</td>
+</tr>
+<tr>
+<td>400010</td>
+<td>api 校验失败</td>
+</tr>
+<tr>
+<td>400011</td>
+<td>ACCESS_KEY或者PASSPHRASE错误</td>
+</tr>
+<tr>
+<td>400012</td>
+<td>无效的API用户</td>
+</tr>
+<tr>
+<td>400013</td>
+<td>用户已禁止</td>
+</tr>
+<tr>
+<td>400014</td>
+<td>用户已冻结</td>
+</tr>
+<tr>
+<td>400015</td>
+<td>无效的IP请求</td>
+</tr>
+</tbody></table>
+<h2 id='8627d7970b'>下单错误码对照表</h2>
 <p><code>amount limit value</code> 为产品所配置的交易金额/数量上下限，BGE 为保护市场稳定，根据市场实时行情限定了交易限制，具体数额会随市场交易情况实时波动。</p>
 
 <table><thead>
