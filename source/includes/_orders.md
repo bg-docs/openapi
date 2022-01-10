@@ -73,7 +73,6 @@ RESPONSE PARAMETERS
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
-<<<<<<< HEAD
 [
   {
     "price":null,
@@ -88,11 +87,6 @@ RESPONSE PARAMETERS
     "status":null
   }
 ]
-=======
-{
-  "order_id": "128527387912385665"
-}
->>>>>>> v1
 ```
 
 ## 查询单个订单

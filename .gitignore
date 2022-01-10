@@ -42,7 +42,6 @@ target/
 ### NetBeans ###
 nbproject/private/
 build/
-<<<<<<< HEAD
 nbbuild/
 dist/
 nbdist/
@@ -50,7 +49,6 @@ nbdist/
 
 dev.properties
 vendor
-=======
 .cache
 .vagrant
 .sass-cache
@@ -64,4 +62,3 @@ doc/
 # Vagrant artifacts
 ubuntu-*-console.log
 /vendor/
->>>>>>> e09b424fee9c109ba2f90fe453015d585e1bdc99
