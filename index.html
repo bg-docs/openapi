@@ -2553,7 +2553,7 @@ REQUEST PARAMETERS
 
 <p><strong>common parameters</strong></p>
 
-<p><code>product_id</code>: 必须是一个存在的产品id。例如 <code>BTC_USD</code>。产品列表可以通过 <a href="#Products">products</a> 获得。</p>
+<p><code>product</code>: 必须是一个存在的产品id。例如 <code>BTC_USD</code>。产品列表可以通过 <a href="#Products">products</a> 获得。</p>
 
 <p><code>side</code>: <code>buy</code> 买入， <code>sell</code> 卖出。</p>
 
@@ -2597,7 +2597,7 @@ REQUEST PARAMETERS
 </tr>
 </thead><tbody>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>币对，例:BTC_USDT</td>
 <td></td>
 <td>true</td>
@@ -2711,7 +2711,7 @@ RESPONSE PARAMETERS
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"price"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="s2">"1.000000000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="s2">"BTC_USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="s2">"BTC_USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"129149436110880967"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"funds"</span><span class="p">:</span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
@@ -2844,7 +2844,7 @@ RESPONSE PARAMETERS
 <td></td>
 </tr>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>产品编号</td>
 <td>string</td>
 <td></td>
@@ -2901,7 +2901,7 @@ RESPONSE EXAMPLE
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-04T06:57:34Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.300000000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127738628653088481"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
@@ -2957,7 +2957,7 @@ REQUEST PARAMETERS
 <td></td>
 </tr>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>商品id</td>
 <td>query</td>
 <td>false</td>
@@ -3051,7 +3051,7 @@ RESPONSE PARAMETERS
 <td></td>
 </tr>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>产品编号</td>
 <td>string</td>
 <td></td>
@@ -3077,7 +3077,7 @@ RESPONSE EXAMPLE
 <p><a name="fills_detail_demo"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12808732377541664481"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"liquidity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maker"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.560000000000000000"</span><span class="p">,</span><span class="w">
@@ -3145,7 +3145,7 @@ REQUEST PARAMETERS
 <td></td>
 </tr>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>商品id</td>
 <td>query</td>
 <td>false</td>
@@ -3226,7 +3226,7 @@ RESPONSE PARAMETERS
 <td></td>
 </tr>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>产品编号</td>
 <td>string</td>
 <td></td>
@@ -3266,7 +3266,7 @@ RESPONSE EXAMPLE
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.560000000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35.447206000000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128087977541664481"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"592.668000000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
@@ -3333,7 +3333,7 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-<p><code>product_id</code>: 被撤销的商品ID,例如 &quot;BTC_USD&quot;</p>
+<p><code>product</code>: 被撤销的商品ID,例如 &quot;BTC_USD&quot;</p>
 
 <table><thead>
 <tr>
@@ -3345,7 +3345,7 @@ REQUEST PARAMETERS
 </tr>
 </thead><tbody>
 <tr>
-<td>product_id</td>
+<td>product</td>
 <td>商品id</td>
 <td>query</td>
 <td>true</td>
