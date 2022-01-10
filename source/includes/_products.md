@@ -134,6 +134,8 @@ fmt.Println(string(body))
 }
 ```
 
+`product_id`: 商品
+
 `base_currency`: 基础资产名
 
 `quote_currency` : 计价资产名
@@ -145,6 +147,12 @@ fmt.Println(string(body))
 - `off`: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
 - `pause`: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消
 
+
+`amount_precision`: 交易货币数量单位精度
+
+`quote_precision`: 计价货币数量单位精度
+
+`trade_precision`: 交易货币价格单位精度
 
 `max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
 
@@ -164,9 +172,13 @@ fmt.Println(string(body))
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
+|product_id|商品|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||
+|amount_precision|交易货币数量单位精度|string||
+|quote_precision|计价货币数量单位精度|string||
+|trade_precision|	交易货币价格单位精度|string||
 |max_buy_price_rate|买入价格不能高于最新价(%)|string||
 |max_sell_price_rate|卖出价格不能低于最新价(%)|string||
 |max_trade_usd_per_order|单笔最大下单金额|string||
@@ -222,6 +234,8 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
+`product_id`: 商品
+
 `base_currency`: 基础资产名
 
 `quote_currency` : 计价资产名
@@ -233,6 +247,12 @@ RESPONSE PARAMETERS
 - `off`: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
 - `pause`: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消
 
+
+`amount_precision`: 交易货币数量单位精度
+
+`quote_precision`: 计价货币数量单位精度
+
+`trade_precision`: 交易货币价格单位精度
 
 `max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
 
@@ -252,9 +272,13 @@ RESPONSE PARAMETERS
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
+|product_id|商品|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||
+|amount_precision|交易货币数量单位精度|string||
+|quote_precision|计价货币数量单位精度|string||
+|trade_precision|	交易货币价格单位精度|string||
 |max_buy_price_rate|买入价格不能高于最新价(%)|string||
 |max_sell_price_rate|卖出价格不能低于最新价(%)|string||
 |max_trade_usd_per_order|单笔最大下单金额|string||

@@ -131,6 +131,8 @@ RESPONSE PARAMETERS
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
 |type|limit:限价单/market:市价单/stop|string||
+|created_at|创建时间|string||
+|updated_at|更新时间|string||
 
 <aside>
 RESPONSE EXAMPLE
@@ -175,7 +177,7 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- | ------ |
 |after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
-|limit|限制返回的结果数|query|false|integer(int32)||
+|limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |product_id|商品id|query|false|string||
 |order_id|订单id|query|false|string||
 
@@ -245,7 +247,7 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- | ------ |
 |after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
-|limit|限制返回的结果数|query|false|integer(int32)||
+|limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |order_id|订单id|query|false|string||
 |product_id|商品id|query|false|string||
 

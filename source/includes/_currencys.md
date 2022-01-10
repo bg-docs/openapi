@@ -21,6 +21,8 @@ RESPONSE PARAMETERS
 
 `currency`: 币种名称，可唯一标识币种
 
+`accuracy`: 取款出金精度
+
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
 - `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
@@ -50,6 +52,7 @@ RESPONSE PARAMETERS
 [
   {
     "currency": "ETH",
+    "accuracy": 2,
     "min_size": "0",
     "status": "on",
     "max_precision": "10",
@@ -90,6 +93,8 @@ RESPONSE PARAMETERS
 
 `currency`: 币种名称，可唯一标识币种
 
+`accuracy`: 取款出金精度
+
 `max_precision` : 最大精度。取之范围在`[18,-18]`
 
 - `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
@@ -119,6 +124,7 @@ RESPONSE PARAMETERS
 [
   {
     "currency": "ETH",
+    "accuracy": 2,
     "min_size": "0",
     "status": "on",
     "max_precision": "10",
