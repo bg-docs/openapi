@@ -73,9 +73,20 @@ RESPONSE PARAMETERS
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
-{
-  "order_id": "128527387912385665"
-}
+[
+  {
+    "price":null,
+    "size":"1.000000000000000000",
+    "product_id":"BTC_USD",
+    "order_id":"129149436110880967",
+    "funds":"0.000000000000000000",
+    "type":"limit",
+    "side":"buy",
+    "filled_size":"0.000000000000000000",
+    "filled_fees":null,
+    "status":null
+  }
+]
 ```
 
 ## 查询单个订单
