@@ -11,7 +11,7 @@ REQUEST PARAMETERS
 
 **common parameters**
 
-`product_id`: 必须是一个存在的产品id。例如 `BTC_USD`。产品列表可以通过 [products](#Products) 获得。
+`product`: 必须是一个存在的产品id。例如 `BTC_USD`。产品列表可以通过 [products](#Products) 获得。
 
 `side`: `buy` 买入， `sell` 卖出。
 
@@ -33,15 +33,17 @@ REQUEST PARAMETERS
 **limit order parameters**
 
 `price`: 商品价格
+
 `size`: 买入或者卖出商品的数量
 
 **market order parameters**
 `size`: 期望交易数量。需要`side` 为 `sell`，代表以最新成交价进行卖出，期望最多卖出的商品数。
+
 `funds`: 期望交易额度。需要`side` 为 `buy`，代表以最新成交价进行买入，期望花费的最多资产额度。
 
 | 参数名称 | 参数说明 | 是否必须 | 数据类型 | schema |
 | -------- | -------- | -------- | -------- | ------ |
-|product_id|币对，例:BTC_USDT||true|string||
+|product|币对，例:BTC_USDT||true|string||
 |side|buy/sell||true|string||
 |type|limit:限价单/market:市价单||true|string||
 |stp|自成交：dc：减少和取消（默认）co：取消最旧 cn：取消最新 cb：取消两者||false|string||
@@ -77,7 +79,7 @@ RESPONSE PARAMETERS
   {
     "price":null,
     "size":"1.000000000000000000",
-    "product_id":"BTC_USD",
+    "product":"BTC_USD",
     "order_id":"129149436110880967",
     "funds":"0.000000000000000000",
     "type":"limit",
@@ -137,7 +139,7 @@ RESPONSE PARAMETERS
 |funds|想要使用的报价货币数量|string||
 |order_id|订单编号|string||
 |price|每单位基础货币的价格|string||
-|product_id|产品编号|string||
+|product|产品编号|string||
 |side|buy/sell|string||
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
@@ -161,7 +163,7 @@ RESPONSE EXAMPLE
   "updated_at": "2022-01-04T06:57:34Z",
   "price": "2.00",
   "size": "3.300000000000000000",
-  "product_id": "BTC_USDT",
+  "product": "BTC_USDT",
   "order_id": "127738628653088481",
   "funds": "0.000000000000000000",
   "type": "limit",
@@ -189,7 +191,7 @@ REQUEST PARAMETERS
 |after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
 |limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
-|product_id|商品id|query|false|string||
+|product|商品id|query|false|string||
 |order_id|订单id|query|false|string||
 
 <aside>
@@ -214,7 +216,7 @@ RESPONSE PARAMETERS
 |liquidity|流动性:marker、taker|string||
 |order_id|订单编号|string||
 |price|每单位基础货币的价格|string||
-|product_id|产品编号|string||
+|product|产品编号|string||
 |side| buy/sell |string||
 |size|买入/卖出的基础货币数量|string||
 
@@ -227,7 +229,7 @@ RESPONSE EXAMPLE
 ```json
 [
   {
-    "product_id": "BTC_USDT",
+    "product": "BTC_USDT",
     "order_id": "12808732377541664481",
     "liquidity": "maker",
     "price": "19.560000000000000000",
@@ -260,7 +262,7 @@ REQUEST PARAMETERS
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
 |limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |order_id|订单id|query|false|string||
-|product_id|商品id|query|false|string||
+|product|商品id|query|false|string||
 
 <aside>
 RESPONSE STATUS
@@ -292,7 +294,7 @@ RESPONSE PARAMETERS
 |funds|想要使用的报价货币数量|string||
 |order_id|订单编号|string||
 |price|每单位基础货币的价格|string||
-|product_id|产品编号|string||
+|product|产品编号|string||
 |side|buy/sell|string||
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
@@ -309,7 +311,7 @@ RESPONSE EXAMPLE
   {
     "price": "19.560000000000000000",
     "size": "35.447206000000000000",
-    "product_id": "BTC_USDT",
+    "product": "BTC_USDT",
     "order_id": "128087977541664481",
     "funds": "592.668000000000000000",
     "type": "limit",
@@ -372,11 +374,11 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-`product_id`: 被撤销的商品ID,例如 "BTC_USD"
+`product`: 被撤销的商品ID,例如 "BTC_USD"
 
 | 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | 
 | -------- | -------- | ----- | -------- | -------- |
-|product_id|商品id|query|true|string||
+|product|商品id|query|true|string||
 
 <aside>
 RESPONSE STATUS
