@@ -919,107 +919,7 @@ RESPONSE STATUS
 RESPONSE PARAMETERS
 
 </aside>
-<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://${host}/v1/products"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
-<span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"ACCESS-KEY"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"ACCESS-SIGN"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"ACCESS-TIMESTAMP"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-<span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://${host}/v1/products</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
-<span class="dl">"</span><span class="s2">ACCESS-KEY</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">ACCESS-SIGN</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">ACCESS-TIMESTAMP</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span>
-<span class="p">},</span>
-<span class="p">};</span>
 
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">http.client</span><span class="o">;</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">client</span><span class="o">.</span><span class="na">HTTPSConnection</span><span class="o">(</span><span class="s">"127.0.0.1"</span><span class="o">,</span> <span class="mi">6920</span><span class="o">)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="err">''</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
-<span class="err">'</span><span class="no">ACCESS</span><span class="o">-</span><span class="no">KEY</span><span class="err">'</span><span class="o">:</span> <span class="sc">'1'</span><span class="o">,</span>
-<span class="err">'</span><span class="no">ACCESS</span><span class="o">-</span><span class="no">SIGN</span><span class="err">'</span><span class="o">:</span> <span class="sc">'1'</span><span class="o">,</span>
-<span class="err">'</span><span class="no">ACCESS</span><span class="o">-</span><span class="no">TIMESTAMP</span><span class="err">'</span><span class="o">:</span> <span class="sc">'1'</span>
-<span class="o">}</span>
-<span class="n">conn</span><span class="o">.</span><span class="na">request</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="s">"/v1/products"</span><span class="o">,</span> <span class="n">payload</span><span class="o">,</span> <span class="n">headers</span><span class="o">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">getresponse</span><span class="o">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="na">read</span><span class="o">()</span>
-<span class="n">print</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">))</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>&lt;?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL =&gt; 'http://${host}/v1/products',
-  CURLOPT_RETURNTRANSFER =&gt; true,
-  CURLOPT_ENCODING =&gt; '',
-  CURLOPT_MAXREDIRS =&gt; 10,
-  CURLOPT_TIMEOUT =&gt; 0,
-  CURLOPT_FOLLOWLOCATION =&gt; true,
-  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST =&gt; 'GET',
-  CURLOPT_HTTPHEADER =&gt; array(
-    'ACCESS-KEY: 1',
-    'ACCESS-SIGN: 1',
-    'ACCESS-TIMESTAMP: 1'
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
-</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>package main
-
-import (
-"fmt"
-"net/http"
-"io/ioutil"
-)
-
-func main() {
-
-url := "http://${host}/v1/products"
-method := "GET"
-
-client := &amp;http.Client {
-}
-req, err := http.NewRequest(method, url, nil)
-
-if err != nil {
-fmt.Println(err)
-return
-}
-req.Header.Add("ACCESS-KEY", "1")
-req.Header.Add("ACCESS-SIGN", "1")
-req.Header.Add("ACCESS-TIMESTAMP", "1")
-
-res, err := client.Do(req)
-if err != nil {
-fmt.Println(err)
-return
-}
-defer res.Body.Close()
-
-body, err := ioutil.ReadAll(res.Body)
-if err != nil {
-fmt.Println(err)
-return
-}
-fmt.Println(string(body))
-}
-</code></pre></div>
 <p><code>product_id</code>: 商品</p>
 
 <p><code>base_currency</code>: 基础资产名</p>
@@ -1028,19 +928,20 @@ fmt.Println(string(body))
 
 <p><code>display_name</code>: 交易产品展示名，下单时，作为交易产品唯一标识</p>
 
-<p><code>status</code> : 交易产品状态</p>
-
-<ul>
-<li><code>on</code>: 已上线，该产品开放交易，可以正常下单交易。</li>
-<li><code>off</code>: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。</li>
-<li><code>pause</code>: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消</li>
-</ul>
+<p><code>status</code> : 交易产品状态
+- <code>on</code>: 已上线，该产品开放交易，可以正常下单交易。
+- <code>off</code>: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
+- <code>pause</code>: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消</p>
 
 <p><code>amount_precision</code>: 交易货币数量单位精度</p>
 
 <p><code>quote_precision</code>: 计价货币数量单位精度</p>
 
 <p><code>trade_precision</code>: 交易货币价格单位精度</p>
+
+<p><code>maker_fees_rate</code>: 卖单方费率</p>
+
+<p><code>taker_fees_rate</code>: 买单方费率</p>
 
 <p><code>max_buy_price_rate</code>: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。</p>
 
@@ -1105,6 +1006,18 @@ fmt.Println(string(body))
 <tr>
 <td>trade_precision</td>
 <td>交易货币价格单位精度</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>maker_fees_rate</td>
+<td>卖单方费率</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>taker_fees_rate</td>
+<td>买单方费率</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1174,9 +1087,11 @@ fmt.Println(string(body))
     </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quote_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trade_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maker_fees_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"taker_fees_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_buy_price_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_sell_price_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_trade_usd_per_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1236,6 +1151,10 @@ RESPONSE PARAMETERS
 
 <p><code>trade_precision</code>: 交易货币价格单位精度</p>
 
+<p><code>maker_fees_rate</code>: 卖单方费率</p>
+
+<p><code>taker_fees_rate</code>: 买单方费率</p>
+
 <p><code>max_buy_price_rate</code>: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。</p>
 
 <p><code>max_sell_price_rate</code>: 限价卖单不可以低于最新价格的比率。超过比率，订单下单失败。</p>
@@ -1299,6 +1218,18 @@ RESPONSE PARAMETERS
 <tr>
 <td>trade_precision</td>
 <td>交易货币价格单位精度</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>maker_fees_rate</td>
+<td>卖单方费率</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>taker_fees_rate</td>
+<td>买单方费率</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1368,9 +1299,11 @@ RESPONSE PARAMETERS
     </span><span class="nl">"quote_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quote_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trade_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maker_fees_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"taker_fees_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trade_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_buy_price_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_sell_price_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_trade_usd_per_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -2405,7 +2338,7 @@ RESPONSE PARAMETERS
 
 <p><code>currency</code>: 币种名称，可唯一标识币种</p>
 
-<p><code>accuracy</code>: 取款出金精度</p>
+<p><code>accuracy</code>: fiat存取款精度</p>
 
 <p><code>max_precision</code> : 最大精度。取之范围在<code>[18,-18]</code></p>
 
@@ -2430,8 +2363,9 @@ RESPONSE PARAMETERS
 <li><code>dispaly_name</code>: 显示名称</li>
 <li><code>network_confirmations</code>: 最低网络确认次数</li>
 <li><code>currency</code>: 数字币标识符</li>
-<li><code>deposit_status</code>: crypto 存款状态 </li>
-<li><code>withdraw_status</code>: crypto  取款状态</li>
+<li><code>accuracy</code>: crypto存取款精度</li>
+<li><code>deposit_status</code>: crypto 存款状态</li>
+<li><code>withdraw_status</code>: crypto 取款状态</li>
 </ul>
 
 <blockquote>
@@ -2440,20 +2374,20 @@ RESPONSE PARAMETERS
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"min_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crypto"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"withdraw_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"network_confirmations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"withdraw_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -2491,7 +2425,7 @@ RESPONSE PARAMETERS
 
 <p><code>currency</code>: 币种名称，可唯一标识币种</p>
 
-<p><code>accuracy</code>: 取款出金精度</p>
+<p><code>accuracy</code>: fiat存取款精度</p>
 
 <p><code>max_precision</code> : 最大精度。取之范围在<code>[18,-18]</code></p>
 
@@ -2516,8 +2450,9 @@ RESPONSE PARAMETERS
 <li><code>dispaly_name</code>: 显示名称</li>
 <li><code>network_confirmations</code>: 最低网络确认次数</li>
 <li><code>currency</code>: 数字币标识符</li>
+<li><code>accuracy</code>: crypto存取款精度</li>
 <li><code>deposit_status</code>: crypto 存款状态</li>
-<li><code>withdraw_status</code>: crypto  取款状态</li>
+<li><code>withdraw_status</code>: crypto 取款状态</li>
 </ul>
 
 <blockquote>
@@ -2526,18 +2461,18 @@ RESPONSE PARAMETERS
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"min_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"max_precision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crypto"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"deposit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"withdraw_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"network_confirmations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"withdraw_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -2894,12 +2829,12 @@ RESPONSE EXAMPLE
 <p><a name="order_detail_demo"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"filled_fees"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filled_fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"filled_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"filled_average_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-14T03:19:15Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-04T06:57:34Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.300000000000000000"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127738628653088481"</span><span class="p">,</span><span class="w">
