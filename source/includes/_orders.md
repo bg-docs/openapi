@@ -20,8 +20,6 @@ REQUEST PARAMETERS
 - `limit`: 限价订单
 - `market`: 市价订单
 
-`client_oid`: 可选。用户指定的订单号，用于用户管理自己的订单。该ID必须保证唯一，长度不多于64个字符的字符串类型
-
 `stp`: 即 `self trade prevention`。BGE禁止用户与自己成交的行为。用户可以通过`stp`选项，指定当自成交场景出现时的订单处理策略。
 
 - `dc`: 即 `decrease and cancel` (default)。当撮合发生相同用户订单匹配时，数量多的一方将被执行`decrease`指令，数量少的一方将被执行`cancel`指令。decrease 或者
@@ -46,7 +44,6 @@ REQUEST PARAMETERS
 |product_id|币对，例:BTC_USDT||true|string||
 |side|buy/sell||true|string||
 |type|limit:限价单/market:市价单||true|string||
-|client_oid|用户侧关联订单||false|string||
 |stp|自成交：dc：减少和取消（默认）co：取消最旧 cn：取消最新 cb：取消两者||false|string||
 |time_in_force|交易指令,GTC||false|string||
 |funds|想要使用的报价货币数量||false|string||
@@ -67,15 +64,16 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`id`:  BGE所生成的订单号
+`order_id`:  BGE所生成的订单号
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|id|BGE所生成的订单号|string||
+|order_id|BGE所生成的订单号|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
+<<<<<<< HEAD
 [
   {
     "price":null,
@@ -90,6 +88,11 @@ RESPONSE PARAMETERS
     "status":null
   }
 ]
+=======
+{
+  "order_id": "128527387912385665"
+}
+>>>>>>> v1
 ```
 
 ## 查询单个订单
@@ -135,6 +138,8 @@ RESPONSE PARAMETERS
 | -------- | -------- | ----- |----- | 
 |filled_fees|成交费用|string||
 |filled_size|成交金额|string||
+|filled_amount|成交数量|string||
+|filled_average_price|成交均价|string||
 |funds|想要使用的报价货币数量|string||
 |order_id|订单编号|string||
 |price|每单位基础货币的价格|string||
@@ -143,6 +148,8 @@ RESPONSE PARAMETERS
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
 |type|limit:限价单/market:市价单/stop|string||
+|created_at|创建时间|string||
+|updated_at|更新时间|string||
 
 <aside>
 RESPONSE EXAMPLE
@@ -152,16 +159,20 @@ RESPONSE EXAMPLE
 
 ```json
 {
-  "filled_fees": "0.0012",
-  "filled_size": "0.12",
-  "funds": "0.3",
-  "order_id": "128527387912385665",
-  "price": "40000.0001",
-  "product_id": "BTC_USD",
+  "filled_size": "0.000000000000000000",
+  "filled_fees": null,
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": null,
+  "size": "3.300000000000000000",
+  "product_id": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.000000000000000000",
+  "type": "limit",
   "side": "buy",
-  "size": "10",
-  "status": "1",
-  "type": "limit"
+  "status": "7"
 }
 ```
 
@@ -183,7 +194,7 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- | ------ |
 |after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
-|limit|限制返回的结果数|query|false|integer(int32)||
+|limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |product_id|商品id|query|false|string||
 |order_id|订单id|query|false|string||
 
@@ -204,6 +215,7 @@ RESPONSE PARAMETERS
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
 |created_at|订单创建时间|string||
+|updated_at|订单更新时间|string||
 |fee|按当前填写的金额支付的费用|string||
 |liquidity|流动性:marker、taker|string||
 |order_id|订单编号|string||
@@ -221,15 +233,15 @@ RESPONSE EXAMPLE
 ```json
 [
   {
-    "created_at": "",
-    "fee": "",
-    "liquidity": "",
-    "order_id": "",
-    "price": "",
-    "product_id": "",
-    "side": "",
-    "size": "",
-    "user_id": ""
+    "product_id": "BTC_USDT",
+    "order_id": "12808732377541664481",
+    "liquidity": "maker",
+    "price": "19.560000000000000000",
+    "size": "0.937686000000000000",
+    "fee": "0",
+    "created_at": "2022-01-04T10:17:03Z",
+    "updated_at": "2022-01-04T10:17:03Z",
+    "side": "sell"
   }
 ]
 ```
@@ -252,7 +264,7 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- | ------ |
 |after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
-|limit|限制返回的结果数|query|false|integer(int32)||
+|limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |order_id|订单id|query|false|string||
 |product_id|商品id|query|false|string||
 
@@ -282,9 +294,7 @@ RESPONSE PARAMETERS
 - 7: 订单被减量
 
 | 参数名称 | 参数说明 | 类型 | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|成交费用|string||
-|filled_size|成交金额|string||
+| -------- | -------- | ----- |----- |
 |funds|想要使用的报价货币数量|string||
 |order_id|订单编号|string||
 |price|每单位基础货币的价格|string||
@@ -301,18 +311,18 @@ RESPONSE EXAMPLE
 <a name="order_trade_detail_demo"></a>
 
 ```json
-{
-  "filled_fees": "0.0012",
-  "filled_size": "0.12",
-  "funds": "0.3",
-  "order_id": "128527387912385665",
-  "price": "40000.0001",
-  "product_id": "BTC_USD",
-  "side": "buy",
-  "size": "10",
-  "status": "1",
-  "type": "limit"
-}
+[
+  {
+    "price": "19.560000000000000000",
+    "size": "35.447206000000000000",
+    "product_id": "BTC_USDT",
+    "order_id": "128087977541664481",
+    "funds": "592.668000000000000000",
+    "type": "limit",
+    "side": "sell",
+    "status": "2"
+  }
+]
 ```
 
 ## 撤销单个订单
@@ -324,18 +334,9 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-此接口可查询单个订单详情，或根据商品的多个订单
+此接口可撤销单个订单
 
-- `order_id` 若存在，将优先查找该订单详情，其他参数将被忽略。
-- `order_id` 若不存在，将根据参数组合分页查询所所有订单详情。其中 `limit` 最大值为1000，超过1000条的订单详情将无法查询
 
-| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
-| -------- | -------- | ----- | -------- | -------- | ------ |
-|after|用于分页。将结束光标设置为after日期。|query|false|integer(int64)||
-|before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
-|limit|限制返回的结果数|query|false|integer(int32)||
-|order_id|订单id|query|false|string||
-|product_id|商品id|query|false|string||
 
 <aside>
 RESPONSE STATUS
@@ -353,27 +354,7 @@ RESPONSE PARAMETERS
 
 `status`: 交易状态，取值范围0-7
 
-- 0: 已经收到订单
-- 1: 已经提交订单
-- 2: 订单部分成交
-- 3: 订单已完全成交
-- 4: 订单发起撤销
-- 5: 订单已经撤销
-- 6: 订单交易失败
-- 7: 订单被减量
 
-| 参数名称 | 参数说明 | 类型 | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|成交费用|string||
-|filled_size|成交金额|string||
-|funds|想要使用的报价货币数量|string||
-|order_id|订单编号|string||
-|price|每单位基础货币的价格|string||
-|product_id|产品编号|string||
-|side|buy/sell|string||
-|size|买入/卖出的基础货币数量|string||
-|status|状态|string||
-|type|limit:限价单/market:市价单/stop|string||
 
 <aside>
 RESPONSE EXAMPLE
@@ -382,18 +363,7 @@ RESPONSE EXAMPLE
 <a name="order_trade_detail_demo"></a>
 
 ```json
-{
-  "filled_fees": "0.0012",
-  "filled_size": "0.12",
-  "funds": "0.3",
-  "order_id": "128527387912385665",
-  "price": "40000.0001",
-  "product_id": "BTC_USD",
-  "side": "buy",
-  "size": "10",
-  "status": "1",
-  "type": "limit"
-}
+"1277087538632480481"
 ```
 
 ## 取消所有订单
