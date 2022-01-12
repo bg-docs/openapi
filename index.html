@@ -5101,7 +5101,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>ACCESS-TIMESTAMP</td>
-<td>请求时间，一般为当前的毫秒数时间戳</td>
+<td>请求时间，一般为当前时间戳 例：<code>2022-01-08T07:19:56.339Z</code>,或毫秒时间戳</td>
 </tr>
 </tbody></table>
 
@@ -5111,9 +5111,11 @@ RESPONSE PARAMETERS
 使用OpenAPiUtils.createSign 生成 sign 
 </aside>
 
-<p><code>requestPath</code>: 与文档中给出的路径相一致</p>
+<p><code>requestPath</code>: 与文档中给出的路径相一致,例如 <code>/v1/products</code></p>
 
-<p><code>params</code>: 当请求为 <fout class="httpget>GET</font> 或者 <fout class="httpdelete>DELETE</font> 或者为WEBSOCKETchannel 进行认证时，填 &quot;&quot;</p>
+<p><code>queryString</code>: 请求参数列表，注：参数顺序需要保持有序。见 <a href="#sign_query_warning">备注</a></p>
+
+<p><code>params</code>: 当请求为 <code>GET</code> 或者 <code>DELETE</code> 或者为WEBSOCKET channel 进行认证时，填 &quot;&quot;</p>
 
 <table><thead>
 <tr>
@@ -5138,6 +5140,11 @@ RESPONSE PARAMETERS
 <td>请求路径</td>
 </tr>
 <tr>
+<td>queryString</td>
+<td>string</td>
+<td>请求参数</td>
+</tr>
+<tr>
 <td>params</td>
 <td>string</td>
 <td>传输数据内容</td>
@@ -5145,18 +5152,25 @@ RESPONSE PARAMETERS
 <tr>
 <td>timestamp</td>
 <td>string</td>
-<td>当前的毫秒数时间戳</td>
+<td>当前时间戳 例：<code>2022-01-08T07:19:56.339Z</code>,或毫秒时间戳</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>计算sign </p>
+<p>计算http请求 sign </p>
 </blockquote>
 <div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
   <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span>
   <span class="s">"HKBGE-97759b085d7cabd66fea599aeece95f9"</span><span class="o">,</span>
   <span class="s">"/openapi/exchange/BTC_USDT/orders"</span><span class="o">,</span>
+  <span class="s">""</span><span class="o">,</span>
   <span class="n">s</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
+</code></pre></div>
+<blockquote>
+<p>计算web socket 请求 sign</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
+  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="s">"HKBGE-97759b085d7cabd66fea599aeece95f9"</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
 </code></pre></div>
 <blockquote>
 <p>sign 生成算法工具类</p>
@@ -5247,6 +5261,8 @@ RESPONSE PARAMETERS
 <aside class="warning">
 备注
 </aside>
+
+<p><a name="sign_query_warning"></a></p>
 
 <p>计算数据签名时，参数的传递顺序需要与签名串顺序一致，否则鉴权失败。例如：给 <code>GET &quot;http://api.bg.exchange/hk/v1/demo?a=2&amp;b=3&quot;</code>
 计算签名时，</p>
