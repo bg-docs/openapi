@@ -46,7 +46,7 @@ REQUEST PARAMETERS
 |product|币对，例:BTC_USDT||true|string||
 |side|buy/sell||true|string||
 |type|limit:限价单/market:市价单||true|string||
-|stp|自成交：dc：减少和取消（默认）co：取消最旧 cn：取消最新 cb：取消两者||false|string||
+|stp|自成交：dc：减少和取消（默认）co：取消最旧 cn：取消最新 cb：取消两者||true|string||
 |time_in_force|交易指令,GTC||false|string||
 |funds|想要使用的报价货币数量||false|string||
 |price|每个币的价格||false|string||

@@ -47,6 +47,9 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前的毫秒数时间戳
 > sign 生成算法工具类
 
 ```java
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.HmacUtils;
+  
 public class OpenAPiUtils {
   public static final String GET = "GET";
   public static final String POST = "POST";
@@ -127,6 +130,17 @@ public class OpenAPiUtils {
 
 }
 ```
+<aside class="warning">
+备注
+</aside>
+
+计算数据签名时，参数的传递顺序需要与签名串顺序一致，否则鉴权失败。例如：给 `GET "http://api.bg.exchange/hk/v1/demo?a=2&b=3"`
+计算签名时，
+
+- 正确使用: preHash = ... + "a=2&b=3" + ...;
+
+- 错误使用: preHash = ... + "b=3&a=2" + ...;
+
 
 <aside> 
 请求时填充HTTP HEADERS
