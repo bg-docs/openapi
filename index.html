@@ -2556,7 +2556,7 @@ REQUEST PARAMETERS
 <td>stp</td>
 <td>自成交：dc：减少和取消（默认）co：取消最旧 cn：取消最新 cb：取消两者</td>
 <td></td>
-<td>false</td>
+<td>true</td>
 <td>string</td>
 </tr>
 <tr>
@@ -5161,7 +5161,10 @@ RESPONSE PARAMETERS
 <blockquote>
 <p>sign 生成算法工具类</p>
 </blockquote>
-<div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OpenAPiUtils</span> <span class="o">{</span>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.apache.commons.codec.binary.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.codec.digest.HmacUtils</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OpenAPiUtils</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">GET</span> <span class="o">=</span> <span class="s">"GET"</span><span class="o">;</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">POST</span> <span class="o">=</span> <span class="s">"POST"</span><span class="o">;</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">DELETE</span> <span class="o">=</span> <span class="s">"DELETE"</span><span class="o">;</span>
@@ -5241,6 +5244,18 @@ RESPONSE PARAMETERS
 
 <span class="o">}</span>
 </code></pre></div>
+<aside class="warning">
+备注
+</aside>
+
+<p>计算数据签名时，参数的传递顺序需要与签名串顺序一致，否则鉴权失败。例如：给 <code>GET &quot;http://api.bg.exchange/hk/v1/demo?a=2&amp;b=3&quot;</code>
+计算签名时，</p>
+
+<ul>
+<li><p>正确使用: preHash = ... + &quot;a=2&amp;b=3&quot; + ...;</p></li>
+<li><p>错误使用: preHash = ... + &quot;b=3&amp;a=2&quot; + ...;</p></li>
+</ul>
+
 <aside> 
 请求时填充HTTP HEADERS
 </aside>
