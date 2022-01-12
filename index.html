@@ -5283,12 +5283,14 @@ RESPONSE PARAMETERS
 
 <p><a name="sign_query_warning"></a></p>
 
-<p>计算数据签名时，参数的传递顺序需要与签名串顺序一致，否则鉴权失败。例如：给 <code>GET &quot;http://api.bg.exchange/hk/v1/demo?a=2&amp;b=3&quot;</code>
+<p>计算数据签名时，参数的传递顺序需要与签名串顺序一致，且queryString不以<code>?</code>开头，不以<code>&amp;</code>结尾  否则鉴权失败。例如：给 <code>GET &quot;http://api.bg.exchange/hk/v1/demo?a=2&amp;b=3&quot;</code>
 计算签名时，</p>
 
 <ul>
 <li><p>正确使用: preHash = ... + &quot;a=2&amp;b=3&quot; + ...;</p></li>
 <li><p>错误使用: preHash = ... + &quot;b=3&amp;a=2&quot; + ...;</p></li>
+<li><p>错误使用: preHash = ... + &quot;?b=3&amp;a=2&quot; + ...;</p></li>
+<li><p>错误使用: preHash = ... + &quot;b=3&amp;a=2&amp;&quot; + ...;</p></li>
 </ul>
 
 <aside> 
