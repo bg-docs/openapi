@@ -20,7 +20,7 @@ RESPONSE PARAMETERS
 
 </aside>
 
-`product_id`: 商品
+`product`: 商品
 
 `base_currency`: 基础资产名
 
@@ -62,7 +62,7 @@ RESPONSE PARAMETERS
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|product_id|商品|string||
+|product|商品|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||
@@ -87,7 +87,7 @@ RESPONSE PARAMETERS
 ```json
 [
   {
-    "product_id": "ETH_USD",
+    "product": "ETH_USD",
     "base_currency": "ETH",
     "quote_currency": "USD",
     "display_name": "ETH_USD",
@@ -112,7 +112,7 @@ RESPONSE PARAMETERS
 
 ## 获取单个产品详情
 
-<font class="httpget">GET</font> */v1/products/{product_id}*
+<font class="httpget">GET</font> */v1/products/{product}*
 
 
 <aside>
@@ -128,7 +128,7 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`product_id`: 商品
+`product`: 商品
 
 `base_currency`: 基础资产名
 
@@ -170,7 +170,7 @@ RESPONSE PARAMETERS
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|product_id|商品|string||
+|product|商品|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||
@@ -195,7 +195,7 @@ RESPONSE PARAMETERS
 ```json
 [
   {
-    "product_id": "ETH_USD",
+    "product": "ETH_USD",
     "base_currency": "ETH",
     "quote_currency": "USD",
     "display_name": "ETH_USD",
