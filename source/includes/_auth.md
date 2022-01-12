@@ -30,11 +30,11 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:
 
 | 参数名|参数类型|说明| 
 |----|----|----|
-|method|string| GET or POST or DELETE|
+|method|string| GET or POST or DELETE；计算ws sign时为""|
 |secretKey|string| 用户在BGE创建的API KEY名称|
-|requestPath|string| 请求路径 |
-|queryString|string| 请求参数 |
-|params|string| 传输数据内容 |
+|requestPath|string| 请求路径 ；计算ws sign时为""|
+|queryString|string| 请求参数 ；计算ws sign时为""|
+|params|string| 传输数据内容 ；计算ws sign时为""|
 |timestamp|string| 当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳 |
 
 > 计算http请求 sign 
