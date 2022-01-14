@@ -186,6 +186,35 @@
 | type | string |  [协议类型](#types) |
 | product    |string | 产品名|
 | data.result     |bool | 订阅是否成功 |
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|order_id|订单编号|string||
+|product|商品|string||
+|side| buy/sell |string||
+|price|每单位基础货币的价格|string||
+|size|买入/卖出的基础货币数量|string||
+|filled_amount|成交数量|string||
+|funds|想要使用的报价货币数量|string||
+|filled_size| 成交金额 |string||
+|type|limit:限价单/market:市价单/|string||
+|status|状态|string||
+
+`status`: 交易状态，取值范围0-7
+
+- 0: 已经收到订单
+- 1: 已经提交订单
+- 2: 订单部分成交
+- 3: 订单已完全成交
+- 4: 订单发起撤销
+- 5: 订单已经撤销
+- 6: 订单交易失败
+- 7: 订单被减量
+
+
 
 > feed
 
@@ -193,22 +222,17 @@
 {
   "biz": "exchange",
   "type": "orders",
-  "pairCode": "all",
   "data": {
-    "id": 555,
-    "orderId": "124645019749408967",
-    "pairCode": "BTC_USDT",
+    "order_id": "124645019749408967",
+    "product": "BTC_USDT",
     "side": "buy",
-    "entrustPrice": "60000",
-    "amount": "1",
-    "dealAmount": "0",
-    "quoteAmount": "1",
-    "dealQuoteAmount": "0",
-    "systemOrderType": 0,
-    "status": 0,
-    "sourceInfo": "web",
-    "createOn": 1636459652099,
-    "relationOrderId": ""
+    "price": "60000",
+    "size": "1",
+    "filled_amount": "0",
+    "funds": "1",
+    "filled_size": "0",
+    "type": "limit",
+    "status": 0
   }
 }
 ```
