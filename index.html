@@ -5258,8 +5258,8 @@ RESPONSE PARAMETERS
 </blockquote>
 <div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
   <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span>
-  <span class="s">"HKBGE-97759b085d7cabd66fea599aeece95f9"</span><span class="o">,</span>
-  <span class="s">"/openapi/exchange/BTC_USDT/orders"</span><span class="o">,</span>
+  <span class="s">"43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b"</span><span class="o">,</span>
+  <span class="s">"/v1/accounts"</span><span class="o">,</span>
   <span class="s">""</span><span class="o">,</span>
   <span class="n">s</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
 </code></pre></div>
@@ -5267,7 +5267,7 @@ RESPONSE PARAMETERS
 <p>计算web socket 请求 sign</p>
 </blockquote>
 <div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
-  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="s">"HKBGE-97759b085d7cabd66fea599aeece95f9"</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
+  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="s">"43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b"</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
 </code></pre></div>
 <blockquote>
 <p>sign 生成算法工具类</p>
