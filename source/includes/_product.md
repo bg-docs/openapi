@@ -236,7 +236,7 @@ Get a list of open orders for a product. The amount of detail shown can be custo
 
 |参数名|必选|类型| 说明                                                                                |
 |:----    |:---|:----- |-----------------------------------------------------------------------------------|
-| product_id |是  |string |                                                                                   |
+| product |是  |string |                                                                                   |
 | interval | 是   |string | *指标周期*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
 

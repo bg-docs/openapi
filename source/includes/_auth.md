@@ -14,7 +14,7 @@ Header Name | Meaning
 ---------- | -------
 ACCESS-KEY | 用户在BGE平台创建的API KEY
 ACCESS-SIGN | 根据用户创建的API KEY 对请求所作出的签名信息，以验证请求的合法性 [ACCESS-SING生成算法](#access-sign-gen)
-ACCESS-TIMESTAMP | 请求时间，一般为当前的毫秒数时间戳
+ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳
 
 <a name="access-sign-gen">ACCESS-SING生成算法</a>
 
@@ -22,31 +22,47 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前的毫秒数时间戳
 使用OpenAPiUtils.createSign 生成 sign 
 </aside>
 
-`requestPath`: 与文档中给出的路径相一致
+`requestPath`: 与文档中给出的路径相一致,例如 `/v1/products`
 
-`params`: 当请求为 <fout class="httpget>GET</font> 或者 <fout class="httpdelete>DELETE</font> 或者为WEBSOCKETchannel 进行认证时，填 ""
+`queryString`: 请求参数列表，注：参数顺序需要保持有序。见 [备注](#sign_query_warning)
+
+`params`: 当请求为 `GET` 或者 `DELETE` 或者为WEBSOCKET channel 进行认证时，填 ""
 
 | 参数名|参数类型|说明| 
 |----|----|----|
-|method|string| GET or POST or DELETE|
+|method|string| GET or POST or DELETE；计算ws sign时为""|
 |secretKey|string| 用户在BGE创建的API KEY名称|
-|requestPath|string| 请求路径 |
-|params|string| 传输数据内容 |
-|timestamp|string| 当前的毫秒数时间戳 |
+|requestPath|string| 请求路径 ；计算ws sign时为""|
+|queryString|string| 请求参数 ；计算ws sign时为""|
+|params|string| 传输数据内容 ；计算ws sign时为""|
+|timestamp|string| 当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳 |
 
-> 计算sign 
+> 计算http请求 sign 
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
   String sign=OpenAPiUtils.createSign(OpenAPiUtils.POST,
   "HKBGE-97759b085d7cabd66fea599aeece95f9",
   "/openapi/exchange/BTC_USDT/orders",
+  "",
   s,timestamp);
 ```
+
+> 计算web socket 请求 sign
+
+```java
+  String timestamp=OpenAPiUtils.createTimestamp();
+  String sign=OpenAPiUtils.createSign("","HKBGE-97759b085d7cabd66fea599aeece95f9","","","",timestamp);
+```
+
+
 
 > sign 生成算法工具类
 
 ```java
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.HmacUtils;
+  
 public class OpenAPiUtils {
   public static final String GET = "GET";
   public static final String POST = "POST";
@@ -127,6 +143,24 @@ public class OpenAPiUtils {
 
 }
 ```
+<aside class="warning">
+备注
+</aside>
+<a name="sign_query_warning"></a>
+
+计算数据签名时，参数的传递顺序需要与签名串顺序一致，且queryString不以`?`开头，不以`&`结尾  否则鉴权失败。例如：给 `GET "http://api.bg.exchange/hk/v1/demo?a=2&b=3"`
+计算签名时，
+
+- 正确使用: preHash = ... + "a=2&b=3" + ...;
+
+- 错误使用: preHash = ... + "b=3&a=2" + ...;
+
+- 错误使用: preHash = ... + "?b=3&a=2" + ...;
+
+- 错误使用: preHash = ... + "b=3&a=2&" + ...;
+
+
+
 
 <aside> 
 请求时填充HTTP HEADERS
