@@ -42,8 +42,8 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
   String sign=OpenAPiUtils.createSign(OpenAPiUtils.POST,
-  "HKBGE-97759b085d7cabd66fea599aeece95f9",
-  "/openapi/exchange/BTC_USDT/orders",
+  "43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b",
+  "/v1/accounts",
   "",
   s,timestamp);
 ```
@@ -52,7 +52,7 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
-  String sign=OpenAPiUtils.createSign("","HKBGE-97759b085d7cabd66fea599aeece95f9","","","",timestamp);
+  String sign=OpenAPiUtils.createSign("","43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b","","","",timestamp);
 ```
 
 
