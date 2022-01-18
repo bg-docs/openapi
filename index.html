@@ -5315,7 +5315,9 @@ RESPONSE PARAMETERS
     <span class="k">if</span> <span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"GET"</span><span class="o">)</span> <span class="o">||</span> <span class="n">method</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">))</span> <span class="o">{</span>
       <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="n">queryString</span><span class="o">,</span> <span class="s">""</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
     <span class="o">}</span>
-
+    <span class="k">if</span> <span class="o">(</span><span class="s">""</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">method</span><span class="o">))</span> <span class="o">{</span>
+      <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span> <span class="n">method</span><span class="o">,</span> <span class="n">requestPath</span><span class="o">,</span> <span class="n">queryString</span><span class="o">,</span> <span class="s">""</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
+    <span class="o">}</span>
     <span class="k">return</span> <span class="n">sign</span><span class="o">;</span>
   <span class="o">}</span>
 
