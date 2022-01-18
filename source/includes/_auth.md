@@ -103,7 +103,9 @@ public class OpenAPiUtils {
     if (method.equals("GET") || method.equals("DELETE")) {
       sign = generate(timestamp, method, requestPath, queryString, "", secretKey, "HmacSHA256");
     }
-
+    if ("".equalsIgnoreCase(method)) {
+      sign = generate(timestamp, method, requestPath, queryString, "", secretKey, "HmacSHA256");
+    }
     return sign;
   }
 
