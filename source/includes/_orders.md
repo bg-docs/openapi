@@ -20,6 +20,8 @@ REQUEST PARAMETERS
 - `limit`: 限价订单
 - `market`: 市价订单
 
+`client_oid`: 可选,默认"0"，用户自定义订单号，用于用户管理自己的订单。该ID非唯一，长度不多于64个字符的字符串类型，必须由大小写字母A-Z/a-z、数字0-9、下划线_、中划线- 中的元素组成，不支持以外的特殊符号
+
 `stp`: 即 `self trade prevention`。BGE禁止用户与自己成交的行为。用户可以通过`stp`选项，指定当自成交场景出现时的订单处理策略。
 
 - `dc`: 即 `decrease and cancel` (default)。当撮合发生相同用户订单匹配时，数量多的一方将被执行`decrease`指令，数量少的一方将被执行`cancel`指令。decrease 或者
@@ -51,6 +53,7 @@ REQUEST PARAMETERS
 |funds|想要使用的报价货币数量||false|string||
 |price|每个币的价格||false|string||
 |size|买入或卖出的数量||false|string||
+|client_oid|用户自定义订单号|false|string||
 
 <aside>
 RESPONSE STATUS
@@ -75,23 +78,14 @@ RESPONSE PARAMETERS
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
-[
-  {
-    "price":null,
-    "size":"1.000000000000000000",
-    "product":"BTC_USD",
-    "order_id":"129149436110880967",
-    "funds":"0.000000000000000000",
-    "type":"limit",
-    "side":"buy",
-    "filled_size":"0.000000000000000000",
-    "filled_fees":null,
-    "status":null
-  }
-]
+
+{
+  "order_id":129149436110880967
+}
+
 ```
 
-## 查询单个订单
+## 根据系统订单号查询单个订单
 
 <a name="order_detail"></a>
 
@@ -143,9 +137,10 @@ RESPONSE PARAMETERS
 |side|buy/sell|string||
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
-|type|limit:限价单/market:市价单/stop|string||
+|type|limit:限价单/market:市价单|string||
 |created_at|创建时间|string||
 |updated_at|更新时间|string||
+|client_oid|用户自定义订单号|false|string||
 
 <aside>
 RESPONSE EXAMPLE
@@ -168,7 +163,92 @@ RESPONSE EXAMPLE
   "funds": "0.000000000000000000",
   "type": "limit",
   "side": "buy",
-  "status": "7"
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
+}
+```
+
+## 根据用户自定义订单号查询单个订单
+
+<a name="order_detail"></a>
+
+<font class="httpget">GET</font> */v1/orders/single/{client_oid}*
+
+<aside>
+PATH VARIABLES
+</aside>
+| 参数名称 | 参数说明     | 是否必须 | 数据类型 | schema |
+| -------- | ----- | -------- | -------- | ------ |
+|client_oid|用户自定义订单号|true|string||
+
+`client_oid`: 当该自定义订单对应多个系统订单时，只返回最新系统订单
+
+<aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [参考示例](#order_detail_demo)
+401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`status`: 交易状态，取值范围0-7
+
+- 0: 已经收到订单
+- 1: 已经提交订单
+- 2: 订单部分成交
+- 3: 订单已完全成交
+- 4: 订单发起撤销
+- 5: 订单已经撤销
+- 6: 订单交易失败
+- 7: 订单被减量
+
+| 参数名称 | 参数说明 | 类型 | schema |
+| -------- | -------- | ----- |----- | 
+|filled_fees|成交费用|string||
+|filled_size|成交金额|string||
+|filled_amount|成交数量|string||
+|filled_average_price|成交均价|string||
+|funds|想要使用的报价货币数量|string||
+|order_id|订单编号|string||
+|price|每单位基础货币的价格|string||
+|product|产品编号|string||
+|side|buy/sell|string||
+|size|买入/卖出的基础货币数量|string||
+|status|状态|string||
+|type|limit:限价单/market:市价单|string||
+|created_at|创建时间|string||
+|updated_at|更新时间|string||
+|client_oid|用户自定义订单号|false|string||
+
+<aside>
+RESPONSE EXAMPLE
+</aside>
+
+<a name="order_detail_demo"></a>
+
+```json
+{
+  "filled_size": "0.000000000000000000",
+  "filled_fees": "1.00",
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": "2.00",
+  "size": "3.300000000000000000",
+  "product": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.000000000000000000",
+  "type": "limit",
+  "side": "buy",
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
 }
 ```
 
@@ -185,6 +265,8 @@ REQUEST PARAMETERS
 
 - `order_id` 若存在，将优先查找该订单的成交明细，其他参数将被忽略。
 - `order_id` 若不存在，将根据参数组合分页查询所所有交易明细。其中 `limit` 最大值为1000，超过1000条的订单明细将无法查询
+- `order_id` 若存在，则查询条件忽略client_oid
+- `client_oid` 对应多个系统订单时，只返回最新系统订单的明细
 
 | 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
 | -------- | -------- | ----- | -------- | -------- | ------ |
@@ -193,6 +275,7 @@ REQUEST PARAMETERS
 |limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |product|商品id|query|false|string||
 |order_id|订单id|query|false|string||
+|client_oid|用户自定义订单号|false|string||
 
 <aside>
 RESPONSE STATUS
@@ -255,6 +338,7 @@ REQUEST PARAMETERS
 
 - `order_id` 若存在，将优先查找该订单详情，其他参数将被忽略。
 - `order_id` 若不存在，将根据参数组合分页查询所所有订单详情。其中 `limit` 最大值为1000，超过1000条的订单详情将无法查询
+- `order_id` 若存在，则查询条件忽略client_oid 
 
 | 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
 | -------- | -------- | ----- | -------- | -------- | ------ |
@@ -262,6 +346,7 @@ REQUEST PARAMETERS
 |before|用于分页。将开始光标设置为before日期|query|false|integer(int64)||
 |limit|限制返回的结果数,默认100，最大1000|query|false|integer(int32)||
 |order_id|订单id|query|false|string||
+|client_oid|用户自定义订单号|false|string||
 |product|商品id|query|false|string||
 
 <aside>
@@ -298,7 +383,7 @@ RESPONSE PARAMETERS
 |side|buy/sell|string||
 |size|买入/卖出的基础货币数量|string||
 |status|状态|string||
-|type|limit:限价单/market:市价单/stop|string||
+|type|limit:限价单/market:市价单|string||
 
 <aside>
 RESPONSE EXAMPLE
