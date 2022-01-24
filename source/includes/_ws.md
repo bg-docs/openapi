@@ -14,7 +14,7 @@
 		"params": {
 			"biz": "market",
 			"type": "candles",
-			"pairCode": "ETH_BNB",
+			"product":"ETH_BNB",
 			"interval": "1day"
 		},
 		"zip":false
@@ -27,7 +27,7 @@
 |:----    |:---|:----- |------|
 | params .biz | 是  |string |      |
 | params .type     |是  |string | 订阅类型类型 |
-| params .pairCode     |是  |string | 币对   |
+| params .product     |是  |string | 币对   |
 | params .interval     |是  |string | 周期   |
 | event     |是  |string | 事件 Subscribe  |
 | zip     |是  |bool | 是否启用gzip |
@@ -41,7 +41,8 @@
 	"channel": "subscribe",
 	"biz": "market",
 	"type": "candles",
-	"pairCode": "ETH_BNB",
+	"product": "ETH_BNB",
+	"product":"ETH_BNB",
 	"interval": "1day",
 	"ts": 1639655425910,
 	"status": "ok"
@@ -53,7 +54,7 @@
 |:----    |:----- |-----   |
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
-| pairCode    |string | 币对|
+| product    |string | 币对|
 | data .open     |string | 开盘 |
 | data .close    |string | 收盘 |
 | data .low     |string | 低 |
@@ -73,7 +74,7 @@
 		"params": {
 			"biz": "market",
 			"type": "candles",
-			"pairCode": "ETH_BNB",
+			"product": "ETH_BNB",
 			"interval": "1day"
 		},
 		"zip":true
@@ -86,7 +87,7 @@
 |:----    |:---|:----- |---------------|
 | params .biz | 是  |string |               |
 | params .type     |是  |string | 订阅类型类型        |
-| params .pairCode     |是  |string | 币对            |
+| params .product     |是  |string | 币对            |
 | params .interval     |是  |string | 周期            |
 | event     |是  |string | 事件 UnSubscribe |
 | zip     |是  |bool | 是否启用gzip      |
@@ -100,7 +101,7 @@
 	"channel":"unsubscribe",
 	"biz": "market",
 	"type": "candles",
-	"pairCode": "ETH_BNB",
+	"product": "ETH_BNB",
 	"interval": "1day",
 	"ts": 1639655425910,
 	"status": "ok"
@@ -112,7 +113,7 @@
 |:----    |:----- |-----   |
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
-| pairCode    |string | 币对|
+| product    |string | 币对|
 | data .open     |string | 开盘 |
 | data .close    |string | 收盘 |
 | data .low     |string | 低 |
@@ -131,7 +132,7 @@
 {
 	"id": "his",
 	"type": "candles",
-	"pairCode": "ETH_USDT",
+	"product": "ETH_USDT",
 	"interval": "1day",
 	"data": [{
 		"id": 1639584000,
@@ -168,7 +169,7 @@
   "params": {
     "biz": "market",
     "type": "fills",
-    "pairCode": "ETH_USDT"
+    "product": "ETH_USDT"
   },
   "zip": false
 }
@@ -179,7 +180,7 @@
 |:----    |:---|:----- |----------|
 | params .biz | 是  |string |          |
 | params .type     |是  |string | 订阅类型类型   |
-| params .pairCode     |是  |string | 币对       |
+| params .product     |是  |string | 币对       |
 | params .interval     |是  |string | 周期       |
 | event     |是  |string | 事件 Subscribe      |
 | zip     |是  |bool | 是否启用gzip |
@@ -192,7 +193,7 @@
   "channel": "subscribe",
   "biz": "market",
   "type": "fills",
-  "pairCode": "ETH_USDT",
+  "product": "ETH_USDT",
   "interval": "",
   "ts": 1641384262679,
   "status": "ok"
@@ -205,7 +206,7 @@
 |:----    |:---|:----- |----------|
 | params .biz | 是  |string |          |
 | params .type     |是  |string | 订阅类型类型   |
-| params .pairCode     |是  |string | 币对       |
+| params .product     |是  |string | 币对       |
 | params .interval     |是  |string | 周期       |
 | event     |是  |string | 事件 Subscribe      |
 | zip     |是  |bool | 是否启用gzip |
@@ -217,7 +218,7 @@
 	"params": {
 		"biz": "market",
 		"type": "fills",
-		"pairCode": "ETH_USDT"
+		"product": "ETH_USDT"
 	},
 	"zip": false
 }
@@ -239,7 +240,7 @@
 |:----    |:---|:----- |-----   |
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
-| pairCode    |string | 币对|
+| product    |string | 币对|
 | data .price     |string | 价格 |
 | data .vol     |string | 成交 |
 | data .ts     |int  | 时间戳 |
@@ -263,7 +264,7 @@
 		"direction": "sell"
 	}],
 	"id": "his",
-	"pairCode": "ETH_USDT",
+	"product": "ETH_USDT",
 	"ts": 1640919016188,
 	"type": "fills"
 }
@@ -282,7 +283,7 @@
   "params": {
     "biz": "market",
     "type": "orderBook",
-    "pairCode": "ETH_USDT",
+    "product": "ETH_USDT",
     "interval": "1"
   },
   "zip": false
@@ -295,7 +296,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | params .interval     |是  |string | _周期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
@@ -309,7 +310,7 @@
   "channel": "subscribe",
   "biz": "market",
   "type": "orderBook",
-  "pairCode": "ETH_USDT",
+  "product": "ETH_USDT",
   "interval": "step1",
   "ts": 1641384620237,
   "status": "ok"
@@ -322,7 +323,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | params .interval     |是  |string | _周期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
@@ -333,7 +334,7 @@
   "params": {
     "biz": "market",
     "type": "orderBook",
-    "pairCode": "ETH_USDT",
+    "product": "ETH_USDT",
     "interval": "1"
   },
   "zip": false
@@ -375,7 +376,7 @@
 	"ts": 1641385128493,
 	"version": 1641385128,
 	"type": "orderBook",
-	"pairCode": "ETH_USDT",
+	"product": "ETH_USDT",
 	"interval": "1"
 }
 ```
@@ -392,7 +393,7 @@
 		"event": "sub",
 		"params": {
 			"type": "percent10",
-			"pairCode": "ETH_USDT"
+			"product": "ETH_USDT"
 		},
 		"zip":false
 	}	
@@ -402,7 +403,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 ```json
@@ -411,7 +412,7 @@
   "channel": "subscribe",
   "biz": "market",
   "type": "percent10",
-  "pairCode": "ETH_USDT",
+  "product": "ETH_USDT",
   "interval": "",
   "ts": 1641387412252,
   "status": "ok"
@@ -426,7 +427,7 @@
 		"event": "unsub",
 		"params": {
 			"type": "percent10",
-			"pairCode": "ETH_USDT"
+			"product": "ETH_USDT"
 		},
 		"zip":false
 	}	
@@ -436,7 +437,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
@@ -465,7 +466,7 @@
 	"ts": 1640683777520,
 	"version": 1640683777,
 	"type": "percent10",
-	"pairCode": "ETH_USDT"
+	"product": "ETH_USDT"
 }
 ```
 
@@ -486,7 +487,7 @@
 		"params": {
 			"biz": "market",
 			"type": "ticker",
-			"pairCode": "ETH_USDT"
+			"product": "ETH_USDT"
 		},
 		"zip":false
 	}	
@@ -497,7 +498,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | params .interval     |是  |string | 周期 |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
@@ -511,7 +512,7 @@
   "channel": "subscribe",
   "biz": "market",
   "type": "ticker",
-  "pairCode": "ETH_USDT",
+  "product": "ETH_USDT",
   "interval": "",
   "ts": 1641387679813,
   "status": "ok"
@@ -528,7 +529,7 @@
 		"params": {
 			"biz": "market",
 			"type": "ticker",
-			"pairCode": "ETH_USDT"
+			"product": "ETH_USDT"
 		},
 		"zip":false
 	}	
@@ -539,7 +540,7 @@
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 订阅类型类型  |
-| params .pairCode     |是  |string | 币对|
+| params .product     |是  |string | 币对|
 | params .interval     |是  |string | 周期 |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
@@ -561,7 +562,7 @@
 |:----    |:----- |-----   |
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
-| pairCode    |string | 币对|
+| product    |string | 币对|
 | data .open     |string | 开盘 |
 | data .close    |string | 收盘 |
 | data .low     |string | 低 |
@@ -584,12 +585,12 @@
 		"turnOver": "68.46",
 		"count": 0,
 		"vol": "3.5",
-		"pairCode": "BTC_USDT",
+		"product": "BTC_USDT",
 		"change": "1.56",
 		"changePercent": "0.0866666666666667"
 	},
 	"id": "",
-	"pairCode": "BTC_USDT",
+	"product": "BTC_USDT",
 	"ts": 1640251563497,
 	"type": "ticker"
 }
@@ -607,7 +608,7 @@
 	"params": {
 		"biz": "market",
 		"type": "candles",
-		"pairCode": "ETH_USDT",
+		"product": "ETH_USDT",
 		"interval": "1day",
 		"size": 301,
 		"from": 1613692800,
@@ -621,7 +622,7 @@
 |:----------------|:----|:----- |----------|
 | params.biz      | 是   |string |          |
 | params.type     | 是   |string | 类型       |
-| params.pairCode | 是   |string | 币对       |
+| params.product | 是   |string | 币对       |
 | params.interval | 是   |string | 周期       |
 | params.from     | 是   |string | 开始时间     |
 | params.to       | 是   |string | 结束时间     |
@@ -639,14 +640,14 @@
 | open | int  |  开盘价格 |
 | turnOver | string  |  交易量 |
 | vol | string  |  交易额 |
-| pairCode | string  |  币对  |
+| product | string  |  币对  |
 
 
 ```json
 {
 	"id": "his",
 	"type": "candles",
-	"pairCode": "ETH_USDT",
+	"product": "ETH_USDT",
 	"interval": "1day",
 	"data": [{
 		"id": 1639584000,
@@ -680,7 +681,7 @@
 |:----    |:---|:----- |-----   |
 | params.biz | 是  |string |   |
 | params.type     |否  |string | 类型 |
-| params.pairCode     |否  |string | 币对|
+| params.product     |否  |string | 币对|
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
@@ -690,7 +691,7 @@
 	"params": {
 		"biz": "market",
 		"type": "ticker",
-		"pairCode": "ETH_USDT",
+		"product": "ETH_USDT",
 		"id": "his"
 	},
 	"zip":false
@@ -707,7 +708,7 @@
 | open | int  |  开盘价格 |
 | turnOver | string  |  交易量 |
 | vol | string  |  交易额 |
-| pairCode | string  |  币对  |
+| product | string  |  币对  |
 
 ```json
 {
@@ -725,7 +726,7 @@
 		"changePercent": "0.0866666666666667"
 	},
 	"id": "",
-	"pairCode": "BTC_USDT",
+	"product": "BTC_USDT",
 	"ts": 1640251563497,
 	"type": "ticker"
 }
