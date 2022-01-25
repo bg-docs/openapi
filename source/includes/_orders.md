@@ -177,6 +177,7 @@ RESPONSE EXAMPLE
 <aside>
 PATH VARIABLES
 </aside>
+
 | 参数名称 | 参数说明     | 是否必须 | 数据类型 | schema |
 | -------- | ----- | -------- | -------- | ------ |
 |client_oid|用户自定义订单号|true|string||
