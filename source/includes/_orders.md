@@ -298,7 +298,7 @@ RESPONSE PARAMETERS
 |fee|按当前填写的金额支付的费用|string||
 |liquidity|流动性:marker、taker|string||
 |order_id|订单编号|string||
-|price|每单位基础货币的价格|string||
+|price|每单位基础货币的价格|string||  
 |product|产品编号|string||
 |side| buy/sell |string||
 |size|买入/卖出的基础货币数量|string||
