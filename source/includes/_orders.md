@@ -74,13 +74,15 @@ RESPONSE PARAMETERS
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
 |order_id|BGE所生成的订单号|string||
+|client_oid|用户自定义订单号，默认"0"|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
 ```json
 
 {
-  "order_id":129149436110880967
+  "order_id":129149436110880967,
+  "client_oid":"Order_ower_1233"
 }
 
 ```
