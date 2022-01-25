@@ -68,7 +68,7 @@ print(data.decode("utf-8"))
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => '$%7Bhost%7D/v1/accounts',
+  CURLOPT_URL => '${host}/v1/accounts',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -101,7 +101,7 @@ import (
 
 func main() {
 
-  url := "$%7Bhost%7D/v1/accounts"
+  url := "${host}/v1/accounts"
   method := "GET"
 
   client := &http.Client {
