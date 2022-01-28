@@ -39,6 +39,7 @@ REQUEST PARAMETERS
 `size`: 买入或者卖出商品的数量
 
 **market order parameters**
+
 `size`: 期望交易数量。需要`side` 为 `sell`，代表以最新成交价进行卖出，期望最多卖出的商品数。
 
 `funds`: 期望交易额度。需要`side` 为 `buy`，代表以最新成交价进行买入，期望花费的最多资产额度。
