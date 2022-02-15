@@ -71,7 +71,7 @@ RESPONSE PARAMETERS
 
 `order_id`:  BGE所生成的订单号
 
-| 参数名称 | 参数说明 | 类型 | schema |
+| 参数名称 | 参数说明 | 类型 | schema          |
 | -------- | -------- | ----- |----- | 
 |order_id|BGE所生成的订单号|string||
 |client_oid|用户自定义订单号，默认"0"|string||
@@ -409,7 +409,7 @@ RESPONSE EXAMPLE
 ]
 ```
 
-## 撤销单个订单
+## 根据系统订单号撤销单个订单
 
 <font class="httpdelete">DELETE</font> */v1/orders/{order_id}*
 
@@ -436,7 +436,48 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`status`: 交易状态，取值范围0-7
+`order_id`: 系统订单号
+
+
+
+<aside>
+RESPONSE EXAMPLE
+</aside>
+
+<a name="order_trade_detail_demo"></a>
+
+```json
+"1277087538632480481"
+```
+
+## 根据用户自定义订单号撤销单个订单
+
+<font class="httpdelete">DELETE</font> */v1/orders/single/{client_oid}*
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+此接口可撤销单个订单，若自定义订单对应多个系统订单，撤销最新一个订单，撤销申请成功，返回对应的系统订单号
+
+
+
+<aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [参考示例](#order_trade_detail_demo)
+401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`order_id`: 系统订单号
 
 
 
