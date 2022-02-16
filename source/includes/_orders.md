@@ -72,6 +72,8 @@ RESPONSE PARAMETERS
 
 `order_id`:  BGE所生成的订单号
 
+`client_oid`:  用户自定义订单号
+
 | 参数名称 | 参数说明 | 类型 | schema          |
 | -------- | -------- | ----- |----- | 
 |order_id|BGE所生成的订单号|string||
