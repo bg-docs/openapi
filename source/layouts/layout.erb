@@ -14,6 +14,8 @@ License for the specific language governing permissions and limitations
 under the License.
 %>
 <% language_tabs = current_page.data.language_tabs || [] %>
+<% localizable_tabs = current_page.data.localizable_tabs || [] %>
+<% home_url = current_page.data.home_url || "/" %>
 <% page_content = yield %>
 <%
   if current_page.data.includes
@@ -63,7 +65,9 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <a href="<%= home_url %>">
+        <%= image_tag "logo.png", class: 'logo' %>
+      </a>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -75,6 +79,19 @@ under the License.
           <% end %>
         </div>
       <% end %>
+      <%# 多语言版本 %>
+      <% if localizable_tabs.any? %>
+         <div class="localizable_tabs">
+                  <% localizable_tabs.each do |localizable| %>
+                    <% if localizable.is_a? Hash %>
+                      <a href="<%= localizable['path'] %>"><%= localizable['desc'] %></a>
+                    <% else %>
+                      <a href="#" ><%= 123 %></a>
+                    <% end %>
+                  <% end %>
+                </div>
+      <% end %>
+
       <% if current_page.data.search %>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
