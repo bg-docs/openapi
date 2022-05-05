@@ -5591,39 +5591,13 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>计算http请求 sign </p>
+<p>签名计算与使用</p>
 </blockquote>
-<div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
-  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span>
-  <span class="s">"43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b"</span><span class="o">,</span>
-  <span class="s">"/v1/accounts"</span><span class="o">,</span>
-  <span class="s">""</span><span class="o">,</span>
-  <span class="n">s</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
-</code></pre></div>
-<blockquote>
-<p>计算web socket 请求 sign</p>
-</blockquote>
-<div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">String</span> <span class="n">timestamp</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createTimestamp</span><span class="o">();</span>
-  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span><span class="nc">OpenAPiUtils</span><span class="o">.</span><span class="na">createSign</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="s">"43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b"</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="s">""</span><span class="o">,</span><span class="n">timestamp</span><span class="o">);</span>
-</code></pre></div>
-<blockquote>
-<p>sign 生成算法工具类</p>
-</blockquote>
-<div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">org.apache.commons.codec.binary.Base64</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.commons.codec.digest.HmacUtils</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OpenAPiUtils</span> <span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">GET</span> <span class="o">=</span> <span class="s">"GET"</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">POST</span> <span class="o">=</span> <span class="s">"POST"</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">DELETE</span> <span class="o">=</span> <span class="s">"DELETE"</span><span class="o">;</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Gson</span> <span class="n">gson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gson</span><span class="o">();</span>
-
-  <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createTimestamp</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="nc">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
-  <span class="o">}</span>
-
+<div class="highlight"><pre class="highlight java tab-java"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AuthDemo</span> <span class="o">{</span>
   <span class="cm">/**
    * 获取当前时间戳 例：2022-01-08T07:19:56.339Z
+   *
    * @return
    */</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createTimestamp</span><span class="o">()</span> <span class="o">{</span>
@@ -5632,12 +5606,13 @@ RESPONSE PARAMETERS
 
   <span class="cm">/**
    * 计算签名
-   * @param method POST or GET or DELETE
-   * @param secretKey 例：HKBGE-xxxxx
+   *
+   * @param method      POST or GET or DELETE
+   * @param secretKey   例：HKBGE-xxxxx
    * @param requestPath 例：/v1/orders
    * @param queryString 请求参数
-   * @param body string GET时为空
-   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @param body        string GET时为空
+   * @param timestamp   当前时间戳 例：2022-01-08T07:19:56.339Z
    * @return string
    */</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">createSign</span><span class="o">(</span><span class="nc">String</span> <span class="n">method</span><span class="o">,</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">,</span> <span class="nc">String</span> <span class="n">requestPath</span><span class="o">,</span> <span class="nc">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="nc">String</span> <span class="n">body</span><span class="o">,</span> <span class="nc">String</span> <span class="n">timestamp</span><span class="o">)</span> <span class="o">{</span>
@@ -5692,7 +5667,44 @@ RESPONSE PARAMETERS
     <span class="o">}</span>
   <span class="o">}</span>
 
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// restapi </span>
+    <span class="nc">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">createTimestamp</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">createSign</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="s">"43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b"</span><span class="o">,</span> <span class="s">"/v1/accounts"</span><span class="o">,</span> <span class="s">""</span><span class="o">,</span> <span class="n">s</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">);</span>
+    <span class="c1">// 填充HTTP HEADERS</span>
+    <span class="nc">RequestBuilders</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"/openapi/exchange/BTC_USDT/orders"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-KEY"</span><span class="o">,</span> <span class="s">"HKBGE-6fc437d24902cce8635806b6d79921f2"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-SIGN"</span><span class="o">,</span> <span class="n">sign</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-TIMESTAMP"</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">)</span>
+                <span class="o">...</span>
+
+    <span class="c1">// 如果使用 websocket，method，requestPath, queryString, body 均需要为空</span>
+    <span class="c1">// String sign = createSign("", "43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b", "", "", "", timestamp);</span>
+
+  <span class="o">}</span>
 <span class="o">}</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="c1">// 当前时间</span>
+<span class="nv">$timestamp</span> <span class="o">=</span> <span class="nb">gmdate</span><span class="p">(</span><span class="s2">"Y-m-d\TH:i:s\Z"</span><span class="p">);</span>
+<span class="c1">// 请求方法</span>
+<span class="nv">$method</span> <span class="o">=</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="s2">"post"</span><span class="p">);</span>
+<span class="nv">$secret_key</span><span class="o">=</span><span class="s2">"YOUR_SECRET_KEY"</span><span class="p">;</span>
+<span class="c1">// 例子：https://api.hkbge-inc.com/v1/fills?order_id=11698140999351 </span>
+<span class="c1">// requestPath:  "/v1/fills" </span>
+<span class="c1">// param_string: "?order_id=11698140999351" </span>
+<span class="nv">$requestPath</span> <span class="o">=</span> <span class="s2">"/v1/fills"</span><span class="p">;</span>
+<span class="nv">$param_string</span><span class="o">=</span><span class="s2">"?order_id=11698140999351"</span><span class="p">;</span>
+<span class="c1">// 没有body 写 ""</span>
+<span class="nv">$body</span><span class="o">=</span><span class="s2">"{\"</span><span class="n">pageSize</span><span class="err">\</span><span class="s2">": 2,</span><span class="se">\"</span><span class="s2">pageIndex</span><span class="se">\"</span><span class="s2">: 1}"</span><span class="p">;</span>
+<span class="nv">$preHash</span> <span class="o">=</span> <span class="nb">utf8_encode</span><span class="p">(</span><span class="nv">$timestamp</span><span class="mf">.</span><span class="nv">$method</span><span class="mf">.</span><span class="nv">$requestPath</span><span class="mf">.</span><span class="nv">$param_string</span><span class="mf">.</span><span class="nv">$body</span><span class="p">);</span>
+<span class="nv">$signature</span> <span class="o">=</span> <span class="nb">hash_hmac</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="nv">$preHash</span><span class="p">,</span> <span class="nv">$secret_key</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+<span class="nv">$signature</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$signature</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$signature</span><span class="p">;</span>
+
+<span class="c1">// header:</span>
+<span class="c1">// ACCESS-KEY: $secret_key</span>
+<span class="c1">// ACCESS-SIGN: $signature</span>
+<span class="c1">// ACCESS-TIMESTAMP: $timestamp</span>
 </code></pre></div>
 <aside class="warning">
 备注
@@ -5715,18 +5727,7 @@ RESPONSE PARAMETERS
 </aside>
 
 <p>将用户在BGE生成的api key 与 sign 与 时间戳加入到 http请求头中。</p>
-
-<blockquote>
-<p>填充HTTP HEADERS</p>
-</blockquote>
-<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">RequestBuilders</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">"/openapi/exchange/BTC_USDT/orders"</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-KEY"</span><span class="o">,</span> <span class="s">"HKBGE-6fc437d24902cce8635806b6d79921f2"</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-SIGN"</span><span class="o">,</span> <span class="n">sign</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">header</span><span class="o">(</span><span class="s">"ACCESS-TIMESTAMP"</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">characterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">))</span>
-                        <span class="o">.</span><span class="na">contentType</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">)</span>
-</code></pre></div><h1 id='42f2f63a84'>数据字典</h1><h2 id='be4cf2ebfe'>用户认证错误码对照表</h2>
+<h1 id='42f2f63a84'>数据字典</h1><h2 id='be4cf2ebfe'>用户认证错误码对照表</h2>
 <table><thead>
 <tr>
 <th>错误码</th>
