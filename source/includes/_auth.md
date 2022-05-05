@@ -37,44 +37,14 @@ ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:
 |params|string| 传输数据内容 ；计算ws sign时为""|
 |timestamp|string| 当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳 |
 
-> 计算http请求 sign 
+> 签名计算与使用
 
 ```java
-  String timestamp=OpenAPiUtils.createTimestamp();
-  String sign=OpenAPiUtils.createSign(OpenAPiUtils.POST,
-  "43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b",
-  "/v1/accounts",
-  "",
-  s,timestamp);
-```
 
-> 计算web socket 请求 sign
-
-```java
-  String timestamp=OpenAPiUtils.createTimestamp();
-  String sign=OpenAPiUtils.createSign("","43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b","","","",timestamp);
-```
-
-
-
-> sign 生成算法工具类
-
-```java
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.HmacUtils;
-  
-public class OpenAPiUtils {
-  public static final String GET = "GET";
-  public static final String POST = "POST";
-  public static final String DELETE = "DELETE";
-  public static final Gson gson = new Gson();
-
-  public static String createTimestamp() {
-    return Instant.now().toString();
-  }
-
+public class AuthDemo {
   /**
    * 获取当前时间戳 例：2022-01-08T07:19:56.339Z
+   *
    * @return
    */
   public static String createTimestamp() {
@@ -83,12 +53,13 @@ public class OpenAPiUtils {
 
   /**
    * 计算签名
-   * @param method POST or GET or DELETE
-   * @param secretKey 例：HKBGE-xxxxx
+   *
+   * @param method      POST or GET or DELETE
+   * @param secretKey   例：HKBGE-xxxxx
    * @param requestPath 例：/v1/orders
    * @param queryString 请求参数
-   * @param body string GET时为空
-   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @param body        string GET时为空
+   * @param timestamp   当前时间戳 例：2022-01-08T07:19:56.339Z
    * @return string
    */
   public static String createSign(String method, String secretKey, String requestPath, String queryString, String body, String timestamp) {
@@ -143,8 +114,49 @@ public class OpenAPiUtils {
     }
   }
 
+  public static void main(String[] args) {
+    // restapi 
+    String timestamp = createTimestamp();
+    String sign = createSign("POST", "43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b", "/v1/accounts", "", s, timestamp);
+    // 填充HTTP HEADERS
+    RequestBuilders.post("/openapi/exchange/BTC_USDT/orders")
+      .header("ACCESS-KEY", "HKBGE-6fc437d24902cce8635806b6d79921f2")
+      .header("ACCESS-SIGN", sign)
+      .header("ACCESS-TIMESTAMP", timestamp)
+                ...
+
+    // 如果使用 websocket，method，requestPath, queryString, body 均需要为空
+    // String sign = createSign("", "43767b4dec6e78e07c81f89af47018dc3ab57585721bf57a389f7637a9d0506b", "", "", "", timestamp);
+
+  }
 }
+
 ```
+
+```php
+// 当前时间
+$timestamp = gmdate("Y-m-d\TH:i:s\Z");
+// 请求方法
+$method = strtoupper("post");
+$secret_key="YOUR_SECRET_KEY";
+// 例子：https://api.hkbge-inc.com/v1/fills?order_id=11698140999351 
+// requestPath:  "/v1/fills" 
+// param_string: "?order_id=11698140999351" 
+$requestPath = "/v1/fills";
+$param_string="?order_id=11698140999351";
+// 没有body 写 ""
+$body="{\"pageSize\": 2,\"pageIndex\": 1}";
+$preHash = utf8_encode($timestamp.$method.$requestPath.$param_string.$body);
+$signature = hash_hmac('sha256', $preHash, $secret_key,true);
+$signature = base64_encode($signature);
+echo $signature;
+
+// header:
+// ACCESS-KEY: $secret_key
+// ACCESS-SIGN: $signature
+// ACCESS-TIMESTAMP: $timestamp
+```
+
 <aside class="warning">
 备注
 </aside>
@@ -169,15 +181,3 @@ public class OpenAPiUtils {
 </aside>
 
 将用户在BGE生成的api key 与 sign 与 时间戳加入到 http请求头中。
-
-> 填充HTTP HEADERS
-
-```java
-RequestBuilders.post("/openapi/exchange/BTC_USDT/orders")
-                        .header("ACCESS-KEY", "HKBGE-6fc437d24902cce8635806b6d79921f2")
-                        .header("ACCESS-SIGN", sign)
-                        .header("ACCESS-TIMESTAMP", timestamp)
-                        .characterEncoding("UTF-8")
-                        .content(s.getBytes(StandardCharsets.UTF_8))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-```
