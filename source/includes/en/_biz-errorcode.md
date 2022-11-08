@@ -1,71 +1,72 @@
-# 数据字典
+# Data dictionary
 
-## 用户认证错误码对照表
+## User authentication error code checklist
 
-|错误码|示意|
+|Error code|Description|
 |---|---|
-|40001| ACCESS_KEY不能为空|
-|40002| ACCESS_SIGN不能为空|
-|40003| ACCESS_TIMESTAMP不能为空|
-|40005| 无效的ACCESS_TIMESTAMP|
-|40006| 无效的ACCESS_KEY|
-|40007| 无效的Content_Type，请使用“application/json”格式|
-|40008| 请求时间戳过期|
-|40010| api 校验失败|
-|40011| ACCESS_KEY或者PASSPHRASE错误|
-|40012| 无效的API用户|
-|40013| 用户已禁止|
-|40014| 用户已冻结|
-|40015| 无效的IP请求|
+|40001| ACCESS_KEY cannot be empty|
+|40002| ACCESS_SIGN cannot be empty|
+|40003| ACCESS_TIMESTAMP cannot be empty|
+|40005| Invalid  ACCESS_TIMESTAMP|
+|40006| Invalid  ACCESS_KEY|
+|40007| Invalid  Content_Type，please use "application/json" format|
+|40008| Request timestamp expired|
+|40010| api verification failed|
+|40011| ACCESS_KEY or PASSPHRASE error|
+|40012| Invalid  API user|
+|40013| User banned|
+|40014| User frozen|
+|40015| Invalid  IP request|
 
-## 下单错误码对照表
+## Order placement error code checklist
 
-`amount limit value` 为产品所配置的交易金额/数量上下限，BGE 为保护市场稳定，根据市场实时行情限定了交易限制，具体数额会随市场交易情况实时波动。
+`amount limit value` are the upper/lower limits of the transaction amount/quantity configured for the products. To uphold market stability, BGE imposes transaction limits based on real-time market conditions. The specific amounts will fluctuate in real time with the market trading circumstances.
 
-|错误码|示意|
+|Error code|Description|
 |---|---|
-|999| 查询的数据为空|
-|1000| 没有登录|
-|1001| 参数错误|
-|1006| 币种信息不存在|
-|1008| K线不存在|
-|1009| 行情不存在|
-|1050| 币对不存在|
-|1051| 档位深度不存在|
-|1053| 下单已阻断|
-|1054| 小于最小下单数量|
-|1055| 金额小于余额|
-|1056| 大于最大下单数量|
-|1057| 市价单金额无效|
-|1058| 下单失败|
-|1059| 订单不存在|
-|1060| 撤单失败|
-|1061| 订单已撤销|
-|1062| 订单已成交|
-|1063| 撤单失败|
-|1099| 币种不存在|
-|1029| 转出金额大于可转金额|
-|1049| 用户请求接口过于频繁|
-|1100| 可用余额不足|
-|1064| KYC验证失败|
-|1065| 您已被冻结，无法下单|
-|1066| 交易密码失效|
-|1067|價格,Price ≥ ${amount limit value} |
-|1068|價格,Price ≤ ${amount limit value} |
-|1069|交易额精度不正确|
-|1070|数量精度不正确|
-|1071|价格精度不正确|
-|1072|下单数量不能为0|
-|1073|下单价格不能为0|
-|1074|账户余额不足|
-|1075|數量,Amount ≥ ${amount limit value} |
-|1076|數量,Amount ≤ ${amount limit value}|
-|1077|金額,Total ≥ ${amount limit value}|
-|1078|數量,Amount ≥ ${amount limit value}|
-|1079|金額,Total ≤ ${amount limit value}|
-|1080|數量,Amount ≤ ${amount limit value}|
-|1081|市价单买单触及最高成交限定价格，已自动撤单|
-|1082|市价单卖单触及最低成交限定价格，已自动撤单|
-|1083|用户数据获取失败|
-|1084|无当前委托订单|
-|1085|超过最大委托数|
+|999|Query data is empty|
+|1000|Not logged in|
+|1001|Parameter error|
+|1006|Currency information does not exist|
+|1008|Candlestick chart does not exist|
+|1009|Quotation does not exist|
+|1050|Currency pair does not exist|
+|1051|Tier depth does not exist|
+|1053|Order has been disrupted|
+|1054|Below the minimum order quantity|
+|1055|Value less than balance|
+|1056|Exceeds the maximum order quantity|
+|1057|Invalid value for market order|
+|1058|Order placement failed|
+|1059|Order does not exist|
+|1060|Order cancellation failed|
+|1061|Order cancelled|
+|1062|Order filled|
+|1063|Order cancellation failed|
+|1099|Currency does not exist|
+|1029|Transfer amount greater than available amount|
+|1049|Interface requests of user are too frequent|
+|1100|Insufficient available balance|
+|1064|KYC authentication failed|
+|1065|Unable to place order as your account is on hold|
+|1066|Transaction password no longer valid|
+|1067|Price, Price ≥ ${amount limit value}|
+|1068|Price, Price ≤ ${amount limit value}|
+|1069|Incorrect trading volume precision|
+|1070|Incorrect quantity precision|
+|1071|Incorrect price precision|
+|1072|Order quantity cannot be 0|
+|1073|Order price cannot be 0|
+|1074|Insufficient account balance|
+|1075|Amount, Amount ≥ ${amount limit value}|
+|1076|Amount, Amount ≤ ${amount limit value}|
+|1077|Value, Total ≥ ${amount limit value}|
+|1078|Amount, Amount ≥ ${amount limit value}|
+|1079|Value, Total ≤ ${amount limit value}|
+|1080|Amount, Amount ≤ ${amount limit value}|
+|1081|Order cancelled automatically as market order’s buying price has reached the maximum transaction limit price|
+|1082|Order cancelled automatically as selling price of market order has reached the minimum transaction limit price|
+|1083|User data access failure|
+|1084|No open order|
+|1085|Exceeded the maximum number of consignable orders|
+

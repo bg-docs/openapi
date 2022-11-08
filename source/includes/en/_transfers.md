@@ -1,35 +1,35 @@
-# 资金划转
+# Fund Transfer
 
-## 资金账户划转到交易账户
+## Transfer from Fund Account to Trading Account
 
 
 <font class="httppost">POST</font> */v1/deposits/account*
 
 
-**请求数据类型**:`application/json`
+**Request Data Type**:`application/json`
 
 
-将资金从资金账户划转到指定的交易账户。
-
-
-
+Transfer funds from the Fund Account to a specified Trading Account.
 
 
 
 
-> 鉴权信息
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+
+
+> Authentication information
+
+> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
 
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |false|string||
-|currency|划转资产名称|false|string||
+|amount|Transfer amount|false|string||
+|currency|Name of transfer asset|false|string||
 
 > REQUEST EXAMPLE
 
@@ -46,18 +46,18 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter Name | Parameter Description | Type | 
 | -------- | -------- | ----- |
-|amount|划转数量|string|
-|currency|划转资产名称|string|
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -69,33 +69,33 @@ RESPONSE PARAMETERS
 ```
 
 
-## 交易账户划转到资金账户
+## Transfer from Trading Account to Fund Account
 
 <font class="httppost">POST</font> */v1/withdrawals/account*
 
-**请求数据类型**:`application/json`
+**Request Data Type:**:`application/json`
 
-将资金从交易账户划转到资金账户，划转后，可以进行提现操作。
-
-
+Transfer funds from the Trading Account to the Fund Account. Withdrawal operations allowed after the transfer.
 
 
 
 
 
-> 鉴权信息
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+
+> Authentication information
+
+> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
 
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |false|string||
-|currency|划转资产名称|false|string||
+|amount|Transfer amount|false|string||
+|currency|Name of transfer asset|false|string||
 
 > REQUEST EXAMPLE
 
@@ -112,18 +112,18 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter Name | Parameter Description | Type | 
 | -------- | -------- | ----- |
-|amount|划转数量|string|
-|currency|划转资产名称|string|
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 

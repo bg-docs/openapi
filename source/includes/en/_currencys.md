@@ -1,6 +1,6 @@
-# 币种信息
+# Information of Currency Types
 
-## 获取所有已知货币
+## Obtaining All Known Currencies
 
 <font class="httpget">GET</font> */v1/currencies*
 
@@ -12,40 +12,40 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
+200 | Success Request | [Examples](#ResonpseExample1)
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`currency`: 币种名称，可唯一标识币种
+`currency`: A uniquely identifiable name of the currency
 
-`accuracy`: fiat存取款精度
+`accuracy`: Accuracy of the fiat deposits and withdrawals
 
-`max_precision` : 最大精度。取之范围在`[18,-18]`
+`max_precision` : Maximum precision. Range taken within`[18,-18]`
 
-- `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
-- `max_precision < 0` 时，代表币种精度为整数，且精度为 10 的 abs(max_precision) 次方位
+- `max_precision >= 0` means that the currency type precision is max_precision decimal places;
+- `max_precision < 0` means that the currency type precision is an integer, and the precision is 10 to the abs(max_precision) power
 
-`min_size`: 最小出入金数量
+`min_size`:  Minimum deposit and withdrawal amount
 
-`status`: 币种状态
+`status`:  Currency status
 
-`type`: 货币类型，`fiat` 为法币, `crypto` 为数字币
+`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
 
-`details`: 链信息，只有数字币类型才会有此部分信息
+`details`: Blockchain information, only a digital currency type will contain this information
 
-`deposit_status`: fiat 存款状态
+`deposit_status`: Fiat deposit status
 
-`withdraw_status`: fiat  取款状态
+`withdraw_status`: Fiat withdrawal status
 
-- `dispaly_name`: 显示名称
-- `network_confirmations`: 最低网络确认次数
-- `currency`: 数字币标识符
-- `accuracy`: crypto存取款精度
-- `deposit_status`: crypto 存款状态
-- `withdraw_status`: crypto 取款状态
+- `dispaly_name`: Display name
+- `network_confirmations`: Minimum number of network confirmations
+- `currency`: Digital currency identifier
+- `accuracy`: Accuracy of crypto deposits and withdrawals
+- `deposit_status`: Crypto deposit status
+- `withdraw_status`:  Crypto withdrawal status
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -74,7 +74,7 @@ RESPONSE PARAMETERS
 ]
 ```
 
-## 获取单个币种信息
+## Obtaining Information of a Particular Currency
 
 <font class="httpget">GET</font> */v1/currencies/{currency}*
 
@@ -85,40 +85,40 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
+200 | Success Request | [Examples](#ResonpseExample1)
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`currency`: 币种名称，可唯一标识币种
+`currency`: A uniquely identifiable name of the currency
 
-`accuracy`: fiat存取款精度
+`accuracy`: Accuracy of the fiat deposits and withdrawals
 
-`max_precision` : 最大精度。取之范围在`[18,-18]`
+`max_precision` : Maximum precision. Range taken within`[18,-18]`
 
-- `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
-- `max_precision < 0` 时，代表币种精度为整数，且精度为 10 的 abs(max_precision) 次方位
+- `max_precision >= 0` means that the currency type precision is max_precision decimal places;
+- `max_precision < 0` means that the currency type precision is an integer, and the precision is 10 to the abs(max_precision) power
 
-`min_size`: 最小出入金数量
+`min_size`: Minimum deposit and withdrawal amount
 
-`status`: 币种状态
+`status`:  Currency status
 
-`type`: 货币类型，`fiat` 为法币, `crypto` 为数字币
+`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
 
-`details`: 链信息，只有数字币类型才会有此部分信息
+`details`: Blockchain information, only a digital currency type will contain this information
 
-`deposit_status`: fiat 存款状态
+`deposit_status`: Deposit status
 
-`withdraw_status`: fiat  取款状态
+`withdraw_status`: Withdrawal status
 
-- `dispaly_name`: 显示名称
-- `network_confirmations`: 最低网络确认次数
-- `currency`: 数字币标识符
-- `accuracy`: crypto存取款精度
-- `deposit_status`: crypto 存款状态
-- `withdraw_status`: crypto 取款状态
+- `dispaly_name`: Display name
+- `network_confirmations`: Minimum number of network confirmations
+- `currency`: Digital currency identifier
+- `accuracy`: Accuracy of crypto deposits and withdrawals
+- `deposit_status`:  Crypto deposit status
+- `withdraw_status`: Crypto withdrawal status
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 

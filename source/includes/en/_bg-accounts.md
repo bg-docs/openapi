@@ -6,9 +6,9 @@
 
 获取用户所有可用的BGE钱包/账户（用户可以用这些钱包/账户在 www.bg.exchange 上进行买入和卖出活动）。
 
-> 鉴权信息 
+> Authentication information 
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
 
 <aside>
 RESPONSE STATUS
@@ -16,15 +16,15 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | schema |
+| Parameter Name | Parameter Description | Type | schema |
 | -------- | -------- | ----- |----- | 
 |active|active|boolean||
 |available_on_consumer|available_on_consumer|boolean||

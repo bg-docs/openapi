@@ -143,7 +143,7 @@ fetch('/example.com/openapi/exchange/bills',
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |endDate|query|string|false|结束时间|
-|isHistory|query|string|false|是否查看历史订单|
+|isHistory|query|string|false|Y否查看历史订单|
 |page|query|integer(int32)|false|page|
 |pageSize|query|integer(int32)|false|pageSize|
 |startDate|query|string|false|开始时间|

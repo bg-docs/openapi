@@ -1,8 +1,10 @@
-
-##  Candles
+## Candles
 
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -19,9 +21,10 @@ print(response.text)
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+fetch(
+  "{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084")
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ```
 
 ```php
@@ -41,78 +44,72 @@ $response = $client->request('GET', '{host}/public/v1/products/BTC_USDT/candles?
 echo $response->getBody();
 ```
 
-
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084"
+  url := "{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
+
 <font class="httpget">GET</font> */public/v1/products/{product}/candles*
 
-历史产品的k 线图， 数据以数组形式返回，每个对象保函[`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
+The historical candlestick chart of the products. The response data is in an array, each object
+includes [`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
 
-#### 请求参数
+#### Request parameters
 
-|参数名| 必选  |类型|                                                                                                                                                                说明                                                                                                                                                                |
+|Parameter Name|Mandatory|Type|                                                                                                                                                                说明                                                                                                                                                                |
 |:----    |:----|:----- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| product | 是   |string |                                                                                          币对                                                                                                                                         交易对                                                                                          |
-| period | 是   |string | *指标周期*  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
-|start     | 是   |string |                                                                               timestamp 毫秒                                                                                                                                                开始  (毫秒)                                                                               |
-|end     | 是   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
-|size     | 是   |string |                                                                          [1,2000]                                                                                                                                                       数据长度  [1,2000]                                                                           |
+| product | Y  |string |                                                                                          币对 交易对                                                                                          |
+| period | Y   |string | *Indicative
+period*  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
+|start     | Y   |string |                                                                               timestamp 毫秒 开始  (毫秒)                                                                               |
+|end     | Y   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
+|size     | Y   |string |                                                                          [1,2000]                                                                                                                                                       Data length  [1,2000]                                                                           |
 
+##### Response parameters
 
-##### 返回参数
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| pairCode | string  |  币对  |
-
+|Parameter Name|Type| Description| |:------:|:----:|:--:| | close | int | Closing price | | high |
+int | Highest price | | low | int | Lowest price | | open | int | Opening price | | turnOver |
+string | Trading volume | | vol | string | Turnover | | pairCode | string | Currency pair |
 
 | Status | Meaning                                                 | Description |Schema|
 |--------|---------------------------------------------------------|-------------|---|
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
 | 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
-
 
 > response
 
@@ -139,12 +136,13 @@ func main() {
 
 ```
 
-
 ## OrderBook
 
-
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -158,13 +156,12 @@ print(response.text)
 
 ```
 
-
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
 fetch("{host}/public/v1/products/BTC_USDT/orderbook?interval=step5")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ``` 
 
 ```php
@@ -184,63 +181,61 @@ $response = $client->request('GET', '{host}/public/v1/products/BTC_USDT/orderboo
 echo $response->getBody();
 ```
 
- 
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/BTC_USDT/orderbook?interval=step5")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
-
-
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/BTC_USDT/orderbook?interval=step5"
+  url := "{host}/public/v1/products/BTC_USDT/orderbook?interval=step5"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
 
 <font class="httpget">GET</font> */public/v1/products/{product}/orderbook*
 
-Get a list of open orders for a product. The amount of detail shown can be customized with the level parameter.
+Get a list of open orders for a product. The amount of detail shown can be customized with the level
+parameter.
 
-#### 请求参数
+#### Request parameters
 
-
-|参数名|必选|类型| 说明                                                                                |
+|Parameter Name|Mandatory|Type|Description                                                                          |
 |:----    |:---|:----- |-----------------------------------------------------------------------------------|
-| product |是  |string |                                                                                   |
-| interval | 是   |string | *指标周期*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
+| product |Y  |string |                                                                                   |
+| interval | Y   |string | *Indicative
+period*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
+##### Response parameters
 
-##### 返回参数
 | Status | Meaning                                                 | Description |Schema|
 |--------|---------------------------------------------------------|-------------|---|
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
@@ -342,7 +337,10 @@ Get a list of open orders for a product. The amount of detail shown can be custo
 行情总览
 
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -356,13 +354,12 @@ print(response.text)
 
 ```
 
-
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
 fetch("{host}/public/v1/products/BTC_ETH/tickers")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ``` 
 
 ```php
@@ -382,45 +379,42 @@ $response = $client->request('GET', '{host}/public/v1/products/BTC_ETH/tickers',
 echo $response->getBody();
 ```
 
-
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/BTC_ETH/tickers")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
-
-
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/BTC_ETH/tickers"
+  url := "{host}/public/v1/products/BTC_ETH/tickers"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -429,26 +423,19 @@ func main() {
 
 Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
 
+##### Parameters
 
-##### 参数
-
-| 参数名     |必选|类型|说明|
+|Parameter Name    |Mandatory|Type|Description|
 |:--------|:---|:----- |-----   |
-| product |是  |string | 交易对   |
+| product |Y  |string | Currency pair   |
 
-##### 返回参数说明
+##### Specifications for Response parameters
 
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| pairCode | string  |  币对  |
+|Parameter Name|Type| Description| |:------:|:----:|:--:| | close | int | Closing price | | high |
+int | Highest price | | low | int | Lowest price | | open | int | Opening price | | turnOver |
+string | Trading volume | | vol | string | Turnover | | pairCode | string | Currency pair |
 
->response
+> response
 
 ```json
  {
@@ -456,37 +443,42 @@ Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
   "code": 200,
   "ts": 1641378730830,
   "msg": "success",
-  "data": [{
-    "open": "19.56",
-    "close": "48174.19",
-    "low": "1",
-    "high": "54969.49",
-    "turnOver": "2397481368.57161866",
-    "count": 0,
-    "vol": "49659.154689",
-    "pairCode": "BTC_USDT",
-    "change": "48154.63",
-    "changePercent": "2461.8931492842535787"
-  }, {
-    "open": "11.9",
-    "close": "11.9",
-    "low": "11.9",
-    "high": "11.9",
-    "turnOver": "0",
-    "count": 0,
-    "vol": "0",
-    "pairCode": "ETH_USDT",
-    "change": "0",
-    "changePercent": "0"
-  }]
+  "data": [
+    {
+      "open": "19.56",
+      "close": "48174.19",
+      "low": "1",
+      "high": "54969.49",
+      "turnOver": "2397481368.57161866",
+      "count": 0,
+      "vol": "49659.154689",
+      "pairCode": "BTC_USDT",
+      "change": "48154.63",
+      "changePercent": "2461.8931492842535787"
+    },
+    {
+      "open": "11.9",
+      "close": "11.9",
+      "low": "11.9",
+      "high": "11.9",
+      "turnOver": "0",
+      "count": 0,
+      "vol": "0",
+      "pairCode": "ETH_USDT",
+      "change": "0",
+      "changePercent": "0"
+    }
+  ]
 }
 ```
 
 ## Ticker
 
-
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -500,13 +492,12 @@ print(response.text)
 
 ```
 
-
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
 fetch("{host}/public/v1/products/ETH_USDT/ticker")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ``` 
 
 ```php
@@ -526,45 +517,42 @@ $response = $client->request('GET', '{host}/public/v1/products/ETH_USDT/ticker',
 echo $response->getBody();
 ```
 
-
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/ETH_USDT/ticker")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
-
-
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/ETH_USDT/ticker"
+  url := "{host}/public/v1/products/ETH_USDT/ticker"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -573,11 +561,11 @@ func main() {
 
 Gets snapshot information about the last trade (tick), best bid/ask and 24h volume.
 
-##### 参数
+##### Parameters
 
-| 参数名     |必选|类型| 说明  |
+|Parameter Name    |Mandatory|Type| Description  |
 |:--------|:---|:----- |-----|
-| product |是  |string | 币对  |
+| product |Y  |string | Currency pair |
 
 > response
 
@@ -601,23 +589,25 @@ Gets snapshot information about the last trade (tick), best bid/ask and 24h volu
 }
 ```
 
-##### 数据体参数说明
 
-|参数名|类型| 说明   |
+##### Specifications for data volume parameters
+
+|Parameter Name|Type| Description   |
 |:-----  |:-----|------|
-| close |int   | 收盘价格 |
-| high |int   | 最高价格   |
-| low |int   | 最低价格   |
-| open |int   | 开盘价格  |
-| turnOver |string   | 交易量  |
-| vol |string   | 交易额  |
-
-
+| close |int   | Closing price |
+| high |int   | Highest price   |
+| low |int   | Lowest price   |
+| open |int   | Opening price  |
+| turnOver |string   | Trading volume  |
+| vol |string   | Turnover  |
 
 ## Trade
 
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -631,13 +621,12 @@ print(response.text)
 
 ```
 
-
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
 fetch("{host}/public/v1/products/ETH_USDT/trade")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ``` 
 
 ```php
@@ -657,45 +646,42 @@ $response = $client->request('GET', '{host}/products/BTC_USDT/trade', [
 echo $response->getBody();
 ```
 
-
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/ETH_USDT/trade")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
-
-
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/ETH_USDT/trade"
+  url := "{host}/public/v1/products/ETH_USDT/trade"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -704,12 +690,11 @@ func main() {
 
 Gets a list the latest trades for a product.
 
-##### 参数
+##### Parameters
 
-| 参数名     |必选|类型|说明|
+|Parameter Name    |Mandatory|Type|Description|
 |:--------|:---|:----- |-----   |
-| product |是  |string | 交易对   |
-
+| product |Y  |string | Currency pair   |
 
 > response
 
@@ -731,21 +716,23 @@ Gets a list the latest trades for a product.
 }
 ```
 
-##### 返回参数说明
+##### Specifications for Response parameters
 
-|参数名|类型| 说明         |
+|Parameter Name|Type|Description   |
 |:-----  |:-----|------------|
 | direction |string   | buy / sell |
-| price |string   | 价格         |
-| vol |string   | 成交量        |
+| price |string   | Price         |
+| vol |string   | Trading volume        |
 
 ----
-
 
 ## Trades
 
 ```python
-python -m pip install requests
+python - m
+pip
+install
+requests
 
 import requests
 
@@ -759,13 +746,12 @@ print(response.text)
 
 ```
 
-
 ```javascript
 // npm install node-fetch
 const fetch = require("node-fetch")
 fetch("{host}/public/v1/products/ETH_USDT/trades?size=10")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
+.then(res => console.log(res.json()))
+.catch(err => console.log(err))
 ``` 
 
 ```php
@@ -785,45 +771,42 @@ $response = $client->request('GET', '{host}/public/v1/products/ETH_USDT/trades?s
 echo $response->getBody();
 ```
 
-
 ```java
-OkHttpClient client = new OkHttpClient();
+OkHttpClient client=new OkHttpClient();
 
-Request request = new Request.Builder()
+  Request request=new Request.Builder()
   .url("{host}/public/v1/products/ETH_USDT/trades?size=10")
   .get()
-  .addHeader("Accept", "application/json")
+  .addHeader("Accept","application/json")
   .build();
 
-Response response = client.newCall(request).execute();
+  Response response=client.newCall(request).execute();
 ```
-
-
 
 ```golang
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 )
 
 func main() {
 
-	url := "{host}/public/v1/products/ETH_USDT/trades?size=10"
+  url := "{host}/public/v1/products/ETH_USDT/trades?size=10"
 
-	req, _ := http.NewRequest("GET", url, nil)
+  req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Accept", "application/json")
+  req.Header.Add("Accept", "application/json")
 
-	res, _ := http.DefaultClient.Do(req)
+  res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+  defer res.Body.Close()
+  body, _ := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+  fmt.Println(res)
+  fmt.Println(string(body))
 
 }
 ```
@@ -832,12 +815,12 @@ func main() {
 
 Gets a list the latest trades for a product.
 
-##### 参数
+##### Parameters
 
-| 参数名     |必选| 类型     | 说明   |
+|Parameter Name    |Mandatory| Type     | Description   |
 |:--------|:---|:-------|------|
-| product |是  | string | 交易对  |
-| size       |是  | int      | 数据长度 |
+| product |Y  | string | Currency pair  |
+| size       |Y  | int      | Data length |
 
 > response
 
@@ -876,10 +859,10 @@ Gets a list the latest trades for a product.
 }
 ```
 
-##### 返回参数说明
+##### Specifications for Response parameters
 
-|参数名|类型| 说明         |
+|Parameter Name|Type|Description   |
 |:-----  |:-----|------------|
 | direction |string   | buy / sell |
-| price |string   | 价格         |
-| vol |string   | 成交量        |
+| price |string   | Price         |
+| vol |string   | Trading volume        |

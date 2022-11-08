@@ -23,15 +23,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
+|Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.type | 是  |string | 认证方式: <br/>`api`:apiKey认证;`token`:token认证     |
-| params.access-key     |是  |string | [鉴权说明](#auth)   |
-| params.access-sign     |是  |string | [鉴权说明](#auth)    |
-| params.access-timestamp     |是  |long | [鉴权说明](#auth)    |
-| event     |是  |string | 事件名 [事件列表](#events)  |
+| params.type | Y  |string | 认证方式: <br/>`api`:apiKey认证;`token`:token认证     |
+| params.access-key     |Y  |string | [Authentication Specifications](#auth)   |
+| params.access-sign     |Y  |string | [Authentication Specifications](#auth)    |
+| params.access-timestamp     |Y  |long | [Authentication Specifications](#auth)    |
+| event     |Y  |string  | Event名 [事件列表](#events)  |
 
 > response
 
@@ -44,7 +44,7 @@
 }
 ```
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
 | result    |string | [数据频道](#channels)|
 | data.result     |bool | 订阅是否成功 |
@@ -69,15 +69,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
+|Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | 是  |string | [订阅模块类型](#bizs)     |
-| params.type     |是  |string | [订阅业务类型](#types)  |
-| params.product     |是  |string | 产品信息   |
-| event     |是  |string | 事件名 [事件列表](#events)  |
-| zip     |是  |bool | 是否启用gzip |
+| params.biz | Y  |string | [订阅模块类型](#bizs)     |
+| params.type     |Y  |string | [订阅业务类型](#types)  |
+| params.product     |Y  |string | 产品信息   |
+| event     |Y  |string  | Event名 [事件列表](#events)  |
+| zip     |Y  |bool | Enable GZIP or not |
 
 > response
 
@@ -93,9 +93,9 @@
 }
 ```
 
-#### 返回参数
+#### Response parameters
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
 | channel    |string | [数据频道](#channels)|
 | biz    |string | [业务线](#bizs) |
@@ -123,7 +123,7 @@
 
 #### 推送数据
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
 | channel    |string | [数据频道](#channels)|
 | biz    |string | [业务线](#bizs) |
@@ -153,15 +153,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
+|Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | 是  |string | [订阅模块类型](#bizs)     |
-| params.type     |是  |string | [订阅业务类型](#types)  |
-| params.product     |是  |string | 产品名   |
-| event     |是  |string | 事件名 [事件列表](#events)  |
-| zip     |是  |bool | 是否启用gzip |
+| params.biz | Y  |string | [订阅模块类型](#bizs)     |
+| params.type     |Y  |string | [订阅业务类型](#types)  |
+| params.product     |Y  |string | 产品名   |
+| event     |Y  |string  | Event名 [事件列表](#events)  |
+| zip     |Y  |bool | Enable GZIP or not |
 
 > response
 
@@ -177,9 +177,9 @@
 }
 ```
 
-#### 返回参数
+#### Response parameters
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
 | channel    |string | [数据频道](#channels)|
 | biz    |string | [业务线](#bizs) |
@@ -190,29 +190,30 @@
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | schema |
+| Parameter Name | Parameter Description | Type | schema |
 | -------- | -------- | ----- |----- | 
-|order_id|订单编号|string||
-|product|商品|string||
+|order_id|Order ID|string||
+|product|Trading Pair|string||
 |side| buy/sell |string||
-|price|每单位基础货币的价格|string||
-|size|买入/卖出的基础货币数量|string||
-|filled_amount|成交数量|string||
-|funds|想要使用的报价货币数量|string||
-|filled_size| 成交金额 |string||
-|type|limit:限价单/market:市价单/|string||
-|status|状态|string||
+|price|Price per unit of base currency|string||
+|size|Quantity of base currency to buy/sell
+Status|string||
+|filled_amount|Amount of filled order|string||
+|funds|The amount of quotation currency desired to use|string||
+|filled_size| Value of filled order |string||
+|type|limit: limit order/market: market order/|string||
+|status|Status|string||
 
-`status`: 交易状态，取值范围0-7
+`status`: Transaction status, value range 0-7
 
-- 0: 已经收到订单
-- 1: 已经提交订单
-- 2: 订单部分成交
-- 3: 订单已完全成交
-- 4: 订单发起撤销
-- 5: 订单已经撤销
-- 6: 订单交易失败
-- 7: 订单被减量
+- 0: Order received
+- 1: Order submitted
+- 2:  Order partially filled
+- 3: Order fully filled
+- 4: Order being cancelled
+- 5: Order cancelled
+- 6:  Order transaction failed
+- 7: Order volume decreased
 
 
 
@@ -239,7 +240,7 @@ RESPONSE PARAMETERS
 
 #### 推送数据
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
 | channel    |string | [数据频道](#channels)|
 | biz    |string | [业务线](#bizs) |
@@ -251,7 +252,7 @@ RESPONSE PARAMETERS
 
 <a name="events"></a>
 
-|Event 名称|类型|说明|
+|Event 名称|Type|Description|
 |:----    |:----- |-----   |
 | sub    |string | 订阅事件,由客户端主动发起|
 | login    |string | 登录事件，由客户端主动发起 |
@@ -260,7 +261,7 @@ RESPONSE PARAMETERS
 
 <a name="bizs"></a>
 
-|Biz 名称|类型|说明|
+|Biz 名称|Type|Description|
 |:----    |:----- |-----   |
 | exchange    |string | 现货交易|
 
@@ -268,7 +269,7 @@ RESPONSE PARAMETERS
 
 <a name="types"></a>
 
-|Type 名称|类型|说明|
+|Type 名称|Type|Description|
 |:----    |:----- |-----   |
 | assets    |string | 资产变更|
 | orders    |string | 订单状态变更|

@@ -62,3 +62,7 @@ doc/
 # Vagrant artifacts
 ubuntu-*-console.log
 /vendor/
+.DS_Store
+.bundle/
+/.bundle/
+Gemfile.lock

@@ -1,19 +1,19 @@
-# 账户信息
+# Account information
 
-## 获取所有账户余额信息
+## Obtaining all account balance information
 
 <font class="httpget">GET</font> */v1/accounts*
 
 
-获取用户所有的交易账户信息
+Obtaining all transaction account information of the user
 
-**冻结账户**
+**Unavailable balance**
 
-当用户下单完成，自己会被划拨到冻结账户。被划拨到冻结账户的资金不能被用于其他交易，以及提现操作。当订单成交或被取消，冻结账户的资金会被释放。
+After the user finishes placing an order, it will be assigned to the unavailable balance. Funds assigned to the unavailable balance cannot be used in other transactions or withdrawal operations. When the order is closed or cancelled, the funds assigned to the unavailable balance will be released.
 
-> 鉴权信息
+> Authentication information
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
 
 > REQUEST EXAMPLE
 
@@ -137,20 +137,20 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | schema |
+| Parameter Name | Parameter Description | Type | schema |
 | -------- | -------- | ----- |----- | 
-|available|可用额度|string||
-|hold|冻结额度|string||
-|balance|余额,包含 可用额度为冻结额度之和|string||
-|currency|资产名称|string||
+|available|Available balance|string||
+|hold|Unavailable balance|string||
+|balance|Balance, including the sum of available and on-hold credits|string||
+|currency|Asset name|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
@@ -166,31 +166,31 @@ RESPONSE PARAMETERS
 ```
 
 
-## 获取单个账户余额信息
+## Obtaining all account balance information
 
 
 <font class="httpget">GET</font> */v1/accounts/{currency}*
 
 
-获取用户指定的交易账户信息
+Obtaining transaction account information specified by the user
 
-**冻结账户**
+**On-hold Account**
 
-当用户下单完成，自己会被划拨到冻结账户。被划拨到冻结账户的资金不能被用于其他交易，以及提现操作。当订单成交或被取消，冻结账户的资金会被释放。
+After the user finishes placing an order, it will be assigned to the On-hold Account. Funds assigned to the On-hold Account cannot be used in other transactions or withdrawal operations. When the order is closed or cancelled, the funds in the On-hold Account will be released.
 
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | schema |
+| Parameter Name | Parameter Description | Mandatory  | Data Type | schema |
 | -------- | -------- | -------- | -------- | ------ |
-|currency|资产名称，例:BTC||true|string||
+|currency|Asset name, e.g. BTC||true|string||
 
 
-> 鉴权信息
+> Authentication information
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
 
 <aside>
 RESPONSE STATUS
@@ -198,20 +198,20 @@ RESPONSE STATUS
 
 Status Code | Meaning | Example
 ---------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | schema |
+| Parameter Name | Parameter Description | Type | schema |
 | -------- | -------- | ----- |----- | 
-|available|可用额度|string||
-|hold|冻结额度|string||
-|balance|余额,包含 可用额度为冻结额度之和|string||
-|currency|资产名称|string||
+|available|Available balance|string||
+|hold|Unavailable balance|string||
+|balance|Balance, including the sum of available and on-hold credits|string||
+|currency|Asset name|string||
 
 > <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 

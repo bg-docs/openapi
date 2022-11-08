@@ -1,20 +1,16 @@
 # interface
 
-**反馈邮箱**
+**Feedback email**
 
 Email: <a href="mailto:api@bg.exchange">api@bg.exchange</a>
 
-**请求地址**
+**Request URL**
 
 HOST: `https:api.bg.exchange/hk/`
 
-# interface2
 
-**反馈邮箱**
-
-Email: <a href="mailto:api@bg.exchange">api@bg.exchange</a>
-
-**请求地址**
-
-HOST: `https:api.bg.exchange/hk/`
-
+# Glossary
+|Term|Meaning|
+|---|---|
+|currency|the currency, e.g. BTC, USDT, HKD, USD|
+|product|the trading product, e.g. BTC_HKD|

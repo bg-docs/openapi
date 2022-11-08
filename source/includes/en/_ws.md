@@ -21,16 +21,16 @@
 	}	
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
+|Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params .biz | 是  |string |      |
-| params .type     |是  |string | 订阅类型类型 |
-| params .product     |是  |string | 币对   |
-| params .interval     |是  |string | 周期   |
-| event     |是  |string | 事件 Subscribe  |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |      |
+| params .type     |Y  |string | Subscription type |
+| params .product     |Y  |string | Currency pair   |
+| params .interval     |Y  |string | Interval   |
+| event     |Y  |string | Event Subscribe  |
+| zip     |Y  |bool | Enable GZIP or not |
 
 
 > response
@@ -42,25 +42,24 @@
 	"biz": "market",
 	"type": "candles",
 	"product": "ETH_BNB",
-	"product":"ETH_BNB",
 	"interval": "1day",
 	"ts": 1639655425910,
 	"status": "ok"
 }
 ```
 
-#### 返回参数
-|参数名|类型|说明|
+#### Response parameters
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
+| type | string |  Subscription type |
+| interval     |string | Interval |
+| product    |string | Currency pair|
+| data .open     |string | Opening |
+| data .close    |string | Closing |
+| data .low     |string | Lowest |
+| data .high     |string | Highest |
+| data .vol     |string | Volume |
+| data .turnOver     |string | Trading volume |
 | data .count     |string |  |
 
 
@@ -81,16 +80,16 @@
 	}	
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明            |
+|Parameter Name|Mandatory|Type|Description      |
 |:----    |:---|:----- |---------------|
-| params .biz | 是  |string |               |
-| params .type     |是  |string | 订阅类型类型        |
-| params .product     |是  |string | 币对            |
-| params .interval     |是  |string | 周期            |
-| event     |是  |string | 事件 UnSubscribe |
-| zip     |是  |bool | 是否启用gzip      |
+| params .biz | Y  |string |               |
+| params .type     |Y  |string | Subscription type        |
+| params .product     |Y  |string | Currency pair            |
+| params .interval     |Y  |string | Interval            |
+| event     |Y  |string | Event Unsubscribe |
+| zip     |Y  |bool | Enable GZIP or not      |
 
 
 > response
@@ -108,18 +107,18 @@
 }
 ```
 
-#### 返回参数
-|参数名|类型|说明|
+#### Response parameters
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
+| type | string |  Subscription type
+| interval     |string | Interval |
+| product    |string | Currency pair|
+| data .open     |string | Opening |
+| data .close    |string | Closing |
+| data .low     |string | Lowest |
+| data .high     |string | Highest |
+| data .vol     |string | Volume |
+| data .turnOver     |string | Trading volume |
 | data .count     |string |  |
 
 
@@ -176,14 +175,14 @@
 ```
 
 
-|参数名|必选|类型| 说明       |
+|Parameter Name|Mandatory|Type|Description |
 |:----    |:---|:----- |----------|
-| params .biz | 是  |string |          |
-| params .type     |是  |string | 订阅类型类型   |
-| params .product     |是  |string | 币对       |
-| params .interval     |是  |string | 周期       |
-| event     |是  |string | 事件 Subscribe      |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |          |
+| params .type     |Y  |string | Subscription type   |
+| params .product     |Y  |string | Currency pair       |
+| params .interval     |Y  |string | Interval       |
+| event     |Y  |string | Event Subscribe      |
+| zip     |Y  |bool | Enable GZIP or not |
 
 
 
@@ -202,14 +201,14 @@
 
 #### UnSubscribe
 
-|参数名|必选|类型| 说明       |
+|Parameter Name|Mandatory|Type|Description |
 |:----    |:---|:----- |----------|
-| params .biz | 是  |string |          |
-| params .type     |是  |string | 订阅类型类型   |
-| params .product     |是  |string | 币对       |
-| params .interval     |是  |string | 周期       |
-| event     |是  |string | 事件 Subscribe      |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |          |
+| params .type     |Y  |string | Subscription type   |
+| params .product     |Y  |string | Currency pair       |
+| params .interval     |Y  |string | Interval       |
+| event     |Y  |string | Event Subscribe      |
+| zip     |Y  |bool | Enable GZIP or not |
 
 ```json
 
@@ -236,15 +235,15 @@
 ```
 #### FEED 
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:---|:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .price     |string | 价格 |
-| data .vol     |string | 成交 |
-| data .ts     |int  | 时间戳 |
-| data .direction     |string |  方向|
+| type | string |  Subscription type
+| interval     |string | Interval |
+| product    |string | Currency pair|
+| data .price     |string | Price |
+| data .vol     |string | Volume |
+| data .ts     |int  | Timestamp |
+| data .direction     |string |  Direction |
 
 ```json
 
@@ -292,14 +291,14 @@
 
 #### Subscribe
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | _周期_ |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| params .interval     |Y  |string | Interval |
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 
 > response
@@ -319,14 +318,14 @@
 
 #### UnSubscribe 
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | _周期_ |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| params .interval     |Y  |string | Interval |
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 ```json
 {
@@ -399,13 +398,13 @@
 	}	
 ```
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 ```json
 {
   "id": "",
@@ -433,13 +432,13 @@
 	}	
 ```
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 ```json
 {
@@ -494,14 +493,14 @@
 ```
 
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | 周期 |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| params .interval     |Y  |string | Interval |
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 
 > response
@@ -536,14 +535,14 @@
 ```
 
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | 周期 |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params .biz | Y  |string |   |
+| params .type     |Y  |string | Subscription type  |
+| params .product     |Y  |string | Currency pair|
+| params .interval     |Y  |string | Interval |
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 
 > response
@@ -558,17 +557,17 @@
 ```
 #### FEED 
 
-|参数名|类型|说明|
+|Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
+| type | string |  Subscription type
+| interval     |string | Interval |
+| product    |string | Currency pair|
+| data .open     |string | Opening |
+| data .close    |string | Closing |
+| data .low     |string | Lowest |
+| data .high     |string | Highest |
+| data .vol     |string | Volume |
+| data .turnOver     |string | Trading volume |
 | data .count     |string |  |
 
 > push 
@@ -618,29 +617,29 @@
 	"zip":false
 }
 ```
-| 参数名             | 必选  |类型| 说明       |
+|Parameter Name            |Mandatory|Type|Description |
 |:----------------|:----|:----- |----------|
-| params.biz      | 是   |string |          |
-| params.type     | 是   |string | 类型       |
-| params.product | 是   |string | 币对       |
-| params.interval | 是   |string | 周期       |
-| params.from     | 是   |string | 开始时间     |
-| params.to       | 是   |string | 结束时间     |
-| event           | 是   |string | 事件       |
-| zip             | 是   |bool | 是否启用gzip |
+| params.biz      | Y   |string |          |
+| params.type     | Y   |string | Type       |
+| params.product | Y   |string | Currency pair       |
+| params.interval | Y   |string | Interval       |
+| params.from     | Y   |string  | Start time     |
+| params.to       | Y   |string  | End time     |
+| event           | Y   |string  | Event       |
+| zip             | Y   |bool | Enable GZIP or not |
 
 
 ###### 返回结构
 
-|参数名|类型|   说明 |
+|Parameter Name|Type|   Description|
 |:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| product | string  |  币对  |
+| close | int  |   Closing price |
+| high | int  |   Highest price |
+| low | int  |   Lowest price |
+| open | int  |  Opening price |
+| turnOver | string  |  Trading volume |
+| vol | string  |  Turnover |
+| product | string  |  Currency pair |
 
 
 ```json
@@ -677,13 +676,13 @@
 
 #### 请求结构
 
-|参数名|必选|类型|说明|
+|Parameter Name|Mandatory|Type|Description|
 |:----    |:---|:----- |-----   |
-| params.biz | 是  |string |   |
-| params.type     |否  |string | 类型 |
-| params.product     |否  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+| params.biz | Y  |string |   |
+| params.type      | N  |string | Type |
+| params.product      | N  |string | Currency pair|
+| event     |Y  |string | Event |
+| zip     |Y  |bool | Enable GZIP or not |
 
 ```json
 	{
@@ -698,17 +697,17 @@
 }
 ```
 
-#### 返回参数
+#### Response parameters
 
-|参数名|类型|   说明 |
+|Parameter Name|Type|   Description|
 |:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| product | string  |  币对  |
+| close | int  |   Closing price |
+| high | int  |   Highest price |
+| low | int  |   Lowest price |
+| open | int  |  Opening price |
+| turnOver | string  |  Trading volume |
+| vol | string  |  Turnover |
+| product | string  |  Currency pair |
 
 ```json
 {
