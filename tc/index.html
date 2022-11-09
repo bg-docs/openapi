@@ -1056,7 +1056,7 @@ RESPONSE PARAMETERS
 
 </aside>
 
-<p><code>product</code>: 商品</p>
+<p><code>product</code>: 交易對</p>
 
 <p><code>base_currency</code>: 基礎資產名</p>
 
@@ -1091,7 +1091,7 @@ RESPONSE PARAMETERS
 
 <p><code>min_market_taker_trade_rate</code> : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。</p>
 
-<p><code>max_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
+<p><code>max_market_trade_usd_per_order</code> : 市價單筆最大下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
 <p><code>min_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
@@ -1105,7 +1105,7 @@ RESPONSE PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>商品</td>
+<td>交易對</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1268,7 +1268,7 @@ RESPONSE STATUS
 RESPONSE PARAMETERS
 </aside>
 
-<p><code>product</code>: 商品</p>
+<p><code>product</code>: 交易對</p>
 
 <p><code>base_currency</code>: 基礎資產名</p>
 
@@ -1303,7 +1303,7 @@ RESPONSE PARAMETERS
 
 <p><code>min_market_taker_trade_rate</code> : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。</p>
 
-<p><code>max_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
+<p><code>max_market_trade_usd_per_order</code> : 市價單筆最大下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
 <p><code>min_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
@@ -1317,7 +1317,7 @@ RESPONSE PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>商品</td>
+<td>交易對</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2650,13 +2650,13 @@ REQUEST PARAMETERS
 
 <p><strong>limit order parameters</strong></p>
 
-<p><code>price</code>: 商品價格</p>
+<p><code>price</code>: 交易對價格</p>
 
-<p><code>size</code>: 買入或者賣出商品的數量</p>
+<p><code>size</code>: 買入或者賣出交易對的數量</p>
 
 <p><strong>market order parameters</strong></p>
 
-<p><code>size</code>: 期望交易數量。需要<code>side</code> 為 <code>sell</code>，代表以最新成交價進行賣出，期望最多賣出的商品數。</p>
+<p><code>size</code>: 期望交易數量。需要<code>side</code> 為 <code>sell</code>，代表以最新成交價進行賣出，期望最多賣出的交易對數。</p>
 
 <p><code>funds</code>: 期望交易額度。需要<code>side</code> 為 <code>buy</code>，代表以最新成交價進行買入，期望花費的最多資產額度。</p>
 
@@ -3243,7 +3243,7 @@ REQUEST PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>商品id</td>
+<td>交易對id</td>
 <td>query</td>
 <td>false</td>
 <td>string</td>
@@ -3388,7 +3388,7 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-<p>此接口可查詢單個訂單詳情，或根據商品的多個訂單</p>
+<p>此接口可查詢單個訂單詳情，或根據交易對的多個訂單</p>
 
 <ul>
 <li><code>order_id</code> 若存在，將優先查找該訂單詳情，其他參數將被忽略。</li>
@@ -3448,7 +3448,7 @@ REQUEST PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>商品id</td>
+<td>交易對id</td>
 <td>query</td>
 <td>false</td>
 <td>string</td>
@@ -3677,14 +3677,14 @@ RESPONSE EXAMPLE
 </span></code></pre></div><h2 id='0461b92f17'>取消所有訂單</h2>
 <p><font class="httpdelete">DELETE</font> <em>/v1/orders</em></p>
 
-<p>此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應商品ID的所有未成交訂單，並對這些訂單異步進行取消操作。
+<p>此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應交易對ID的所有未成交訂單，並對這些訂單異步進行取消操作。
 用戶可以通過<a href="#order_detail">/orders/{order_id}</a> 查詢單個訂單的成交狀態。</p>
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-<p><code>product</code>: 被撤銷的商品ID,例如 &quot;BTC_USD&quot;</p>
+<p><code>product</code>: 被撤銷的交易對ID,例如 &quot;BTC_USD&quot;</p>
 
 <table><thead>
 <tr>
@@ -3697,7 +3697,7 @@ REQUEST PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>商品id</td>
+<td>交易對id</td>
 <td>query</td>
 <td>true</td>
 <td>string</td>
@@ -5395,7 +5395,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>商品</td>
+<td>交易對</td>
 <td>string</td>
 <td></td>
 </tr>

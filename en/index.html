@@ -2523,9 +2523,9 @@ RESPONSE PARAMETERS
 
 <p><code>status</code>:  Currency status</p>
 
-<p><code>type</code>: Currency type, <code>fiat</code> is legal tender, <code>crypto</code> is digital currency</p>
+<p><code>type</code>: Currency type, <code>fiat</code> is legal tender, <code>crypto</code> is virtual asset</p>
 
-<p><code>details</code>: Blockchain information, only a digital currency type will contain this information</p>
+<p><code>details</code>: Blockchain information, only a virtual asset type will contain this information</p>
 
 <p><code>deposit_status</code>: Fiat deposit status</p>
 
@@ -2534,7 +2534,7 @@ RESPONSE PARAMETERS
 <ul>
 <li><code>dispaly_name</code>: Display name</li>
 <li><code>network_confirmations</code>: Minimum number of network confirmations</li>
-<li><code>currency</code>: Digital currency identifier</li>
+<li><code>currency</code>: virtual asset identifier</li>
 <li><code>accuracy</code>: Accuracy of crypto deposits and withdrawals</li>
 <li><code>deposit_status</code>: Crypto deposit status</li>
 <li><code>withdraw_status</code>:  Crypto withdrawal status</li>
@@ -2610,9 +2610,9 @@ RESPONSE PARAMETERS
 
 <p><code>status</code>:  Currency status</p>
 
-<p><code>type</code>: Currency type, <code>fiat</code> is legal tender, <code>crypto</code> is digital currency</p>
+<p><code>type</code>: Currency type, <code>fiat</code> is legal tender, <code>crypto</code> is virtual asset</p>
 
-<p><code>details</code>: Blockchain information, only a digital currency type will contain this information</p>
+<p><code>details</code>: Blockchain information, only a virtual asset type will contain this information</p>
 
 <p><code>deposit_status</code>: Deposit status</p>
 
@@ -2621,7 +2621,7 @@ RESPONSE PARAMETERS
 <ul>
 <li><code>dispaly_name</code>: Display name</li>
 <li><code>network_confirmations</code>: Minimum number of network confirmations</li>
-<li><code>currency</code>: Digital currency identifier</li>
+<li><code>currency</code>: virtual asset identifier</li>
 <li><code>accuracy</code>: Accuracy of crypto deposits and withdrawals</li>
 <li><code>deposit_status</code>:  Crypto deposit status</li>
 <li><code>withdraw_status</code>: Crypto withdrawal status</li>
@@ -2660,7 +2660,7 @@ REQUEST PARAMETERS
 
 <p><strong>common parameters</strong></p>
 
-<p><code>product</code>: Must be an existing product id. For example, <code>BTC_USD</code>. The list of products is available via  <a href="#Products">products</a>.</p>
+<p><code>product</code>: Must be an existing trading pair id. For example, <code>BTC_USD</code>. The list of products is available via  <a href="#Products">products</a>.</p>
 
 <p><code>side</code>:  <code>buy</code> is buy, <code>sell</code> is sell.</p>
 
@@ -2961,7 +2961,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>Product ID</td>
+<td>Trading Pair ID</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -3157,7 +3157,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>Product ID</td>
+<td>Trading Pair ID</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -3380,7 +3380,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>Product ID</td>
+<td>Trading Pair ID</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -3563,7 +3563,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>Product ID</td>
+<td>Trading Pair ID</td>
 <td>string</td>
 <td></td>
 </tr>
