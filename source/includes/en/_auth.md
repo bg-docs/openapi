@@ -1,6 +1,6 @@
 # Authentication information
 
-<a id="auth"></a>
+<a id="Authentication Specifications"></a>
 
 Each user can create up to 50 APIKeys;
 
@@ -38,7 +38,7 @@ Generate signatures using OpenAPiUtils.createSign
 |params|string| Transfer data content; "" for ws sign calculation|
 |timestamp|string| Current timestamp e.g.`2022-01-08T07:19:56.339Z`,or millisecond timestamp |
 
-> 计算http请求 sign 
+> Sign http request
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
@@ -49,7 +49,7 @@ Generate signatures using OpenAPiUtils.createSign
   s,timestamp);
 ```
 
-> 计算web socket 请求 sign
+> Sign web socket request
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
@@ -58,7 +58,7 @@ Generate signatures using OpenAPiUtils.createSign
 
 
 
-> sign 生成算法工具类
+> Generation algorithm tool class
 
 ```java
 import org.apache.commons.codec.binary.Base64;
@@ -83,13 +83,13 @@ public class OpenAPiUtils {
   }
 
   /**
-   * 计算签名
+   * sign
    * @param method POST or GET or DELETE
-   * @param secretKey 例：HKBGE-xxxxx
-   * @param requestPath 例：/v1/orders
+   * @param secretKey for example：HKBGE-xxxxx
+   * @param requestPath for example：/v1/orders
    * @param queryString Request parameters
-   * @param body string GET时为空
-   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
+   * @param body string empty when method is `GET`
+   * @param timestamp  for example：2022-01-08T07:19:56.339Z
    * @return string
    */
   public static String createSign(String method, String secretKey, String requestPath, String queryString, String body, String timestamp) {

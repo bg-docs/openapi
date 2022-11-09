@@ -62,6 +62,7 @@ res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
+
 ```php
 <?php
 
@@ -131,6 +132,7 @@ func main() {
   fmt.Println(string(body))
 }
 ```
+
 <aside>
 RESPONSE STATUS
 </aside>

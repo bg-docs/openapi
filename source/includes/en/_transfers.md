@@ -19,7 +19,7 @@ Transfer funds from the Fund Account to a specified Trading Account.
 
 > Authentication information
 
-> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
 
 
 <aside>
@@ -47,7 +47,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -85,7 +85,7 @@ Transfer funds from the Trading Account to the Fund Account. Withdrawal operatio
 
 > Authentication information
 
-> For the authentication information of private information, please refer to [Authentication Specifications](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
 
 
 <aside>
@@ -113,7 +113,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>

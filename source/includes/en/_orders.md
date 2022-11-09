@@ -62,7 +62,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -110,7 +110,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -195,7 +195,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -290,7 +290,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -363,7 +363,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -434,7 +434,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -475,7 +475,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
@@ -519,7 +519,7 @@ RESPONSE STATUS
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#auth) | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>

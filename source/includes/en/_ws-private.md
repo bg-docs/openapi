@@ -5,8 +5,7 @@
 
 ## Login
 
-进行WS通道用户认证。只有认证过的通道才可以进行订阅用户的资产信息以及订单状态变化信息
-
+User authentication conducted through web socket channels. Only authenticated channels can process subscribers’ information on the assets and changes in order status.
 ### Subscribe
 
 > request
@@ -27,11 +26,11 @@
 
 |Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.type | Y  |string | 认证方式: <br/>`api`:apiKey认证;`token`:token认证     |
-| params.access-key     |Y  |string | [Authentication Specifications](#auth)   |
-| params.access-sign     |Y  |string | [Authentication Specifications](#auth)    |
-| params.access-timestamp     |Y  |long | [Authentication Specifications](#auth)    |
-| event     |Y  |string  | Event名 [事件列表](#events)  |
+| params.type | Y  |string | Authentication method: `api`: apiKey authentication; `token`: token authentication     |
+| params.access-key     |Y  |string | [Authentication Specifications](#Authentication Specifications)   |
+| params.access-sign     |Y  |string | [Authentication Specifications](#Authentication Specifications)    |
+| params.access-timestamp     |Y  |long | [Authentication Specifications](#Authentication Specifications)    |
+| event     |Y  |string  | Event name [List of events](#events)  |
 
 > response
 
@@ -46,13 +45,12 @@
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| result    |string | [数据频道](#channels)|
-| data.result     |bool | 订阅是否成功 |
+| result    |string | [Data channel](#channels)|
+| data.result     |bool | Subscription successful or not |
 
 ## Assets
 
-订阅用户的资产变更。目前只支持按照产品进行订阅。订阅全量的资产变更信息正在开发中。
-
+Subscription to the user’s balance changes. Only asset-based subscription is supported at the moment. Subscription to full asset change information is under development.
 ### Subscribe
 
 > request
@@ -73,10 +71,10 @@
 
 |Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | Y  |string | [订阅模块类型](#bizs)     |
-| params.type     |Y  |string | [订阅业务类型](#types)  |
-| params.product     |Y  |string | 产品信息   |
-| event     |Y  |string  | Event名 [事件列表](#events)  |
+| params.biz | Y  |string | [Subscription module type](#bizs)     |
+| params.type     |Y  |string | [Subscription business type](#bizs)  |
+| params.product     |Y  |string | Product information   |
+| event     |Y  |string  | Event name [List of events](#events)  |
 | zip     |Y  |bool | Enable GZIP or not |
 
 > response
@@ -97,11 +95,11 @@
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| data.result     |bool | 订阅是否成功 |
+| channel    |string | [Data channel](#channels)|
+| biz    |string | [Subscription module type](#bizs) |
+| type | string |  [Subscription business type](#bizs) |
+| product    |string Product name|
+| data.result     |bool | Subscription successful or not |
 
 > feed
 
@@ -125,17 +123,17 @@
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| $data.currency     |string | 币种名称 |
-| $data.available     |bigdecimal | 可用数量名称 |
-| $data.hold     |bigdecimal | 冻结数量币种名称 |
+| channel    |string | [Data channel](#channels)|
+| biz    |string |[Subscription module type](#bizs) |
+| type | string |  [Subscription business type](#bizs) |
+| product    |string | Product name|
+| $data.currency     |string | Currency name |
+| $data.available     |bigdecimal | Name of available quantity |
+| $data.hold     |bigdecimal | Name of currency and quantity on hold |
 
 ## Orders
 
-订阅所有订单的状态变化
+Subscription to status changes of all orders
 
 ### Subscribe
 
@@ -157,10 +155,10 @@
 
 |Parameter Name|Mandatory|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | Y  |string | [订阅模块类型](#bizs)     |
-| params.type     |Y  |string | [订阅业务类型](#types)  |
-| params.product     |Y  |string | 产品名   |
-| event     |Y  |string  | Event名 [事件列表](#events)  |
+| params.biz | Y  |string | [Subscription module type](#bizs)     |
+| params.type     |Y  |string | [Subscription business type](#bizs)  |
+| params.product     |Y  |string Product name   |
+| event     |Y  |string  | Event name [List of events](#events)  |
 | zip     |Y  |bool | Enable GZIP or not |
 
 > response
@@ -181,11 +179,11 @@
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| data.result     |bool | 订阅是否成功 |
+| channel    |string | [Data channel](#channels)|
+| biz    |string |[Subscription module type](#bizs) |
+| type | string |  [Subscription business type](#bizs) |
+| product    |string Product name|
+| data.result     |bool | Subscription successful or not |
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -242,34 +240,32 @@ Status|string||
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| $data    |object | [订单详情](#order_detail) |
-
-## Event 列表
+| channel    |string | [Data channel](#channels)|
+| biz    |string |[Subscription module type](#bizs) |
+| type | string |  [Subscription business type](#bizs) |
+| product    |string Product name|
+| $data    |object | [Order details](#order_detail) |
 
 <a name="events"></a>
+## Event list
 
-|Event 名称|Type|Description|
+|Event name|Type|Description|
 |:----    |:----- |-----   |
-| sub    |string | 订阅事件,由客户端主动发起|
-| login    |string | 登录事件，由客户端主动发起 |
-
-## Biz 列表
+| sub    |string | Subscription event, initiated by the client|
+| login    |string | Login event, initiated by the client |
 
 <a name="bizs"></a>
+## Biz list
 
-|Biz 名称|Type|Description|
+|Biz Name|Type|Description|
 |:----    |:----- |-----   |
-| exchange    |string | 现货交易|
+| exchange    |string | Spot trading|
 
-## Type 列表
+## Type list
 
 <a name="types"></a>
 
-|Type 名称|Type|Description|
+|Type name|Type|Description|
 |:----    |:----- |-----   |
-| assets    |string | 资产变更|
-| orders    |string | 订单状态变更|
+| assets    |string | Change of asset|
+| orders    |string | Change of order status|

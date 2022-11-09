@@ -93,18 +93,24 @@ includes [`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
 
 |Parameter Name|Mandatory|Type|                                                                                                                                                                说明                                                                                                                                                                |
 |:----    |:----|:----- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| product | Y  |string |                                                                                          币对 交易对                                                                                          |
+| product | Y  |string |                                                                                          Trading pair                                                                                   |
 | period | Y   |string | *Indicative
-period*  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
-|start     | Y   |string |                                                                               timestamp 毫秒 开始  (毫秒)                                                                               |
-|end     | Y   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
-|size     | Y   |string |                                                                          [1,2000]                                                                                                                                                       Data length  [1,2000]                                                                           |
+period*  | Y | enum | [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
+|start     | Y   |string |                                                                               Start time (ms) |
+|end     | Y   |string |                                                                                                                                                            End time (ms)                                                                                                                                                            |
+|size     | Y   |string |                                                                                                                                                                                                                          Data length  [1,2000]                                                                           |
 
 ##### Response parameters
 
-|Parameter Name|Type| Description| |:------:|:----:|:--:| | close | int | Closing price | | high |
-int | Highest price | | low | int | Lowest price | | open | int | Opening price | | turnOver |
-string | Trading volume | | vol | string | Turnover | | pairCode | string | Currency pair |
+|Parameter Name|Type| Description| 
+|:------:|:----:|:--:| 
+| close | int | Closing price |
+| high | int | Highest price |
+| low | int | Lowest price | 
+| open | int | Opening price | 
+| turnOver | string | Trading volume |
+| vol | string | Turnover |
+| pairCode | string | Currency pair |
 
 | Status | Meaning                                                 | Description |Schema|
 |--------|---------------------------------------------------------|-------------|---|
@@ -231,8 +237,8 @@ parameter.
 |Parameter Name|Mandatory|Type|Description                                                                          |
 |:----    |:---|:----- |-----------------------------------------------------------------------------------|
 | product |Y  |string |                                                                                   |
-| interval | Y   |string | *Indicative
-period*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
+| interval | Y   |string | *Indicative |
+| period*  | Y | enum | step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
 ##### Response parameters
 
@@ -334,7 +340,7 @@ period*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font
 
 ## Tickers
 
-行情总览
+Market overviews
 
 ```python
 python - m
@@ -431,9 +437,15 @@ Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
 
 ##### Specifications for Response parameters
 
-|Parameter Name|Type| Description| |:------:|:----:|:--:| | close | int | Closing price | | high |
-int | Highest price | | low | int | Lowest price | | open | int | Opening price | | turnOver |
-string | Trading volume | | vol | string | Turnover | | pairCode | string | Currency pair |
+|Parameter Name|Type| Description|
+|:------:|:----:|:--:| 
+| close | int | Closing price | 
+| high | int | Highest price | 
+| low | int | Lowest price |
+| open | int | Opening price | 
+| turnOver | string | Trading volume |
+| vol | string | Turnover | 
+| pairCode | string | Currency pair |
 
 > response
 
