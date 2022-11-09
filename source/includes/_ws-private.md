@@ -193,7 +193,7 @@ RESPONSE PARAMETERS
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
 |order_id|订单编号|string||
-|product|商品|string||
+|product|交易对|string||
 |side| buy/sell |string||
 |price|每单位基础货币的价格|string||
 |size|买入/卖出的基础货币数量|string||

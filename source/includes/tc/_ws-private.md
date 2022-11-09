@@ -193,7 +193,7 @@ RESPONSE PARAMETERS
 | 參數名稱 | 參數說明 | 類型 | schema |
 | -------- | -------- | ----- |----- | 
 |order_id|訂單編號|string||
-|product|商品|string||
+|product|交易對|string||
 |side| buy/sell |string||
 |price|每單位基礎貨幣的價格|string||
 |size|買入/賣出的基礎貨幣數量|string||

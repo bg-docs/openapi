@@ -20,7 +20,7 @@ RESPONSE PARAMETERS
 
 </aside>
 
-`product`: 商品
+`product`: 交易對
 
 `base_currency`: 基礎資產名
 
@@ -56,13 +56,13 @@ RESPONSE PARAMETERS
 
 `min_market_taker_trade_rate` : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。
 
-`max_market_trade_usd_per_order` : 市價單筆最小下單金額。該金額會被折合成`美元`進行計算。
+`max_market_trade_usd_per_order` : 市價單筆最大下單金額。該金額會被折合成`美元`進行計算。
 
 `min_market_trade_usd_per_order` : 市價單筆最小下單金額。該金額會被折合成`美元`進行計算。
 
 | 參數名稱 | 參數說明 | 類型 | schema |
 | -------- | -------- | ----- |----- | 
-|product|商品|string||
+|product|交易對|string||
 |base_currency|基礎資產|string||
 |quote_currency|計價資產名|string||
 |display_name|顯示名稱|string||
@@ -128,7 +128,7 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`product`: 商品
+`product`: 交易對
 
 `base_currency`: 基礎資產名
 
@@ -164,13 +164,13 @@ RESPONSE PARAMETERS
 
 `min_market_taker_trade_rate` : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。
 
-`max_market_trade_usd_per_order` : 市價單筆最小下單金額。該金額會被折合成`美元`進行計算。
+`max_market_trade_usd_per_order` : 市價單筆最大下單金額。該金額會被折合成`美元`進行計算。
 
 `min_market_trade_usd_per_order` : 市價單筆最小下單金額。該金額會被折合成`美元`進行計算。
 
 | 參數名稱 | 參數說明 | 類型 | schema |
 | -------- | -------- | ----- |----- | 
-|product|商品|string||
+|product|交易對|string||
 |base_currency|基礎資產|string||
 |quote_currency|計價資產名|string||
 |display_name|顯示名稱|string||

@@ -34,13 +34,13 @@ REQUEST PARAMETERS
 
 **limit order parameters**
 
-`price`: 商品價格
+`price`: 交易對價格
 
-`size`: 買入或者賣出商品的數量
+`size`: 買入或者賣出交易對的數量
 
 **market order parameters**
 
-`size`: 期望交易數量。需要`side` 為 `sell`，代表以最新成交價進行賣出，期望最多賣出的商品數。
+`size`: 期望交易數量。需要`side` 為 `sell`，代表以最新成交價進行賣出，期望最多賣出的交易對數。
 
 `funds`: 期望交易額度。需要`side` 為 `buy`，代表以最新成交價進行買入，期望花費的最多資產額度。
 
@@ -279,7 +279,7 @@ REQUEST PARAMETERS
 |after|用於分頁。將結束光標設置為after日期。 |query|false|integer(int64)||
 |before|用於分頁。將開始光標設置為before日期|query|false|integer(int64)||
 |limit|限制返回的結果數,默認100，最大1000|query|false|integer(int32)||
-|product|商品id|query|false|string||
+|product|交易對id|query|false|string||
 |order_id|訂單id|query|false|string||
 |client_oid|用戶自定義訂單號|false|string||
 
@@ -340,7 +340,7 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-此接口可查詢單個訂單詳情，或根據商品的多個訂單
+此接口可查詢單個訂單詳情，或根據交易對的多個訂單
 
 - `order_id` 若存在，將優先查找該訂單詳情，其他參數將被忽略。
 - `order_id` 若不存在，將根據參數組合分頁查詢所所有訂單詳情。其中 `limit` 最大值為1000，超過1000條的訂單詳情將無法查詢
@@ -353,7 +353,7 @@ REQUEST PARAMETERS
 |limit|限制返回的結果數,默認100，最大1000|query|false|integer(int32)||
 |order_id|訂單id|query|false|string||
 |client_oid|用戶自定義訂單號|false|string||
-|product|商品id|query|false|string||
+|product|交易對id|query|false|string||
 
 <aside>
 RESPONSE STATUS
@@ -499,18 +499,18 @@ RESPONSE EXAMPLE
 <font class="httpdelete">DELETE</font> */v1/orders*
 
 
-此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應商品ID的所有未成交訂單，並對這些訂單異步進行取消操作。
+此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應交易對ID的所有未成交訂單，並對這些訂單異步進行取消操作。
 用戶可以通過[/orders/{order_id}](#order_detail) 查詢單個訂單的成交狀態。
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-`product`: 被撤銷的商品ID,例如 "BTC_USD"
+`product`: 被撤銷的交易對ID,例如 "BTC_USD"
 
 | 參數名稱 | 參數說明 | 請求類型    | 是否必須 | 數據類型 | 
 | -------- | -------- | ----- | -------- | -------- |
-|product|商品id|query|true|string||
+|product|交易對id|query|true|string||
 
 <aside>
 RESPONSE STATUS

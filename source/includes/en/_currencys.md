@@ -32,9 +32,9 @@ RESPONSE PARAMETERS
 
 `status`:  Currency status
 
-`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
+`type`: Currency type, `fiat` is legal tender, `crypto` is virtual asset
 
-`details`: Blockchain information, only a digital currency type will contain this information
+`details`: Blockchain information, only a virtual asset type will contain this information
 
 `deposit_status`: Fiat deposit status
 
@@ -42,7 +42,7 @@ RESPONSE PARAMETERS
 
 - `dispaly_name`: Display name
 - `network_confirmations`: Minimum number of network confirmations
-- `currency`: Digital currency identifier
+- `currency`: virtual asset identifier
 - `accuracy`: Accuracy of crypto deposits and withdrawals
 - `deposit_status`: Crypto deposit status
 - `withdraw_status`:  Crypto withdrawal status
@@ -105,9 +105,9 @@ RESPONSE PARAMETERS
 
 `status`:  Currency status
 
-`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
+`type`: Currency type, `fiat` is legal tender, `crypto` is virtual asset
 
-`details`: Blockchain information, only a digital currency type will contain this information
+`details`: Blockchain information, only a virtual asset type will contain this information
 
 `deposit_status`: Deposit status
 
@@ -115,7 +115,7 @@ RESPONSE PARAMETERS
 
 - `dispaly_name`: Display name
 - `network_confirmations`: Minimum number of network confirmations
-- `currency`: Digital currency identifier
+- `currency`: virtual asset identifier
 - `accuracy`: Accuracy of crypto deposits and withdrawals
 - `deposit_status`:  Crypto deposit status
 - `withdraw_status`: Crypto withdrawal status

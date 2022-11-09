@@ -20,7 +20,7 @@ RESPONSE PARAMETERS
 
 </aside>
 
-`product`: 商品
+`product`: 交易对
 
 `base_currency`: 基础资产名
 
@@ -56,13 +56,13 @@ RESPONSE PARAMETERS
 
 `min_market_taker_trade_rate` : 市价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
 
-`max_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
+`max_market_trade_usd_per_order` : 市价单笔最大下单金额。该金额会被折合成`美元`进行计算。
 
 `min_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|product|商品|string||
+|product|交易对|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||
@@ -128,7 +128,7 @@ Status Code | Meaning | Example
 RESPONSE PARAMETERS
 </aside>
 
-`product`: 商品
+`product`: 交易对
 
 `base_currency`: 基础资产名
 
@@ -164,13 +164,13 @@ RESPONSE PARAMETERS
 
 `min_market_taker_trade_rate` : 市价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
 
-`max_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
+`max_market_trade_usd_per_order` : 市价单笔最大下单金额。该金额会被折合成`美元`进行计算。
 
 `min_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
 
 | 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
-|product|商品|string||
+|product|交易对|string||
 |base_currency|基础资产|string||
 |quote_currency|计价资产名|string||
 |display_name|显示名称|string||

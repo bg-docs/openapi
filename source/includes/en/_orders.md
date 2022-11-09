@@ -11,7 +11,7 @@ REQUEST PARAMETERS
 
 **common parameters**
 
-`product`: Must be an existing product id. For example, `BTC_USD`. The list of products is available via  [products](#Products).
+`product`: Must be an existing trading pair id. For example, `BTC_USD`. The list of products is available via  [products](#Products).
 
 `side`:  `buy` is buy, `sell` is sell.
 
@@ -137,7 +137,7 @@ RESPONSE PARAMETERS
 |funds|The amount of quotation currency desired to use|string||
 |order_id|Order ID|string||
 |price|Price per unit of base currency|string||
-|product|Product ID|string||
+|product|Trading Pair ID|string||
 |side|buy/sell|string||
 |size|Quantity of base currency to buy/sell Status|string||
 |status|Status|string||
@@ -222,7 +222,7 @@ RESPONSE PARAMETERS
 |funds|The amount of quotation currency desired to use|string||
 |order_id|Order ID|string||
 |price|Price per unit of base currency|string||
-|product|Product ID|string||
+|product|Trading Pair ID|string||
 |side|buy/sell|string||
 |size|Quantity of base currency to buy/sell
 Status|string||
@@ -305,7 +305,7 @@ RESPONSE PARAMETERS
 |liquidity|Liquidity: marker, taker|string||
 |order_id|Order ID|string||
 |price|Price per unit of base currency|string||  
-|product|Product ID|string||
+|product|Trading Pair ID|string||
 |side| buy/sell |string||
 |size|Quantity of base currency to buy/sell
 Status|string||
@@ -386,7 +386,7 @@ RESPONSE PARAMETERS
 |funds|The amount of quotation currency desired to use|string||
 |order_id|Order ID|string||
 |price|Price per unit of base currency|string||
-|product|Product ID|string||
+|product|Trading Pair ID|string||
 |side|buy/sell|string||
 |size|Quantity of base currency to buy/sell
 Status|string||
