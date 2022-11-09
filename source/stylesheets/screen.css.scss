@@ -50,10 +50,10 @@ html, body {
     display: block;
     color: white;
     text-decoration: none;
-    margin-right: 40px;
+    flex: 1;
 
     &:hover {
-      color:gold;
+      color: gold;
     }
   }
 
@@ -88,6 +88,7 @@ html, body {
   // language selector for mobile devices
   .lang-selector {
     display: none;
+
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
@@ -103,7 +104,7 @@ html, body {
     height: auto;
   }
 
-  &>.search {
+  & > .search {
     position: relative;
 
     input {
@@ -138,6 +139,7 @@ html, body {
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
     background: $nav-subitem-bg;
+
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -204,7 +206,7 @@ html, body {
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
 
-    li,a {
+    li, a {
       color: $nav-text;
       text-decoration: none;
     }
@@ -245,6 +247,7 @@ html, body {
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
   }
+
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
@@ -256,6 +259,7 @@ html, body {
   font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
+
   img {
     height: 16px;
     vertical-align: bottom;
@@ -263,8 +267,13 @@ html, body {
 
   transition: left 0.3s ease-in-out;
 
-  &:hover { opacity: 1; }
-  &.open {left: $nav-width}
+  &:hover {
+    opacity: 1;
+  }
+
+  &.open {
+    left: $nav-width
+  }
 }
 
 
@@ -308,6 +317,7 @@ html, body {
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
+
   a {
     display: inline;
     color: $lang-select-text;
@@ -352,7 +362,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > p, & > table, & > ul, & > ol, & > aside, & > dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -361,13 +371,13 @@ html, body {
     @extend %left-col;
   }
 
-  &>ul, &>ol {
+  & > ul, & > ol {
     padding-left: $main-padding + 15px;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
-    clear:both;
+  & > h1, & > h2, & > div {
+    clear: both;
   }
 
   h1 {
@@ -425,10 +435,12 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
-    th,td {
+
+    th, td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
+
       code {
         white-space: nowrap;
       }
@@ -448,12 +460,12 @@ html, body {
       border-bottom: 1px solid #ccc;
     }
 
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+    tr:nth-child(odd) > td {
+      background-color: lighten($main-bg, 4.2%);
     }
 
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+    tr:nth-child(even) > td {
+      background-color: lighten($main-bg, 2.4%);
     }
   }
 
@@ -475,14 +487,14 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     padding: 0;
   }
@@ -537,8 +549,8 @@ html, body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
-  &>div.highlight {
-    clear:none;
+  & > div.highlight {
+    clear: none;
   }
 
   pre, blockquote {
@@ -548,14 +560,16 @@ html, body {
     margin: 0;
     width: $examples-width;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     box-sizing: border-box;
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    & > p {
+      margin: 0;
+    }
 
     a {
       color: #fff;
@@ -572,7 +586,7 @@ html, body {
   }
 
   blockquote {
-    &>p {
+    & > p {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: #eee;
@@ -668,6 +682,7 @@ html, body {
   color: white;
 
 }
+
 .httppost {
   background-color: #0066cc;
   text-shadow: 1px 1px 0px #0066cc, 0 1px 0 #0066cc, 1px 0 0 #0066cc;
@@ -683,6 +698,7 @@ html, body {
   color: white;
   padding: 5px;
 }
+
 .httpput {
   background-color: #554499;
   text-shadow: 1px 1px 0px #554499, 0 1px 0 #554499, 1px 0 0 #554499;
