@@ -2,7 +2,7 @@
 require './lib/unique_head.rb'
 
 # activate :i18n
-activate :i18n, :langs => [:zh,:tc,:en],:path => "/openapi/:locale/"
+activate :i18n, :langs => [:zh,:tc,:en],:path => "/o1/:locale/"
 
 # Markdown
 set :markdown_engine, :redcarpet
