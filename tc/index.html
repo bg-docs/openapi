@@ -415,7 +415,53 @@
               </ul>
           </li>
           <li>
-            <a href="#websocket-feed-public" class="toc-h1 toc-link" data-title="WEBSOCKET FEED PUBLIC">WEBSOCKET FEED PUBLIC</a>
+            <a href="#websocket" class="toc-h1 toc-link" data-title="WEBSOCKET">WEBSOCKET</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#websocket-2" class="toc-h2 toc-link" data-title="WEBSOCKET 基本說明">WEBSOCKET 基本說明</a>
+                  </li>
+                  <li>
+                    <a href="#28a3a60534" class="toc-h2 toc-link" data-title="連接說明">連接說明</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-feed-public-v2" class="toc-h1 toc-link" data-title="WEBSOCKET FEED PUBLIC V2">WEBSOCKET FEED PUBLIC V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#b4f320ff78" class="toc-h2 toc-link" data-title="請求字段說明">請求字段說明</a>
+                  </li>
+                  <li>
+                    <a href="#f8e4196816" class="toc-h2 toc-link" data-title="回應字段說明">回應字段說明</a>
+                  </li>
+                  <li>
+                    <a href="#dea8862146" class="toc-h2 toc-link" data-title="事件列表">事件列表</a>
+                  </li>
+                  <li>
+                    <a href="#3ba21cade2" class="toc-h2 toc-link" data-title="業務線列表">業務線列表</a>
+                  </li>
+                  <li>
+                    <a href="#1363283ce2" class="toc-h2 toc-link" data-title="業務類型列表">業務類型列表</a>
+                  </li>
+                  <li>
+                    <a href="#k" class="toc-h2 toc-link" data-title="K線訂閱/取消訂閱與請求">K線訂閱/取消訂閱與請求</a>
+                  </li>
+                  <li>
+                    <a href="#fills-subscribe-unsubscribe" class="toc-h2 toc-link" data-title="Fills Subscribe/UnSubscribe">Fills Subscribe/UnSubscribe</a>
+                  </li>
+                  <li>
+                    <a href="#orderbook-subscribe-unsubscribe" class="toc-h2 toc-link" data-title="OrderBook Subscribe/UnSubscribe">OrderBook Subscribe/UnSubscribe</a>
+                  </li>
+                  <li>
+                    <a href="#percent10-subscribe-unsubscribe" class="toc-h2 toc-link" data-title="Percent10 Subscribe/Unsubscribe">Percent10 Subscribe/Unsubscribe</a>
+                  </li>
+                  <li>
+                    <a href="#ticker-subscribe-unsubscribe-and-req" class="toc-h2 toc-link" data-title="Ticker Subscribe/UnSubscribe and Req">Ticker Subscribe/UnSubscribe and Req</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-feed-public-deprecated" class="toc-h1 toc-link" data-title="WEBSOCKET FEED PUBLIC (DEPRECATED)">WEBSOCKET FEED PUBLIC (DEPRECATED)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#candles-subscribe-unsubscribe" class="toc-h2 toc-link" data-title="Candles Subscribe/UnSubscribe">Candles Subscribe/UnSubscribe</a>
@@ -469,6 +515,9 @@
           <li>
             <a href="#b0c18f57d6" class="toc-h1 toc-link" data-title="數據字典">數據字典</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#websocket" class="toc-h2 toc-link" data-title="WEBSOCKET錯誤碼對照表">WEBSOCKET錯誤碼對照表</a>
+                  </li>
                   <li>
                     <a href="#99da7dcd63" class="toc-h2 toc-link" data-title="用戶認證錯誤碼對照表">用戶認證錯誤碼對照表</a>
                   </li>
@@ -1056,7 +1105,7 @@ RESPONSE PARAMETERS
 
 </aside>
 
-<p><code>product</code>: 交易對</p>
+<p><code>product</code>: 商品</p>
 
 <p><code>base_currency</code>: 基礎資產名</p>
 
@@ -1091,7 +1140,7 @@ RESPONSE PARAMETERS
 
 <p><code>min_market_taker_trade_rate</code> : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。</p>
 
-<p><code>max_market_trade_usd_per_order</code> : 市價單筆最大下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
+<p><code>max_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
 <p><code>min_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
@@ -1105,7 +1154,7 @@ RESPONSE PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>交易對</td>
+<td>商品</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1268,7 +1317,7 @@ RESPONSE STATUS
 RESPONSE PARAMETERS
 </aside>
 
-<p><code>product</code>: 交易對</p>
+<p><code>product</code>: 商品</p>
 
 <p><code>base_currency</code>: 基礎資產名</p>
 
@@ -1303,7 +1352,7 @@ RESPONSE PARAMETERS
 
 <p><code>min_market_taker_trade_rate</code> : 市價賣單不可以低於最新價格的比率。超過比率，訂單下單失敗。</p>
 
-<p><code>max_market_trade_usd_per_order</code> : 市價單筆最大下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
+<p><code>max_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
 <p><code>min_market_trade_usd_per_order</code> : 市價單筆最小下單金額。該金額會被折合成<code>美元</code>進行計算。</p>
 
@@ -1317,7 +1366,7 @@ RESPONSE PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>交易對</td>
+<td>商品</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2650,13 +2699,13 @@ REQUEST PARAMETERS
 
 <p><strong>limit order parameters</strong></p>
 
-<p><code>price</code>: 交易對價格</p>
+<p><code>price</code>: 商品價格</p>
 
-<p><code>size</code>: 買入或者賣出交易對的數量</p>
+<p><code>size</code>: 買入或者賣出商品的數量</p>
 
 <p><strong>market order parameters</strong></p>
 
-<p><code>size</code>: 期望交易數量。需要<code>side</code> 為 <code>sell</code>，代表以最新成交價進行賣出，期望最多賣出的交易對數。</p>
+<p><code>size</code>: 期望交易數量。需要<code>side</code> 為 <code>sell</code>，代表以最新成交價進行賣出，期望最多賣出的商品數。</p>
 
 <p><code>funds</code>: 期望交易額度。需要<code>side</code> 為 <code>buy</code>，代表以最新成交價進行買入，期望花費的最多資產額度。</p>
 
@@ -3243,7 +3292,7 @@ REQUEST PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>交易對id</td>
+<td>商品id</td>
 <td>query</td>
 <td>false</td>
 <td>string</td>
@@ -3388,7 +3437,7 @@ RESPONSE EXAMPLE
 REQUEST PARAMETERS
 </aside>
 
-<p>此接口可查詢單個訂單詳情，或根據交易對的多個訂單</p>
+<p>此接口可查詢單個訂單詳情，或根據商品的多個訂單</p>
 
 <ul>
 <li><code>order_id</code> 若存在，將優先查找該訂單詳情，其他參數將被忽略。</li>
@@ -3448,7 +3497,7 @@ REQUEST PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>交易對id</td>
+<td>商品id</td>
 <td>query</td>
 <td>false</td>
 <td>string</td>
@@ -3677,14 +3726,14 @@ RESPONSE EXAMPLE
 </span></code></pre></div><h2 id='0461b92f17'>取消所有訂單</h2>
 <p><font class="httpdelete">DELETE</font> <em>/v1/orders</em></p>
 
-<p>此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應交易對ID的所有未成交訂單，並對這些訂單異步進行取消操作。
+<p>此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應商品ID的所有未成交訂單，並對這些訂單異步進行取消操作。
 用戶可以通過<a href="#order_detail">/orders/{order_id}</a> 查詢單個訂單的成交狀態。</p>
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-<p><code>product</code>: 被撤銷的交易對ID,例如 &quot;BTC_USD&quot;</p>
+<p><code>product</code>: 被撤銷的商品ID,例如 &quot;BTC_USD&quot;</p>
 
 <table><thead>
 <tr>
@@ -3697,7 +3746,7 @@ REQUEST PARAMETERS
 </thead><tbody>
 <tr>
 <td>product</td>
-<td>交易對id</td>
+<td>商品id</td>
 <td>query</td>
 <td>true</td>
 <td>string</td>
@@ -3740,24 +3789,912 @@ RESPONSE PARAMETERS
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="s2">"128527387912385665"</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h1 id='websocket-feed-public'>WEBSOCKET FEED PUBLIC</h1>
+</span></code></pre></div><h1 id='websocket'>WEBSOCKET</h1>
+<p>歡迎使用BGE數位幣交易所 WebSocket 訂閱消息協議。該協議允許您通過 WebSocket 連接實時訂閱並接收市場數據、交易信息和其他相關信息。</p>
+<h2 id='websocket-2'>WEBSOCKET 基本說明</h2>
+<p>WebSocket 是一種在單個 TCP 連接上進行全雙工通信的網路協議，它提供了一種在客戶端和伺服器之間進行實時數據傳輸的方式。通過使用 WebSocket，您可以實時地訂閱和接收來自數位幣交易所的實時市場數據和其他信息。</p>
+<h2 id='28a3a60534'>連接說明</h2>
+<p>在訂閱消息之前，您需要建立 WebSocket 連接。連接說明如下：</p>
+<h3 id='af6063a000'>當訂閱公有頻道時，使用公有服務的地址；當訂閱私有頻道時，使用私有服務的地址</h3>
 <ul>
-<li><code>{host}/ws</code></li>
+<li>公有頻道：公有頻道是向所有連接到交易所的客戶端廣播的頻道，包含市場行情、交易深度等信息。
+接入方法請參考: <a href="#websocket-feed-public-v2">WEBSOCKET FEED PUBLIC V2</a></li>
+<li>私有頻道：私有頻道是指僅向特定客戶端推送個人相關信息的頻道，例如訂單通知、賬戶餘額等。
+接入方法請參考: <a href="#websocket-feed-private">WEBSOCKET FEED PRIVATE</a></li>
+</ul>
+
+<p>請根據您的需求選擇相應的服務地址連接到公有或私有頻道。</p>
+<h3 id='1s-50'>消息限制：每個連接1s 最多可以發送 50 條消息，否則強制關閉連接</h3>
+<p>為了保持連接的穩定性和公平性，我們對發送消息做了限制，每個連接每秒最多可以發送 50 條消息。如果您在 1 秒內發送超過 50 條消息，系統將強制關閉連接，請注意遵守此限制。</p>
+<h3 id='ping-pong-30s'>連接保持：我們會定時發送 ping 消息，期待您返回 pong 消息作為回應，如果超過 30s 沒有收到您的響應伺服器會關閉連接</h3>
+<p>為了確保連接的活躍性，我們會定時向客戶端發送 <code>json</code> 格式的 ping 消息 <code>{&quot;ping&quot;: timestamp}</code>。您需要在收到 ping 消息後，及時發送 <code>{&quot;pong&quot;: timestamp}</code> 文本消息，以表明連接處於活躍狀態。如果在 30 秒內沒有收到您的響應，我們將關閉連接。</p>
+<h3 id='28f5ce5eac'>訂閱錯誤：錯誤消息主要由兩部分組成：錯誤代碼和消息。代碼是通用的，但是消息可能會有所不同。</h3>
+<p>當您發送的請求伺服器無法處理時，伺服器將返回錯誤消息。</p>
+
+<p>希望該文檔能夠幫助您快速了解我們的數位幣交易所 WebSocket 訂閱消息協議。如果您有任何疑問或需要進一步的幫助，請隨時聯繫我們的技術支援團隊。祝您使用愉快！</p>
+
+<aside>
+PING PONG EXAMPLE
+</aside>
+
+<p><a name="ping_pong_demo"></a></p>
+
+<blockquote>
+<p>ping request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ping"</span><span class="p">:</span><span class="w"> </span><span class="mi">1635065532000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>pong request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1635065532000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<aside>
+ERROR RESPONSE EXAMPLE
+</aside>
+
+<p><a name="error_response_demo"></a></p>
+
+<blockquote>
+<p>error response message</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid request: {</span><span class="se">\"</span><span class="s2">event</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">sub</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">para</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">biz</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">market</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">percent10</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">pairCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BTC_USDT</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">zip</span><span class="se">\"</span><span class="s2">:true}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h1 id='websocket-feed-public-v2'>WEBSOCKET FEED PUBLIC V2</h1>
+<ul>
+<li><code>wss://ws.bg.exchange/v2/ws/</code></li>
+</ul>
+<h2 id='b4f320ff78'>請求字段說明</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">參數名稱</th>
+<th style="text-align: left">類型</th>
+<th style="text-align: left">必選</th>
+<th style="text-align: left">說明</th>
+<th style="text-align: left">範例值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">event</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">請求事件</td>
+<td style="text-align: left"><a href="#events">事件</a></td>
+</tr>
+<tr>
+<td style="text-align: left">biz</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">業務線</td>
+<td style="text-align: left"><a href="#bizs">業務線</a></td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">業務類型</td>
+<td style="text-align: left"><a href="#types">類型</a></td>
+</tr>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易對</td>
+<td style="text-align: left">BTC_USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">interval</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">頻率</td>
+<td style="text-align: left">1min</td>
+</tr>
+<tr>
+<td style="text-align: left">zip</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">是否開啟壓縮</td>
+<td style="text-align: left">true, false</td>
+</tr>
+<tr>
+<td style="text-align: left">params</td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">業務參數</td>
+<td style="text-align: left">可以為空</td>
+</tr>
+</tbody></table>
+<h2 id='f8e4196816'>回應字段說明</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">參數名稱</th>
+<th style="text-align: left">類型</th>
+<th style="text-align: left">必選</th>
+<th style="text-align: left">說明</th>
+<th style="text-align: left">範例值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">event</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">請求事件</td>
+<td style="text-align: left"><a href="#events">事件</a></td>
+</tr>
+<tr>
+<td style="text-align: left">biz</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">業務線</td>
+<td style="text-align: left"><a href="#bizs">業務線</a></td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">業務類型</td>
+<td style="text-align: left"><a href="#types">類型</a></td>
+</tr>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">交易對</td>
+<td style="text-align: left">BTC_USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">interval</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">頻率</td>
+<td style="text-align: left">1min</td>
+</tr>
+<tr>
+<td style="text-align: left">zip</td>
+<td style="text-align: left">bool</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">是否開啟壓縮</td>
+<td style="text-align: left">true, false</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">唯一消息ID</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">number</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">錯誤碼</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">錯誤碼狀態</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">否</td>
+<td style="text-align: left">業務數據</td>
+<td style="text-align: left">參考具體業務數據說明</td>
+</tr>
+</tbody></table>
+<h2 id='dea8862146'>事件列表</h2>
+<p><a name="events"></a></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">事件名稱</th>
+<th style="text-align: left">類型</th>
+<th style="text-align: left">說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">sub</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">訂閱事件，由客戶端主動發起</td>
+</tr>
+<tr>
+<td style="text-align: left">unsub</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">取消訂閱事件，由客戶端主動發起</td>
+</tr>
+<tr>
+<td style="text-align: left">req</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">請求數據事件，由客戶端主動發起</td>
+</tr>
+</tbody></table>
+<h2 id='3ba21cade2'>業務線列表</h2>
+<p><a name="bizs"></a></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">業務線名稱</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">market</td>
+<td style="text-align: left">string</td>
+<td>現貨行情</td>
+</tr>
+</tbody></table>
+<h2 id='1363283ce2'>業務類型列表</h2>
+<p><a name="types"></a></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">業務類型名稱</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fills</td>
+<td style="text-align: left">string</td>
+<td>成交數據</td>
+</tr>
+<tr>
+<td style="text-align: left">candles</td>
+<td style="text-align: left">string</td>
+<td>K線數據</td>
+</tr>
+<tr>
+<td style="text-align: left">orderbook</td>
+<td style="text-align: left">string</td>
+<td>訂單薄</td>
+</tr>
+<tr>
+<td style="text-align: left">ticker</td>
+<td style="text-align: left">string</td>
+<td>24小時ticker</td>
+</tr>
+<tr>
+<td style="text-align: left">percent10</td>
+<td style="text-align: left">string</td>
+<td>有限檔位深度</td>
+</tr>
+</tbody></table>
+<h2 id='k'>K線訂閱/取消訂閱與請求</h2>
+<p>訂閱或請求以獲取K線（最新一根K線）數據的更新。</p>
+
+<p><strong>K線圖間隔參數：</strong></p>
+
+<p>min -&gt; 分鐘; hour -&gt; 小时; day -&gt; 天; week -&gt; 周; mon -&gt; 月</p>
+
+<ul>
+<li>1min</li>
+<li>5min</li>
+<li>15min</li>
+<li>30min</li>
+<li>1hour</li>
+<li>4hour</li>
+<li>1day</li>
+<li>1week</li>
+<li>1mon</li>
+</ul>
+
+<p><strong>字段說明：</strong></p>
+
+<ul>
+<li><code>id</code> 消息唯一ID</li>
+<li><code>open</code> 這根K線期間第一筆成交價</li>
+<li><code>close</code> 這根K線期間末一筆成交價</li>
+<li><code>low</code> 這根K線期間最低成交價</li>
+<li><code>high</code> 這根K線期間最高成交價</li>
+<li><code>turnOver</code> 這根K線期間成交額</li>
+<li><code>vol</code> 這根K線期間成交量</li>
+<li><code>seqId</code> 唯一且有序ID</li>
+<li><code>count</code> 這根K線期間成交筆數</li>
+<li><code>interval</code> K線間隔</li>
+<li><code>product</code> 交易對</li>
+</ul>
+<h4 id='subscribe'>Subscribe</h4>
+<blockquote>
+<p>Subscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>Subscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='unsubscribe'>UnSubscribe</h4>
+<blockquote>
+<p>UnSubscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>UnSubscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='feed-stream'>Feed Stream</h4>
+<blockquote>
+<p>Feed Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689144300"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689144300</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588635</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='request-candles'>Request Candles</h4>
+<blockquote>
+<p>Req request </p>
+</blockquote>
+
+<p><strong>參數說明：</strong></p>
+
+<ul>
+<li><code>id</code> 每個K線消息的唯一ID</li>
+<li><code>from</code> 開始時間的Unix時間戳</li>
+<li><code>to</code> 結束時間的Unix時間戳</li>
+<li><code>interval</code> K線間隔</li>
+<li><code>product</code> 交易對</li>
+</ul>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1687561511</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688641511</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Req response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689133139813</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">505866</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">471315.660750</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">132286.14</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688107500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0584</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.354</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0616</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.4575</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">492245</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">458095.923364</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">128555.52</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688108400</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0584</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.4575</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0637</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.3665</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15min"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+
+
+</span></code></pre></div>
+<hr>
+<h2 id='fills-subscribe-unsubscribe'>Fills Subscribe/UnSubscribe</h2>
+<p><strong>字段說明：</strong></p>
+
+<ul>
+<li><code>id</code> 消息唯一ID</li>
+<li><code>ts</code> 成交時間戳</li>
+<li><code>direction</code> 成交方向</li>
+<li><code>price</code> 成交價格</li>
+<li><code>vol</code> 成交量</li>
+</ul>
+<h4 id='subscribe-2'>Subscribe</h4>
+<blockquote>
+<p>Subscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Subscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690165577416</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='unsubscribe-2'>UnSubscribe</h4>
+<blockquote>
+<p>UnSubscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>UnSubscribe response  </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='feed-stream-2'>Feed Stream</h4>
+<blockquote>
+<p>Feed Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"310529"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.79"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689152279117</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.4134"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">310529000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre></div>
+<hr>
+<h2 id='orderbook-subscribe-unsubscribe'>OrderBook Subscribe/UnSubscribe</h2><h4 id='subscribe-3'>Subscribe</h4>
+<blockquote>
+<p>Subscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Subscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='unsubscribe-3'>UnSubscribe</h4>
+<blockquote>
+<p>UnSubscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>UnSubscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderbook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='feed-stream-3'>Feed Stream</h4>
+<blockquote>
+<p>Feed Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689143926"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588640</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bids"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.66"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.6866"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.98"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.4666"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.33"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.3766"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.76"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.3666"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.7"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.1966"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.75"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.1766"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.06"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.0666"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.91"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.0266"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.73"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"asks"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.9966"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.9"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre></div>
+<hr>
+<h2 id='percent10-subscribe-unsubscribe'>Percent10 Subscribe/Unsubscribe</h2>
+<p>限制深度的訂單簿數據。</p>
+<h4 id='subscribe-4'>Subscribe</h4>
+<blockquote>
+<p>Subscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Subscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='unsubscribe-4'>UnSubscribe</h4>
+<blockquote>
+<p>UnSubscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>UnSubscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690193555943</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='feed-stream-4'>Feed Stream</h4>
+<blockquote>
+<p>Feed Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689143539"</span><span class="p">,</span><span class="w">     </span><span class="err">//消息唯一id</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588640</span><span class="p">,</span><span class="w">     </span><span class="err">//唯一且有序id</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">    </span><span class="err">//業務類型</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"bids"</span><span class="p">:</span><span class="w">             </span><span class="err">//買方</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.8646667"</span><span class="p">,</span><span class="err">//价格</span><span class="w">
+                </span><span class="s2">"0"</span><span class="w">         </span><span class="err">//数量</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"asks"</span><span class="p">:</span><span class="w">             </span><span class="err">//卖方</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.8685333"</span><span class="p">,</span><span class="err">//價格</span><span class="w">
+                </span><span class="s2">"0"</span><span class="w">         </span><span class="err">//數量</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"3.8704666"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588640</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<hr>
+<h2 id='ticker-subscribe-unsubscribe-and-req'>Ticker Subscribe/UnSubscribe and Req</h2>
+<p><strong>字段說明:</strong></p>
+
+<ul>
+<li><code>id</code> 消息唯一id</li>
+<li><code>open</code> 24小時前開始第一筆成交價格</li>
+<li><code>close</code> 24小時最新成交價格</li>
+<li><code>low</code> 24小時內最低成交價</li>
+<li><code>high</code> 24小時內最高成交價</li>
+<li><code>turnOver</code> 24小時內成交額</li>
+<li><code>vol</code> 24小時內成交量</li>
+<li><code>seqId</code> 唯一且有序id</li>
+<li><code>count</code> 24小時成交筆數</li>
+<li><code>change</code> 24小時價格變化</li>
+<li><code>changePercent</code> 24小時價格變化(百分比)</li>
+</ul>
+<h4 id='subscribe-5'>Subscribe</h4>
+<blockquote>
+<p>Subscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre></div>
+<blockquote>
+<p>Subscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666851880448</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='unsubscribe-5'>UnSubscribe</h4>
+<blockquote>
+<p>UnSubscribe request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>UnSubscribe response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689946788754</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='feed-stream-5'>Feed Stream</h4>
+<blockquote>
+<p>Feed Stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1689144487"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689144487</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588640</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='request-ticker'>Request Ticker</h4>
+<blockquote>
+<p>Req request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>Req response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689133337870</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689133336</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">112588640</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.7366"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<hr>
+<h1 id='websocket-feed-public-deprecated'>WEBSOCKET FEED PUBLIC (DEPRECATED)</h1>
+<ul>
+<li><code>wss://ws.bg.exchange/ws/</code></li>
 </ul>
 <h2 id='candles-subscribe-unsubscribe'>Candles Subscribe/UnSubscribe</h2><h4 id='subscribe'>Subscribe</h4>
 <blockquote>
-<p>request</p>
+<p>sub request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"product"</span><span class="p">:</span><span class="s2">"ETH_BNB"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1day"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"zip"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">   
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_BNB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30min"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='ba05bab92e'>請求參數</h4>
 <table><thead>
 <tr>
@@ -3777,7 +4714,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
@@ -3789,7 +4726,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>週期</td>
+<td>周期</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -3806,16 +4743,14 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>response</p>
+<p>sub response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_BNB"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="s2">"ETH_BNB"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1day"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30min"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639655425910</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3845,42 +4780,47 @@ RESPONSE PARAMETERS
 <tr>
 <td style="text-align: left">data .open</td>
 <td style="text-align: left">string</td>
-<td>開盤</td>
+<td>這根K線期間第一筆成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .close</td>
 <td style="text-align: left">string</td>
-<td>收盤</td>
+<td>這根K線期間末一筆成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .low</td>
 <td style="text-align: left">string</td>
-<td>低</td>
+<td>這根K線期間最低成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .high</td>
 <td style="text-align: left">string</td>
-<td>高</td>
+<td>這根K線期間最高成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .vol</td>
 <td style="text-align: left">string</td>
-<td>成交</td>
+<td>這根K線期間成交量</td>
 </tr>
 <tr>
 <td style="text-align: left">data .turnOver</td>
 <td style="text-align: left">string</td>
-<td>成交量</td>
+<td>這根K線期間成交額</td>
+</tr>
+<tr>
+<td style="text-align: left">data .id</td>
+<td style="text-align: left">int</td>
+<td>唯一且有序id</td>
 </tr>
 <tr>
 <td style="text-align: left">data .count</td>
-<td style="text-align: left">string</td>
-<td></td>
+<td style="text-align: left">int</td>
+<td>這根K線期間成交筆數</td>
 </tr>
 </tbody></table>
 <h4 id='unsubscribe'>UnSubscribe</h4>
 <blockquote>
-<p>request</p>
+<p>unsub request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
         </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
@@ -3911,7 +4851,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
@@ -3923,7 +4863,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>週期</td>
+<td>周期</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -3940,10 +4880,9 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>response</p>
+<p>unsub response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
@@ -3978,69 +4917,84 @@ RESPONSE PARAMETERS
 <tr>
 <td style="text-align: left">data .open</td>
 <td style="text-align: left">string</td>
-<td>開盤</td>
+<td>這根K線期間第一筆成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .close</td>
 <td style="text-align: left">string</td>
-<td>收盤</td>
+<td>這根K線期間末一筆成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .low</td>
 <td style="text-align: left">string</td>
-<td>低</td>
+<td>這根K線期間最低成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .high</td>
 <td style="text-align: left">string</td>
-<td>高</td>
+<td>這根K線期間最高成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .vol</td>
 <td style="text-align: left">string</td>
-<td>成交</td>
+<td>這根K線期間成交量</td>
 </tr>
 <tr>
 <td style="text-align: left">data .turnOver</td>
 <td style="text-align: left">string</td>
-<td>成交量</td>
+<td>這根K線期間成交額</td>
+</tr>
+<tr>
+<td style="text-align: left">data .id</td>
+<td style="text-align: left">int</td>
+<td>唯一且有序id</td>
 </tr>
 <tr>
 <td style="text-align: left">data .count</td>
-<td style="text-align: left">string</td>
-<td></td>
+<td style="text-align: left">int</td>
+<td>這根K線期間成交筆數</td>
+</tr>
+<tr>
+<td style="text-align: left">data .seqId</td>
+<td style="text-align: left">int</td>
+<td>有序且唯一id</td>
 </tr>
 </tbody></table>
-<h4 id='feed'>FEED</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<h4 id='feed-stream'>Feed Stream</h4>
+<blockquote>
+<p>feed stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+
+
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"his"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688954400</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1day"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639584000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639670400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.1406</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0466</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0007</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0051</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">51642.553798</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">14765.94</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">52144</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">111322735</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688954400</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"SeqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">111322735</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <hr>
-<h2 id='fills-subscribe-unsubscribe'>Fills Subscribe/UnSubscribe</h2><h4 id='subscribe-2'>Subscribe</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='fills-subscribe-unsubscribe'>Fills Subscribe/UnSubscribe</h2><h4 id='subscribe-2'>Subscribe</h4>
+<blockquote>
+<p>sub request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
@@ -4077,12 +5031,6 @@ RESPONSE PARAMETERS
 <td>幣對</td>
 </tr>
 <tr>
-<td style="text-align: left">params .interval</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td>週期</td>
-</tr>
-<tr>
 <td style="text-align: left">event</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
@@ -4095,13 +5043,15 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>sub response</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641384262679</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4136,7 +5086,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>週期</td>
+<td>周期</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4151,8 +5101,11 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
+
+<blockquote>
+<p>sub request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
@@ -4162,13 +5115,20 @@ RESPONSE PARAMETERS
     </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unsubbed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.ETH_USDT.trade.detail"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641384470335</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>unsub response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689041894440</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='feed-2'>FEED</h4>
+
+</span></code></pre></div><h4 id='feed-stream-2'>Feed Stream</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">參數名</th>
@@ -4176,6 +5136,11 @@ RESPONSE PARAMETERS
 <th style="text-align: left">說明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">無符號整數 此消息唯一id</td>
+</tr>
 <tr>
 <td style="text-align: left">type</td>
 <td style="text-align: left">string</td>
@@ -4192,6 +5157,11 @@ RESPONSE PARAMETERS
 <td style="text-align: left">幣對</td>
 </tr>
 <tr>
+<td style="text-align: left">pairCode</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">忽略</td>
+</tr>
+<tr>
 <td style="text-align: left">data .price</td>
 <td style="text-align: left">string</td>
 <td style="text-align: left">價格</td>
@@ -4199,7 +5169,7 @@ RESPONSE PARAMETERS
 <tr>
 <td style="text-align: left">data .vol</td>
 <td style="text-align: left">string</td>
-<td style="text-align: left">成交</td>
+<td style="text-align: left">成交量</td>
 </tr>
 <tr>
 <td style="text-align: left">data .ts</td>
@@ -4211,34 +5181,40 @@ RESPONSE PARAMETERS
 <td style="text-align: left">string</td>
 <td style="text-align: left">方向</td>
 </tr>
+<tr>
+<td style="text-align: left">data .id</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">成交id</td>
+</tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
-    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639585820373</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28470000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639585820376</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28730000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.9"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"his"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640919016188</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="w">
+
+<blockquote>
+<p>feed stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">323241</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fills"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689152406185</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">323241000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.6733"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689152412845</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 
 </span></code></pre></div>
 <hr>
 <h2 id='orderbook-subscribe-unsubscribe'>OrderBook Subscribe/UnSubscribe</h2>
 <blockquote>
-<p>request</p>
+<p>sub request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
@@ -4269,7 +5245,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
@@ -4281,7 +5257,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td><em>週期</em></td>
+<td><em>周期</em></td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4298,17 +5274,16 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>response</p>
+<p>sub response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"step1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641384620237</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934070509</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='unsubscribe-3'>UnSubscribe</h4>
 <table><thead>
@@ -4329,7 +5304,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
@@ -4341,7 +5316,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td><em>週期</em></td>
+<td><em>周期</em></td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4356,28 +5331,48 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>unsub request</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1min"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unsubbed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.ETH_USDT.depth.step1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641384766983</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>unsub response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934273388</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span></code></pre></div><h4 id='feed-3'>FEED</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre></div><h4 id='feed-stream-3'>Feed Stream</h4>
+<blockquote>
+<p>feed stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8414921</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641385128</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934071</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934071000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934071</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1min"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="mf">3781.85</span><span class="p">,</span><span class="w"> </span><span class="mf">0.30656</span><span class="p">],</span><span class="w">
         </span><span class="p">[</span><span class="mf">3781.78</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0219</span><span class="p">],</span><span class="w">
@@ -4389,27 +5384,25 @@ RESPONSE PARAMETERS
         </span><span class="p">[</span><span class="mf">3836.98</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00026</span><span class="p">],</span><span class="w">
         </span><span class="p">[</span><span class="mf">3837.33</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4445</span><span class="p">],</span><span class="w">
         </span><span class="p">[</span><span class="mi">3839</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641385128493</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641385128</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderBook"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <hr>
 <h2 id='percent10-subscribe-unsubscribe'>Percent10 Subscribe\Unsubscribe</h2><h4 id='subscribe-4'>Subscribe</h4>
 <blockquote>
-<p>request</p>
+<p>sub request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"zip"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">   
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">   
 </span></code></pre></div>
 <table><thead>
 <tr>
@@ -4429,7 +5422,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
@@ -4450,28 +5443,32 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>sub response</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641387412252</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934871904</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='unsubscribe-4'>UnSubscribe</h4>
 <blockquote>
-<p>request</p>
+<p>unsub request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"zip"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">   
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
 <tr>
@@ -4491,13 +5488,19 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
 <td>幣對</td>
+</tr>
+<tr>
+<td style="text-align: left">params .pairCode</td>
+<td style="text-align: left">是</td>
+<td style="text-align: left">string</td>
+<td>幣對(忽略)</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4512,31 +5515,43 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>unsub response</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unsubbed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.ETH_USDT.depth.percent10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641387599816</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934879610</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='feed-4'>FEED</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2875</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640683777</span><span class="p">,</span><span class="w">
+</span></code></pre></div><h4 id='feed-stream-4'>Feed Stream</h4>
+<blockquote>
+<p>feed stream</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934879</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934879000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689934879</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seqId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="mf">11.994</span><span class="p">,</span><span class="w"> </span><span class="mf">0.10124</span><span class="p">]</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">[</span><span class="mf">12.006</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640683777520</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640683777</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <hr>
 <h2 id='ticker-subscribe-unsubscribe'>Ticker Subscribe\UnSubscribe</h2><h4 id='subscribe-5'>Subscribe</h4>
 <blockquote>
-<p>request</p>
+<p>sub request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
         </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
@@ -4566,19 +5581,13 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
 <td>幣對</td>
-</tr>
-<tr>
-<td style="text-align: left">params .interval</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td>週期</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4595,7 +5604,7 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>response</p>
+<p>sub response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -4607,9 +5616,9 @@ RESPONSE PARAMETERS
   </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641387679813</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='subscribe-6'>Subscribe</h4>
+</span></code></pre></div><h4 id='unsubscribe-5'>UnSubscribe</h4>
 <blockquote>
-<p>request</p>
+<p>unsub request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
         </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w">
@@ -4639,19 +5648,13 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params .type</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>訂閱類型類型</td>
+<td>訂閱類型</td>
 </tr>
 <tr>
 <td style="text-align: left">params .product</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
 <td>幣對</td>
-</tr>
-<tr>
-<td style="text-align: left">params .interval</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td>週期</td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -4668,15 +5671,17 @@ RESPONSE PARAMETERS
 </tbody></table>
 
 <blockquote>
-<p>response</p>
+<p>unsub response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"unsubbed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.ETH_USDT.ticker"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641387799984</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689935550687</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='feed-5'>FEED</h4>
+</span></code></pre></div><h4 id='feed-stream-5'>Feed Stream</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">參數名</th>
@@ -4690,9 +5695,9 @@ RESPONSE PARAMETERS
 <td>訂閱類型</td>
 </tr>
 <tr>
-<td style="text-align: left">interval</td>
-<td style="text-align: left">string</td>
-<td>間隔</td>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">int</td>
+<td>時間戳</td>
 </tr>
 <tr>
 <td style="text-align: left">product</td>
@@ -4700,82 +5705,107 @@ RESPONSE PARAMETERS
 <td>幣對</td>
 </tr>
 <tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: left">string</td>
+<td>忽略</td>
+</tr>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">int</td>
+<td>忽略</td>
+</tr>
+<tr>
 <td style="text-align: left">data .open</td>
 <td style="text-align: left">string</td>
-<td>開盤</td>
+<td>24小時前開始第一筆成交價格</td>
 </tr>
 <tr>
 <td style="text-align: left">data .close</td>
 <td style="text-align: left">string</td>
-<td>收盤</td>
+<td>24小時最新成交價格</td>
 </tr>
 <tr>
 <td style="text-align: left">data .low</td>
 <td style="text-align: left">string</td>
-<td>低</td>
+<td>24小時內最低成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .high</td>
 <td style="text-align: left">string</td>
-<td>高</td>
+<td>24小時內最高成交價</td>
 </tr>
 <tr>
 <td style="text-align: left">data .vol</td>
 <td style="text-align: left">string</td>
-<td>成交</td>
+<td>24小時內成交量</td>
 </tr>
 <tr>
 <td style="text-align: left">data .turnOver</td>
 <td style="text-align: left">string</td>
-<td>成交量</td>
+<td>24小時內成交額</td>
 </tr>
 <tr>
 <td style="text-align: left">data .count</td>
+<td style="text-align: left">int</td>
+<td>24小時成交筆數</td>
+</tr>
+<tr>
+<td style="text-align: left">data .change</td>
+<td style="text-align: left">int</td>
+<td>24小時價格變化</td>
+</tr>
+<tr>
+<td style="text-align: left">data .changePercent</td>
+<td style="text-align: left">int</td>
+<td>24小時價格變化(百分比)</td>
+</tr>
+<tr>
+<td style="text-align: left">data .pairCode</td>
 <td style="text-align: left">string</td>
-<td></td>
+<td>忽略</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>push</p>
+<p>feed stream</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68.46"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0866666666666667"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689935550508</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640251563497</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2934"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9758"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25483.2032"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7355.4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.2834"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0861"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <hr>
 <h2 id='request-candles'>Request Candles</h2>
 <blockquote>
-<p>request</p>
+<p>req request </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1day"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1613692800</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639699200</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"his"</span><span class="w">
+        </span><span class="nl">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639699200</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"zip"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4810,7 +5840,7 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params.interval</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td>週期</td>
+<td>周期</td>
 </tr>
 <tr>
 <td style="text-align: left">params.from</td>
@@ -4840,71 +5870,111 @@ RESPONSE PARAMETERS
 <h6 id='3fe2172fad'>返回結構</h6>
 <table><thead>
 <tr>
-<th style="text-align: center">參數名</th>
-<th style="text-align: center">類型</th>
-<th style="text-align: center">說明</th>
+<th style="text-align: left">參數名</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">close</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">收盤價格</td>
+<td style="text-align: left">biz</td>
+<td style="text-align: left">string</td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align: center">high</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">最高價格</td>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">int</td>
+<td>時間戳</td>
 </tr>
 <tr>
-<td style="text-align: center">low</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">最低價格</td>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td>幣對</td>
 </tr>
 <tr>
-<td style="text-align: center">open</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">開盤價格</td>
+<td style="text-align: left">interval</td>
+<td style="text-align: left">string</td>
+<td>間隔 1day</td>
 </tr>
 <tr>
-<td style="text-align: center">turnOver</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">交易量</td>
+<td style="text-align: left">event</td>
+<td style="text-align: left">string</td>
+<td>req</td>
 </tr>
 <tr>
-<td style="text-align: center">vol</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">交易額</td>
+<td style="text-align: left">data .open</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間第一筆成交價</td>
 </tr>
 <tr>
-<td style="text-align: center">product</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">幣對</td>
+<td style="text-align: left">data .close</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間末一筆成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">data .low</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間最低成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">data .high</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間最高成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">data .vol</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">data .turnOver</td>
+<td style="text-align: left">string</td>
+<td>這根K線期間成交額</td>
+</tr>
+<tr>
+<td style="text-align: left">data .id</td>
+<td style="text-align: left">int</td>
+<td>唯一且有序id</td>
+</tr>
+<tr>
+<td style="text-align: left">data .count</td>
+<td style="text-align: left">int</td>
+<td>這根K線期間成交筆數</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>req response </p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"his"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689936708184</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candles"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1day"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639584000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1639670400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.9</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2265</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">2802.082564</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">810.94</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689782400</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.003</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2934</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0103</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2399</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">25441</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="mf">29922.563131</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">8627.47</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689868800</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9711</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2399</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.9758</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.8212</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -4948,82 +6018,125 @@ RESPONSE PARAMETERS
 <td>是否啟用gzip</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>req request </p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
     </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"his"</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"zip"</span><span class="p">:</span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='e4e9871ed3-3'>返回參數</h4>
 <table><thead>
 <tr>
-<th style="text-align: center">參數名</th>
-<th style="text-align: center">類型</th>
-<th style="text-align: center">說明</th>
+<th style="text-align: left">參數名</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">close</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">收盤價格</td>
+<td style="text-align: left">biz</td>
+<td style="text-align: left">string</td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align: center">high</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">最高價格</td>
+<td style="text-align: left">type</td>
+<td style="text-align: left">string</td>
+<td>ticker</td>
 </tr>
 <tr>
-<td style="text-align: center">low</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">最低價格</td>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">int</td>
+<td>時間戳</td>
 </tr>
 <tr>
-<td style="text-align: center">open</td>
-<td style="text-align: center">int</td>
-<td style="text-align: center">開盤價格</td>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td>幣對</td>
 </tr>
 <tr>
-<td style="text-align: center">turnOver</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">交易量</td>
+<td style="text-align: left">event</td>
+<td style="text-align: left">string</td>
+<td>req</td>
 </tr>
 <tr>
-<td style="text-align: center">vol</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">交易額</td>
+<td style="text-align: left">data .open</td>
+<td style="text-align: left">string</td>
+<td>24小時前開始第一筆成交價格</td>
 </tr>
 <tr>
-<td style="text-align: center">product</td>
-<td style="text-align: center">string</td>
-<td style="text-align: center">幣對</td>
+<td style="text-align: left">data .close</td>
+<td style="text-align: left">string</td>
+<td>24小時最新成交價格</td>
+</tr>
+<tr>
+<td style="text-align: left">data .low</td>
+<td style="text-align: left">string</td>
+<td>24小時內最低成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">data .high</td>
+<td style="text-align: left">string</td>
+<td>24小時內最高成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">data .vol</td>
+<td style="text-align: left">string</td>
+<td>24小時內成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">data .turnOver</td>
+<td style="text-align: left">string</td>
+<td>24小時內成交額</td>
+</tr>
+<tr>
+<td style="text-align: left">data .count</td>
+<td style="text-align: left">int</td>
+<td>24小時成交筆數</td>
+</tr>
+<tr>
+<td style="text-align: left">data .change</td>
+<td style="text-align: left">int</td>
+<td>24小時價格變化</td>
+</tr>
+<tr>
+<td style="text-align: left">data .changePercent</td>
+<td style="text-align: left">int</td>
+<td>24小時價格變化(百分比)</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>req response </p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68.46"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.56"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0866666666666667"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640251563497</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1689937681602</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2934"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3483"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9758"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.003"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnOver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39507.143672"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11384.41"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"pairCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0549"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"changePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0167"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='websocket-feed-private'>WEBSOCKET FEED PRIVATE</h1>
 <ul>
-<li><code>wss://{host}/</code></li>
+<li><code>wss://ws.bg.exchange/</code></li>
 </ul>
 <h2 id='login'>Login</h2>
 <p>進行WS通道用戶認證。只有認證過的通道才可以進行訂閱用戶的資產信息以及訂單狀態變化信息</p>
@@ -5059,19 +6172,19 @@ RESPONSE PARAMETERS
 <td style="text-align: left">params.access-key</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td><a href="#auth">鑑權說明</a></td>
+<td><a href="#auth">鑒權說明</a></td>
 </tr>
 <tr>
 <td style="text-align: left">params.access-sign</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
-<td><a href="#auth">鑑權說明</a></td>
+<td><a href="#auth">鑒權說明</a></td>
 </tr>
 <tr>
 <td style="text-align: left">params.access-timestamp</td>
 <td style="text-align: left">是</td>
 <td style="text-align: left">long</td>
-<td><a href="#auth">鑑權說明</a></td>
+<td><a href="#auth">鑒權說明</a></td>
 </tr>
 <tr>
 <td style="text-align: left">event</td>
@@ -5085,10 +6198,11 @@ RESPONSE PARAMETERS
 <p>response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -5222,7 +6336,7 @@ RESPONSE PARAMETERS
   </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mf">100805.8</span><span class="p">,</span><span class="w">
       </span><span class="nl">"hold"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.2</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -5395,7 +6509,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>product</td>
-<td>交易對</td>
+<td>商品</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -5791,7 +6905,19 @@ RESPONSE PARAMETERS
                         <span class="o">.</span><span class="na">characterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)</span>
                         <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">))</span>
                         <span class="o">.</span><span class="na">contentType</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">)</span>
-</code></pre></div><h1 id='b0c18f57d6'>數據字典</h1><h2 id='99da7dcd63'>用戶認證錯誤碼對照表</h2>
+</code></pre></div><h1 id='b0c18f57d6'>數據字典</h1><h2 id='websocket'>WEBSOCKET錯誤碼對照表</h2>
+<table><thead>
+<tr>
+<th>錯誤碼</th>
+<th>說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>無效的請求</td>
+</tr>
+</tbody></table>
+<h2 id='99da7dcd63'>用戶認證錯誤碼對照表</h2>
 <table><thead>
 <tr>
 <th>錯誤碼</th>
