@@ -1,11 +1,12 @@
 # WEBSOCKET FEED PRIVATE
 
-- `wss://{host}/`
+- `wss://ws.bg.exchange/`
 
 
 ## Login
 
-User authentication conducted through web socket channels. Only authenticated channels can process subscribers’ information on the assets and changes in order status.
+Authenticate the WS channel for users. Only authenticated channels can subscribe to user's asset information and order status change information.
+
 ### Subscribe
 
 > request
@@ -22,35 +23,37 @@ User authentication conducted through web socket channels. Only authenticated ch
 }
 ```
 
-#### Request parameters
+#### Request Parameters
 
-|Parameter Name|Mandatory|Type| Description   |
+|Parameter Name|Required|Type| Description   |
 |:----    |:---|:----- |------|
-| params.type | Y  |string | Authentication method: `api`: apiKey authentication; `token`: token authentication     |
-| params.access-key     |Y  |string | [Authentication Specifications](#Authentication Specifications)   |
-| params.access-sign     |Y  |string | [Authentication Specifications](#Authentication Specifications)    |
-| params.access-timestamp     |Y  |long | [Authentication Specifications](#Authentication Specifications)    |
-| event     |Y  |string  | Event name [List of events](#events)  |
+| params.type | Yes  |string | Authentication method: <br/>api: apiKey authentication; token: token authentication     |
+| params.access-key     |Yes  |string | [Authentication Details](#auth)   |
+| params.access-sign     |Yes  |string | [Authentication Details](#auth)    |
+| params.access-timestamp     |Yes  |long | [Authentication Details](#auth)    |
+| event     |Yes  |string | Event name [ Event List](#events)  |
 
 > response
 
 ```json
 {
-  "channel": "login",
-  "data": {
-    "result": true
-  }
+    "result": "login",
+    "data":
+    {
+        "result": true
+    }
 }
 ```
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| result    |string | [Data channel](#channels)|
-| data.result     |bool | Subscription successful or not |
+| result    |string | [Data Channel](#channels)|
+| data.result     |bool | Whether the subscription is successful |
 
 ## Assets
 
-Subscription to the user’s balance changes. Only asset-based subscription is supported at the moment. Subscription to full asset change information is under development.
+Subscribe to user's asset changes. Currently, only subscription by product is supported. Subscription to full asset change information is under development.
+
 ### Subscribe
 
 > request
@@ -67,15 +70,15 @@ Subscription to the user’s balance changes. Only asset-based subscription is s
 }
 ```
 
-#### Request parameters
+#### Request Parameters
 
-|Parameter Name|Mandatory|Type| Description   |
+|Parameter Name|Required|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | Y  |string | [Subscription module type](#bizs)     |
-| params.type     |Y  |string | [Subscription business type](#bizs)  |
-| params.product     |Y  |string | Product information   |
-| event     |Y  |string  | Event name [List of events](#events)  |
-| zip     |Y  |bool | Enable GZIP or not |
+| params.biz | Yes  |string | [Subscription Module Type](#bizs)     |
+| params.type     |Yes  |string | [Subscription Business Type](#types)  |
+| params.product     |Yes  |string | Product information   |
+| event     |Yes  |string | Event name [Event name Event List](#events)  |
+| zip     |Yes  |bool | Whether to enable gzip|
 
 > response
 
@@ -91,15 +94,15 @@ Subscription to the user’s balance changes. Only asset-based subscription is s
 }
 ```
 
-#### Response parameters
+#### Response Parameters
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [Data channel](#channels)|
-| biz    |string | [Subscription module type](#bizs) |
-| type | string |  [Subscription business type](#bizs) |
-| product    |string Product name|
-| data.result     |bool | Subscription successful or not |
+| channel    |string | [Data Channel](#channels)|
+| biz    |string | [Business Line](#bizs) |
+| type | string |  [Protocol Type](#types) |
+| product    |string | Product name|
+| data.result     |bool | Whether the subscription is successful |
 
 > feed
 
@@ -111,7 +114,7 @@ Subscription to the user’s balance changes. Only asset-based subscription is s
   "zip": false,
   "data": [
     {
-      "currency": "BTC",
+      "symbol": "BTC",
       "available": 100805.8,
       "hold": 13.2
     }
@@ -119,21 +122,21 @@ Subscription to the user’s balance changes. Only asset-based subscription is s
 }
 ```
 
-#### 推送数据
+#### Feed Data
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [Data channel](#channels)|
-| biz    |string |[Subscription module type](#bizs) |
-| type | string |  [Subscription business type](#bizs) |
+| channel    |string | [Data Channel](#channels)|
+| biz    |string | [Business Line](#bizs) |
+| type | string |  [Protocol Type](#types) |
 | product    |string | Product name|
 | $data.currency     |string | Currency name |
-| $data.available     |bigdecimal | Name of available quantity |
-| $data.hold     |bigdecimal | Name of currency and quantity on hold |
+| $data.available     |bigdecimal | Available quantity |
+| $data.hold     |bigdecimal | 	Hold quantity of currency|
 
 ## Orders
 
-Subscription to status changes of all orders
+Subscribe to all order status changes.
 
 ### Subscribe
 
@@ -151,15 +154,15 @@ Subscription to status changes of all orders
 }
 ```
 
-#### Request parameters
+#### Request Parameters
 
-|Parameter Name|Mandatory|Type| Description   |
+|Parameter Name|Required|Type| Description   |
 |:----    |:---|:----- |------|
-| params.biz | Y  |string | [Subscription module type](#bizs)     |
-| params.type     |Y  |string | [Subscription business type](#bizs)  |
-| params.product     |Y  |string Product name   |
-| event     |Y  |string  | Event name [List of events](#events)  |
-| zip     |Y  |bool | Enable GZIP or not |
+| params.biz | Yes  |string | [Subscription Module Type](#bizs)     |
+| params.type     |Yes  |string | [Subscription Business Type](#types)  |
+| params.product     |Yes  |string | Product information   |
+| event     |Yes  |string | Event name [Event name Event List](#events)  |
+| zip     |Yes  |bool | Whether to enable gzip |
 
 > response
 
@@ -175,43 +178,42 @@ Subscription to status changes of all orders
 }
 ```
 
-#### Response parameters
+#### Response Parameters
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [Data channel](#channels)|
-| biz    |string |[Subscription module type](#bizs) |
-| type | string |  [Subscription business type](#bizs) |
-| product    |string Product name|
-| data.result     |bool | Subscription successful or not |
+| channel    |string | [Data Channel](#channels)|
+| biz    |string | [Business Line](#bizs) |
+| type | string |  [Protocol Type](#types) |
+| product    |string | Product name|
+| data.result     |bool | Whether the subscription is successful |
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| Parameter Name | Parameter Description | Type | schema |
+| Parameter Name | Description | Type | schema |
 | -------- | -------- | ----- |----- | 
 |order_id|Order ID|string||
-|product|Trading Pair|string||
+|product|Product name|string||
 |side| buy/sell |string||
 |price|Price per unit of base currency|string||
-|size|Quantity of base currency to buy/sell
-Status|string||
-|filled_amount|Amount of filled order|string||
-|funds|The amount of quotation currency desired to use|string||
-|filled_size| Value of filled order |string||
-|type|limit: limit order/market: market order/|string||
+|size|Quantity of base currency bought/sold|string||
+|filled_amount|Filled quantity|string||
+|funds|Quantity of quote currency used|string||
+|filled_size| Filled amount |string||
+|type|limit:limit: limit order / market: market order/|string||
 |status|Status|string||
 
-`status`: Transaction status, value range 0-7
+`status`: Trading status, value range 0-7
 
-- 0: Order received
-- 1: Order submitted
-- 2:  Order partially filled
-- 3: Order fully filled
-- 4: Order being cancelled
-- 5: Order cancelled
-- 6:  Order transaction failed
-- 7: Order volume decreased
+-0: Order received
+-1: Order submitted
+-2: Order partially filled
+-3: Order fully filled
+-4: Order initiated cancellation
+-5: Order cancelled
+-6: Order transaction failed
+-7: Order reduced
 
 
 
@@ -236,36 +238,38 @@ Status|string||
 }
 ```
 
-#### 推送数据
+#### Feed Data
 
 |Parameter Name|Type|Description|
 |:----    |:----- |-----   |
-| channel    |string | [Data channel](#channels)|
-| biz    |string |[Subscription module type](#bizs) |
-| type | string |  [Subscription business type](#bizs) |
-| product    |string Product name|
-| $data    |object | [Order details](#order_detail) |
+| channel    |string | [Data Channel](#channels)|
+| biz    |string | [Business Line](#bizs) |
+| type | string |  [Protocol Type](#types) |
+| product    |string | Product name|
+| $data    |object | [Order Details](#order_detail) |
+
+## Event List
 
 <a name="events"></a>
-## Event list
 
-|Event name|Type|Description|
+|Event 名称|Type|Description|
 |:----    |:----- |-----   |
 | sub    |string | Subscription event, initiated by the client|
 | login    |string | Login event, initiated by the client |
 
+## Business Line List
+
 <a name="bizs"></a>
-## Biz list
 
 |Biz Name|Type|Description|
 |:----    |:----- |-----   |
 | exchange    |string | Spot trading|
 
-## Type list
+## Protocol Type List
 
 <a name="types"></a>
 
-|Type name|Type|Description|
+|Type Name|Type|Description|
 |:----    |:----- |-----   |
-| assets    |string | Change of asset|
-| orders    |string | Change of order status|
+| assets    |string | Asset changes|
+| orders    |string | Order status changes|

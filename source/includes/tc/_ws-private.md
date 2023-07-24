@@ -1,6 +1,6 @@
 # WEBSOCKET FEED PRIVATE
 
-- `wss://{host}/`
+- `wss://ws.bg.exchange/`
 
 
 ## Login
@@ -28,19 +28,20 @@
 |參數名|必選|類型| 說明   |
 |:----    |:---|:----- |------|
 | params.type | 是  |string | 認證方式: <br/>`api`:apiKey認證;`token`:token認證     |
-| params.access-key     |是  |string | [鑑權說明](#auth)   |
-| params.access-sign     |是  |string | [鑑權說明](#auth)    |
-| params.access-timestamp     |是  |long | [鑑權說明](#auth)    |
+| params.access-key     |是  |string | [鑒權說明](#auth)   |
+| params.access-sign     |是  |string | [鑒權說明](#auth)    |
+| params.access-timestamp     |是  |long | [鑒權說明](#auth)    |
 | event     |是  |string | 事件名 [事件列表](#events)  |
 
 > response
 
 ```json
 {
-  "channel": "login",
-  "data": {
-    "result": true
-  }
+    "result": "login",
+    "data":
+    {
+        "result": true
+    }
 }
 ```
 
@@ -113,7 +114,7 @@
   "zip": false,
   "data": [
     {
-      "currency": "BTC",
+      "symbol": "BTC",
       "available": 100805.8,
       "hold": 13.2
     }

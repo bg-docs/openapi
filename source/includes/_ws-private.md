@@ -1,6 +1,6 @@
 # WEBSOCKET FEED PRIVATE
 
-- `wss://{host}/`
+- `wss://ws.bg.exchange/`
 
 
 ## Login
@@ -37,10 +37,11 @@
 
 ```json
 {
-  "channel": "login",
-  "data": {
-    "result": true
-  }
+    "result": "login",
+    "data":
+    {
+        "result": true
+    }
 }
 ```
 
@@ -113,7 +114,7 @@
   "zip": false,
   "data": [
     {
-      "currency": "BTC",
+      "symbol": "BTC",
       "available": 100805.8,
       "hold": 13.2
     }

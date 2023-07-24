@@ -1,24 +1,24 @@
-# WEBSOCKET FEED PUBLIC
+# WEBSOCKET FEED PUBLIC (DEPRECATED)
 
-- ` {host}/ws`
+- ` wss://ws.bg.exchange/ws/`
 
 ## Candles Subscribe/UnSubscribe 
 
 #### Subscribe
 
-> request
+> sub request
 
 ```json
-	{
-		"event": "sub",
-		"params": {
-			"biz": "market",
-			"type": "candles",
-			"product":"ETH_BNB",
-			"interval": "1day"
-		},
-		"zip":false
-	}	
+{
+    "event": "sub",
+    "params":{
+        "biz": "market",
+        "type": "candles",
+        "product": "ETH_BNB",
+        "interval": "30min"
+    },
+    "zip": true
+}
 ```
 
 #### 请求参数
@@ -26,24 +26,22 @@
 |参数名|必选|类型| 说明   |
 |:----    |:---|:----- |------|
 | params .biz | 是  |string |      |
-| params .type     |是  |string | 订阅类型类型 |
+| params .type     |是  |string | 订阅类型 |
 | params .product     |是  |string | 币对   |
 | params .interval     |是  |string | 周期   |
 | event     |是  |string | 事件 Subscribe  |
 | zip     |是  |bool | 是否启用gzip |
 
 
-> response
+> sub response
 
 ```json
 {
-	"id": "",
 	"channel": "subscribe",
 	"biz": "market",
 	"type": "candles",
 	"product": "ETH_BNB",
-	"product":"ETH_BNB",
-	"interval": "1day",
+	"interval": "30min",
 	"ts": 1639655425910,
 	"status": "ok"
 }
@@ -55,18 +53,19 @@
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
 | product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
-| data .count     |string |  |
+| data .open     |string | 这根K线期间第一笔成交价 |
+| data .close    |string | 这根K线期间末一笔成交价 |
+| data .low     |string | 这根K线期间最低成交价 |
+| data .high     |string | 这根K线期间最高成交价 |
+| data .vol     |string | 这根K线期间成交量 |
+| data .turnOver     |string | 这根K线期间成交额 |
+| data .id     | int | 唯一且有序id |
+| data .count     | int | 这根K线期间成交笔数 |
 
 
 #### UnSubscribe
 
-> request
+> unsub request
 
 ```json
 	{
@@ -86,18 +85,17 @@
 |参数名|必选|类型| 说明            |
 |:----    |:---|:----- |---------------|
 | params .biz | 是  |string |               |
-| params .type     |是  |string | 订阅类型类型        |
+| params .type     |是  |string | 订阅类型        |
 | params .product     |是  |string | 币对            |
 | params .interval     |是  |string | 周期            |
 | event     |是  |string | 事件 UnSubscribe |
 | zip     |是  |bool | 是否启用gzip      |
 
 
-> response
+> unsub response
 
 ```json
 {
-	"id": "",
 	"channel":"unsubscribe",
 	"biz": "market",
 	"type": "candles",
@@ -114,45 +112,45 @@
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
 | product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
-| data .count     |string |  |
+| data .open     |string | 这根K线期间第一笔成交价 |
+| data .close    |string | 这根K线期间末一笔成交价 |
+| data .low     |string | 这根K线期间最低成交价 |
+| data .high     |string | 这根K线期间最高成交价 |
+| data .vol     |string | 这根K线期间成交量 |
+| data .turnOver     |string | 这根K线期间成交额 |
+| data .id     | int | 唯一且有序id |
+| data .count     | int | 这根K线期间成交笔数 |
+| data .seqId     |int | 有序且唯一id |
 
 
 
-#### FEED 
+#### Feed Stream 
 
+> feed stream
 
 ```json
 
+
+
 {
-	"id": "his",
-	"type": "candles",
-	"product": "ETH_USDT",
-	"interval": "1day",
-	"data": [{
-		"id": 1639584000,
-		"open": 11,
-		"close": 11.9,
-		"low": 11,
-		"high": 11.9,
-		"vol": 2,
-		"turnOver": 22.9,
-		"count": 2
-	}, {
-		"id": 1639670400,
-		"open": 11.9,
-		"close": 11.9,
-		"low": 11.9,
-		"high": 11.9,
-		"vol": 0,
-		"turnOver": 0,
-		"count": 0
-	}]
+    "id": 1688954400,
+    "type": "candles",
+    "pairCode": "BTC_USDT",
+    "product": "BTC_USDT",
+    "data":
+    {
+        "open": 3.1406,
+        "close": 3.0466,
+        "high": 4.0007,
+        "low": 3.0051,
+        "turnOver": 51642.553798,
+        "vol": 14765.94,
+        "count": 52144,
+        "seqId": 111322735,
+        "id": 1688954400
+    },
+    "interval": "30min",
+    "SeqId": 111322735
 }
 
 ```
@@ -162,6 +160,7 @@
 
 #### Subscribe
 
+> sub request
 
 ```json
 {
@@ -181,20 +180,17 @@
 | params .biz | 是  |string |          |
 | params .type     |是  |string | 订阅类型类型   |
 | params .product     |是  |string | 币对       |
-| params .interval     |是  |string | 周期       |
 | event     |是  |string | 事件 Subscribe      |
 | zip     |是  |bool | 是否启用gzip |
 
-
+> sub response
 
 ```json
 {
-  "id": "",
   "channel": "subscribe",
   "biz": "market",
   "type": "fills",
   "product": "ETH_USDT",
-  "interval": "",
   "ts": 1641384262679,
   "status": "ok"
 }
@@ -211,8 +207,10 @@
 | event     |是  |string | 事件 Subscribe      |
 | zip     |是  |bool | 是否启用gzip |
 
-```json
 
+> sub request
+
+```json
 {
 	"event": "unsub",
 	"params": {
@@ -225,49 +223,57 @@
 
 ```
 
+> unsub response
 
 ```json
 {
-	"id": "",
-	"unsubbed": "market.ETH_USDT.trade.detail",
-	"ts": 1641384470335,
-	"status": "ok"
+    "biz": "market",
+    "channel": "unsubscribe",
+    "product": "ETH_USDT",
+    "type": "fills",
+    "status": "ok",
+    "ts": 1689041894440
 }
+
 ```
-#### FEED 
+#### Feed Stream 
 
 |参数名|类型|说明|
 |:----    |:---|:----- |-----   |
+| id | int | 无符号整数 此消息唯一id |
 | type | string |  订阅类型 |
 | interval     |string | 间隔  |
 | product    |string | 币对|
+| pairCode    |string | 忽略|
 | data .price     |string | 价格 |
-| data .vol     |string | 成交 |
+| data .vol     |string | 成交量 |
 | data .ts     |int  | 时间戳 |
 | data .direction     |string |  方向|
+| data .id     |int |  成交id|
+
+
+> feed stream
+
 
 ```json
-
 {
-	"biz": "market",
-	"data": [{
-		"vol": "1",
-		"ts": 1639585820373,
-		"id": 28470000,
-		"price": "11",
-		"direction": "buy"
-	}, {
-		"vol": "1",
-		"ts": 1639585820376,
-		"id": 28730000,
-		"price": "11.9",
-		"direction": "sell"
-	}],
-	"id": "his",
-	"product": "ETH_USDT",
-	"ts": 1640919016188,
-	"type": "fills"
+    "id": 323241,
+    "type": "fills",
+    "pairCode": "BTC_USDT",
+    "data":
+    [
+        {
+            "ts": 1689152406185,
+            "id": 323241000,
+            "vol": "0.04",
+            "price": "3.6733",
+            "direction": "buy"
+        }
+    ],
+    "product": "BTC_USDT",
+    "ts": 1689152412845
 }
+
 
 ``` 
 
@@ -275,7 +281,7 @@
 
 ## OrderBook Subscribe/UnSubscribe
 
-> request
+> sub request
 
 ```json
 {
@@ -295,25 +301,24 @@
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
 | params .interval     |是  |string | _周期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
 
-> response
+> sub response
 
 ```json
 {
-  "id": "",
-  "channel": "subscribe",
-  "biz": "market",
-  "type": "orderBook",
-  "product": "ETH_USDT",
-  "interval": "step1",
-  "ts": 1641384620237,
-  "status": "ok"
+    "biz": "market",
+    "channel": "subscribe",
+    "interval": "1",
+    "product": "ETH_USDT",
+    "type": "orderBook",
+    "status": "ok",
+    "ts": 1689934070509
 }
 ```
 
@@ -322,11 +327,15 @@
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
 | params .interval     |是  |string | _周期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
+
+
+
+> unsub request
 
 ```json
 {
@@ -335,50 +344,57 @@
     "biz": "market",
     "type": "orderBook",
     "product": "ETH_USDT",
-    "interval": "1"
+    "interval": "1min"
   },
   "zip": false
 }
 
 ```
 
+
+> unsub response
+
 ```json
 {
-  "id": "",
-  "unsubbed": "market.ETH_USDT.depth.step1",
-  "ts": 1641384766983,
-  "status": "ok"
+    "biz": "market",
+    "channel": "unsubscribe",
+    "interval": "1min",
+    "product": "ETH_USDT",
+    "type": "orderBook",
+    "status": "ok",
+    "ts": 1689934273388
 }
-
 ```
 
-#### FEED 
+#### Feed Stream 
 
-
+> feed stream
 
 ```json
 
 {
-	"seqId": 8414921,
-	"id": 1641385128,
-	"bids": [
+    "id": 1689934071,
+    "type": "orderBook",
+    "pairCode": "ETH_USDT",
+    "product": "ETH_USDT",
+    "ts": 1689934071000,
+    "version": 1689934071,
+    "seqId": 0,
+    "interval": "1min",
+    "bids": [
 		[3781.85, 0.30656],
 		[3781.78, 0.0219],
 		[360, 4.59207],
 		[10, 11]
 	],
-	"asks": [
+    "asks": [
 		[3835, 0.19948],
 		[3836.98, 0.00026],
 		[3837.33, 0.4445],
 		[3839, 0.2]
-	],
-	"ts": 1641385128493,
-	"version": 1641385128,
-	"type": "orderBook",
-	"product": "ETH_USDT",
-	"interval": "1"
+	]
 }
+
 ```
 ----
 
@@ -386,87 +402,101 @@
 
 #### Subscribe
 
-> request
+> sub request
 
 ```json
-	{
-		"event": "sub",
-		"params": {
-			"type": "percent10",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+    "event": "sub",
+    "params":
+    {
+        "biz": "market",
+        "type": "percent10",
+        "product": "ETH_USDT"
+    },
+    "zip": false
+}	
 ```
 
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
+
+> sub response
+
 ```json
 {
-  "id": "",
-  "channel": "subscribe",
-  "biz": "market",
-  "type": "percent10",
-  "product": "ETH_USDT",
-  "interval": "",
-  "ts": 1641387412252,
-  "status": "ok"
+    "biz": "market",
+    "channel": "subscribe",
+    "product": "ETH_USDT",
+    "type": "percent10",
+    "status": "ok",
+    "ts": 1689934871904
 }
 ```
 #### UnSubscribe
 
-> request
+> unsub request
 
 ```json
-	{
-		"event": "unsub",
-		"params": {
-			"type": "percent10",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+    "event": "unsub",
+    "params":
+    {
+        "biz": "market",
+        "type": "percent10",
+        "product": "ETH_USDT"
+    },
+    "zip": false
+}
 ```
 
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
+| params .pairCode     |是  |string | 币对(忽略)|
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
+> unsub response
+
 ```json
 {
-  "id": "",
-  "unsubbed": "market.ETH_USDT.depth.percent10",
-  "ts": 1641387599816,
-  "status": "ok"
+    "biz": "market",
+    "channel": "unsubscribe",
+    "product": "ETH_USDT",
+    "type": "percent10",
+    "status": "ok",
+    "ts": 1689934879610
 }
 ```
 
 
-#### FEED
+#### Feed Stream 
+
+> feed stream
 
 ```json
+
 {
-	"seqId": 2875,
-	"id": 1640683777,
-	"bids": [
+    "id": 1689934879,
+    "type": "percent10",
+    "pairCode": "ETH_USDT",
+    "product": "ETH_USDT",
+    "ts": 1689934879000,
+    "version": 1689934879,
+    "seqId": 0,
+    "bids": [
 		[11.994, 0.10124]
 	],
-	"asks": [
+    "asks": [
 		[12.006, 0]
-	],
-	"ts": 1640683777520,
-	"version": 1640683777,
-	"type": "percent10",
-	"product": "ETH_USDT"
+	]
 }
 ```
 
@@ -479,7 +509,7 @@
 
 #### Subscribe
 
-> request
+> sub request
 
 ```json
 	{
@@ -497,14 +527,13 @@
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
-| params .interval     |是  |string | 周期 |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
 
-> response
+> sub response
 
 ```json
 {
@@ -519,9 +548,9 @@
 }
 ```
 
-#### Subscribe
+#### UnSubscribe
 
-> request
+> unsub request
 
 ```json
 	{
@@ -539,60 +568,67 @@
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型类型  |
+| params .type     |是  |string | 订阅类型  |
 | params .product     |是  |string | 币对|
-| params .interval     |是  |string | 周期 |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
 
-> response
+> unsub response
 
 ```json
 {
-  "id": "",
-  "unsubbed": "market.ETH_USDT.ticker",
-  "ts": 1641387799984,
-  "status": "ok"
+    "biz": "market",
+    "channel": "unsubscribe",
+    "product": "BTC_USDT",
+    "type": "ticker",
+    "status": "ok",
+    "ts": 1689935550687
 }
 ```
-#### FEED 
+#### Feed Stream 
 
 |参数名|类型|说明|
 |:----    |:----- |-----   |
 | type | string |  订阅类型 |
-| interval     |string | 间隔  |
+| ts     | int | 时间戳  |
 | product    |string | 币对|
-| data .open     |string | 开盘 |
-| data .close    |string | 收盘 |
-| data .low     |string | 低 |
-| data .high     |string | 高 |
-| data .vol     |string | 成交 |
-| data .turnOver     |string | 成交量 |
-| data .count     |string |  |
+| msg    | string | 忽略|
+| code    | int | 忽略|
+| data .open     |string | 24小时前开始第一笔成交价格 |
+| data .close    |string | 24小时最新成交价格 |
+| data .low     |string | 24小时内最低成交价 |
+| data .high     |string | 24小时内最高成交价 |
+| data .vol     |string | 24小时内成交量 |
+| data .turnOver     |string | 24小时内成交额 |
+| data .count     | int | 24小时成交笔数 |
+| data .change     | int | 24小时价格变化 |
+| data .changePercent     | int | 24小时价格变化(百分比) |
+| data .pairCode     |string | 忽略 |
 
-> push 
+> feed stream
 
 ```json
 
 {
-	"biz": "market",
-	"data": {
-		"open": "18",
-		"close": "19.56",
-		"low": "18",
-		"high": "19.56",
-		"turnOver": "68.46",
-		"count": 0,
-		"vol": "3.5",
-		"product": "BTC_USDT",
-		"change": "1.56",
-		"changePercent": "0.0866666666666667"
-	},
-	"id": "",
+    "code": 200,
+    "msg": "success",
+    "ts": 1689935550508,
+    "type": "ticker",
 	"product": "BTC_USDT",
-	"ts": 1640251563497,
-	"type": "ticker"
+    "data":
+    {
+        "pairCode": "BTC_USDT",
+        "open": "3.2934",
+        "close": "3.01",
+        "high": "4.003",
+        "low": "2.9758",
+        "turnOver": "25483.2032",
+        "vol": "7355.4",
+        "count": 0,
+        "change": "-0.2834",
+        "changePercent": "-0.0861"
+    }
 }
 ```
 ----
@@ -600,7 +636,7 @@
 
 ## Request Candles
 
-> request 
+> req request 
 
 ```json
 {
@@ -608,12 +644,11 @@
 	"params": {
 		"biz": "market",
 		"type": "candles",
-		"product": "ETH_USDT",
+		"product": "BTC_USDT",
 		"interval": "1day",
 		"size": 301,
 		"from": 1613692800,
-		"to": 1639699200,
-		"id": "his"
+		"to": 1639699200
 	},
 	"zip":false
 }
@@ -632,42 +667,55 @@
 
 ###### 返回结构
 
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| product | string  |  币对  |
+|参数名|类型|说明|
+|:----    |:----- |-----   |
+| biz | string |  行情 |
+| ts     | int | 时间戳  |
+| product    |string | 币对|
+| interval    | string | 间隔 1day|
+| event    | string | req |
+| data .open     |string | 这根K线期间第一笔成交价 |
+| data .close    |string | 这根K线期间末一笔成交价 |
+| data .low     |string | 这根K线期间最低成交价 |
+| data .high     |string | 这根K线期间最高成交价 |
+| data .vol     |string | 这根K线期间成交量 |
+| data .turnOver     |string | 这根K线期间成交额 |
+| data .id     | int | 唯一且有序id |
+| data .count     | int | 这根K线期间成交笔数 |
 
+> req response 
 
 ```json
 {
-	"id": "his",
-	"type": "candles",
-	"product": "ETH_USDT",
-	"interval": "1day",
-	"data": [{
-		"id": 1639584000,
-		"open": 11,
-		"close": 11.9,
-		"low": 11,
-		"high": 11.9,
-		"vol": 2,
-		"turnOver": 22.9,
-		"count": 2
-	}, {
-		"id": 1639670400,
-		"open": 11.9,
-		"close": 11.9,
-		"low": 11.9,
-		"high": 11.9,
-		"vol": 0,
-		"turnOver": 0,
-		"count": 0
-	}]
+    "biz": "market",
+    "product": "BTC_USDT",
+    "ts": 1689936708184,
+    "type": "candles",
+    "interval": "1day",
+    "event": "req",
+    "data":
+    [
+        {
+            "count": 2265,
+            "turnOver": 2802.082564,
+            "vol": 810.94,
+            "id": 1689782400,
+            "high": 4.003,
+            "open": 3.2934,
+            "low": 3.0103,
+            "close": 3.2399
+        },
+        {
+            "count": 25441,
+            "turnOver": 29922.563131,
+            "vol": 8627.47,
+            "id": 1689868800,
+            "high": 3.9711,
+            "open": 3.2399,
+            "low": 2.9758,
+            "close": 3.8212
+        }
+    ]
 }
 
 
@@ -685,14 +733,15 @@
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
+> req request 
+
 ```json
 	{
 	"event": "req",
 	"params": {
 		"biz": "market",
 		"type": "ticker",
-		"product": "ETH_USDT",
-		"id": "his"
+		"product": "ETH_USDT"
 	},
 	"zip":false
 }
@@ -700,35 +749,46 @@
 
 #### 返回参数
 
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| product | string  |  币对  |
+|参数名|类型|说明|
+|:----    |:----- |-----   |
+| biz | string |  行情 |
+| type     | string | ticker  |
+| ts     | int | 时间戳  |
+| product    |string | 币对|
+| event    | string | req |
+| data .open     |string | 24小时前开始第一笔成交价格 |
+| data .close    |string | 24小时最新成交价格 |
+| data .low     |string | 24小时内最低成交价 |
+| data .high     |string | 24小时内最高成交价 |
+| data .vol     |string | 24小时内成交量 |
+| data .turnOver     |string | 24小时内成交额 |
+| data .count     | int | 24小时成交笔数 |
+| data .change     | int | 24小时价格变化 |
+| data .changePercent     | int | 24小时价格变化(百分比) |
+
+
+> req response 
 
 ```json
 {
-	"biz": "market",
-	"data": {
-		"open": "18",
-		"close": "19.56",
-		"low": "18",
-		"high": "19.56",
-		"turnOver": "68.46",
-		"count": 0,
-		"vol": "3.5",
-		"pairCode": "BTC_USDT",
-		"change": "1.56",
-		"changePercent": "0.0866666666666667"
-	},
-	"id": "",
-	"product": "BTC_USDT",
-	"ts": 1640251563497,
-	"type": "ticker"
+    "biz": "market",
+    "product": "BTC_USDT",
+    "ts": 1689937681602,
+    "type": "ticker",
+    "event": "req",
+    "data":
+    {
+        "open": "3.2934",
+        "close": "3.3483",
+        "low": "2.9758",
+        "high": "4.003",
+        "turnOver": "39507.143672",
+        "count": 0,
+        "vol": "11384.41",
+        "pairCode": "BTC_USDT",
+        "change": "0.0549",
+        "changePercent": "0.0167"
+    }
 }
 ```
 
