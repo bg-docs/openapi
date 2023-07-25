@@ -107,10 +107,6 @@ func main() {
 | pairCode | string  |  幣對  |
 
 
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
 
 
 > response
@@ -238,11 +234,6 @@ Get a list of open orders for a product. The amount of detail shown can be custo
 | interval | 是   |string | *指標週期*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
 
-##### 返回參數
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
 
 > response
 

@@ -133,16 +133,7 @@ func main() {
 }
 ```
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
-
+ 
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -194,16 +185,7 @@ REQUEST PARAMETERS
 
 > 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
-
+ 
 <aside>
 RESPONSE PARAMETERS
 </aside>

@@ -107,12 +107,7 @@ func main() {
 | vol | string  |  交易额 |
 | pairCode | string  |  币对  |
 
-
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
-
+ 
 
 > response
 
@@ -241,10 +236,6 @@ Get a list of open orders for a product. The amount of detail shown can be custo
 
 
 ##### 返回参数
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
 
 > response
 

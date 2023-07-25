@@ -55,15 +55,6 @@ REQUEST PARAMETERS
 |size|Quantity to buy or sell||false|string||
 |client_oid|User-defined Order ID|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -103,15 +94,6 @@ PATH VARIABLES
 | -------- | ----- | -------- | -------- | ------ |
 |order_id|Order ID|true|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -188,15 +170,6 @@ PATH VARIABLES
 
 `client_oid`: When a user-defined Order ID matches multiple system orders, the response will only contain the most recent system order
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -283,15 +256,6 @@ Query of the transaction details of a particular order and various details of th
 |order_id|Order ID|false|string||
 |client_oid|User-defined Order ID|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -356,15 +320,6 @@ Query of details of a particular order or multiple orders based on the trading p
 |client_oid|User-defined Order ID|false|string||
 |product|Trading Pair ID|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -427,15 +382,6 @@ A particular order can be cancelled via this interface
 
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -468,15 +414,6 @@ REQUEST PARAMETERS
 
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -512,15 +449,6 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | 
 |product|Trading Pair ID|true|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS

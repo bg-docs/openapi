@@ -112,10 +112,6 @@ period*  | Y | enum | [ <font color="red">"step0"</font>, <font color="red">"ste
 | vol | string | Turnover |
 | pairCode | string | Currency pair |
 
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
 
 > response
 
@@ -241,11 +237,6 @@ parameter.
 | period*  | Y | enum | step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
 ##### Response parameters
-
-| Status | Meaning                                                 | Description |Schema|
-|--------|---------------------------------------------------------|-------------|---|
-| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          |Inline|
-| 500      | [SERVER_ERROR](https://tools.ietf.org/html/rfc7235#section-3.1)    | Server Error            |None|
 
 > response
 

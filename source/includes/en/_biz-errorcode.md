@@ -1,5 +1,6 @@
 # Data dictionary
 
+
 ## User authentication error code checklist
 
 |Error code|Description|
@@ -18,8 +19,7 @@
 |40014| User frozen|
 |40015| Invalid  IP request|
 
-## Order placement error code checklist
-
+## Business error code checklist
 `amount limit value` are the upper/lower limits of the transaction amount/quantity configured for the products. To uphold market stability, BGE imposes transaction limits based on real-time market conditions. The specific amounts will fluctuate in real time with the market trading circumstances.
 
 |Error code|Description|
@@ -69,4 +69,6 @@
 |1083|User data access failure|
 |1084|No open order|
 |1085|Exceeded the maximum number of consignable orders|
+|1087| Data does not exist|
+|1096| Account does not exist|
 

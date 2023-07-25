@@ -56,15 +56,6 @@ REQUEST PARAMETERS
 |size|买入或卖出的数量||false|string||
 |client_oid|用户自定义订单号|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -103,16 +94,6 @@ PATH VARIABLES
 | 参数名称 | 参数说明     | 是否必须 | 数据类型 | schema |
 | -------- | ----- | -------- | -------- | ------ |
 |order_id|订单ID|true|string||
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -188,16 +169,6 @@ PATH VARIABLES
 |client_oid|用户自定义订单号|true|string||
 
 `client_oid`: 当该自定义订单对应多个系统订单时，只返回最新系统订单
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -283,15 +254,6 @@ REQUEST PARAMETERS
 |order_id|订单id|query|false|string||
 |client_oid|用户自定义订单号|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -355,15 +317,7 @@ REQUEST PARAMETERS
 |client_oid|用户自定义订单号|false|string||
 |product|商品id|query|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+ 
 
 <aside>
 RESPONSE PARAMETERS
@@ -426,16 +380,6 @@ REQUEST PARAMETERS
 
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -466,15 +410,6 @@ REQUEST PARAMETERS
 
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -512,15 +447,6 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- |
 |product|商品id|query|true|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS

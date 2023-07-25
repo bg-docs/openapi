@@ -56,15 +56,6 @@ REQUEST PARAMETERS
 |size|買入或賣出的數量||false|string||
 |client_oid|用戶自定義訂單號|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -104,15 +95,6 @@ PATH VARIABLES
 | -------- | ----- | -------- | -------- | ------ |
 |order_id|訂單ID|true|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -189,15 +171,6 @@ PATH VARIABLES
 
 `client_oid`: 當該自定義訂單對應多個系統訂單時，只返回最新系統訂單
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -283,15 +256,6 @@ REQUEST PARAMETERS
 |order_id|訂單id|query|false|string||
 |client_oid|用戶自定義訂單號|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -355,15 +319,6 @@ REQUEST PARAMETERS
 |client_oid|用戶自定義訂單號|false|string||
 |product|商品id|query|false|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -425,15 +380,6 @@ REQUEST PARAMETERS
 
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with ourserver. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -466,15 +412,6 @@ REQUEST PARAMETERS
 
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -512,15 +449,6 @@ REQUEST PARAMETERS
 | -------- | -------- | ----- | -------- | -------- |
 |product|商品id|query|true|string||
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [參考示例](#order_trade_detail_demo)
-401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS

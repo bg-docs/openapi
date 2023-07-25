@@ -5,16 +5,6 @@
 <font class="httpget">GET</font> */v1/products*
 
 
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#ResonpseExample1)
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
-
 <aside>
 RESPONSE PARAMETERS
 
@@ -115,14 +105,6 @@ RESPONSE PARAMETERS
 <font class="httpget">GET</font> */v1/products/{product}*
 
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [Examples](#ResonpseExample1)
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
