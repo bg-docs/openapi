@@ -1,5 +1,10 @@
 # Data dictionary
 
+## WEBSOCKET Error Code Comparison Table
+| Error Code | Description |
+|---|---|
+| 400 | Invalid Request |
+
 
 ## User authentication error code checklist
 
