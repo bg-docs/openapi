@@ -522,7 +522,7 @@
                     <a href="#user-authentication-error-code-checklist" class="toc-h2 toc-link" data-title="User authentication error code checklist">User authentication error code checklist</a>
                   </li>
                   <li>
-                    <a href="#order-placement-error-code-checklist" class="toc-h2 toc-link" data-title="Order placement error code checklist">Order placement error code checklist</a>
+                    <a href="#business-error-code-checklist" class="toc-h2 toc-link" data-title="Business error code checklist">Business error code checklist</a>
                   </li>
               </ul>
           </li>
@@ -541,6 +541,37 @@
 <p><strong>Request URL</strong></p>
 
 <p>HOST: <code>https:api.bg.exchange/hk/</code></p>
+
+<p><strong>RESPONSE STATUS</strong></p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success Request</td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request  -- The client should not repeat this request without modification.</td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鉴权说明</a></td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>message</code> string</td>
+</tr>
+</tbody></table>
 <h1 id='glossary'>Glossary</h1>
 <table><thead>
 <tr>
@@ -676,34 +707,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -788,34 +791,6 @@ REQUEST PARAMETERS
 
 <p>For the authentication information of private information, please refer to <a href="#Authentication%20Specifications">Authentication Specifications</a></p>
 </blockquote>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -912,34 +887,6 @@ REQUEST PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -1017,34 +964,6 @@ REQUEST PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -1076,29 +995,6 @@ RESPONSE PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='products-and-quotations'>Products and Quotations</h1><h2 id='obtaining-all-known-trading-products'>Obtaining All Known Trading Products</h2>
 <p><font class="httpget">GET</font> <em>/v1/products</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -1289,29 +1185,6 @@ RESPONSE PARAMETERS
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='obtaining-details-of-a-particular-trading-product'>Obtaining Details of a Particular Trading Product</h2>
 <p><font class="httpget">GET</font> <em>/v1/products/{product}</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -1664,28 +1537,6 @@ includes [<code>close</code>，<code>count</code>，<code>high</code>，<code>lo
 </tr>
 </tbody></table>
 
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">SERVER_ERROR</a></td>
-<td>Server Error</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
 <blockquote>
 <p>response</p>
 </blockquote>
@@ -1811,28 +1662,6 @@ parameter.</p>
 </tr>
 </tbody></table>
 <h5 id='response-parameters-2'>Response parameters</h5>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">SERVER_ERROR</a></td>
-<td>Server Error</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
 <blockquote>
 <p>response</p>
 </blockquote>
@@ -2531,29 +2360,6 @@ parameter.</p>
 <p><font class="httpget">GET</font> <em>/v1/currencies</em></p>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -2616,29 +2422,6 @@ RESPONSE PARAMETERS
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='obtaining-information-of-a-particular-currency'>Obtaining Information of a Particular Currency</h2>
 <p><font class="httpget">GET</font> <em>/v1/currencies/{currency}</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -2820,34 +2603,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -2910,34 +2665,6 @@ PATH VARIABLES
 <td>true</td>
 <td>string</td>
 <td></td>
-</tr>
-</tbody></table>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
 </tr>
 </tbody></table>
 
@@ -3108,34 +2835,6 @@ PATH VARIABLES
 </tbody></table>
 
 <p><code>client_oid</code>: When a user-defined Order ID matches multiple system orders, the response will only contain the most recent system order</p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -3352,34 +3051,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3540,34 +3211,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3675,34 +3318,6 @@ REQUEST PARAMETERS
 <p>A particular order can be cancelled via this interface</p>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3722,34 +3337,6 @@ REQUEST PARAMETERS
 </aside>
 
 <p>此接口可撤销单个订单，若自定义订单对应多个系统订单，撤销最新一个订单，撤销申请成功，返回对应的系统订单号</p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -3787,34 +3374,6 @@ REQUEST PARAMETERS
 <td>Trading Pair ID</td>
 <td>true</td>
 <td>string</td>
-</tr>
-</tbody></table>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">Examples</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
 </tr>
 </tbody></table>
 
@@ -7011,7 +6570,7 @@ Fill in the HTTP HEADERS in requests
 <td>Invalid  IP request</td>
 </tr>
 </tbody></table>
-<h2 id='order-placement-error-code-checklist'>Order placement error code checklist</h2>
+<h2 id='business-error-code-checklist'>Business error code checklist</h2>
 <p><code>amount limit value</code> are the upper/lower limits of the transaction amount/quantity configured for the products. To uphold market stability, BGE imposes transaction limits based on real-time market conditions. The specific amounts will fluctuate in real time with the market trading circumstances.</p>
 
 <table><thead>
@@ -7199,6 +6758,14 @@ Fill in the HTTP HEADERS in requests
 <tr>
 <td>1085</td>
 <td>Exceeded the maximum number of consignable orders</td>
+</tr>
+<tr>
+<td>1087</td>
+<td>Data does not exist</td>
+</tr>
+<tr>
+<td>1096</td>
+<td>Account does not exist</td>
 </tr>
 </tbody></table>
 

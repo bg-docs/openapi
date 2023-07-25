@@ -522,7 +522,7 @@
                     <a href="#99da7dcd63" class="toc-h2 toc-link" data-title="用戶認證錯誤碼對照表">用戶認證錯誤碼對照表</a>
                   </li>
                   <li>
-                    <a href="#b856c24555" class="toc-h2 toc-link" data-title="下單錯誤碼對照表">下單錯誤碼對照表</a>
+                    <a href="#683d075a21" class="toc-h2 toc-link" data-title="業務錯誤碼對照表">業務錯誤碼對照表</a>
                   </li>
               </ul>
           </li>
@@ -541,6 +541,37 @@
 <p><strong>請求地址</strong></p>
 
 <p>HOST: <code>https:api.bg.exchange/hk/</code></p>
+
+<p><strong>RESPONSE STATUS</strong></p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success Request</td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request  -- The client should not repeat this request without modification.</td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鉴权说明</a></td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>message</code> string</td>
+</tr>
+</tbody></table>
 <h1 id='af861457da'>名詞解釋</h1>
 <table><thead>
 <tr>
@@ -676,34 +707,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -788,34 +791,6 @@ REQUEST PARAMETERS
 
 <p>私有信息的鑑權信息，請參考 <a href="#auth">鑑權說明</a></p>
 </blockquote>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -912,34 +887,6 @@ REQUEST PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -1017,34 +964,6 @@ REQUEST PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -1076,29 +995,6 @@ RESPONSE PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='491d3a41ec'>產品及行情</h1><h2 id='d4e1a555af'>獲取所有已知的交易產品</h2>
 <p><font class="httpget">GET</font> <em>/v1/products</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -1289,29 +1185,6 @@ RESPONSE PARAMETERS
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='9c2333adfa'>獲取單個產品詳情</h2>
 <p><font class="httpget">GET</font> <em>/v1/products/{product}</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -1653,28 +1526,6 @@ RESPONSE PARAMETERS
 </tr>
 </tbody></table>
 
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">SERVER_ERROR</a></td>
-<td>Server Error</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
 <blockquote>
 <p>response</p>
 </blockquote>
@@ -1786,28 +1637,6 @@ RESPONSE PARAMETERS
 <td style="text-align: left">是</td>
 <td style="text-align: left">string</td>
 <td><em>指標週期</em>  <br/> step [ <font color="red">&quot;1&quot;</font>, <font color="red">&quot;11&quot;</font>]</td>
-</tr>
-</tbody></table>
-<h5 id='e4e9871ed3-2'>返回參數</h5>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
-<td>Inline</td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">SERVER_ERROR</a></td>
-<td>Server Error</td>
-<td>None</td>
 </tr>
 </tbody></table>
 
@@ -2494,29 +2323,6 @@ RESPONSE PARAMETERS
 <p><font class="httpget">GET</font> <em>/v1/currencies</em></p>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -2579,29 +2385,6 @@ RESPONSE PARAMETERS
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='f48d220fb3'>獲取單個幣種信息</h2>
 <p><font class="httpget">GET</font> <em>/v1/currencies/{currency}</em></p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -2784,34 +2567,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -2874,34 +2629,6 @@ PATH VARIABLES
 <td>true</td>
 <td>string</td>
 <td></td>
-</tr>
-</tbody></table>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
 </tr>
 </tbody></table>
 
@@ -3072,34 +2799,6 @@ PATH VARIABLES
 </tbody></table>
 
 <p><code>client_oid</code>: 當該自定義訂單對應多個系統訂單時，只返回最新系統訂單</p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -3317,34 +3016,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3506,34 +3177,6 @@ REQUEST PARAMETERS
 </tbody></table>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3635,34 +3278,6 @@ REQUEST PARAMETERS
 <p>此接口可撤銷單個訂單</p>
 
 <aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with ourserver. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
-<aside>
 RESPONSE PARAMETERS
 </aside>
 
@@ -3682,34 +3297,6 @@ REQUEST PARAMETERS
 </aside>
 
 <p>此接口可撤銷單個訂單，若自定義訂單對應多個系統訂單，撤銷最新一個訂單，撤銷申請成功，返回對應的系統訂單號</p>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
 
 <aside>
 RESPONSE PARAMETERS
@@ -3750,34 +3337,6 @@ REQUEST PARAMETERS
 <td>query</td>
 <td>true</td>
 <td>string</td>
-</tr>
-</tbody></table>
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#order_trade_detail_demo">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
 </tr>
 </tbody></table>
 
@@ -6977,7 +6536,7 @@ RESPONSE PARAMETERS
 <td>無效的IP請求</td>
 </tr>
 </tbody></table>
-<h2 id='b856c24555'>下單錯誤碼對照表</h2>
+<h2 id='683d075a21'>業務錯誤碼對照表</h2>
 <p><code>amount limit value</code> 為產品所配置的交易金額/數量上下限，BGE 為保護市場穩定，根據市場實時行情限定了交易限制，具體數額會隨市場交易情況實時波動。</p>
 
 <table><thead>
@@ -7165,6 +6724,14 @@ RESPONSE PARAMETERS
 <tr>
 <td>1085</td>
 <td>超過最大委託數</td>
+</tr>
+<tr>
+<td>1087</td>
+<td>查找不到數據</td>
+</tr>
+<tr>
+<td>1096</td>
+<td>賬戶不存在</td>
 </tr>
 </tbody></table>
 
