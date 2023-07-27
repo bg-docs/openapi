@@ -1,78 +1,139 @@
-# Products and Quotations
+# Product
 
-## Obtaining All Known Trading Products
+<h2 id="Get all known trading products"><font class="httpget">GET</font> Get all known trading products</h2>
 
-<font class="httpget">GET</font> */v1/products*
+Get all trading product information
 
+**Speed Limit: None**
+
+**Speed limit rules: None**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/products
+
+<a id="Products"></a>
+
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+[
+  {
+    "product": "ETH_USD",
+    "base_currency": "ETH",
+    "quote_currency": "USD",
+    "display_name": "ETH_USD",
+    "status": "on",
+    "maker_fees_rate": "0.01",
+    "taker_fees_rate": "0.02",
+    "quote_precision": "5",
+    "trade_precision": "8",
+    "amount_precision": "6",
+    "max_buy_price_rate": "1.000000",
+    "max_sell_price_rate": "1.000000",
+    "max_trade_usd_per_order": "",
+    "min_trade_usd_per_order": "",
+    "max_market_taker_trade_rate": "1.000000",
+    "min_market_taker_trade_rate": "1.000000",
+    "max_market_trade_usd_per_order": "",
+    "min_market_trade_usd_per_order": ""
+  }
+]
+```
 
 <aside>
 RESPONSE PARAMETERS
 
 </aside>
 
-`product`:  Trading Pair
+`product`: product
 
-`base_currency`: Name of the base currency
+`base_currency`: base asset name
 
-`quote_currency` : Name of quote currency
+`quote_currency` : quote asset name
 
-`display_name`: Display name of the trading product, which is the unique identifier of the trading product when placing an order
+`display_name`: The display name of the transaction product, which is used as the unique identifier of the transaction product when placing an order
 
-`status` : Status of the trading product
-- `on`: Product is online. The product is open for trading and can be traded normally.
-- `off`: Product is offline. All transactions of the product are closed, and pending orders will be automatically cancelled by the system.
-- `pause`: Transaction suspended. Some transactions of the product are closed, but existing pending orders will not be canceled.
-
-
-`amount_precision`: Precision of amount unit of the quote currency
-
-`quote_precision`: Precision of amount unit of the quotation currency
-
-`trade_precision`:  Precision of pricing unit of the trading currency
-
-`maker_fees_rate`: Rate of maker fees
-
-`taker_fees_rate`: Rate of taker fees
-
-`max_buy_price_rate`: Percentage of the best bid that the buying price of a limit order cannot exceed. Placement of order will fail if the percentage is exceeded.
-
-`max_sell_price_rate`: Percentage of the best ask that the selling price of a limit order cannot be lower than. Placement of order will fail if the percentage is exceeded.
-
-`max_trade_usd_per_order`: The maximum order amount per limit order. This amount will be converted into `USD` for calculation.
-
-`min_trade_usd_per_order`: he minimum order amount per limit order. This amount will be converted into `USD` for calculation.
-
-`max_market_taker_trade_rate`: Percentage of the best bid that the buying price of a market order cannot exceed. Placement of order will fail if the percentage is exceeded.
-
-`min_market_taker_trade_rate` : Percentage of the best ask that the selling price of a market order cannot be lower than. Placement of order will fail if the percentage is exceeded.
-
-`max_market_trade_usd_per_order` : The maximum order amount per market order. This amount will be converted into `USD` for calculation.
-
-`min_market_trade_usd_per_order` : The minimum order amount per market order. This amount will be converted into `USD` for calculation.
-
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|product|Trading Pair|string||
-|base_currency|Base asset|string||
-|quote_currency|Name of quote currency|string||
-|display_name|Display name|string||
-|amount_precision|Precision of amount unit of the trading currency|string||
-|quote_precision|Precision of amount unit of the quotation currency|string||
-|trade_precision|	Precision of pricing unit of the trading currency|string||
-|maker_fees_rate|Rate of maker fees|string||
-|taker_fees_rate|Rate of taker fees|string||
-|max_buy_price_rate|Bid price cannot exceed latest price (%)|string||
-|max_sell_price_rate|Ask price cannot be lower than latest price (%)|string||
-|max_trade_usd_per_order|Maximum amount per order|string||
-|min_trade_usd_per_order|Minimum amount per order|string||
-|max_market_taker_trade_rate|Upper limit of transaction price of buying order (%)|string||
-|min_market_taker_trade_rate|Lower limit of transaction price of buying order (%)|string||
-|max_market_trade_usd_per_order|Maximum amount per order|string||
-|min_market_trade_usd_per_order|Minimum amount per order|string||
-|status|Status|string||
+`status` : trading product status
+- `on`: has been launched, the product is open for trading, and orders can be placed and traded normally.
+- `off`: offline. This product closes all transactions, and orders that already have pending orders will be automatically canceled by the system.
+- `pause`: Trading is paused, the product closes some trades, but existing pending orders will not be canceled
 
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+`amount_precision`: transaction currency amount unit precision
+
+`quote_precision`: Quotation currency quantity unit precision
+
+`trade_precision`: trade currency price unit precision
+
+`maker_fees_rate`: Maker fee rate
+
+`taker_fees_rate`: taker fee rate
+
+`max_buy_price_rate`: The rate at which the limit buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`max_sell_price_rate`: The rate at which a limit sell order cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_trade_usd_per_order`: The maximum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`min_trade_usd_per_order`: The minimum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`max_market_taker_trade_rate`: The rate at which the market buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`min_market_taker_trade_rate` : The rate at which market taker orders cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+`min_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|product|product|string|
+|base_currency|base asset|string|
+|quote_currency|Price asset name|string|
+|display_name|display name |string|
+|amount_precision|trading currency amount unit precision |string|
+|quote_precision|quote currency quantity unit precision|string|
+|trade_precision| trade currency price unit precision |string|
+|maker_fees_rate|Seller fee rate|string|
+|taker_fees_rate|taker fee rate|string|
+|max_buy_price_rate|The buying price cannot be higher than the latest price (%)|string|
+|max_sell_price_rate|The selling price cannot be lower than the latest price (%)|string|
+|max_trade_usd_per_order|The maximum amount of a single order|string|
+|min_trade_usd_per_order|Single minimum order amount|string|
+|max_market_taker_trade_rate|The upper limit of taker trade price (%)|string|
+|min_market_taker_trade_rate|Minimum limit of taker trade price (%)|string|
+|max_market_trade_usd_per_order|The maximum amount of a single order|string|
+|min_market_trade_usd_per_order|Single minimum order amount|string|
+|status|status|string|
+
+
+
+
+
+<h2 id="Get single product details"><font class="httpget">GET</font> Get single product details</h2>
+
+Get the specified trading product information
+
+**Speed Limit: None**
+
+**Speed limit rules: None**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/products/{product}
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|product|commodity, for example: ETH_USD|true|string|
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -100,102 +161,67 @@ RESPONSE PARAMETERS
 ```
 
 
-## Obtaining Details of a Particular Trading Product
-
-<font class="httpget">GET</font> */v1/products/{product}*
-
-
-
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`product`: Trading Pair
+`product`: product
 
-`base_currency`: Base asset
+`base_currency`: base asset name
 
-`quote_currency` : Name of quote currency
+`quote_currency` : quote asset name
 
-`display_name`: Display name of the trading pair, which is the unique identifier of the trading product when placing an order
+`display_name`: The display name of the transaction product, which is used as the unique identifier of the transaction product when placing an order
 
-`status` : Status of the trading product
-- `on`: Product is online. The product is open for trading and can be traded normally.
-- `off`: Product is offline. All transactions of the product are closed, and pending orders will be automatically cancelled by the system.
-- `pause`: Transaction suspended. Some transactions of the product are closed, but existing pending orders will not be canceled.
-
-
-`amount_precision`: Precision of amount unit of the trading currency 
-
-`quote_precision`: Precision of amount unit of the quotation currency
-
-`trade_precision`: Precision of pricing unit of the trading currency
-
-`maker_fees_rate`: Rate of maker fees
-
-`taker_fees_rate`: Rate of taker fees
-
-`max_buy_price_rate`: Percentage of the best bid that the buying price of a limit order cannot exceed. Placement of order will fail if the percentage is exceeded.
-
-`max_sell_price_rate`: Percentage of the best ask that the selling price of a limit order cannot be lower than. Placement of order will fail if the percentage is exceeded.
-
-`max_trade_usd_per_order`: The maximum order amount per limit order. This amount will be converted into `USD` for calculation.
-
-`min_trade_usd_per_order`: The minimum order amount per limit order. This amount will be converted into `USD` for calculation.
-
-`max_market_taker_trade_rate`: Percentage of the best bid that the buying price of a market order cannot exceed. Placement of order will fail if the percentage is exceeded.
-
-`min_market_taker_trade_rate` : Percentage of the best ask that the selling price of a market order cannot be lower than. Placement of order will fail if the percentage is exceeded.
-
-`max_market_trade_usd_per_order` : The maximum order amount per market order. This amount will be converted into `USD` for calculation.
-
-`min_market_trade_usd_per_order` : The minimum order amount per market order. This amount will be converted into `USD` for calculation.
-
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|product|Trading Pair|string||
-|base_currency|Base asset|string||
-|quote_currency|Name of quote currency|string||
-|display_name|Display name|string||
-|amount_precision|Precision of amount unit of the trading currency|string||
-|quote_precision|Precision of amount unit of the quotation currency|string||
-|trade_precision|	Precision of pricing unit of the trading currency|string||
-|maker_fees_rate|Rate of maker fees|string||
-|taker_fees_rate|Rate of taker fees|string||
-|max_buy_price_rate|Bid price cannot exceed latest price (%)|string||
-|max_sell_price_rate|Ask price cannot be lower than latest price (%)|string||
-|max_trade_usd_per_order|Maximum amount per order|string||
-|min_trade_usd_per_order|Minimum amount per order|string||
-|max_market_taker_trade_rate|Upper limit of transaction price of buying order (%)|string||
-|min_market_taker_trade_rate|Lower limit of transaction price of buying order (%)|string||
-|max_market_trade_usd_per_order|Maximum amount per order|string||
-|min_market_trade_usd_per_order|Minimum amount per order|string||
-|status|Status|string||
+`status` : trading product status
+- `on`: has been launched, the product is open for trading, and orders can be placed and traded normally.
+- `off`: offline. This product closes all transactions, and orders that already have pending orders will be automatically canceled by the system.
+- `pause`: Trading is paused, the product closes some trades, but existing pending orders will not be canceled
 
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+`amount_precision`: transaction currency amount unit precision
 
-```json
-[
-  {
-    "product": "ETH_USD",
-    "base_currency": "ETH",
-    "quote_currency": "USD",
-    "display_name": "ETH_USD",
-    "status": "on",
-    "maker_fees_rate": "0.01",
-    "taker_fees_rate": "0.02",
-    "quote_precision": "5",
-    "trade_precision": "8",
-    "amount_precision": "6",
-    "max_buy_price_rate": "1.000000",
-    "max_sell_price_rate": "1.000000",
-    "max_trade_usd_per_order": "",
-    "min_trade_usd_per_order": "",
-    "max_market_taker_trade_rate": "1.000000",
-    "min_market_taker_trade_rate": "1.000000",
-    "max_market_trade_usd_per_order": "",
-    "min_market_trade_usd_per_order": ""
-  }
-]
-```
+`quote_precision`: Quotation currency quantity unit precision
 
+`trade_precision`: trade currency price unit precision
+
+`maker_fees_rate`: Maker fee rate
+
+`taker_fees_rate`: taker fee rate
+
+`max_buy_price_rate`: The rate at which the limit buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`max_sell_price_rate`: The rate at which a limit sell order cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_trade_usd_per_order`: The maximum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`min_trade_usd_per_order`: The minimum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`max_market_taker_trade_rate`: The rate at which the market buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`min_market_taker_trade_rate` : The rate at which market taker orders cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+`min_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | -----|
+|product|product|string|
+|base_currency|base asset|string|
+|quote_currency|Price asset name|string|
+|display_name|display name |string|
+|amount_precision|trading currency amount unit precision |string|
+|quote_precision|quote currency quantity unit precision|string|
+|trade_precision| trade currency price unit precision |string|
+|maker_fees_rate|Seller fee rate|string|
+|taker_fees_rate|taker fee rate|string|
+|max_buy_price_rate|The buying price cannot be higher than the latest price (%)|string|
+|max_sell_price_rate|The selling price cannot be lower than the latest price (%)|string|
+|max_trade_usd_per_order|The maximum amount of a single order|string|
+|min_trade_usd_per_order|Single minimum order amount|string|
+|max_market_taker_trade_rate|The upper limit of taker trade price (%)|string|
+|min_market_taker_trade_rate|Minimum limit of taker trade price (%)|string|
+|max_market_trade_usd_per_order|The maximum amount of a single order|string|
+|min_market_trade_usd_per_order|Single minimum order amount|string|
+|status|status|string|

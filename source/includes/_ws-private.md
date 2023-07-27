@@ -1,6 +1,6 @@
-# WEBSOCKET FEED PRIVATE
+# ~~WEBSOCKET PRIVATE(DEPRECATED)~~
 
-- `wss://ws.bg.exchange/`
+- [私有频道地址(DEPRECATED)](#WS_HOST_PRIVATE)
 
 
 ## Login
@@ -89,7 +89,7 @@
   "type": "assets",
   "product": "ETH_BTC",
   "data": {
-    "result": false
+    "result": true
   }
 }
 ```

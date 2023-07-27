@@ -1,150 +1,30 @@
-# Account information
+# Account Information
 
-## Obtaining all account balance information
+<h2 id="Get all account balance information"><font class="httpget">GET</font> Get all account balance information</h2>
 
-<font class="httpget">GET</font> */v1/accounts*
+Get all the trading account information of the user
 
+**Speed limit: 10 times/s**
 
-Obtaining all transaction account information of the user
+**Speed limit rules: ApiKey**
 
-**Unavailable balance**
+**HTTP request**
 
-After the user finishes placing an order, it will be assigned to the unavailable balance. Funds assigned to the unavailable balance cannot be used in other transactions or withdrawal operations. When the order is closed or cancelled, the funds assigned to the unavailable balance will be released.
+GET [HOST](#HTTP-HOST)/v1/accounts
 
 > Authentication information
 
-> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
-> REQUEST EXAMPLE
 
-```java
-OkHttpClient client = new OkHttpClient().newBuilder()
-  .build();
-Request request = new Request.Builder()
-  .url("${host}/v1/accounts")
-  .method("GET", null)
-  .addHeader("ACCESS-KEY", "HKBGE-0d7f7a3ba656a73c38295ad879779e16")
-  .addHeader("ACCESS-SIGN", "a3ef844e35289b3af63bd8e113990a9394ea495c5e5e3be2ebbd26ea63dacc0e")
-  .addHeader("ACCESS-TIMESTAMP", "2022-01-08T07:19:56.339Z")
-  .build();
-Response response = client.newCall(request).execute();
-```
 
-```javascript
-var settings = {
-  "url": "${host}/v1/accounts",
-  "method": "GET",
-  "timeout": 0,
-  "headers": {
-    "ACCESS-KEY": "HKBGE-0d7f7a3ba656a73c38295ad879779e16",
-    "ACCESS-SIGN": "a3ef844e35289b3af63bd8e113990a9394ea495c5e5e3be2ebbd26ea63dacc0e",
-    "ACCESS-TIMESTAMP": "2022-01-08T07:19:56.339Z"
-  },
-};
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-```
+<span style="color: blue;">
+Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
+</span>
 
-```python
-import http.client
 
-conn = http.client.HTTPSConnection("${host}")
-payload = ''
-headers = {
-  'ACCESS-KEY': 'HKBGE-0d7f7a3ba656a73c38295ad879779e16',
-  'ACCESS-SIGN': 'a3ef844e35289b3af63bd8e113990a9394ea495c5e5e3be2ebbd26ea63dacc0e',
-  'ACCESS-TIMESTAMP': '2022-01-08T07:19:56.339Z'
-}
-conn.request("GET", "/v1/accounts", payload, headers)
-res = conn.getresponse()
-data = res.read()
-print(data.decode("utf-8"))
-```
-
-```php
-<?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => '${host}/v1/accounts',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-  CURLOPT_HTTPHEADER => array(
-    'ACCESS-KEY: HKBGE-0d7f7a3ba656a73c38295ad879779e16',
-    'ACCESS-SIGN: a3ef844e35289b3af63bd8e113990a9394ea495c5e5e3be2ebbd26ea63dacc0e',
-    'ACCESS-TIMESTAMP: 2022-01-08T07:19:56.339Z'
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
-
-```
-
-```go
-package main
-
-import (
-  "fmt"
-  "net/http"
-  "io/ioutil"
-)
-
-func main() {
-
-  url := "${host}/v1/accounts"
-  method := "GET"
-
-  client := &http.Client {
-  }
-  req, err := http.NewRequest(method, url, nil)
-
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  req.Header.Add("ACCESS-KEY", "HKBGE-0d7f7a3ba656a73c38295ad879779e16")
-  req.Header.Add("ACCESS-SIGN", "a3ef844e35289b3af63bd8e113990a9394ea495c5e5e3be2ebbd26ea63dacc0e")
-  req.Header.Add("ACCESS-TIMESTAMP", "2022-01-08T07:19:56.339Z")
-
-  res, err := client.Do(req)
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  defer res.Body.Close()
-
-  body, err := ioutil.ReadAll(res.Body)
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  fmt.Println(string(body))
-}
-```
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|available|Available balance|string||
-|hold|Unavailable balance|string||
-|balance|Balance, including the sum of available and on-hold credits|string||
-|currency|Asset name|string||
-
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -158,45 +38,54 @@ RESPONSE PARAMETERS
 ```
 
 
-## Obtaining all account balance information
-
-
-<font class="httpget">GET</font> */v1/accounts/{currency}*
-
-
-Obtaining transaction account information specified by the user
-
-**On-hold Account**
-
-After the user finishes placing an order, it will be assigned to the On-hold Account. Funds assigned to the On-hold Account cannot be used in other transactions or withdrawal operations. When the order is closed or cancelled, the funds in the On-hold Account will be released.
-
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-| Parameter Name | Parameter Description | Mandatory  | Data Type | schema |
-| -------- | -------- | -------- | -------- | ------ |
-|currency|Asset name, e.g. BTC||true|string||
-
-
-> Authentication information
-
-> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
-
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|available|Available balance|string||
-|hold|Unavailable balance|string||
-|balance|Balance, including the sum of available and on-hold credits|string||
-|currency|Asset name|string||
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|available|Available Quota|string|
+|hold|Freeze Quota|string|
+|balance| balance, including the available amount is the sum of the frozen amount |string|
+|currency|Asset name|string|
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+
+
+<h2 id="Get single account balance information"><font class="httpget">GET</font> Get single account balance information</h2>
+
+Get the trading account information specified by the user
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/accounts/{currency}
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
+
+
+<span style="color: blue;">
+Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
+</span>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|currency|Asset name, for example: BTC|true|string|
+
+
+
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 {
@@ -206,3 +95,15 @@ RESPONSE PARAMETERS
   "hold": "1.0"
 }
 ```
+
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|available|Available Quota|string|
+|hold|Freeze Quota|string|
+|balance| balance, including the sum of available quota and frozen quota |string|
+|currency|Asset name|string|

@@ -1,8 +1,8 @@
-# WEBSOCKET FEED PUBLIC (DEPRECATED)
+# ~~WEBSOCKET PUBLIC(DEPRECATED)~~
 
-- ` wss://ws.bg.exchange/ws/`
+- [公共頻道地址(DEPRECATED)](#WS_HOST_PUBLIC)
 
-## Candles Subscribe/UnSubscribe 
+## Candles Subscribe/UnSubscribe
 
 #### Subscribe
 
@@ -28,7 +28,7 @@
 | params .biz | 是  |string |      |
 | params .type     |是  |string | 訂閱類型 |
 | params .product     |是  |string | 幣對   |
-| params .interval     |是  |string | 周期   |
+| params .interval     |是  |string | 週期   |
 | event     |是  |string | 事件 Subscribe  |
 | zip     |是  |bool | 是否啟用gzip |
 
@@ -87,7 +87,7 @@
 | params .biz | 是  |string |               |
 | params .type     |是  |string | 訂閱類型        |
 | params .product     |是  |string | 幣對            |
-| params .interval     |是  |string | 周期            |
+| params .interval     |是  |string | 週期            |
 | event     |是  |string | 事件 UnSubscribe |
 | zip     |是  |bool | 是否啟用gzip      |
 
@@ -124,7 +124,7 @@
 
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -203,7 +203,7 @@
 | params .biz | 是  |string |          |
 | params .type     |是  |string | 訂閱類型類型   |
 | params .product     |是  |string | 幣對       |
-| params .interval     |是  |string | 周期       |
+| params .interval     |是  |string | 週期       |
 | event     |是  |string | 事件 Subscribe      |
 | zip     |是  |bool | 是否啟用gzip |
 
@@ -236,7 +236,7 @@
 }
 
 ```
-#### Feed Stream 
+#### Feed Stream
 
 |參數名|類型|說明|
 |:----    |:---|:----- |-----   |
@@ -303,7 +303,7 @@
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 訂閱類型  |
 | params .product     |是  |string | 幣對|
-| params .interval     |是  |string | _周期_ |
+| params .interval     |是  |string | _週期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否啟用gzip |
 
@@ -322,14 +322,14 @@
 }
 ```
 
-#### UnSubscribe 
+#### UnSubscribe
 
 |參數名|必選|類型|說明|
 |:----    |:---|:----- |-----   |
 | params .biz | 是  |string |   |
 | params .type     |是  |string | 訂閱類型  |
 | params .product     |是  |string | 幣對|
-| params .interval     |是  |string | _周期_ |
+| params .interval     |是  |string | _週期_ |
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否啟用gzip |
 
@@ -344,7 +344,7 @@
     "biz": "market",
     "type": "orderBook",
     "product": "ETH_USDT",
-    "interval": "1min"
+    "interval": "1"
   },
   "zip": false
 }
@@ -358,7 +358,7 @@
 {
     "biz": "market",
     "channel": "unsubscribe",
-    "interval": "1min",
+    "interval": "1",
     "product": "ETH_USDT",
     "type": "orderBook",
     "status": "ok",
@@ -366,7 +366,7 @@
 }
 ```
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -380,7 +380,7 @@
     "ts": 1689934071000,
     "version": 1689934071,
     "seqId": 0,
-    "interval": "1min",
+    "interval": "1",
     "bids": [
 		[3781.85, 0.30656],
 		[3781.78, 0.0219],
@@ -477,7 +477,7 @@
 ```
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -586,7 +586,7 @@
     "ts": 1689935550687
 }
 ```
-#### Feed Stream 
+#### Feed Stream
 
 |參數名|類型|說明|
 |:----    |:----- |-----   |
@@ -636,7 +636,7 @@
 
 ## Request Candles
 
-> req request 
+> req request
 
 ```json
 {
@@ -658,7 +658,7 @@
 | params.biz      | 是   |string |          |
 | params.type     | 是   |string | 類型       |
 | params.product | 是   |string | 幣對       |
-| params.interval | 是   |string | 周期       |
+| params.interval | 是   |string | 週期       |
 | params.from     | 是   |string | 開始時間     |
 | params.to       | 是   |string | 結束時間     |
 | event           | 是   |string | 事件       |
@@ -669,7 +669,7 @@
 
 |參數名|類型|說明|
 |:----    |:----- |-----   |
-| biz | string |   |
+| biz | string |  行情 |
 | ts     | int | 時間戳  |
 | product    |string | 幣對|
 | interval    | string | 間隔 1day|
@@ -683,7 +683,7 @@
 | data .id     | int | 唯一且有序id |
 | data .count     | int | 這根K線期間成交筆數 |
 
-> req response 
+> req response
 
 ```json
 {
@@ -733,7 +733,7 @@
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否啟用gzip |
 
-> req request 
+> req request
 
 ```json
 	{
@@ -751,7 +751,7 @@
 
 |參數名|類型|說明|
 |:----    |:----- |-----   |
-| biz | string |   |
+| biz | string |  行情 |
 | type     | string | ticker  |
 | ts     | int | 時間戳  |
 | product    |string | 幣對|
@@ -767,7 +767,7 @@
 | data .changePercent     | int | 24小時價格變化(百分比) |
 
 
-> req response 
+> req response
 
 ```json
 {
@@ -791,4 +791,3 @@
     }
 }
 ```
-

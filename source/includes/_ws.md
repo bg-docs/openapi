@@ -1,8 +1,8 @@
-# WEBSOCKET FEED PUBLIC (DEPRECATED)
+# ~~WEBSOCKET PUBLIC(DEPRECATED)~~
 
-- ` wss://ws.bg.exchange/ws/`
+- [公共频道地址(DEPRECATED)](#WS_HOST_PUBLIC)
 
-## Candles Subscribe/UnSubscribe 
+## Candles Subscribe/UnSubscribe
 
 #### Subscribe
 
@@ -124,7 +124,7 @@
 
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -236,7 +236,7 @@
 }
 
 ```
-#### Feed Stream 
+#### Feed Stream
 
 |参数名|类型|说明|
 |:----    |:---|:----- |-----   |
@@ -322,7 +322,7 @@
 }
 ```
 
-#### UnSubscribe 
+#### UnSubscribe
 
 |参数名|必选|类型|说明|
 |:----    |:---|:----- |-----   |
@@ -344,7 +344,7 @@
     "biz": "market",
     "type": "orderBook",
     "product": "ETH_USDT",
-    "interval": "1min"
+    "interval": "1"
   },
   "zip": false
 }
@@ -358,7 +358,7 @@
 {
     "biz": "market",
     "channel": "unsubscribe",
-    "interval": "1min",
+    "interval": "1",
     "product": "ETH_USDT",
     "type": "orderBook",
     "status": "ok",
@@ -366,7 +366,7 @@
 }
 ```
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -380,7 +380,7 @@
     "ts": 1689934071000,
     "version": 1689934071,
     "seqId": 0,
-    "interval": "1min",
+    "interval": "1",
     "bids": [
 		[3781.85, 0.30656],
 		[3781.78, 0.0219],
@@ -477,7 +477,7 @@
 ```
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -586,7 +586,7 @@
     "ts": 1689935550687
 }
 ```
-#### Feed Stream 
+#### Feed Stream
 
 |参数名|类型|说明|
 |:----    |:----- |-----   |
@@ -636,7 +636,7 @@
 
 ## Request Candles
 
-> req request 
+> req request
 
 ```json
 {
@@ -683,7 +683,7 @@
 | data .id     | int | 唯一且有序id |
 | data .count     | int | 这根K线期间成交笔数 |
 
-> req response 
+> req response
 
 ```json
 {
@@ -733,7 +733,7 @@
 | event     |是  |string | 事件 |
 | zip     |是  |bool | 是否启用gzip |
 
-> req request 
+> req request
 
 ```json
 	{
@@ -767,7 +767,7 @@
 | data .changePercent     | int | 24小时价格变化(百分比) |
 
 
-> req response 
+> req response
 
 ```json
 {

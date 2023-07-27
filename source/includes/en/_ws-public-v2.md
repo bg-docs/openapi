@@ -1,101 +1,58 @@
-# WEBSOCKET FEED PUBLIC V2
+# WEBSOCKET PUBLIC V2
 
-- `wss://ws.bg.exchange/v2/ws`
-
-## Request Field Description
-
-| Field Name | Type | Required | Description | Sample Value |
-|:---------- |:---- |:------- |:----------- |:------------ |
-| event | string | Yes | Request event | [Event](#events) |
-| biz | string | Yes | Business line | [Business Line](#bizs) |
-| type | string | Yes | Business type | [Type](#types) |
-| product | string | Yes | Trading pair | BTC_USDT |
-| interval | string | No | Frequency | 1min |
-| zip | bool | Yes | Enable compression | true, false |
-| params | json | No | Business parameters | Can be empty |
-
-## Response Field Description
-
-| Field Name | Type | Required | Description | Sample Value |
-|:---------- |:---- |:------- |:----------- |:------------ |
-| event | string | Yes | Request event | [Event](#events) |
-| biz | string | Yes | Business line | [Business Line](#bizs) |
-| type | string | Yes | Business type | [Type](#types) |
-| product | string | Yes | Trading pair | BTC_USDT |
-| interval | string | No | Frequency | 1min |
-| zip | bool | Yes | Enable compression | true, false |
-| id | string | No | Unique message ID |
-| code | number | Yes | Error code | |
-| status | string | Yes | Error code status | |
-| data | json | No | Business data | See specific business data description for reference |
-
-## Event List
-
-<a name="events"></a>
-
-|Event Name|Type|Description|
-|:---------|:---|:----------|
-| sub | string | Subscribe event, initiated by the client |
-| unsub | string | Unsubscribe event, initiated by the client |
-| req | string | Request data event, initiated by the client |
-
-## Biz List
-
-<a name="bizs"></a>
-
-|Biz Name|Type|Description|
-|:-------|:---|:----------|
-| market | string | Spot market |
-
-## Type List
-
-<a name="types"></a>
-
-|Type Name|Type|Description|
-|:--------|:---|:----------|
-| fills | string | Trade fills data |
-| candles | string | K-line data |
-| orderbook | string | Order book |
-| ticker | string | 24-hour ticker |
-| percent10 | string | Top 10 depth |
+- [Public channel V2 address](#WS_HOST_PUBLIC_V2)
 
 
 
+**Sequence number `seq_id` Description**
 
-## Candles Subscribe/Unsubscribe and Req
+1. `seq_id` is a serial number of the exchange market. When a user uses one or more WebSockets to connect to the same channel, in addition to the real-time transaction data, he will receive data pushes with the same serial number, and the user needs to handle the duplication by himself. data, a `seq_id` can be used to build a sequence of messages, which will allow the user to detect packet loss and ordering of messages.
 
-Subscribe or request to get updates of K-line (latest candle) data.
+2. `seq_id` is a monotonically increasing number with a minimum value of 0.
 
-**K-line interval parameters:**
+**Common Error Description**
 
-min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
+When subscribing to a public channel using the WebSocket API, you may encounter the following error:
+
+1. Error code `400`: Usually you need to check whether the request parameters you provide are correct, or whether there are required parameters that are not filled. 
+
+2. Error code `500`: This error is usually an exception on the server, please try again later.
+
+## V2 Candles Subscribe/UnSubscribe and Req
+
+Subscribe or request to get K-line (the latest K-line) data push
+
+**K-line chart interval parameters:**
+
+min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 - 1min
 - 5min
 - 15min
 - 30min
-- 1hour
-- 4hour
+- 60min
+- 4hours
 - 1day
 - 1week
 - 1mon
 
+
 **Field Description:**
 
-- `id` Unique message ID
-- `open` The first traded price during this candle period
-- `close` The last traded price during this candle period
-- `low` The lowest traded price during this candle period
-- `high` The highest traded price during this candle period
-- `turnOver` The total turnover during this candle period
-- `vol` The total trading volume during this candle period
-- `seqId` Unique and ordered ID
-- `count` The number of trades during this candle period
+- `id` message unique id
+- `open` the first transaction price during this K-line period
+- `close` the last transaction price during this K-line period
+- `low` the lowest transaction price during this K-line period
+- `high` is the highest transaction price during this K-line period
+- `filled_size` the transaction volume during this K-line
+- `vol` is the trading volume during this K-line
+- `seq_id` unique and ordered id
+- `count` the number of transactions during this K-line period
 - `interval` K-line interval
-- `product` Trading pair
+- `product` trading pair
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -128,7 +85,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 ```
 
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -160,7 +117,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 
 ```
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -176,10 +133,10 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
         "close": "3.7366",
         "high": "3.7366",
         "low": "3.7366",
-        "turnOver": "0",
+        "filled_size": "0",
         "vol": "0",
         "count": 0,
-        "seqId": 112588635
+        "seq_id": 112588635
     },
     "product": "BTC_USDT",
     "interval": "15min"
@@ -187,18 +144,17 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 
 ```
 
-#### Request Candles
-
-> Req request 
+**Request Candles**
 
 **Parameter Description:**
 
-- `id` Unique ID for each K-line message
-- `from` Unix timestamp of the start time
-- `to` Unix timestamp of the end time
+- `id` the unique id of each candlestick message
+- unix timestamp of `from` start time
+- unix timestamp of `to` end time
 - `interval` K-line interval
-- `product` Trading pair
+- `product` trading pair
 
+> Get the K-line data request example of the specified range
 
 ```json
 {
@@ -213,60 +169,64 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 }
 ```
 
-> Req response
+> Get the K-line data response example in the specified range
 
 ```json
 {
     "biz": "market",
     "type": "candles",
-    "ts": 1689133139813,
+    "product": "BTC_USDT",
+    "ts": 1690252632272,
     "code": 200,
     "status": "OK",
     "data":
     [
         {
-            "count": 505866,
-            "turnOver": 471315.660750,
-            "vol": 132286.14,
-            "id": 1688107500,
-            "high": 4.0584,
-            "open": 3.354,
-            "low": 3.0616,
-            "close": 3.4575
+            "id": 1688398200,
+            "open": "3.3706",
+            "close": "3.3706",
+            "high": "3.3706",
+            "low": "3.3706",
+            "filled_size": "0",
+            "vol": "0",
+            "count": 0
         },
         {
-            "count": 492245,
-            "turnOver": 458095.923364,
-            "vol": 128555.52,
-            "id": 1688108400,
-            "high": 4.0584,
-            "open": 3.4575,
-            "low": 3.0637,
-            "close": 3.3665
+            "id": 1688399100,
+            "open": "3.3706",
+            "close": "3.3706",
+            "high": "3.3706",
+            "low": "3.3706",
+            "filled_size": "0",
+            "vol": "0",
+            "count": 0
         }
     ],
     "event": "req",
-    "product": "BTC_USDT",
     "interval": "15min"
-} 
+}
 
 
 ```
 
 ----
 
-##  Fills Subscribe/UnSubscribe
+## V2 Fills Subscribe/UnSubscribe
+
+Subscribe to obtain real-time transaction incremental push data of products
+
+Get the latest transaction data, and push the transaction data when there is transaction data. Each push may contain multiple transaction data.
 
 **Field Description:**
 
-- `id` Unique message ID
-- `ts` Timestamp of the trade
-- `direction` Trade direction
-- `price` Trade price
-- `vol` Trade volume
+- `id` message unique id
+- `ts` transaction timestamp
+- `direction` transaction direction
+- `price` transaction price
+- `vol` volume
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -294,7 +254,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 }
 ```
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -310,7 +270,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 
 ```
 
-> UnSubscribe response  
+> UnSubscribe response
 
 ```json
 {
@@ -324,7 +284,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 }
 
 ```
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -344,14 +304,53 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
         }
     ],
     "product": "BTC_USDT"
-} 
+}
 ```
 
 -----
 
-## OrderBook Subscribe/UnSubscribe
+## V2 OrderBook Subscribe/UnSubscribe
 
-#### Subscribe
+Subscribe to obtain product order book incremental push data
+
+Push once every 500 milliseconds at the fastest, and also push when no event is triggered, bids and asks may be empty arrays if there is no data in the handicap
+
+**OrderBook subscription interval parameters: [The current gear supports the maximum precision, the current gear supports the maximum depth]:**
+
+- 0 : [0.0000000000000000001, 150]
+- 1 : [0.00001, 150]
+- 2 : [0.0001, 150]
+- 3 : [0.001, 150]
+- 4 : [0.01, 150]
+- 5 : [0.1, 150]
+- 6 : [0.0000000000000000001, 20]
+- 7 : [0.00001, 20]
+- 8 : [0.0001, 20]
+- 9 : [0.001, 20]
+- 10 : [0.01, 20]
+- 11 : [0.1, 20]
+
+Explanation: interval=5, the buyer's price in bids pushed can only be accurate to one decimal place, and the maximum array size of bids is 150
+
+
+**Field Description:**
+
+- `id` message unique id
+- `biz` line of business
+- `type` type
+- `data.seq_id` is ignored
+- `data.bids` buyers
+- `data.bids[][0]` bid price
+- `data.bids[][1]` number of buyers
+- `data.asks` seller
+- `data.asks[][0]` ask price
+- `data.asks[][1]` number of sellers
+- `data.product` trading pair
+- `data.interval` slots
+
+
+
+**Subscribe**
 
 > Subscribe request
 
@@ -381,7 +380,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 }
 ```
 
-#### UnSubscribe 
+**UnSubscribe**
 > UnSubscribe request
 
 ```json
@@ -411,7 +410,7 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 
 ```
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -420,15 +419,15 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 {
     "id": "1689143926",
     "biz": "market",
-    "type": "orderBook",
+    "type": "orderbook",
     "data":
     {
-        "seqId": 112588640,
-        "bids":
+        "seq_id": 112588640, //ordered and unique id
+        "bids": //buyer
         [
             [
-                "3.7366",
-                "0.66"
+                "3.7366", //price
+                "0.66" //quantity
             ],
             [
                 "3.6866",
@@ -463,15 +462,15 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
                 "0.73"
             ]
         ],
-        "asks":
+        "asks": //Seller
         [
             [
-                "3.9966",
-                "0.9"
+                "3.9966", //price
+                "0.9" //quantity
             ]
         ]
     },
-    "product": "BTC_USDT",
+    "product": "BTC_USDT",//trading pair
     "interval": "0"
 }
 
@@ -479,12 +478,32 @@ min -> minutes; hour -> hours; day -> days; week -> weeks; mon -> months
 ```
 ----
 
-## Percent10 Subscribe/Unsubscribe
+## V2 Percent10 Subscribe/Unsubscribe
 
-Depth information of the order book with a specific level of depth.
+Subscribe to obtain product depth incremental push data
+
+Explanation: Each buy and sell order takes up to 200 orders within 10% of the average price, sell 1 order within 10% of the upward price fluctuation, and buy 1 order within 10% downward fluctuation
+
+Push once every 500 milliseconds at the fastest, and also push when no event is triggered, bids and asks may be empty arrays if there is no data in the handicap
 
 
-#### Subscribe
+**Field Description:**
+
+- `id` message unique id
+- `biz` line of business
+- `seq_id` is ignored
+- `type` type
+- `data.bids` buyer depth
+- `data.bids[][0]` Bid depth price
+- `data.bids[][1]` the number of bids in depth
+- `data.asks` depth of asks
+- `data.asks[][0]` deep ask price
+- `data.asks[][1]` depth number of asks
+- `data.seq_id` ordered and unique id
+- `data.product` trading pair
+
+
+**Subscribe**
 
 > Subscribe request
 
@@ -511,7 +530,7 @@ Depth information of the order book with a specific level of depth.
     "product": "BTC_USDT"
 }
 ```
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -540,38 +559,38 @@ Depth information of the order book with a specific level of depth.
 ```
 
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
 ```json
 
 {
-    "id": "1689143539",     //Unique message ID
+    "id": "1689143539", //The unique id of the message
     "biz": "market",
-    "seqId": 112588640,     //Unique and sequential ID
-    "type": "percent10",    //Business type
+    "seq_id": 112588640, //ordered and unique id
+    "type": "percent10", //business type
     "data":
     {
-        "bids":             //Buyer
+        "bids": //buyer
         [
             [
-                "3.8646667",//Price
-                "0"         //Amount
+                "3.8646667", //price
+                "0" //quantity
             ]
         ],
-        "asks":             //Seller
+        "asks": //Seller
         [
             [
-                "3.8685333",//Price
-                "0"         //Amount
+                "3.8685333", //price
+                "0" //quantity
             ],
             [
                 "3.8704666",
                 "0"
             ]
         ],
-        "seqId": 112588640
+        "seq_id": 112588640
     },
     "product": "BTC_USDT"
 }
@@ -581,25 +600,27 @@ Depth information of the order book with a specific level of depth.
 ----
 
 
-##  Ticker Subscribe/UnSubscribe and Req
+## V2 Ticker Subscribe/UnSubscribe and Req
 
-**字段说明:**
+Subscribe to get product 24-hour ticker incremental push data
 
-- `id` Unique message ID
-- `open` The first traded price 24 hours ago
-- `close` The latest traded price in the last 24 hours
-- `low` The lowest traded price in the last 24 hours
-- `high` The highest traded price in the last 24 hours
-- `turnOver` Total turnover in the last 24 hours
-- `vol` Total trading volume in the last 24 hours
-- `seqId` Unique and sequential ID
-- `count` Total number of trades in the last 24 hours
-- `change` Price change in the last 24 hours
-- `changePercent` Price change percentage in the last 24 hours
+**Field Description:**
+
+- `id` message unique id
+- `open` started the first transaction price 24 hours ago
+- `close` 24 hours latest transaction price
+- `low` The lowest transaction price within 24 hours
+- `high` The highest transaction price within 24 hours
+- `filled_size` turnover within 24 hours
+- `vol` volume in 24 hours
+- `seq_id` unique and ordered id
+- `count` the number of transactions in 24 hours
+- `change` 24 hour price change
+- `change_percent` 24h price change (percentage)
 
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -610,7 +631,7 @@ Depth information of the order book with a specific level of depth.
     "type": "ticker",
     "product": "BTC_USDT",
     "zip": false
-}	
+}
 ```
 
 
@@ -628,7 +649,7 @@ Depth information of the order book with a specific level of depth.
 }
 ```
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -656,7 +677,7 @@ Depth information of the order book with a specific level of depth.
     "product": "BTC_USDT"
 }
 ```
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -671,24 +692,24 @@ Depth information of the order book with a specific level of depth.
     [
         {
             "id": 1689144487,
-            "seqId": 112588640,
+            "seq_id": 112588640,
             "open": "3.7366",
             "close": "3.7366",
             "high": "3.7366",
             "low": "3.7366",
-            "turnOver": "0",
+            "filled_size": "0",
             "vol": "0",
             "count": 0,
             "change": "0",
-            "changePercent": "0"
+            "change_percent": "0"
         }
     ]
 }
 ```
 
-#### Request Ticker
+#### V2 Request Ticker
 
-> Req request
+> Get the latest market data request example for a specified trading pair
 
 
 ```json
@@ -702,7 +723,7 @@ Depth information of the order book with a specific level of depth.
 
 ```
 
-> Req response
+> Example of getting the latest market data response for a specified trading pair
 
 
 ```json
@@ -715,16 +736,16 @@ Depth information of the order book with a specific level of depth.
     "data":
     {
         "id": 1689133336,
-        "seqId": 112588640,
+        "seq_id": 112588640,
         "open": "3.7366",
         "close": "3.7366",
         "high": "3.7366",
         "low": "3.7366",
-        "turnOver": "0",
+        "filled_size": "0",
         "vol": "0",
         "count": 0,
         "change": "0",
-        "changePercent": "0"
+        "change_percent": "0"
     },
     "event": "req",
     "product": "BTC_USDT"
@@ -732,9 +753,60 @@ Depth information of the order book with a specific level of depth.
 
 ```
 
+
+## V2 public channel Request field description
+
+| Parameter name | Type | Mandatory | Description | Reference value |
+|:---------|:-------|:----|-----------|----------- ----|
+| event | string | yes | request event | [event](#events) |
+| biz | string | yes | line of business | [line of business](#bizs) |
+| type | string | yes | business type | [type](#types) |
+| product | string | yes | trading pair | BTC_USDT |
+| interval | string | no | frequency | 1min |
+| zip | bool | yes | whether to enable gzip | true, false |
+
+## V2 public channel Response field description
+
+| Parameter name | Type   | Mandatory | Description       | Reference value                              |
+|:---------------|:-------|:----------|-------------------|----------------------------------------------|
+| event          | string | yes       | request event     | [event](#events)                             |
+| biz            | string | yes       | line of business  | [line of business](#bizs)                    |
+| type           | string | yes       | business type     | [type](#types)                               |
+| product        | string | yes       | trading pair      | BTC_USDT                                     |
+| interval       | string | no        | frequency         | 1min                                         |
+| code           | int    | yes       | error code        |                                              |
+| status         | string | yes       | error code status ||
+| data           | json   | no        | business data     | refer to specific business data instructions |
+
+## V2 public channel event list
+
+<a name="v2-publilc-events"></a>
+
+| Event Name | Type   | Description                                  |
+|:-----------|:-------|----------------------------------------------|
+| sub        | string | Subscribe to events, initiated by the client |
+| unsub      | string | unsubscribe event, initiated by the client   |
+| req        | string | request data event, initiated by the client  |
+
+
+## V2 Public Channel Biz List
+
+<a name="v2-publilc-bizs"></a>
+
+| Biz Name | Type   | Description |
+|:---------|:-------|-------------|
+| market   | string | spot market |
+
+## V2 public channel Type list
+<a name="v2-public-types"></a>
+
+| Type Name | Type   | Description         |
+|:----------|:-------|---------------------|
+| fills     | string | transaction data    |
+| candles   | string | candlestick data    |
+| orderbook | string | order book          |
+| ticker    | string | 24 hour ticker      |
+| percent10 | string | limited notch depth |
+
+
 ----
-
-
-
-
-

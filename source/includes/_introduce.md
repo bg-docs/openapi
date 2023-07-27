@@ -1,14 +1,64 @@
+
 # 接口说明
 
-**反馈邮箱**
+##反馈邮箱
 
-Email: <a href="mailto:api@bg.exchange">api@bg.exchange</a>
+Email: <a href="mailto:api@bg.exchange" id="api-support">api@bg.exchange</a>
 
-**请求地址**
+##请求地址
+**HTTP请求地址**<br>
 
-HOST: `https:api.bg.exchange/hk/`
+<a id="HTTP-HOST"></a>
+HOST: `https:api.bg.exchange/hk`
 
-**RESPONSE STATUS**
+**WEBSOCKET请求地址**
+
+- ~~WebSocket私有频道(DEPRECATED): `wss://ws.bg.exchange`~~
+- ~~WebSocket公共频道(DEPRECATED): `wss://ws.bg.exchange/ws`~~
+- WebSocket公共频道V2: `wss://ws.bg.exchange/v2/ws`
+- WebSocket私有频道V2: `wss://ws.bg.exchange/v2/ws`
+
+[^1^]: [链接](#WS_HOST_PRIVATE)
+[^2^]: [链接](#WS_HOST_PUBLIC)
+[^3^]: [链接](#WS_HOST_PUBLIC_V2)
+[^4^]: [链接](#WS_HOST_PRIVATE_V2)
+
+
+##Response Status
+
+> <a name="ResonpseExample">[HTTP/1.1 400](#ERR1)</a>
+
+
+```json
+{
+  "code":1087,
+  "message":"查找不到数据"
+}
+```
+
+
+> <a name="ResonpseExample">[HTTP/1.1 401](#ERR2)</a>
+
+
+```json
+{
+  "code":40001,
+  "message":"ACCESS_KEY不能为空"
+}
+```
+
+> <a name="ResonpseExample">[HTTP/1.1 500](#ERR1)</a>
+
+
+```json
+{
+  "code":500,
+  "message":"Internal Server Error"
+}
+```
+
+
+
 
 Status Code | Meaning | Example
 ---------- | ------- | --------

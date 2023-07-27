@@ -1,6 +1,6 @@
-# WEBSOCKET FEED PRIVATE
+# ~~WEBSOCKET PRIVATE(DEPRECATED)~~
 
-- `wss://ws.bg.exchange/`
+- [私有頻道地址(DEPRECATED)](#WS_HOST_PRIVATE)
 
 
 ## Login
@@ -28,9 +28,9 @@
 |參數名|必選|類型| 說明   |
 |:----    |:---|:----- |------|
 | params.type | 是  |string | 認證方式: <br/>`api`:apiKey認證;`token`:token認證     |
-| params.access-key     |是  |string | [鑒權說明](#auth)   |
-| params.access-sign     |是  |string | [鑒權說明](#auth)    |
-| params.access-timestamp     |是  |long | [鑒權說明](#auth)    |
+| params.access-key     |是  |string | [鑑權說明](#auth)   |
+| params.access-sign     |是  |string | [鑑權說明](#auth)    |
+| params.access-timestamp     |是  |long | [鑑權說明](#auth)    |
 | event     |是  |string | 事件名 [事件列表](#events)  |
 
 > response
@@ -89,7 +89,7 @@
   "type": "assets",
   "product": "ETH_BTC",
   "data": {
-    "result": false
+    "result": true
   }
 }
 ```

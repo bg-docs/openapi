@@ -1,20 +1,16 @@
 # 資金劃轉
 
-## 資金賬戶劃轉到交易賬戶
+<h2 id="資金賬戶劃轉到交易賬戶"><font class="httpget">POST</font>  資金賬戶劃轉到交易賬戶</h2>
 
+將資金從資金賬戶劃轉到指定的交易賬戶
 
-<font class="httppost">POST</font> */v1/deposits/account*
+**限速：10次/s**
 
+**限速規則：ApiKey**
 
-**請求數據類型**:`application/json`
+**HTTP請求**
 
-
-將資金從資金賬戶劃轉到指定的交易賬戶。
-
-
-
-
-
+POST [HOST](#HTTP-HOST)/v1/deposits/accounttrue
 
 
 > 鑑權信息
@@ -22,16 +18,8 @@
 > 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
 
-<aside>
-REQUEST PARAMETERS
-</aside>
+> <a name="ReeuestExample">REQUEST EXAMPLE</a>
 
-| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
-| -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |false|string||
-|currency|劃轉資產名稱|false|string||
-
-> REQUEST EXAMPLE
 
 ```json
 {
@@ -40,6 +28,24 @@ REQUEST PARAMETERS
 }
 ```
 
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
+| -------- | -------- | -------- | -------- | 
+|amount|劃轉數量 |true|string||
+|currency|劃轉資產名稱|true|string||
+
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
 
 <aside>
 RESPONSE PARAMETERS
@@ -50,43 +56,27 @@ RESPONSE PARAMETERS
 |amount|劃轉數量|string|
 |currency|劃轉資產名稱|string|
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 
-## 交易賬戶劃轉到資金賬戶
 
-<font class="httppost">POST</font> */v1/withdrawals/account*
-
-**請求數據類型**:`application/json`
+<h2 id="交易賬戶劃轉到資金賬戶"><font class="httpget">POST</font>  交易賬戶劃轉到資金賬戶</h2>
 
 將資金從交易賬戶劃轉到資金賬戶，劃轉後，可以進行提現操作。
 
 
+**限速：10次/s**
 
+**限速規則：ApiKey**
 
+**HTTP請求**
 
+POST [HOST](#HTTP-HOST)/v1/withdrawals/accounttrue
 
 
 > 鑑權信息
 
 > 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
-| -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |false|string||
-|currency|劃轉資產名稱|false|string||
 
 > REQUEST EXAMPLE
 
@@ -97,6 +87,24 @@ REQUEST PARAMETERS
 }
 ```
 
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
+| -------- | -------- | -------- | -------- | 
+|amount|劃轉數量 |true|string||
+|currency|劃轉資產名稱|true|string||
+
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
 
 <aside>
 RESPONSE PARAMETERS
@@ -106,12 +114,3 @@ RESPONSE PARAMETERS
 | -------- | -------- | ----- |
 |amount|劃轉數量|string|
 |currency|劃轉資產名稱|string|
-
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```

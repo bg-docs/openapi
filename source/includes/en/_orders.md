@@ -1,9 +1,37 @@
-# Trading and Orders
+# Transactions And Orders
 
-## Create New Orders
+<h2 id="Create new order"><font class="httpget">POST</font> Create new order</h2>
 
-<font class="httppost">POST</font> */v1/orders*
 
+Orders can only be placed if your account has sufficient funds.
+
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+POST [HOST](#HTTP-HOST)/v1/orders
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
+
+> <a name="ResonpseExample">REQUEST EXAMPLE</a>
+
+```json
+{
+  "product": "BTC_USDT",
+  "side": "buy",
+  "type": "limit",
+  "stp": "dc",
+  "price": "2.00",
+  "size": "3.3000000000000000000",
+  "client_oid": "QZ_2020-jj"
+}
+```
 
 <aside>
 REQUEST PARAMETERS
@@ -11,65 +39,52 @@ REQUEST PARAMETERS
 
 **common parameters**
 
-`product`: Must be an existing product id. For example, `BTC_USD`. The list of products is available via  [products](#Products).
+`product`: Must be an existing product. For example `BTC_USD`. A list of products is available via [products](#Products).
 
-`side`:  `buy` is buy, `sell` is sell.
+`side`: `buy` buys, `sell` sells.
 
-`type`: Order type
+`type`: order type
 
-- `limit`: Limit order
-- `market`: Market order
+- `limit`: limit order
+- `market`: market order
 
-`client_oid`: Optional and is “0” by default. A User-defined Order ID enables users to manage their own orders. The ID is a non-unique string type with a length of no more than 64 characters. It must be composed of uppercase or lowercase letters A-Z/a-z, numbers 0-9, underscore_ or hyphen-. Special symbols other than the above are not supported.
+`client_oid`: Optional, default "0", user-defined order number, used for users to manage their own orders. The ID is non-unique, a string type with a length of no more than 64 characters, and must be composed of elements in uppercase and lowercase letters A-Z/a-z, numbers 0-9, underline_, and dash-, and special symbols other than those are not supported
 
-`stp`:  i.e. `self trade prevention`。 BGE prohibits users from self-dealing. Through the `stp` option, a user may specify a strategy to process an order when the self-dealing scenario occurs.
+`stp`: ie `self trade prevention`. BGE prohibits users from dealing with themselves. Users can use the `stp` option to specify the order processing strategy when the self-transaction scenario occurs.
 
-- `dc`:  i.e. `decrease and cancel` (default). When orders by the same user are paired in order matching, the order with larger quantity will be executed with the “decrease” command, while the order with the smaller quantity will be executed with the “cancel” command.The quantity of decrease or cancel is the minimum value for which two orders are a self-dealing match.
-- `co`:  i.e. `cancle oldest`, When orders by the same user are paired in order matching, the earlier pending order will be executed with the “cancel” command. The most recent order will continue to be processed through regular transaction matching.
-- `cn`:  i.e. `cancle newest`, When orders by the same user are paired in order matching, the most recent order will be executed with the “cancel” command, and the earlier pending order will remain in the order book and be processed through regular transaction matching.
-- `cb`:  i.e. `cancle both`,When orders by the same user are paired in order matching, both paired orders will be executed with the “cancel” command.
+- `dc`: ie `decrease and cancel` (default). When matching occurs with the same user order matching, the party with the larger quantity will be executed with the `decrease` command, and the party with the smaller amount will be executed with the `cancel` command. decrease or
+  Or the quantity of cancel is the minimum value of the self-dealing matching of two orders.
+- `co`: ie `cancle oldest`, when matching occurs with the same user order matching, the earlier pending order will be executed `cancle` command. New orders will continue to execute the normal transaction matching process.
+- `cn`: that is `cancle newest`, when matching occurs with the same user order matching, the latest order will be executed `cancle` command, the earlier pending order still stays in the order book, and the normal transaction matching process will be executed.
+- `cb`: that is `cancle both`, when the matching of the same user order occurs, the two matching orders will be executed `cancle` command.
 
-`time_in_force`:  An optional transaction command that currently supports `GTC`. Default value is `GTC`
+`time_in_force`: optional, transaction command, currently supports `GTC`. The default is `GTC`
 
 **limit order parameters**
 
-`price`: Price of the trading pair
+`price`: item price
 
-`size`: The quantity of the trading pair to buy or sell
+`size`: the quantity to buy or sell
 
 **market order parameters**
 
-`size`:  The transaction quantity anticipated. The `side` required is `sell`, which represents the highest quantity of the trading pair anticipated to be sold when sold at the latest transaction price.
+`size`: expected transaction size. Require `side` to be `sell`, which means selling at the latest transaction price and expecting the maximum number of items sold.
 
-`funds`:  The transaction value anticipated. The `side` required is `buy`, which represents the highest asset value to be consumed when bought at the latest transaction price.
+`funds`: Expected transaction amount. `side` needs to be `buy`, which means buying at the latest transaction price and expecting to spend the maximum amount of assets.
 
-| Parameter Name | Parameter Description | Mandatory  | Data Type | Schema |
-| -------- | -------- | -------- | -------- | ------ |
-|product|Currency pair, for example: BTC_USDT||true|string||
-|side|buy/sell||true|string||
-|type|limit: limit order/market: market order||true|string||
-|stp|Self-dealing - dc: decrease and cancel (default); co: cancel oldest; cn: cancel newest; cb: cancel bot||true|string||
-|time_in_force|Trading command, GTC||false|string||
-|funds|The amount of quotation currency desired to use||false|string||
-|price|Price per coin||false|string||
-|size|Quantity to buy or sell||false|string||
-|client_oid|User-defined Order ID|false|string||
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|product|commodity, for example: ETH_USD|true|string|
+|side|buy/sell|true|string|
+|type|limit: limit order/market: market order|true|string|
+|stp|Self-transaction: dc: reduce and cancel (default) co: cancel the oldest cn: cancel the newest cb: cancel both |true|string|
+|time_in_force|trade command,GTC|false|string|
+|funds|Amount of quote currency to use |false|string|
+|price|price per coin|false|string|
+|size|Amount to buy or sell|false|string|
+|client_oid|User-defined order number|false|string|
 
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`:  Order ID generated by BGE
-
-`client_oid`:  Order ID generated by BGE
-
-| Parameter Name | Parameter Description | Type | schema          |
-| -------- | -------- | ----- |----- | 
-|order_id|Order ID generated by BGE|string||
-|client_oid|Order ID generated by BGE，默认"0"|string||
-
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 
@@ -80,205 +95,228 @@ RESPONSE PARAMETERS
 
 ```
 
-## Query a Particular Order Based on the System Order ID
-
-<a name="order_detail"></a>
-
-<font class="httpget">GET</font> */v1/orders/{order_id}*
-
-<aside>
-PATH VARIABLES
-</aside>
-
-| Parameter Name | Parameter Description     | Mandatory  | Data Type | schema |
-| -------- | ----- | -------- | -------- | ------ |
-|order_id|Order ID|true|string||
-
-
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`status`: Transaction status, value range 0-7
+`order_id`: the order number generated by BGE
 
-- 0: Order received
-- 1: Order submitted
-- 2: Order partially filled
-- 3: Order fully filled
-- 4: Order being cancelled
-- 5: Order cancelled
-- 6: Order transaction failed
-- 7: Order volume decreased
+`client_oid`: user-defined order number
 
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|Fees to fill order|string||
-|filled_size|Value of filled order|string||
-|filled_amount|Amount of filled order|string||
-|filled_average_price|Average price of filled orders|string||
-|funds|The amount of quotation currency desired to use|string||
-|order_id|Order ID|string||
-|price|Price per unit of base currency|string||
-|product|Product ID|string||
-|side|buy/sell|string||
-|size|Quantity of base currency to buy/sell Status|string||
-|status|Status|string||
-|type|limit: limit order/market: market order|string||
-|created_at|Time when created|string||
-|updated_at|Time when updated|string||
-|client_oid|User-defined Order ID|false|string||
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|order_id|The order number generated by BGE|string|
+|client_oid|User-defined order number, default "0"|string|
 
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
-<a name="order_detail_demo"></a>
+<h2 id="Query a single order according to the system order number"><font class="httpget">GET</font> Query a single order according to the system order number</h2>
 
-```json
-{
-  "filled_size": "0.000000000000000000",
-  "filled_fees": "1.00",
-  "filled_amount": "0.000000000000000000",
-  "filled_average_price": "0",
-  "created_at": "2021-12-14T03:19:15Z",
-  "updated_at": "2022-01-04T06:57:34Z",
-  "price": "2.00",
-  "size": "3.300000000000000000",
-  "product": "BTC_USDT",
-  "order_id": "127738628653088481",
-  "funds": "0.000000000000000000",
-  "type": "limit",
-  "side": "buy",
-  "status": "7",
-  "client_oid": "QZ_2020-jj"
-}
-```
+Get the specified order information.
 
-## Query a Particular Order Based on the User-Defined Order ID
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/orders/{order_id}
+
 
 <a name="order_detail"></a>
 
-<font class="httpget">GET</font> */v1/orders/single/{client_oid}*
+> Authentication information
 
-<aside>
-PATH VARIABLES
-</aside>
-
-| Parameter Name | Parameter Description     | Mandatory  | Data Type | schema |
-| -------- | ----- | -------- | -------- | ------ |
-|client_oid|User-defined Order ID|true|string||
-
-`client_oid`: When a user-defined Order ID matches multiple system orders, the response will only contain the most recent system order
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`status`: Transaction status, value range 0-7
-
-- 0: Order received
-- 1: Order submitted
-- 2: Order partially filled
-- 3: Order fully filled
-- 4: Order being cancelled
-- 5: Order cancelled
-- 6: Order transaction failed
-- 7: Order volume decreased
-
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|Fees to fill order|string||
-|filled_size|Value of filled order|string||
-|filled_amount|Amount of filled order|string||
-|filled_average_price|Average price of filled orders|string||
-|funds|The amount of quotation currency desired to use|string||
-|order_id|Order ID|string||
-|price|Price per unit of base currency|string||
-|product|Product ID|string||
-|side|buy/sell|string||
-|size|Quantity of base currency to buy/sell
-Status|string||
-|status|Status|string||
-|type|limit: limit order/market: market order|string||
-|created_at|Time of order created|string||
-|updated_at|Time of order updated|string||
-|client_oid|User-defined Order ID|false|string||
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
-
-<a name="order_detail_demo"></a>
-
-```json
-{
-  "filled_size": "0.000000000000000000",
-  "filled_fees": "1.00",
-  "filled_amount": "0.000000000000000000",
-  "filled_average_price": "0",
-  "created_at": "2021-12-14T03:19:15Z",
-  "updated_at": "2022-01-04T06:57:34Z",
-  "price": "2.00",
-  "size": "3.300000000000000000",
-  "product": "BTC_USDT",
-  "order_id": "127738628653088481",
-  "funds": "0.000000000000000000",
-  "type": "limit",
-  "side": "buy",
-  "status": "7",
-  "client_oid": "QZ_2020-jj"
-}
-```
-
-## Obtaining Details of an Order
-
-<font class="httpget">GET</font> */v1/fills*
-
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-Query of the transaction details of a particular order and various details of the currency type is available via this interface.
+| Parameter name | Parameter description | Required | Data type |
+| -------- | ----- | -------- | -------- |
+|order_id|order ID|true|string||
 
-- `order_id` If it exists, transaction particulars of the order will be prioritized in the query, while other parameters will be omitted.
-- `order_id` If it does not exist, all transaction particulars will be queried and paginated according to the parameter combination. The maximum value of `limit` is 1000, and query of order particulars of over 1000 entries will be unavailable.
-- `order_id`  If it exists, `client_oid` will be omitted in the query conditions.
-- `client_oid` If it matches multiple system orders, the response will only contain details of the most recent system order
 
-| Parameter Name | Parameter Description     | Mandatory  | Data Type | schema |
-| -------- | -------- | ----- | -------- | -------- |
-|after|For pagination. End cursor set as after date.|false|integer(int64)||
-|before|For pagination. Start cursor set as before date|false|integer(int64)||
-|limit|Limit the number of results in response, the default is 100, the maximum is 1000|false|integer(int32)||
-|product|Trading Pair ID|false|string||
-|order_id|Order ID|false|string||
-|client_oid|User-defined Order ID|false|string||
+<a name="order_detail_demo"></a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
+```json
+{
+  "filled_size": "0.0000000000000000000",
+  "filled_fees": "1.00",
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": "2.00",
+  "size": "3.3000000000000000000",
+  "product": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.0000000000000000000",
+  "type": "limit",
+  "side": "buy",
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
+}
+```
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- | 
-|created_at|Order creation time|string||
-|updated_at|Order update time|string||
-|fee|Fee paid at the amount currently filled|string||
-|liquidity|Liquidity: marker, taker|string||
-|order_id|Order ID|string||
-|price|Price per unit of base currency|string||  
-|product|Product ID|string||
-|side| buy/sell |string||
-|size|Quantity of base currency to buy/sell
-Status|string||
+`status`: transaction status, value range 0-7
+
+- 0: order has been received
+- 1: The order has been submitted
+- 2: The order is partially executed
+- 3: The order has been completely filled
+- 4: The order is canceled
+- 5: The order has been canceled
+- 6: Order transaction failed
+- 7: The order is reduced
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|filled_fees|filling fee|string|
+|filled_size|transaction amount|string|
+|filled_amount|Amount of transaction|string|
+|filled_average_price|average transaction price|string|
+|funds|Amount of quote currency to use |string|
+|order_id|order number|string|
+|price|price per unit of base currency|string|
+|product|product|string|
+|side|buy/sell|string|
+|size|Amount of base currency to buy/sell |string|
+|status|status|string|
+|type|limit: limit order/market: market order|string|
+|created_at|created time|string|
+|updated_at|updated time|string|
+|client_oid|User-defined order number|string|
+
+<h2 id="Query a single order by user-defined order number"><font class="httpget">GET</font> Query a single order by user-defined order number</h2>
+
+When the custom order corresponds to multiple system orders, only the latest system order will be returned.
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/orders/single/{client_oid}
+
+
+<a name="order_detail"></a>
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 <aside>
-RESPONSE EXAMPLE
+REQUEST PARAMETERS
 </aside>
 
-<a name="fills_detail_demo"></a>
+| Parameter name | Parameter description | Required | Data type |
+| -------- | ----- | -------- | -------- |
+|client_oid|User-defined order number|true|string|
+
+`client_oid`: When the custom order corresponds to multiple system orders, only the latest system order will be returned
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "filled_size": "0.0000000000000000000",
+  "filled_fees": "1.00",
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": "2.00",
+  "size": "3.3000000000000000000",
+  "product": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.0000000000000000000",
+  "type": "limit",
+  "side": "buy",
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
+}
+```
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`status`: transaction status, value range 0-7
+
+- 0: order has been received
+- 1: The order has been submitted
+- 2: The order is partially executed
+- 3: The order has been completely filled
+- 4: The order is canceled
+- 5: The order has been canceled
+- 6: Order transaction failed
+- 7: The order is reduced
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|filled_fees|filling fee|string|
+|filled_size|transaction amount|string|
+|filled_amount|Amount of transaction|string|
+|filled_average_price|average transaction price|string|
+|funds|Amount of quote currency to use |string|
+|order_id|order number|string|
+|price|price per unit of base currency|string|
+|product|product|string|
+|side|buy/sell|string|
+|size|Amount of base currency to buy/sell |string|
+|status|status|string|
+|type|limit: limit order/market: market order|string|
+|created_at|created time|string|
+|updated_at|updated time|string|
+|client_oid|User-defined order number|string|
+
+
+<a name="order_detail_demo"></a>
+
+<h2 id="Get transaction details"><font class="httpget">GET</font> Get transaction details</h2>
+
+Qualified transaction details can be obtained according to different query conditions
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/fills
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+
+- If `order_id` exists, the transaction details of the order will be searched first, and other parameters will be ignored.
+- If `order_id` does not exist, all transaction details of the store will be queried in pagination according to the parameter combination. Among them, the maximum value of `limit` is 1000, and the order details of more than 1000 items will not be queried
+- If `order_id` exists, the query condition ignores client_oid
+- When `client_oid` corresponds to multiple system orders, only the details of the latest system order will be returned
+
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|after| is used for pagination. Set end cursor to after date. |false|integer(int64)|
+|before| is used for pagination. set start cursor to before date |false|integer(int64)|
+|limit|limits the number of returned results, the default is 100, the maximum is 1000|false|integer(int32)|
+|product|product id|false|string|
+|order_id|order id|false|string|
+|client_oid|User-defined order number|false|string|
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -286,7 +324,7 @@ RESPONSE EXAMPLE
     "product": "BTC_USDT",
     "order_id": "12808732377541664481",
     "liquidity": "maker",
-    "price": "19.560000000000000000",
+    "price": "19.5600000000000000000",
     "size": "0.937686000000000000",
     "fee": "0",
     "created_at": "2022-01-04T10:17:03Z",
@@ -296,68 +334,66 @@ RESPONSE EXAMPLE
 ]
 ```
 
-## Obtaining Currently Unfilled Orders
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-<font class="httpget">GET</font> */v1/orders*
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|created_at|order creation time|string|
+|updated_at|order update time|string|
+|fee|The fee paid according to the current amount filled in|string|
+|liquidity|liquidity: marker, taker|string|
+|order_id|order number|string|
+|price|price per unit of base currency|string|
+|product|product number|string|
+|side| buy/sell |string|
+|size|Amount of base currency to buy/sell |string|
 
+<a name="fills_detail_demo"></a>
+
+<h2 id="Get current unfinished orders"><font class="httpget">GET</font> Get current unfinished orders</h2>
+
+Get orders that have not been executed
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/orders
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-Query of details of a particular order or multiple orders based on the trading pair is available via this interface
+This interface can query the details of a single order, or multiple orders based on the product
 
-- `order_id`  If it exists, details of the order will be prioritized in the query, while other parameters will be omitted.
-- `order_id`  If it does not exist, all order details will be queried and paginated according to the parameter combination. The maximum value of `limit` is 1000, and query of order details of over 1000 entries will be unavailable.
-- `order_id`  If it exists, `client_oid` will be omitted in the query conditions.
+- If `order_id` exists, the order details will be searched first, other parameters will be ignored.
+- If `order_id` does not exist, all order details will be queried in pagination according to the parameter combination. Among them, the maximum value of `limit` is 1000, and the order details of more than 1000 items will not be queried
+- If `order_id` exists, the query condition ignores client_oid
 
-| Parameter Name | Parameter Description    | Mandatory  | Data Type | schema |
-| -------- | -------- | ----- | -------- | -------- |
-|after|For pagination. End cursor set as after date.|false|integer(int64)||
-|before|For pagination. Start cursor set as before date|false|integer(int64)||
-|limit|Limit the number of results in response, the default is 100, the maximum is 1000|false|integer(int32)||
-|order_id|Order ID|false|string||
-|client_oid|User-defined Order ID|false|string||
-|product|Trading Pair ID|false|string||
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|after| is used for pagination. Set end cursor to after date. |false|integer(int64)|
+|before| is used for pagination. set start cursor to before date |false|integer(int64)|
+|limit|limits the number of returned results, the default is 100, the maximum is 1000|false|integer(int32)|
+|order_id|order id|false|string|
+|client_oid|User-defined order number|false|string|
+|product|product id|false|string|
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`status`: Transaction status, value range 0-7
-
-- 0: Order received
-- 1: Order submitted
-- 2:  Order partially filled
-- 3: Order fully filled
-- 4: Order being cancelled
-- 5: Order cancelled
-- 6:  Order transaction failed
-- 7: Order volume decreased
-
-| Parameter Name | Parameter Description | Type | schema |
-| -------- | -------- | ----- |----- |
-|funds|The amount of quotation currency desired to use|string||
-|order_id|Order ID|string||
-|price|Price per unit of base currency|string||
-|product|Product ID|string||
-|side|buy/sell|string||
-|size|Quantity of base currency to buy/sell
-Status|string||
-|status|Status|string||
-|type|limit: limit order/market: market order|string||
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
-
-<a name="order_trade_detail_demo"></a>
-
-```json
+ ```json
 [
   {
-    "price": "19.560000000000000000",
+    "price": "19.5600000000000000000",
     "size": "35.447206000000000000",
     "product": "BTC_USDT",
     "order_id": "128087977541664481",
@@ -369,95 +405,146 @@ RESPONSE EXAMPLE
 ]
 ```
 
-## Cancel a Particular Order By BGE Order Id
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-<font class="httpdelete">DELETE</font> */v1/orders/{order_id}*
+`status`: transaction status, value range 0-7
 
+- 0: order has been received
+- 1: The order has been submitted
+- 2: The order is partially executed
+- 3: The order has been completely filled
+- 4: The order is canceled
+- 5: The order has been canceled
+- 6: Order transaction failed
+- 7: The order is reduced
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|funds|Amount of quote currency to use |string|
+|order_id|order number|string|
+|price|price per unit of base currency|string|
+|product|product number|string|
+|side|buy/sell|string|
+|size|Amount of base currency to buy/sell |string|
+|status|status|string|
+|type|limit: limit order/market: market order|string|
+
+
+
+<a name="order_trade_detail_demo"></a>
+
+<h2 id="Cancel a single order according to the system order number"><font class="httpget">DELETE</font> Cancel a single order according to the system order number</h2>
+
+
+Cancel the specified outstanding order
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders/{order_id}
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-A particular order can be cancelled via this interface
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|order_id|order id|true|string|
 
-
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`: Order Id
-
-
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
 <a name="order_trade_detail_demo"></a>
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 "1277087538632480481"
 ```
 
-## Cancel a Particular Order By User-defined Order ID
+<aside>
+RESPONSE PARAMETERS
+</aside>
+| Parameter name | Parameter description | Data type |
+| -------- | -------- | -------- |
+|order_id|order id|string|
 
-<font class="httpdelete">DELETE</font> */v1/orders/single/{client_oid}*
+<h2 id="Cancel a single order according to the user-defined order number"><font class="httpget">DELETE</font> Cancel a single order according to the user-defined order number</h2>
 
+
+A single order can be canceled. If the custom order corresponds to multiple system orders, cancel the latest order. If the cancellation application is successful, the corresponding system order number will be returned.
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders/single/{client_oid}
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-此接口可撤销单个订单，若自定义订单对应多个系统订单，撤销最新一个订单，撤销申请成功，返回对应的系统订单号
 
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|client_oid|User-defined order number|true|string|
 
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`: User-defined Order ID
-
-
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
 <a name="order_trade_detail_demo"></a>
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 "1277087538632480481"
 ```
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-## Cancel All Orders
+A list of IDs of orders that are about to be canceled
 
-<font class="httpdelete">DELETE</font> */v1/orders*
+<h2 id="Cancel all orders by item"><font class="httpget">DELETE</font> Cancel all orders by item</h2>
 
-This action is asynchronous. When the user receives the interface response, it does not mean that all orders have been successfully cancelled. After receiving the request, BGE will query all unfilled orders corresponding to the Trading Pair ID under the user account, and cancel these orders asynchronously. Users may query the transaction status of a particular order via [/orders/{order_id}](#order_detail).
+
+This method is an asynchronous method. When the user receives the interface return, it does not mean that all orders have been canceled successfully. After BGE receives the request, it will query all unfilled orders corresponding to the commodity ID under the user account, and cancel these orders asynchronously.
+Users can query the transaction status of a single order through [/orders/{order_id}](#order_detail).
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders
+
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-`product`: The Trading Pair ID being cancelled, such as "BTC_USD"
+`product`: the product ID to be revoked, such as "BTC_USD"
 
-| Parameter Name | Parameter Description    | Mandatory  | Data Type | 
-| -------- | -------- | ----- | -------- | 
-|product|Trading Pair ID|true|string||
-
+| Parameter name | Parameter description | Required | Data type |
+| -------- | ----- | -------- | -------- |
+|product|commodity|true|string||
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-List of IDs of orders pending cancellation
-
-```json
-[
-  "128527387912385665"
-]
-```
+A list of IDs of orders that are about to be canceled

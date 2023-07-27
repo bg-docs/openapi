@@ -1,6 +1,6 @@
 # Authentication information
 
-<a id="Authentication Specifications"></a>
+<a id="auth"></a>
 
 Each user can create up to 50 APIKeys;
 

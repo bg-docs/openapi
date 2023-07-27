@@ -1,52 +1,61 @@
 # WEBSOCKET
 
-Welcome to the BGE Cryptocurrency Exchange WebSocket Subscription Message Protocol. This protocol allows you to subscribe and receive real-time market data, trade information, and other relevant updates through a WebSocket connection.
+Welcome to the BGE digital currency exchange WebSocket subscription message protocol. The protocol allows you to subscribe to and receive market data, trading information and other relevant information in real time through a WebSocket connection.
 
-## WEBSOCKET Basics
+Hope this document can help you quickly understand our digital currency exchange WebSocket subscription message protocol. If you have any questions or need further assistance, please do not hesitate to contact our technical support team. I wish you a happy use!
 
-WebSocket is a network protocol that enables full-duplex communication over a single TCP connection, providing a way for real-time data transfer between clients and servers. By using WebSocket, you can subscribe and receive real-time market data and other information from the cryptocurrency exchange.
 
-## Connection Instructions
+## WEBSOCKET basic instructions
 
-Before subscribing to messages, you need to establish a WebSocket connection. Here are the connection instructions:
+WebSocket is a network protocol for full-duplex communication over a single TCP connection, which provides a means of real-time data transfer between a client and a server. By using WebSocket, you can subscribe and receive real-time market data and other information from digital currency exchanges in real time.
 
-### Use Public Service Address when subscribing to public channels; Use Private Service Address when subscribing to private channels.
+## Connection instructions
 
-- Public Channels: Public channels broadcast information to all clients connected to the exchange, including market quotes, order depth, and more.
-  Access method: [WEBSOCKET FEED PUBLIC V2](#websocket-feed-public-v2)
-- Private Channels: Private channels only push personal-related information to specific clients, such as order notifications, account balances, etc.
-  Access method: [WEBSOCKET FEED PRIVATE](#websocket-feed-private)
+Before subscribing to messages, you need to establish a WebSocket connection. Connection instructions are as follows:
 
-Please choose the appropriate service address based on your needs for connecting to public or private channels.
+### When subscribing to a public channel, use the address of the public service; when subscribing to a private channel, use the address of the private service
 
-### Message Limit: Maximum 50 messages per connection per second; otherwise, the connection will be forcibly closed.
+- Public channel: The public channel is a channel broadcast to all clients connected to the exchange, including market conditions, transaction depth and other information.
+  For the access method, please refer to: [WEBSOCKET PUBLIC V2](#websocket-feed-public-v2)
+- Private channel: A private channel refers to a channel that only pushes personal-related information to specific clients, such as order notifications, account balances, etc.
+  For the access method, please refer to: [WEBSOCKET PRIVATE V2](#websocket-feed-private-v2)
 
-To maintain connection stability and fairness, we have imposed a restriction on the number of messages sent per second for each connection. You can send a maximum of 50 messages per second. If you exceed this limit, the system will forcibly close the connection. Please ensure compliance with this limitation.
+Please select the corresponding service address to connect to public or private channels according to your needs.
 
-### Connection Keep-Alive: We will send periodic ping messages and expect you to respond with pong messages within 30 seconds. Otherwise, the server will close the connection.
+## Subscription limit: each connection can send up to 50 messages in 1s, otherwise the connection will be closed forcibly
 
-To ensure connection activity, we will periodically send `json` format ping messages `{"ping": timestamp}` to the client. Upon receiving a ping message, you should promptly respond with the text message `{"pong": timestamp}` to indicate an active connection. If we do not receive your response within 30 seconds, we will close the connection.
+In order to maintain the stability and fairness of the connection, we have set a limit on sending messages, and each connection can send up to 50 messages per second. If you send more than 50 messages within 1 second, the connection will be forcibly closed, please be aware of this limit.
 
-### Subscription Errors: Error messages consist of two main parts: error codes and messages. While the codes are standardized, the messages may vary.
+## Connection maintenance: We will send ping messages regularly, expecting you to return pong messages as a response, if you do not receive your response for more than 30s, the server will close the connection
 
-When the server cannot process the request you send, it will return an error message.
+At the same time, you need to pay attention to the following situations:
 
-Hope this document helps you quickly understand our BGE Cryptocurrency Exchange WebSocket Subscription Message Protocol. If you have any questions or need further assistance, please feel free to contact our technical support team. Happy trading!
+Network problems: If there are network problems, the system will automatically disconnect.
+
+Connection timeout: If the user does not subscribe within 30 seconds after the connection is successful or the server does not push data to the user within 30 seconds after the subscription, the system will automatically disconnect.
+
+In order to ensure the liveness of the connection, we will regularly send ping messages in JSON format to the client: `{"ping": timestamp}`. You need to send a `{"pong": timestamp}` text message promptly after receiving the ping message to indicate that the connection is alive. If we do not receive a response from you within 30 seconds, we will close the connection and recommend the following:
+
+1. Reply a `{"pong": timestamp}` immediately after receiving a `{"ping": timestamp}` message.
+
+2. Expect a literal string `{"ping": timestamp}` as heartbeat message. If not received within N seconds, issue an error or reconnect.
+
 
 <aside>
 PING PONG EXAMPLE
 </aside>
 <a name="ping_pong_demo"></a>
 
-> ping request
+> Ping request
 
 ```json
+
 {
     "ping": 1635065532000
 }
 
 ```
-> pong request
+> Pong request
 
 ```json
 
@@ -56,19 +65,41 @@ PING PONG EXAMPLE
 
 ```
 
+## Generic request errors: error messages are mainly composed of two parts: error code and message. Codes are generic, but messages may vary.
+
+When you send a request that the server fails to process, the server will return an error message.
+
+For other error codes and messages, please refer to: [error code](#WSERR)
+
 <aside>
 ERROR RESPONSE EXAMPLE
 </aside>
 
-<a name="error_response_demo"></a>
+<a name="error_ws_request_response_demo"></a>
 
-> error response message
+> Error request message
+
+```json
+{
+    "event": "sub",
+    "para":
+    {
+        "biz": "market",
+        "type": "percent10",
+        "product": "ETH_USDT"
+    },
+    "zip": true
+}
+
+```
+
+> Response message
 
 ```json
 {
     "event": "error",
     "code": "400",
-    "msg": "Invalid request: {\"event\":\"sub\",\"para\":{\"biz\":\"market\",\"type\":\"percent10\",\"pairCode\":\"BTC_USDT\"},\"zip\":true}"
+    "msg": "Invalid request: {\"event\":\"sub\",\"para\":{\"biz\":\"market\",\"type\":\"percent10\",\"pairCode\":\"ETH_USDT\"},\"zip\":true}"
 }
 
 ```

@@ -1,8 +1,8 @@
-# WEBSOCKET FEED PUBLIC (DEPRECATED)
+# ~~WEBSOCKET PUBLIC(DEPRECATED)~~
 
-- ` wss://ws.bg.exchange/ws`
+- [Public channel address (DEPRECATED)](#WS_HOST_PUBLIC)
 
-## Candles Subscribe/UnSubscribe 
+## Candles Subscribe/UnSubscribe
 
 #### Subscribe
 
@@ -11,7 +11,7 @@
 ```json
 {
     "event": "sub",
-    "params":{
+    "params": {
         "biz": "market",
         "type": "candles",
         "product": "ETH_BNB",
@@ -21,46 +21,46 @@
 }
 ```
 
-#### Request Parameters
+#### Request parameters
 
-|Parameter Name|Required|Type| Description   |
-|:----    |:---|:----- |------|
-| params .biz | Yes  |string |      |
-| params .type     |Yes  |string | Subscription type |
-| params .product     |Yes  |string | Currency pair   |
-| params .interval     |Yes  |string | Interval   |
-| event     |Yes  |string | event Subscribe  |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
 
 ```json
 {
-	"channel": "subscribe",
-	"biz": "market",
-	"type": "candles",
-	"product": "ETH_BNB",
-	"interval": "30min",
-	"ts": 1639655425910,
-	"status": "ok"
+"channel": "subscribe",
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "30min",
+"ts": 1639655425910,
+"status": "ok"
 }
 ```
 
-#### Response Parameters
-|Parameter Name|Type|Description|
-|:----    |:----- |-----   |
-| type | string |  Subscription type |
-| interval     |string | Interval  |
-| product    |string | Currency pair|
-| data .open     |string | The first traded price in this candle |
-| data .close    |string | The last traded price in this candle  |
-| data .low     |string | The lowest traded price in this candle |
-| data .high     |string | The highest traded price in this candle |
-| data .vol     |string | Total trading volume in this candle |
-| data .turnOver     |string | Total turnover in this candle |
-| data .id     | int | Unique and sequential ID  |
-| data .count     | int | Total number of trades in this candle |
+#### return parameters
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
 
 
 #### UnSubscribe
@@ -68,63 +68,63 @@
 > unsub request
 
 ```json
-	{
-		"event": "unsub",
-		"params": {
-			"biz": "market",
-			"type": "candles",
-			"product": "ETH_BNB",
-			"interval": "1day"
-		},
-		"zip":true
-	}	
+{
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "1day"
+},
+"zip": true
+}
 ```
 
-#### Request Parameters
+#### Request parameters
 
-|Parameter Name|Required|Type| Description            |
-|:----    |:---|:----- |---------------|
-| params .biz | Yes  |string |               |
-| params .type     |Yes  |string | Subscription type        |
-| params .product     |Yes  |string | Currency pair            |
-| params .interval     |Yes  |string | Interval            |
-| event     |Yes  |string | Event UnSubscribe |
-| zip     |Yes  |bool | Enable gzip      |
+|parameter name|required|type|description|
+|:---- |:---|:----- |---------------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event UnSubscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > unsub response
 
 ```json
 {
-	"channel":"unsubscribe",
-	"biz": "market",
-	"type": "candles",
-	"product": "ETH_BNB",
-	"interval": "1day",
-	"ts": 1639655425910,
-	"status": "ok"
+"channel": "unsubscribe",
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "1day",
+"ts": 1639655425910,
+"status": "ok"
 }
 ```
 
-#### Response Parameters
-|Parameter Name|Type|Description|
-|:----    |:----- |-----   |
-| type | string |  Subscription type |
-| interval     |string | Interval  |
-| product    |string | currency pair|
-| data .open     |string | The first traded price in this candle |
-| data .close    |string | The last traded price in this candle  |
-| data .low     |string | The lowest traded price in this candle |
-| data .high     |string | The highest traded price in this candle |
-| data .vol     |string | Total trading volume in this candle |
-| data .turnOver     |string | Total turnover in this candle |
-| data .id     | int |   | Unique ID |
-| data .count     | int | Total number of trades in this candle |
-| data .seqId     |int | Unique and sequential ID |
+#### return parameters
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
+| data .seqId |int | ordered and unique id |
 
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -156,7 +156,7 @@
 ```
 ----
 
-##  Fills Subscribe/UnSubscribe
+## Fills Subscribe/UnSubscribe
 
 #### Subscribe
 
@@ -175,13 +175,13 @@
 ```
 
 
-|Parameter Name|Required|Type| Description       |
-|:----    |:---|:----- |----------|
-| params .biz | Yes  |string |          |
-| params .type     |Yes  |string | Subscription typeType   |
-| params .product     |Yes  |string | Currency pair       |
-| event     |Yes  |string | event Subscribe      |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type type |
+| params .product |is |string | currency pair |
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 > sub response
 
@@ -198,27 +198,27 @@
 
 #### UnSubscribe
 
-|Parameter Name|Required|Type| Description       |
-|:----    |:---|:----- |----------|
-| params .biz | Yes  |string |   |
-| params .type     |Yes  |string | Subscription typeType   |
-| params .product     |Yes  |string | Currency pair       |
-| params .interval     |Yes  |string | Interval       |
-| event     |Yes  |string | event Subscribe      |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub request
 
 ```json
 {
-	"event": "unsub",
-	"params": {
-		"biz": "market",
-		"type": "fills",
-		"product": "ETH_USDT"
-	},
-	"zip": false
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "fills",
+"product": "ETH_USDT"
+},
+"zip": false
 }
 
 ```
@@ -236,20 +236,20 @@
 }
 
 ```
-#### Feed Stream 
+#### Feed Stream
 
-|Parameter Name|Type|Description|
-|:----    |:---|:----- |-----   |
-| id | int | number | Unique ID |
-| type | string |  Subscription type |
-| interval     |string | Interval  |
-| product    |string | Currency pair|
-| pairCode    |string | ignore|
-| data .price     |string | Price |
-| data .vol     |string | Trading volume |
-| data .ts     |int  | Timestamp |
-| data .direction     |string |  Direction|
-| data .id     |int |  Trade ID |
+|parameter name|type|description|
+|:---- |:---|:----- |----- |
+| id | int | unsigned integer unique id of this message |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| pairCode |string | ignore|
+| data.price |string | price |
+| data .vol |string | volume |
+| data.ts |int | timestamp |
+| data.direction |string | direction|
+| data .id |int | transaction id|
 
 
 > feed stream
@@ -275,7 +275,7 @@
 }
 
 
-``` 
+```
 
 -----
 
@@ -298,14 +298,14 @@
 
 #### Subscribe
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string |  |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| params .interval     |Yes  |string | _Interval_ |
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+|params.interval|is |string|_period_|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
@@ -322,16 +322,16 @@
 }
 ```
 
-#### UnSubscribe 
+#### UnSubscribe
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string |  |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| params .interval     |Yes  |string | _Interval_ |
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+|params.interval|is |string|_period_|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 
@@ -344,7 +344,7 @@
     "biz": "market",
     "type": "orderBook",
     "product": "ETH_USDT",
-    "interval": "1min"
+    "interval": "1"
   },
   "zip": false
 }
@@ -358,7 +358,7 @@
 {
     "biz": "market",
     "channel": "unsubscribe",
-    "interval": "1min",
+    "interval": "1",
     "product": "ETH_USDT",
     "type": "orderBook",
     "status": "ok",
@@ -366,7 +366,7 @@
 }
 ```
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -380,19 +380,19 @@
     "ts": 1689934071000,
     "version": 1689934071,
     "seqId": 0,
-    "interval": "1min",
+    "interval": "1",
     "bids": [
-		[3781.85, 0.30656],
-		[3781.78, 0.0219],
-		[360, 4.59207],
-		[10, 11]
-	],
+[3781.85, 0.30656],
+[3781.78, 0.0219],
+[360, 4.59207],
+[10, 11]
+],
     "asks": [
-		[3835, 0.19948],
-		[3836.98, 0.00026],
-		[3837.33, 0.4445],
-		[3839, 0.2]
-	]
+[3835, 0.19948],
+[3836.98, 0.00026],
+[3837.33, 0.4445],
+[3839, 0.2]
+]
 }
 
 ```
@@ -414,16 +414,16 @@
         "product": "ETH_USDT"
     },
     "zip": false
-}	
+}
 ```
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string |  |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 > sub response
 
@@ -454,14 +454,14 @@
 }
 ```
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string | |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| params .pairCode     |Yes  |string | Currency pair|
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| params .pairCode | is |string | currency pair (ignore)|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 > unsub response
 
@@ -477,7 +477,7 @@
 ```
 
 
-#### Feed Stream 
+#### Feed Stream
 
 > feed stream
 
@@ -492,18 +492,18 @@
     "version": 1689934879,
     "seqId": 0,
     "bids": [
-		[11.994, 0.10124]
-	],
+[11.994, 0.10124]
+],
     "asks": [
-		[12.006, 0]
-	]
+[12.006, 0]
+]
 }
 ```
 
 ----
 
 
-##  Ticker Subscribe\UnSubscribe
+## Ticker Subscribe\UnSubscribe
 
 
 
@@ -512,25 +512,25 @@
 > sub request
 
 ```json
-	{
-		"event": "sub",
-		"params": {
-			"biz": "market",
-			"type": "ticker",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+"event": "sub",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
+}
 ```
 
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string |  |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
@@ -553,25 +553,25 @@
 > unsub request
 
 ```json
-	{
-		"event": "unsub",
-		"params": {
-			"biz": "market",
-			"type": "ticker",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
+}
 ```
 
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params .biz | Yes  |string |  |
-| params .type     |Yes  |string | Subscription type  |
-| params .product     |Yes  |string | Currency pair|
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > unsub response
@@ -586,25 +586,25 @@
     "ts": 1689935550687
 }
 ```
-#### Feed Stream 
+#### Feed Stream
 
-|Parameter Name|Type|Description|
-|:----    |:----- |-----   |
-| type | string |  Subscription type |
-| ts     | int | Timestamp  |
-| product    |string | Currency pair|
-| msg    | string | ignore|
-| code    | int | ignore|
-| data .open     |string | The first traded price 24 hours ago |
-| data .close    |string | The latest traded price in the last 24 hours |
-| data .low     |string | The lowest traded price in the last 24 hours |
-| data .high     |string | The highest traded price in the last 24 hours |
-| data .vol     |string | Total trading volume in the last 24 hours |
-| data .turnOver     |string | Total turnover in the last 24 hours |
-| data .count     | int | Total number of trades in the last 24 hours |
-| data .change     | int | Price change in the last 24 hours |
-| data .changePercent     | int | Price change percentage in the last 24 hours |
-| data .pairCode     |string | ignore |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| ts | int | timestamp |
+| product |string | currency pair|
+| msg | string | ignore|
+| code | int | ignore|
+| data .open |string | The first transaction price started 24 hours ago |
+| data .close |string | 24-hour latest transaction price |
+| data .low |string | The lowest transaction price within 24 hours |
+| data .high |string | The highest transaction price within 24 hours |
+| data .vol |string | Trading volume within 24 hours |
+| data .turnOver |string | turnover within 24 hours |
+| data .count | int | Number of transactions in 24 hours |
+| data .change | int | 24-hour price change |
+| data .changePercent | int | 24-hour price change (percentage) |
+| data .pairCode |string | ignore |
 
 > feed stream
 
@@ -615,7 +615,7 @@
     "msg": "success",
     "ts": 1689935550508,
     "type": "ticker",
-	"product": "BTC_USDT",
+"product": "BTC_USDT",
     "data":
     {
         "pairCode": "BTC_USDT",
@@ -636,54 +636,54 @@
 
 ## Request Candles
 
-> req request 
+> req request
 
 ```json
 {
-	"event": "req",
-	"params": {
-		"biz": "market",
-		"type": "candles",
-		"product": "BTC_USDT",
-		"interval": "1day",
-		"size": 301,
-		"from": 1613692800,
-		"to": 1639699200
-	},
-	"zip":false
+"event": "req",
+"params": {
+"biz": "market",
+"type": "candles",
+"product": "BTC_USDT",
+"interval": "1day",
+"size": 301,
+"from": 1613692800,
+"to": 1639699200
+},
+"zip": false
 }
 ```
-| Parameter Name             | Required  |Type| Description       |
+| Parameter name | Required |Type | Description |
 |:----------------|:----|:----- |----------|
-| params.biz      | Yes   |string |    |
-| params.type     | Yes   |string | Type       |
-| params.product | Yes   |string | Currency pair       |
-| params.interval | Yes   |string | Interval       |
-| params.from     | Yes   |string | K-line start time.   |
-| params.to       | Yes   |string | K-line end time. |
-| event           | Yes   |string | Event       |
-| zip             | Yes   |bool | Enable gzip |
+| params.biz | is |string | |
+| params.type | is | string | type |
+| params.product | is |string | currency pair |
+| params.interval | is |string | period |
+| params.from | is |string | start time |
+| params.to | is |string | end time |
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
-###### 返回结构
+###### return structure
 
-|Parameter Name|Type|Description|
-|:----    |:----- |-----   |
-| biz | string |   |
-| ts     | int | Timestamp  |
-| product    |string | Currency pair|
-| interval    | string | Interval 1day|
-| event    | string | req |
-| data .open     |string | The first traded price in this candle |
-| data .close    |string | The last traded price in this candle  |
-| data .low     |string | The lowest traded price in this candle |
-| data .high     |string | The highest traded price in this candle |
-| data .vol     |string | Total trading volume in this candle |
-| data .turnOver     |string | Total turnover in this candle |
-| data .id     | int | Unique and sequential ID  |
-| data .count     | int | Total number of trades in this candle |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| biz | string | Quote |
+| ts | int | timestamp |
+| product |string | currency pair|
+| interval | string | interval 1day|
+| event | string | req |
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
 
-> req response 
+> req response
 
 ```json
 {
@@ -723,51 +723,51 @@
 
 ## Request Ticker
 
-#### 请求结构
+#### Request structure
 
-|Parameter Name|Required|Type|Description|
-|:----    |:---|:----- |-----   |
-| params.biz | Yes  |string |   |
-| params.type     |No  |string | Type |
-| params.product     |No  |string | Currency pair|
-| event     |Yes  |string | Event |
-| zip     |Yes  |bool | Enable gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params.biz | is |string | |
+| params.type | no | string | type |
+| params.product |no |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
-> req request 
+> req request
 
 ```json
-	{
-	"event": "req",
-	"params": {
-		"biz": "market",
-		"type": "ticker",
-		"product": "ETH_USDT"
-	},
-	"zip":false
+{
+"event": "req",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
 }
 ```
 
-#### Response Parameters
+#### return parameters
 
-|Parameter Name|Type|Description|
-|:----    |:----- |-----   |
-| biz | string |   |
-| type     | string | ticker  |
-| ts     | int | Timestamp  |
-| product    |string | Currency pair|
-| event    | string | req |
-| data .open     |string | The first traded price 24 hours ago |
-| data .close    |string | The latest traded price in the last 24 hours |
-| data .low     |string | The lowest traded price in the last 24 hours |
-| data .high     |string | The highest traded price in the last 24 hours |
-| data .vol     |string | Total trading volume in the last 24 hours |
-| data .turnOver     |string | Total turnover in the last 24 hours |
-| data .count     | int | Total number of trades in the last 24 hours |
-| data .change     | int | Price change in the last 24 hours |
-| data .changePercent     | int | Price change percentage in the last 24 hours |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| biz | string | Quote |
+| type | string | ticker |
+| ts | int | timestamp |
+| product |string | currency pair|
+| event | string | req |
+| data .open |string | The first transaction price started 24 hours ago |
+| data .close |string | 24-hour latest transaction price |
+| data .low |string | The lowest transaction price within 24 hours |
+| data .high |string | The highest transaction price within 24 hours |
+| data .vol |string | Trading volume within 24 hours |
+| data .turnOver |string | turnover within 24 hours |
+| data .count | int | Number of transactions in 24 hours |
+| data .change | int | 24-hour price change |
+| data .changePercent | int | 24-hour price change (percentage) |
 
 
-> req response 
+> req response
 
 ```json
 {
@@ -791,4 +791,3 @@
     }
 }
 ```
-

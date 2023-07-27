@@ -1,79 +1,36 @@
-# WEBSOCKET FEED PUBLIC V2
+# WEBSOCKET PUBLIC V2
 
-- `wss://ws.bg.exchange/v2/ws/`
-
-## Request 字段说明 
-
-|参数名|类型|必选| 说明   |参考值|
-|:---- |:---|:----- |------|------|
-| event | string | 是|  请求事件 | [事件](#events) |
-| biz     |string | 是| 业务线  | [业务线](#bizs) |
-| type    |string | 是| 业务类型 | [类型](#types) |
-| product  |string | 是| 交易对	 |BTC_USDT|
-| interval |string | 否| 频率 | 1min |
-| zip     |bool | 是| 是否开启压缩	 |true,false |
-| params |json  | 否| 业务参数 | 可以为空 |
-
-## Response 字段说明 
-
-|参数名|类型|必选| 说明   |参考值|
-|:---- |:---|:----- |------|------|
-| event | string | 是|  请求事件 | [事件](#events) |
-| biz     |string | 是| 业务线  | [业务线](#bizs) |
-| type    |string | 是| 业务类型 | [类型](#types) |
-| product  |string | 是| 交易对	 |BTC_USDT|
-| interval |string | 否| 频率 | 1min |
-| zip     |bool | 是| 是否开启压缩	 |true,false |
-| id |string  | 否| 消息唯一id |
-| code |number  | 是| 错误码 | |
-| stauts |string  | 是| 错误码状态 ||
-| data |json  | 否| 业务数据 | 参考具体业务数据说明 |
-
-## Event 列表
-
-<a name="events"></a>
-
-|Event 名称|类型|说明|
-|:----    |:----- |-----   |
-| sub    |string | 订阅事件,由客户端主动发起|
-| unsub    |string | 取消订阅事件，由客户端主动发起 |
-| req    |string | 请求数据事件，由客户端主动发起 |
-
-
-## Biz 列表
-
-<a name="bizs"></a>
-
-|Biz 名称|类型|说明|
-|:----    |:----- |-----   |
-| market    |string | 现货行情|
-
-## Type 列表
-<a name="types"></a>
-
-|Type 名称|类型|说明|
-|:----    |:----- |-----   |
-| fills    |string | 成交数据|
-| candles    |string | K线数据|
-| orderbook    |string | 订单薄|
-| ticker    |string | 24小时ticker|
-| percent10    |string | 有限档位深度|
+- [公共频道V2地址](#WS_HOST_PUBLIC_V2)
 
 
 
-## Candles Subscribe/UnSubscribe and Req
+**序列号 `seq_id` 说明**
 
-通过订阅或者请求获取K线(最新一根K线)数据的更新
+1. `seq_id` 是交易所行情的一个序列号，当用户使用一个或多个 WebSocket 连接到同一个频道时，除了实时成交数据外，都会收到相同序列号的数据推送，用户需要自己处理重复数据，可以使用 `seq_id` 来构建消息序列，这将允许用户检测数据包丢失和消息的排序。
+
+2. `seq_id` 是一个单调递增的数字，最小值为 0。
+
+**常见错误说明**
+
+当使用 WebSocket API 订阅公共频道时，可能会遇到以下错误：
+
+1. 错误码`400`：通常需要检查您提供的请求参数是否正确，或者是否有必填参数未填写。
+
+2. 错误码`500`：此错误通常是服务器出现异常，请稍后重新尝试。
+
+## V2 Candles Subscribe/UnSubscribe and Req
+
+订阅或者请求获取K线(最新一根K线)数据的推送
 
 **K线图间隔参数:**
 
- min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
+min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 - 1min
 - 5min
 - 15min
 - 30min
-- 1hour
+- 60min
 - 4hour
 - 1day
 - 1week
@@ -87,15 +44,15 @@
 - `close` 这根K线期间末一笔成交价
 - `low` 这根K线期间最低成交价
 - `high` 这根K线期间最高成交价
-- `turnOver` 这根K线期间成交额
+- `filled_size` 这根K线期间成交额
 - `vol` 这根K线期间成交量
-- `seqId` 唯一且有序id
+- `seq_id` 唯一且有序id
 - `count` 这根K线期间成交笔数
 - `interval` K线间隔
 - `product` 交易对
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -128,7 +85,7 @@
 ```
 
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -160,7 +117,7 @@
 
 ```
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -176,10 +133,10 @@
         "close": "3.7366",
         "high": "3.7366",
         "low": "3.7366",
-        "turnOver": "0",
+        "filled_size": "0",
         "vol": "0",
         "count": 0,
-        "seqId": 112588635
+        "seq_id": 112588635
     },
     "product": "BTC_USDT",
     "interval": "15min"
@@ -187,9 +144,7 @@
 
 ```
 
-#### Request Candles
-
-> Req request 
+**Request Candles**
 
 **参数说明:**
 
@@ -199,6 +154,7 @@
 - `interval` K线间隔
 - `product` 交易对
 
+> 获取指定范围的K线数据请求示例
 
 ```json
 {
@@ -213,49 +169,53 @@
 }
 ```
 
-> Req response
+> 获取指定范围的K线数据响应示例
 
 ```json
 {
     "biz": "market",
     "type": "candles",
-    "ts": 1689133139813,
+    "product": "BTC_USDT",
+    "ts": 1690252632272,
     "code": 200,
     "status": "OK",
     "data":
     [
         {
-            "count": 505866,
-            "turnOver": 471315.660750,
-            "vol": 132286.14,
-            "id": 1688107500,
-            "high": 4.0584,
-            "open": 3.354,
-            "low": 3.0616,
-            "close": 3.4575
+            "id": 1688398200,
+            "open": "3.3706",
+            "close": "3.3706",
+            "high": "3.3706",
+            "low": "3.3706",
+            "filled_size": "0",
+            "vol": "0",
+            "count": 0
         },
         {
-            "count": 492245,
-            "turnOver": 458095.923364,
-            "vol": 128555.52,
-            "id": 1688108400,
-            "high": 4.0584,
-            "open": 3.4575,
-            "low": 3.0637,
-            "close": 3.3665
+            "id": 1688399100,
+            "open": "3.3706",
+            "close": "3.3706",
+            "high": "3.3706",
+            "low": "3.3706",
+            "filled_size": "0",
+            "vol": "0",
+            "count": 0
         }
     ],
     "event": "req",
-    "product": "BTC_USDT",
     "interval": "15min"
-} 
+}
 
 
 ```
 
 ----
 
-##  Fills Subscribe/UnSubscribe
+## V2 Fills Subscribe/UnSubscribe
+
+订阅获取产品实时成交增量推送数据
+
+获取最近的成交数据，有成交数据就推送，每次推送可能包含多条成交数据。
 
 **字段说明:**
 
@@ -266,7 +226,7 @@
 - `vol` 成交量
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -294,7 +254,7 @@
 }
 ```
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -310,7 +270,7 @@
 
 ```
 
-> UnSubscribe response  
+> UnSubscribe response
 
 ```json
 {
@@ -324,7 +284,7 @@
 }
 
 ```
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -349,9 +309,48 @@
 
 -----
 
-## OrderBook Subscribe/UnSubscribe
+## V2 OrderBook Subscribe/UnSubscribe
 
-#### Subscribe
+订阅获取产品订单薄增量推送数据
+
+最快500毫秒推送一次，没有触发事件时也推送，盘口无数据 bids 和 asks可能为空数组
+
+**OrderBook订阅interval参数：[当前档位支持最大精度, 当前档位支持最大深度]:**
+
+- 0 : [0.000000000000000001, 150]
+- 1 : [0.00001, 150]
+- 2 : [0.0001, 150]
+- 3 : [0.001, 150]
+- 4 : [0.01, 150]
+- 5 : [0.1, 150]
+- 6 : [0.000000000000000001, 20]
+- 7 : [0.00001, 20]
+- 8 : [0.0001, 20]
+- 9 : [0.001, 20]
+- 10 : [0.01, 20]
+- 11 : [0.1, 20]
+
+说明：interval=5，推送的bids里的买方价格只能精确到小数点后一位，bids的数组大小最大是150
+
+
+**字段说明:**
+
+- `id` 消息唯一id
+- `biz` 业务线
+- `type` 类型
+- `data.seq_id` 忽略
+- `data.bids` 买方
+- `data.bids[][0]` 买方价格
+- `data.bids[][1]` 买方数量
+- `data.asks` 卖方
+- `data.asks[][0]` 卖方价格
+- `data.asks[][1]` 卖方数量
+- `data.product` 交易对
+- `data.interval` 档位
+
+
+
+**Subscribe**
 
 > Subscribe request
 
@@ -381,7 +380,7 @@
 }
 ```
 
-#### UnSubscribe 
+**UnSubscribe**
 > UnSubscribe request
 
 ```json
@@ -411,7 +410,7 @@
 
 ```
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -420,15 +419,15 @@
 {
     "id": "1689143926",
     "biz": "market",
-    "type": "orderBook",
+    "type": "orderbook",
     "data":
     {
-        "seqId": 112588640,
-        "bids":
+        "seq_id":112588640,//有序且唯一id
+        "bids":           //买方
         [
             [
-                "3.7366",
-                "0.66"
+                "3.7366", //价格
+                "0.66"    //数量
             ],
             [
                 "3.6866",
@@ -463,15 +462,15 @@
                 "0.73"
             ]
         ],
-        "asks":
+        "asks":           //卖方
         [
             [
-                "3.9966",
-                "0.9"
+                "3.9966", //价格
+                "0.9"     //数量
             ]
         ]
     },
-    "product": "BTC_USDT",
+    "product": "BTC_USDT",//交易对
     "interval": "0"
 }
 
@@ -479,12 +478,32 @@
 ```
 ----
 
-## Percent10 Subscribe/Unsubscribe
+## V2 Percent10 Subscribe/Unsubscribe
 
-有限档深度信息
+订阅获取产品深度增量推送数据
+
+说明：买卖盘各拿平均价格的10%以内的最多200条，卖1价向上浮动10%内的委托，买1向下浮动10%以内的委托
+
+最快500毫秒推送一次，没有触发事件时也推送，盘口无数据 bids 和 asks可能为空数组
 
 
-#### Subscribe
+**字段说明:**
+
+- `id` 消息唯一id
+- `biz` 业务线
+- `seq_id` 忽略
+- `type` 类型
+- `data.bids` 买方深度
+- `data.bids[][0]` 买方深度价格
+- `data.bids[][1]` 买方深度数量
+- `data.asks` 卖方深度
+- `data.asks[][0]` 卖方深度价格
+- `data.asks[][1]` 卖方深度数量
+- `data.seq_id` 有序且唯一id
+- `data.product` 交易对
+
+
+**Subscribe**
 
 > Subscribe request
 
@@ -511,7 +530,7 @@
     "product": "BTC_USDT"
 }
 ```
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -540,7 +559,7 @@
 ```
 
 
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -549,7 +568,7 @@
 {
     "id": "1689143539",     //消息唯一id
     "biz": "market",
-    "seqId": 112588640,     //唯一有序id
+    "seq_id": 112588640,     //有序且唯一id
     "type": "percent10",    //业务类型
     "data":
     {
@@ -571,7 +590,7 @@
                 "0"
             ]
         ],
-        "seqId": 112588640
+        "seq_id": 112588640
     },
     "product": "BTC_USDT"
 }
@@ -581,7 +600,9 @@
 ----
 
 
-##  Ticker Subscribe/UnSubscribe and Req
+## V2 Ticker Subscribe/UnSubscribe and Req
+
+订阅获取产品24小时ticker增量推送数据
 
 **字段说明:**
 
@@ -590,16 +611,16 @@
 - `close` 24小时最新成交价格
 - `low` 24小时内最低成交价
 - `high` 24小时内最高成交价
-- `turnOver` 24小时内成交额
+- `filled_size` 24小时内成交额
 - `vol` 24小时内成交量
-- `seqId` 唯一且有序id
+- `seq_id` 唯一且有序id
 - `count` 24小时成交笔数
 - `change` 24小时价格变化
-- `changePercent` 24小时价格变化(百分比)
+- `change_percent` 24小时价格变化(百分比)
 
 
 
-#### Subscribe
+**Subscribe**
 
 > Subscribe request
 
@@ -628,7 +649,7 @@
 }
 ```
 
-#### UnSubscribe
+**UnSubscribe**
 
 > UnSubscribe request
 
@@ -656,7 +677,7 @@
     "product": "BTC_USDT"
 }
 ```
-#### Feed Stream 
+**Feed Stream**
 
 > Feed Stream
 
@@ -671,24 +692,24 @@
     [
         {
             "id": 1689144487,
-            "seqId": 112588640,
+            "seq_id": 112588640,
             "open": "3.7366",
             "close": "3.7366",
             "high": "3.7366",
             "low": "3.7366",
-            "turnOver": "0",
+            "filled_size": "0",
             "vol": "0",
             "count": 0,
             "change": "0",
-            "changePercent": "0"
+            "change_percent": "0"
         }
     ]
 }
 ```
 
-#### Request Ticker
+#### V2 Request Ticker
 
-> Req request
+> 获取指定交易对最新行情数据请求示例
 
 
 ```json
@@ -702,7 +723,7 @@
 
 ```
 
-> Req response
+> 获取指定交易对最新行情数据响应示例
 
 
 ```json
@@ -715,16 +736,16 @@
     "data":
     {
         "id": 1689133336,
-        "seqId": 112588640,
+        "seq_id": 112588640,
         "open": "3.7366",
         "close": "3.7366",
         "high": "3.7366",
         "low": "3.7366",
-        "turnOver": "0",
+        "filled_size": "0",
         "vol": "0",
         "count": 0,
         "change": "0",
-        "changePercent": "0"
+        "change_percent": "0"
     },
     "event": "req",
     "product": "BTC_USDT"
@@ -732,9 +753,61 @@
 
 ```
 
+
+## V2 公共频道 Request 字段说明
+
+| 参数名      | 类型     | 必选  | 说明        | 参考值           |
+|:---------|:-------|:----|-----------|---------------|
+| event    | string | 是   | 请求事件      | [事件](#events) |
+| biz      | string | 是   | 业务线       | [业务线](#bizs)  |
+| type     | string | 是   | 业务类型      | [类型](#types)  |
+| product  | string | 是   | 交易对	      | BTC_USDT      |
+| interval | string | 否   | 频率        | 1min          |
+| zip      | bool   | 是   | 是否启用gzip	 | true,false    |
+
+## V2 公共频道 Response 字段说明
+
+| 参数名      | 类型     | 必选  | 说明    | 参考值           |
+|:---------|:-------|:----|-------|---------------|
+| event    | string | 是   | 请求事件  | [事件](#events) |
+| biz      | string | 是   | 业务线   | [业务线](#bizs)  |
+| type     | string | 是   | 业务类型  | [类型](#types)  |
+| product  | string | 是   | 交易对	  | BTC_USDT      |
+| interval | string | 否   | 频率    | 1min          |
+| code     | int    | 是   | 错误码   |               |
+| status   | string | 是   | 错误码状态 ||
+| data     | json   | 否   | 业务数据  | 参考具体业务数据说明    |
+
+## V2 公共频道 Event 列表
+
+<a name="v2-publilc-events"></a>
+
+| Event 名称 | 类型     | 说明              |
+|:---------|:-------|-----------------|
+| sub      | string | 订阅事件,由客户端主动发起   |
+| unsub    | string | 取消订阅事件，由客户端主动发起 |
+| req      | string | 请求数据事件，由客户端主动发起 |
+
+
+## V2 公共频道 Biz 列表
+
+<a name="v2-publilc-bizs"></a>
+
+| Biz 名称 | 类型     | 说明   |
+|:-------|:-------|------|
+| market | string | 现货行情 |
+
+## V2 公共频道 Type 列表
+<a name="v2-publilc-types"></a>
+
+| Type 名称   | 类型     | 说明         |
+|:----------|:-------|------------|
+| fills     | string | 成交数据       |
+| candles   | string | K线数据       |
+| orderbook | string | 订单薄        |
+| ticker    | string | 24小时ticker |
+| percent10 | string | 有限档位深度     |
+
+
 ----
-
-
-
-
 

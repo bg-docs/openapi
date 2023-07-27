@@ -1,9 +1,37 @@
 # 交易和訂單
 
-## 創建新訂單
+<h2 id="創建新訂單"><font class="httpget">POST</font>  創建新訂單</h2>
 
-<font class="httppost">POST</font> */v1/orders*
 
+只有當您的賬戶有足夠的資金才能下單。
+
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+POST [HOST](#HTTP-HOST)/v1/orders
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
+
+> <a name="ResonpseExample">REQUEST EXAMPLE</a>
+
+```json
+{
+  "product": "BTC_USDT",
+  "side": "buy",
+  "type": "limit",
+  "stp": "dc",
+  "price": "2.00",
+  "size": "3.300000000000000000",
+  "client_oid": "QZ_2020-jj"
+}
+```
 
 <aside>
 REQUEST PARAMETERS
@@ -11,7 +39,7 @@ REQUEST PARAMETERS
 
 **common parameters**
 
-`product`: 必須是一個存在的產品id。例如 `BTC_USD`。產品列表可以通過 [products](#Products) 獲得。
+`product`: 必須是一個存在的商品。例如 `BTC_USD`。產品列表可以通過 [products](#Products) 獲得。
 
 `side`: `buy` 買入， `sell` 賣出。
 
@@ -44,33 +72,19 @@ REQUEST PARAMETERS
 
 `funds`: 期望交易額度。需要`side` 為 `buy`，代表以最新成交價進行買入，期望花費的最多資產額度。
 
-| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | schema |
-| -------- | -------- | -------- | -------- | ------ |
-|product|幣對，例:BTC_USDT||true|string||
-|side|buy/sell||true|string||
-|type|limit:限價單/market:市價單||true|string||
-|stp|自成交：dc：減少和取消（默認）co：取消最舊 cn：取消最新 cb：取消兩者||true|string||
-|time_in_force|交易指令,GTC||false|string||
-|funds|想要使用的報價貨幣數量||false|string||
-|price|每個幣的價格||false|string||
-|size|買入或賣出的數量||false|string||
-|client_oid|用戶自定義訂單號|false|string||
+| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
+| -------- | -------- | -------- | -------- |
+|product|商品，例:ETH_USD|true|string|
+|side|buy/sell|true|string|
+|type|limit:限價單/market:市價單|true|string|
+|stp|自成交：dc：減少和取消（默認）co：取消最舊 cn：取消最新 cb：取消兩者|true|string|
+|time_in_force|交易指令,GTC|false|string|
+|funds|想要使用的報價貨幣數量|false|string|
+|price|每個幣的價格|false|string|
+|size|買入或賣出的數量|false|string|
+|client_oid|用戶自定義訂單號|false|string|
 
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`:  BGE所生成的訂單號
-
-`client_oid`:  用戶自定義訂單號
-
-| 參數名稱 | 參數說明 | 類型 | schema          |
-| -------- | -------- | ----- |----- | 
-|order_id|BGE所生成的訂單號|string||
-|client_oid|用戶自定義訂單號，默認"0"|string||
-
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 
@@ -81,203 +95,228 @@ RESPONSE PARAMETERS
 
 ```
 
-## 根據系統訂單號查詢單個訂單
-
-<a name="order_detail"></a>
-
-<font class="httpget">GET</font> */v1/orders/{order_id}*
-
-<aside>
-PATH VARIABLES
-</aside>
-
-| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | schema |
-| -------- | ----- | -------- | -------- | ------ |
-|order_id|訂單ID|true|string||
-
-
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`status`: 交易狀態，取值範圍0-7
+`order_id`:  BGE所生成的訂單號
 
-- 0: 已經收到訂單
-- 1: 已經提交訂單
-- 2: 訂單部分成交
-- 3: 訂單已完全成交
-- 4: 訂單發起撤銷
-- 5: 訂單已經撤銷
-- 6: 訂單交易失敗
-- 7: 訂單被減量
+`client_oid`:  用戶自定義訂單號
 
-| 參數名稱 | 參數說明 | 類型 | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|成交費用|string||
-|filled_size|成交金額|string||
-|filled_amount|成交數量|string||
-|filled_average_price|成交均價|string||
-|funds|想要使用的報價貨幣數量|string||
-|order_id|訂單編號|string||
-|price|每單位基礎貨幣的價格|string||
-|product|產品編號|string||
-|side|buy/sell|string||
-|size|買入/賣出的基礎貨幣數量|string||
-|status|狀態|string||
-|type|limit:限價單/market:市價單|string||
-|created_at|創建時間|string||
-|updated_at|更新時間|string||
-|client_oid|用戶自定義訂單號|false|string||
+| 參數名稱 | 參數說明 | 類型 | 
+| -------- | -------- | ----- | 
+|order_id|BGE所生成的訂單號|string|
+|client_oid|用戶自定義訂單號，默認"0"|string|
 
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
-<a name="order_detail_demo"></a>
+<h2 id="根據系統訂單號查詢單個訂單"><font class="httpget">GET</font>  根據系統訂單號查詢單個訂單</h2>
 
-```json
-{
-  "filled_size": "0.000000000000000000",
-  "filled_fees": "1.00",
-  "filled_amount": "0.000000000000000000",
-  "filled_average_price": "0",
-  "created_at": "2021-12-14T03:19:15Z",
-  "updated_at": "2022-01-04T06:57:34Z",
-  "price": "2.00",
-  "size": "3.300000000000000000",
-  "product": "BTC_USDT",
-  "order_id": "127738628653088481",
-  "funds": "0.000000000000000000",
-  "type": "limit",
-  "side": "buy",
-  "status": "7",
-  "client_oid": "QZ_2020-jj"
-}
-```
+獲取指定訂單信息。
 
-## 根據用戶自定義訂單號查詢單個訂單
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+GET [HOST](#HTTP-HOST)/v1/orders/{order_id}
+
 
 <a name="order_detail"></a>
 
-<font class="httpget">GET</font> */v1/orders/single/{client_oid}*
+> 鑑權信息
 
-<aside>
-PATH VARIABLES
-</aside>
-
-| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | schema |
-| -------- | ----- | -------- | -------- | ------ |
-|client_oid|用戶自定義訂單號|true|string||
-
-`client_oid`: 當該自定義訂單對應多個系統訂單時，只返回最新系統訂單
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`status`: 交易狀態，取值範圍0-7
-
-- 0: 已經收到訂單
-- 1: 已經提交訂單
-- 2: 訂單部分成交
-- 3: 訂單已完全成交
-- 4: 訂單發起撤銷
-- 5: 訂單已經撤銷
-- 6: 訂單交易失敗
-- 7: 訂單被減量
-
-| 參數名稱 | 參數說明 | 類型 | schema |
-| -------- | -------- | ----- |----- | 
-|filled_fees|成交費用|string||
-|filled_size|成交金額|string||
-|filled_amount|成交數量|string||
-|filled_average_price|成交均價|string||
-|funds|想要使用的報價貨幣數量|string||
-|order_id|訂單編號|string||
-|price|每單位基礎貨幣的價格|string||
-|product|產品編號|string||
-|side|buy/sell|string||
-|size|買入/賣出的基礎貨幣數量|string||
-|status|狀態|string||
-|type|limit:限價單/market:市價單|string||
-|created_at|創建時間|string||
-|updated_at|更新時間|string||
-|client_oid|用戶自定義訂單號|false|string||
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
-
-<a name="order_detail_demo"></a>
-
-```json
-{
-  "filled_size": "0.000000000000000000",
-  "filled_fees": "1.00",
-  "filled_amount": "0.000000000000000000",
-  "filled_average_price": "0",
-  "created_at": "2021-12-14T03:19:15Z",
-  "updated_at": "2022-01-04T06:57:34Z",
-  "price": "2.00",
-  "size": "3.300000000000000000",
-  "product": "BTC_USDT",
-  "order_id": "127738628653088481",
-  "funds": "0.000000000000000000",
-  "type": "limit",
-  "side": "buy",
-  "status": "7",
-  "client_oid": "QZ_2020-jj"
-}
-```
-
-## 獲取交易明細
-
-<font class="httpget">GET</font> */v1/fills*
-
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-此接口可查詢單個訂單的交易明細，以及幣種的多個明細。
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | ----- | -------- | -------- | 
+|order_id|訂單ID|true|string||
+
+
+<a name="order_detail_demo"></a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "filled_size": "0.000000000000000000",
+  "filled_fees": "1.00",
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": "2.00",
+  "size": "3.300000000000000000",
+  "product": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.000000000000000000",
+  "type": "limit",
+  "side": "buy",
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
+}
+```
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`status`: 交易狀態，取值範圍0-7
+
+- 0: 已經收到訂單
+- 1: 已經提交訂單
+- 2: 訂單部分成交
+- 3: 訂單已完全成交
+- 4: 訂單發起撤銷
+- 5: 訂單已經撤銷
+- 6: 訂單交易失敗
+- 7: 訂單被減量
+
+| 參數名稱 | 參數說明 | 類型 | 
+| -------- | -------- | ----- |
+|filled_fees|成交費用|string|
+|filled_size|成交金額|string|
+|filled_amount|成交數量|string|
+|filled_average_price|成交均價|string|
+|funds|想要使用的報價貨幣數量|string|
+|order_id|訂單編號|string|
+|price|每單位基礎貨幣的價格|string|
+|product|商品|string|
+|side|buy/sell|string|
+|size|買入/賣出的基礎貨幣數量|string|
+|status|狀態|string|
+|type|limit:限價單/market:市價單|string|
+|created_at|創建時間|string|
+|updated_at|更新時間|string|
+|client_oid|用戶自定義訂單號|string|
+
+<h2 id="根據用戶自定義訂單號查詢單個訂單"><font class="httpget">GET</font>  根據用戶自定義訂單號查詢單個訂單</h2>
+
+當該自定義訂單對應多個系統訂單時，只返回最新系統訂單。
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+GET [HOST](#HTTP-HOST)/v1/orders/single/{client_oid}
+
+
+<a name="order_detail"></a>
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | ----- | -------- | -------- | 
+|client_oid|用戶自定義訂單號|true|string|
+
+`client_oid`: 當該自定義訂單對應多個系統訂單時，只返回最新系統訂單
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "filled_size": "0.000000000000000000",
+  "filled_fees": "1.00",
+  "filled_amount": "0.000000000000000000",
+  "filled_average_price": "0",
+  "created_at": "2021-12-14T03:19:15Z",
+  "updated_at": "2022-01-04T06:57:34Z",
+  "price": "2.00",
+  "size": "3.300000000000000000",
+  "product": "BTC_USDT",
+  "order_id": "127738628653088481",
+  "funds": "0.000000000000000000",
+  "type": "limit",
+  "side": "buy",
+  "status": "7",
+  "client_oid": "QZ_2020-jj"
+}
+```
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`status`: 交易狀態，取值範圍0-7
+
+- 0: 已經收到訂單
+- 1: 已經提交訂單
+- 2: 訂單部分成交
+- 3: 訂單已完全成交
+- 4: 訂單發起撤銷
+- 5: 訂單已經撤銷
+- 6: 訂單交易失敗
+- 7: 訂單被減量
+
+| 參數名稱 | 參數說明 | 類型 | 
+| -------- | -------- | ----- |
+|filled_fees|成交費用|string|
+|filled_size|成交金額|string|
+|filled_amount|成交數量|string|
+|filled_average_price|成交均價|string|
+|funds|想要使用的報價貨幣數量|string|
+|order_id|訂單編號|string|
+|price|每單位基礎貨幣的價格|string|
+|product|商品|string|
+|side|buy/sell|string|
+|size|買入/賣出的基礎貨幣數量|string|
+|status|狀態|string|
+|type|limit:限價單/market:市價單|string|
+|created_at|創建時間|string|
+|updated_at|更新時間|string|
+|client_oid|用戶自定義訂單號|string|
+
+
+<a name="order_detail_demo"></a>
+
+<h2 id="獲取交易明細"><font class="httpget">GET</font>  獲取交易明細</h2>
+
+根據不同的查詢條件可獲得符合條件的交易明細
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+GET [HOST](#HTTP-HOST)/v1/fills
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
 
 - `order_id` 若存在，將優先查找該訂單的成交明細，其他參數將被忽略。
 - `order_id` 若不存在，將根據參數組合分頁查詢所所有交易明細。其中 `limit` 最大值為1000，超過1000條的訂單明細將無法查詢
 - `order_id` 若存在，則查詢條件忽略client_oid
 - `client_oid` 對應多個系統訂單時，只返回最新系統訂單的明細
 
-| 參數名稱 | 參數說明 | 請求類型    | 是否必須 | 數據類型 | schema |
-| -------- | -------- | ----- | -------- | -------- | ------ |
-|after|用於分頁。將結束光標設置為after日期。 |query|false|integer(int64)||
-|before|用於分頁。將開始光標設置為before日期|query|false|integer(int64)||
-|limit|限制返回的結果數,默認100，最大1000|query|false|integer(int32)||
-|product|商品id|query|false|string||
-|order_id|訂單id|query|false|string||
-|client_oid|用戶自定義訂單號|false|string||
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | --------  | -------- | -------- | 
+|after|用於分頁。將結束光標設置為after日期。 |false|integer(int64)|
+|before|用於分頁。將開始光標設置為before日期|false|integer(int64)|
+|limit|限制返回的結果數,默認100，最大1000|false|integer(int32)|
+|product|商品id|false|string|
+|order_id|訂單id|false|string|
+|client_oid|用戶自定義訂單號|false|string|
 
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| 參數名稱 | 參數說明 | 類型 | schema |
-| -------- | -------- | ----- |----- | 
-|created_at|訂單創建時間|string||
-|updated_at|訂單更新時間|string||
-|fee|按當前填寫的金額支付的費用|string||
-|liquidity|流動性:marker、taker|string||
-|order_id|訂單編號|string||
-|price|每單位基礎貨幣的價格|string||  
-|product|產品編號|string||
-|side| buy/sell |string||
-|size|買入/賣出的基礎貨幣數量|string||
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
-
-<a name="fills_detail_demo"></a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -295,10 +334,40 @@ RESPONSE EXAMPLE
 ]
 ```
 
-## 獲取當前的未完結訂單
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-<font class="httpget">GET</font> */v1/orders*
+| 參數名稱 | 參數說明 | 類型 | 
+| -------- | -------- | ----- |
+|created_at|訂單創建時間|string|
+|updated_at|訂單更新時間|string|
+|fee|按當前填寫的金額支付的費用|string|
+|liquidity|流動性:marker、taker|string|
+|order_id|訂單編號|string|
+|price|每單位基礎貨幣的價格|string|
+|product|產品編號|string|
+|side| buy/sell |string|
+|size|買入/賣出的基礎貨幣數量|string|
 
+<a name="fills_detail_demo"></a>
+
+<h2 id="獲取當前的未完結訂單"><font class="httpget">GET</font>  獲取當前的未完結訂單</h2>
+
+獲取沒有成交的訂單
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+GET [HOST](#HTTP-HOST)/v1/orders
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
 <aside>
 REQUEST PARAMETERS
@@ -310,15 +379,31 @@ REQUEST PARAMETERS
 - `order_id` 若不存在，將根據參數組合分頁查詢所所有訂單詳情。其中 `limit` 最大值為1000，超過1000條的訂單詳情將無法查詢
 - `order_id` 若存在，則查詢條件忽略client_oid
 
-| 參數名稱 | 參數說明 | 請求類型    | 是否必須 | 數據類型 | schema |
-| -------- | -------- | ----- | -------- | -------- | ------ |
-|after|用於分頁。將結束光標設置為after日期。 |query|false|integer(int64)||
-|before|用於分頁。將開始光標設置為before日期|query|false|integer(int64)||
-|limit|限制返回的結果數,默認100，最大1000|query|false|integer(int32)||
-|order_id|訂單id|query|false|string||
-|client_oid|用戶自定義訂單號|false|string||
-|product|商品id|query|false|string||
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | --------  | -------- | -------- | 
+|after|用於分頁。將結束光標設置為after日期。 |false|integer(int64)|
+|before|用於分頁。將開始光標設置為before日期|false|integer(int64)|
+|limit|限制返回的結果數,默認100，最大1000|false|integer(int32)|
+|order_id|訂單id|false|string|
+|client_oid|用戶自定義訂單號|false|string|
+|product|商品id|false|string|
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+ ```json
+[
+  {
+    "price": "19.560000000000000000",
+    "size": "35.447206000000000000",
+    "product": "BTC_USDT",
+    "order_id": "128087977541664481",
+    "funds": "592.668000000000000000",
+    "type": "limit",
+    "side": "sell",
+    "status": "2"
+  }
+]
+```
 
 <aside>
 RESPONSE PARAMETERS
@@ -335,109 +420,118 @@ RESPONSE PARAMETERS
 - 6: 訂單交易失敗
 - 7: 訂單被減量
 
-| 參數名稱 | 參數說明 | 類型 | schema |
-| -------- | -------- | ----- |----- |
-|funds|想要使用的報價貨幣數量|string||
-|order_id|訂單編號|string||
-|price|每單位基礎貨幣的價格|string||
-|product|產品編號|string||
-|side|buy/sell|string||
-|size|買入/賣出的基礎貨幣數量|string||
-|status|狀態|string||
-|type|limit:限價單/market:市價單|string||
+| 參數名稱 | 參數說明 | 類型 |
+| -------- | -------- | ----- |
+|funds|想要使用的報價貨幣數量|string|
+|order_id|訂單編號|string|
+|price|每單位基礎貨幣的價格|string|
+|product|產品編號|string|
+|side|buy/sell|string|
+|size|買入/賣出的基礎貨幣數量|string|
+|status|狀態|string|
+|type|limit:限價單/market:市價單|string|
 
-<aside>
-RESPONSE EXAMPLE
-</aside>
+
 
 <a name="order_trade_detail_demo"></a>
 
-```json
-[
-  {
-    "price": "19.560000000000000000",
-    "size": "35.447206000000000000",
-    "product": "BTC_USDT",
-    "order_id": "128087977541664481",
-    "funds": "592.668000000000000000",
-    "type": "limit",
-    "side": "sell",
-    "status": "2"
-  }
-]
-```
+<h2 id="根據系統訂單號撤銷單個訂單"><font class="httpget">DELETE</font>  根據系統訂單號撤銷單個訂單</h2>
 
-## 根據系統訂單號撤銷單個訂單
 
-<font class="httpdelete">DELETE</font> */v1/orders/{order_id}*
+撤銷指定的未完成訂單
 
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders/{order_id}
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-此接口可撤銷單個訂單
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | --------  | -------- | -------- | 
+|order_id|訂單id|true|string|
 
-
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`: 系統訂單號
-
-
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
 <a name="order_trade_detail_demo"></a>
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 "1277087538632480481"
 ```
 
-## 根據用戶自定義訂單號撤銷單個訂單
+<aside>
+RESPONSE PARAMETERS
+</aside>
+| 參數名稱 | 參數說明     |  數據類型 | 
+| -------- | --------  |  -------- | 
+|order_id|訂單id|string|
 
-<font class="httpdelete">DELETE</font> */v1/orders/single/{client_oid}*
+<h2 id="根據用戶自定義訂單號撤銷單個訂單"><font class="httpget">DELETE</font>  根據用戶自定義訂單號撤銷單個訂單</h2>
 
+
+可撤銷單個訂單，若自定義訂單對應多個系統訂單，撤銷最新一個訂單，撤銷申請成功，返回對應的系統訂單號
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders/single/{client_oid}
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-此接口可撤銷單個訂單，若自定義訂單對應多個系統訂單，撤銷最新一個訂單，撤銷申請成功，返回對應的系統訂單號
 
+| 參數名稱 | 參數說明     | 是否必須 | 數據類型 | 
+| -------- | --------  | -------- | -------- | 
+|client_oid|用戶自定義訂單號|true|string|
 
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-`order_id`: 系統訂單號
-
-
-
-<aside>
-RESPONSE EXAMPLE
-</aside>
 
 <a name="order_trade_detail_demo"></a>
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 "1277087538632480481"
 ```
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-## 取消所有訂單
+即將被取消的訂單的ID列表
 
-<font class="httpdelete">DELETE</font> */v1/orders*
+<h2 id="根據商品取消所有訂單"><font class="httpget">DELETE</font>  根據商品取消所有訂單</h2>
 
 
 此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應商品ID的所有未成交訂單，並對這些訂單異步進行取消操作。
 用戶可以通過[/orders/{order_id}](#order_detail) 查詢單個訂單的成交狀態。
+
+**限速：10次/s**
+
+**限速規則：ApiKey**
+
+**HTTP請求**
+
+DELETE [HOST](#HTTP-HOST)/v1/orders
+
 
 <aside>
 REQUEST PARAMETERS
@@ -445,19 +539,12 @@ REQUEST PARAMETERS
 
 `product`: 被撤銷的商品ID,例如 "BTC_USD"
 
-| 參數名稱 | 參數說明 | 請求類型    | 是否必須 | 數據類型 | 
-| -------- | -------- | ----- | -------- | -------- |
-|product|商品id|query|true|string||
-
+| 參數名稱 | 參數說明 |  是否必須 | 數據類型 | 
+| -------- |  ----- | -------- | -------- |
+|product|商品|true|string||
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
 即將被取消的訂單的ID列表
-
-```json
-[
-  "128527387912385665"
-]
-```

@@ -1,115 +1,32 @@
+# 公共数据
 
-##  Candles
+<h2 id="K线"><font class="httpget">GET</font>  K线</h2>
 
-```python
-python -m pip install requests
+历史产品的k线图， 数据以数组形式返回，每个对象保函[`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
 
-import requests
+**限速：无**
 
-url = "{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084"
+**限速规则：无**
 
-headers = {"Accept": "application/json"}
+**HTTP请求**
 
-response = requests.request("GET", url, headers=headers)
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/candles
 
-print(response.text)
-
-```
-
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-```
-
-```php
-// composer require guzzlehttp/guzzle
-<?php
-
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', '{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-```golang
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "{host}/public/v1/products/BTC_USDT/candles?period=1day&size=50&start=1539651867084&end=1639651867084"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Accept", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-<font class="httpget">GET</font> */public/v1/products/{product}/candles*
-
-历史产品的k 线图， 数据以数组形式返回，每个对象保函[`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
-
-#### 请求参数
+ 
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 |参数名| 必选  |类型|                                                                                                                                                                说明                                                                                                                                                                |
 |:----    |:----|:----- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| product | 是   |string |                                                                                          币对                                                                                                                                         交易对                                                                                          |
-| period | 是   |string | *指标周期*  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
-|start     | 是   |string |                                                                               timestamp 毫秒                                                                                                                                                开始  (毫秒)                                                                               |
-|end     | 是   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
-|size     | 是   |string |                                                                          [1,2000]                                                                                                                                                       数据长度  [1,2000]                                                                           |
+| product | true   |string |                                                                                          商品，例:ETH_USD                                                                                                                                         商品，例:ETH_USD                                                                                          |
+| period | true   |string | 指标周期  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
+|start     | true   |string |                                                                               timestamp 毫秒                                                                                                                                                开始  (毫秒)                                                                               |
+|end     | true   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
+|size     | true   |string |                                                                          [1,2000]                                                                                                                                                       数据长度  [1,2000]                                                                           |
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
-##### 返回参数
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| pairCode | string  |  币对  |
-
- 
-
-> response
 
 ```json 
   {
@@ -135,109 +52,49 @@ func main() {
 ```
 
 
-## OrderBook
-
-
-```python
-python -m pip install requests
-
-import requests
-
-url = "{host}/public/v1/products/BTC_USDT/orderbook?interval=step5"
-
-headers = {"Accept": "application/json"}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
-
-```
-
-
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/BTC_USDT/orderbook?interval=step5")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-``` 
-
-```php
-// composer require guzzlehttp/guzzle
-<?php
-
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', '{host}/public/v1/products/BTC_USDT/orderbook?interval=step5', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
- 
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/BTC_USDT/orderbook?interval=step5")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
+<aside>
+RESPONSE PARAMETERS
+</aside>
+|参数名|类型|   说明 |
+|:------:|:----:|:--:|
+| close | int  |   收盘价格 |
+| high | int  |   最高价格 |
+| low | int  |   最低价格 |
+| open | int  |  开盘价格 |
+| turnOver | string  |  交易量 |
+| vol | string  |  交易额 |
+| productId | string  |  商品，例:ETH_USD  |
 
 
 
-```golang
-package main
 
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
 
-func main() {
+<h2 id="订单book"><font class="httpget">GET</font>  订单book</h2>
 
-	url := "{host}/public/v1/products/BTC_USDT/orderbook?interval=step5"
 
-	req, _ := http.NewRequest("GET", url, nil)
+订单book
 
-	req.Header.Add("Accept", "application/json")
+**限速：无**
 
-	res, _ := http.DefaultClient.Do(req)
+**限速规则：无**
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+**HTTP请求**
 
-	fmt.Println(res)
-	fmt.Println(string(body))
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/orderbook
 
-}
-```
 
-<font class="httpget">GET</font> */public/v1/products/{product}/orderbook*
-
-Get a list of open orders for a product. The amount of detail shown can be customized with the level parameter.
-
-#### 请求参数
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 
 |参数名|必选|类型| 说明                                                                                |
 |:----    |:---|:----- |-----------------------------------------------------------------------------------|
-| product |是  |string |                                                                                   |
-| interval | 是   |string | *指标周期*  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
+| product |true  |string |      商品，例:ETH_USD                                                                             |
+| interval | true   |string | 指标周期  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
-##### 返回参数
-
-> response
 
 ```json 
 {
@@ -328,118 +185,45 @@ Get a list of open orders for a product. The amount of detail shown can be custo
 
 ```
 
-## Tickers
 
-行情总览
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
-```python
-python -m pip install requests
+| 参数名     |类型| 说明  |
+|:--------|:----- |-----|
+| interval   |string | 档位  |
+| status   |string | 状态码  |
+| ts   |string | 时间戳  |
+| type   |string | 类型  |
+| seqId   |string | 有序且唯一id  |
+| id   |string | 消息唯一id  |
+| bids   |[] | 买方  |
+| asks   |[] | 卖方  |
+| pairCode   |string | 商品，例:ETH_USD  |
 
-import requests
+<h2 id="全部币对24小时行情数据"><font class="httpget">GET</font>  全部币对24小时行情数据</h2>
 
-url = "{host}/public/v1/products/BTC_ETH/tickers"
+行情总览,获取有关交易（报价变动）、最佳买价/卖价和 24 小时交易量的快照信息。
 
-headers = {"Accept": "application/json"}
+**限速：无**
 
-response = requests.request("GET", url, headers=headers)
+**限速规则：无**
 
-print(response.text)
+**HTTP请求**
 
-```
-
-
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/BTC_ETH/tickers")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-``` 
-
-```php
-// composer require guzzlehttp/guzzle
-<?php
-
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', '{host}/public/v1/products/BTC_ETH/tickers', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/tickers
 
 
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/BTC_ETH/tickers")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-
-
-```golang
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "{host}/public/v1/products/BTC_ETH/tickers"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Accept", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-<font class="httpget">GET</font> */public/v1/products/{product}/tickers*
-
-Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
-
-
-##### 参数
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 | 参数名     |必选|类型|说明|
 |:--------|:---|:----- |-----   |
-| product |是  |string | 交易对   |
+| product |true  |string | 商品，例:ETH_USD   |
 
-##### 返回参数说明
-
-|参数名|类型|   说明 |
-|:------:|:----:|:--:|
-| close | int  |   收盘价格 |
-| high | int  |   最高价格 |
-| low | int  |   最低价格 |
-| open | int  |  开盘价格 |
-| turnOver | string  |  交易量 |
-| vol | string  |  交易额 |
-| pairCode | string  |  币对  |
-
->response
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
  {
@@ -473,104 +257,43 @@ Gets snapshot information about the trade (tick), best bid/ask and 24h volume.
 }
 ```
 
-## Ticker
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+|参数名|类型|   说明 |
+|:------:|:----:|:--:|
+| close | int  |   收盘价格 |
+| high | int  |   最高价格 |
+| low | int  |   最低价格 |
+| open | int  |  开盘价格 |
+| turnOver | string  |  交易量 |
+| vol | string  |  交易额 |
+| pairCode | string  |  商品，例:ETH_USD  |
+
+<h2 id="单币对24小时行情数据"><font class="httpget">GET</font>  单币对24小时行情数据</h2>
+
+获取有关最后交易（报价）、最佳买价/卖价和 24 小时交易量的快照信息。
+
+**限速：无**
+
+**限速规则：无**
+
+**HTTP请求**
+
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/ticker
 
 
-```python
-python -m pip install requests
-
-import requests
-
-url = "{host}/public/v1/products/ETH_USDT/ticker"
-
-headers = {"Accept": "application/json"}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
-
-```
-
-
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/ETH_USDT/ticker")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-``` 
-
-```php
-// composer require guzzlehttp/guzzle
-<?php
-
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', '{host}/public/v1/products/ETH_USDT/ticker', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/ETH_USDT/ticker")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-
-
-```golang
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "{host}/public/v1/products/ETH_USDT/ticker"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Accept", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-<font class="httpget">GET</font> */public/v1/products/{product}/ticker*
-
-Gets snapshot information about the last trade (tick), best bid/ask and 24h volume.
-
-##### 参数
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 | 参数名     |必选|类型| 说明  |
 |:--------|:---|:----- |-----|
-| product |是  |string | 币对  |
+| product |true  |string | 商品，例:ETH_USD  |
 
-> response
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
 
 ```json
 {
@@ -592,7 +315,9 @@ Gets snapshot information about the last trade (tick), best bid/ask and 24h volu
 }
 ```
 
-##### 数据体参数说明
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
 |参数名|类型| 说明   |
 |:-----  |:-----|------|
@@ -603,106 +328,31 @@ Gets snapshot information about the last trade (tick), best bid/ask and 24h volu
 | turnOver |string   | 交易量  |
 | vol |string   | 交易额  |
 
+<h2 id="单币对单条实时成交"><font class="httpget">GET</font>  单币对单条实时成交</h2>
 
 
-## Trade
+获取产品的最新交易列表
 
-```python
-python -m pip install requests
+**限速：无**
 
-import requests
+**限速规则：无**
 
-url = "{host}/public/v1/products/ETH_USDT/trade"
+**HTTP请求**
 
-headers = {"Accept": "application/json"}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
-
-```
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trade
 
 
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/ETH_USDT/trade")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-``` 
-
-```php
-// composer require guzzlehttp/guzzle
-<?php
-
-require_once('vendor/autoload.php');
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('GET', '{host}/products/BTC_USDT/trade', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/ETH_USDT/trade")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-
-
-```golang
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "{host}/public/v1/products/ETH_USDT/trade"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Accept", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-<font class="httpget">GET</font> */public/v1/products/{product}/trade*
-
-Gets a list the latest trades for a product.
-
-##### 参数
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 | 参数名     |必选|类型|说明|
 |:--------|:---|:----- |-----   |
-| product |是  |string | 交易对   |
+| product |true  |string | 商品，例:ETH_USD   |
 
 
-> response
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
 
 ```json 
 {
@@ -722,7 +372,9 @@ Gets a list the latest trades for a product.
 }
 ```
 
-##### 返回参数说明
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
 |参数名|类型| 说明         |
 |:-----  |:-----|------------|
@@ -732,105 +384,31 @@ Gets a list the latest trades for a product.
 
 ----
 
-
-## Trades
-
-```python
-python -m pip install requests
-
-import requests
-
-url = "{host}/public/v1/products/ETH_USDT/trades?size=10"
-
-headers = {"Accept": "application/json"}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
-
-```
+<h2 id="单币对多条实时成交"><font class="httpget">GET</font>  单币对多条实时成交</h2>
 
 
-```javascript
-// npm install node-fetch
-const fetch = require("node-fetch")
-fetch("{host}/public/v1/products/ETH_USDT/trades?size=10")
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
-``` 
+获取产品的最新交易列表
 
-```php
-// composer require guzzlehttp/guzzle
-<?php
+**限速：无**
 
-require_once('vendor/autoload.php');
+**限速规则：无**
 
-$client = new \GuzzleHttp\Client();
+**HTTP请求**
 
-$response = $client->request('GET', '{host}/public/v1/products/ETH_USDT/trades?size=10', [
-  'headers' => [
-    'Accept' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
+GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trades
 
 
-```java
-OkHttpClient client = new OkHttpClient();
-
-Request request = new Request.Builder()
-  .url("{host}/public/v1/products/ETH_USDT/trades?size=10")
-  .get()
-  .addHeader("Accept", "application/json")
-  .build();
-
-Response response = client.newCall(request).execute();
-```
-
-
-
-```golang
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"io/ioutil"
-)
-
-func main() {
-
-	url := "{host}/public/v1/products/ETH_USDT/trades?size=10"
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Accept", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-<font class="httpget">GET</font> */public/v1/products/{product}/trades*
-
-Gets a list the latest trades for a product.
-
-##### 参数
+<aside>
+REQUEST PARAMETERS
+</aside>
 
 | 参数名     |必选| 类型     | 说明   |
 |:--------|:---|:-------|------|
-| product |是  | string | 交易对  |
-| size       |是  | int      | 数据长度 |
+| product |true  | string | 商品，例:ETH_USD  |
+| size       |true  | int      | 数据长度 |
 
-> response
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
 
 ```json 
 {
@@ -867,7 +445,9 @@ Gets a list the latest trades for a product.
 }
 ```
 
-##### 返回参数说明
+<aside>
+RESPONSE PARAMETERS
+</aside>
 
 |参数名|类型| 说明         |
 |:-----  |:-----|------------|

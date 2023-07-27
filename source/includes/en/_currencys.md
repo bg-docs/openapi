@@ -1,44 +1,20 @@
-# Information of Currency Types
+# Currency Information
 
-## Obtaining All Known Currencies
-
-<font class="httpget">GET</font> */v1/currencies*
+<h2 id="Get all known currencies"><font class="httpget">GET</font> Get all known currencies</h2>
 
 
+Get information list of all currencies
 
-<aside>
-RESPONSE PARAMETERS
-</aside>
+**Speed Limit: None**
 
-`currency`: A uniquely identifiable name of the currency
+**Speed limit rules: None**
 
-`accuracy`: Accuracy of the fiat deposits and withdrawals
+**HTTP request**
 
-`max_precision` : Maximum precision. Range taken within`[18,-18]`
+GET [HOST](#HTTP-HOST)/v1/currencies
 
-- `max_precision >= 0` means that the currency type precision is max_precision decimal places;
-- `max_precision < 0` means that the currency type precision is an integer, and the precision is 10 to the abs(max_precision) power
 
-`min_size`:  Minimum deposit and withdrawal amount
-
-`status`:  Currency status
-
-`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
-
-`details`: Blockchain information, only a digital currency type will contain this information
-
-`deposit_status`: Fiat deposit status
-
-`withdraw_status`: Fiat withdrawal status
-
-- `dispaly_name`: Display name
-- `network_confirmations`: Minimum number of network confirmations
-- `currency`: Digital currency identifier
-- `accuracy`: Accuracy of crypto deposits and withdrawals
-- `deposit_status`: Crypto deposit status
-- `withdraw_status`:  Crypto withdrawal status
-
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -65,44 +41,79 @@ RESPONSE PARAMETERS
 ]
 ```
 
-## Obtaining Information of a Particular Currency
-
-<font class="httpget">GET</font> */v1/currencies/{currency}*
-
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-`currency`: A uniquely identifiable name of the currency
 
-`accuracy`: Accuracy of the fiat deposits and withdrawals
 
-`max_precision` : Maximum precision. Range taken within`[18,-18]`
 
-- `max_precision >= 0` means that the currency type precision is max_precision decimal places;
-- `max_precision < 0` means that the currency type precision is an integer, and the precision is 10 to the abs(max_precision) power
 
-`min_size`: Minimum deposit and withdrawal amount
+`currency`: currency name, which can uniquely identify the currency
 
-`status`:  Currency status
+`accuracy`: fiat deposit and withdrawal accuracy
 
-`type`: Currency type, `fiat` is legal tender, `crypto` is digital currency
+`max_precision` : Maximum precision. Take the range in `[18,-18]`
 
-`details`: Blockchain information, only a digital currency type will contain this information
+- When `max_precision >= 0`, it means that the currency precision is max_precision digits after the decimal point;
+- When `max_precision < 0`, it means that the precision of the currency is an integer, and the precision is the abs(max_precision) subdivision of 10
 
-`deposit_status`: Deposit status
+`min_size`: minimum deposit and withdrawal amount
 
-`withdraw_status`: Withdrawal status
+`status`: currency status
 
-- `dispaly_name`: Display name
-- `network_confirmations`: Minimum number of network confirmations
-- `currency`: Digital currency identifier
-- `accuracy`: Accuracy of crypto deposits and withdrawals
-- `deposit_status`:  Crypto deposit status
-- `withdraw_status`: Crypto withdrawal status
+`type`: Currency type, `fiat` is fiat currency, `crypto` is digital currency
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+`details`: chain information, only digital currency type will have this part of information
+
+`deposit_status`: fiat deposit status
+
+`withdraw_status`: fiat withdrawal status
+
+- `dispaly_name`: display name
+- `network_confirmations`: minimum number of network confirmations
+- `currency`: currency name, which can uniquely identify the currency
+- `accuracy`: crypto deposit and withdrawal accuracy
+- `deposit_status`: crypto deposit status
+- `withdraw_status`: crypto withdrawal status
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|currency|currency name|string|
+|accuracy|fiat deposit and withdrawal accuracy|string|
+|max_precision|maximum precision |string|
+|min_size|Minimum deposit and withdrawal amount|string|
+|status|currency status|string|
+|type|currency type|string|
+|details|chain information |string|
+|deposit_status|fiat deposit status|string|
+|withdraw_status|fiat withdrawal status|string|
+
+
+<h2 id="Get single currency information"><font class="httpget">GET</font> Get single currency information</h2>
+
+
+Get the information of the specified currency
+
+**Speed Limit: None**
+
+**Speed limit rules: None**
+
+**HTTP request**
+
+GET [HOST](#HTTP-HOST)/v1/currencies/{currency}
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|currency|currency name, for example: BTC|true|string|
+
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 [
@@ -127,3 +138,47 @@ RESPONSE PARAMETERS
   }
 ]
 ```
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+`currency`: currency name, which can uniquely identify the currency
+
+`accuracy`: fiat deposit and withdrawal accuracy
+
+`max_precision` : Maximum precision. Take the range in `[18,-18]`
+
+- When `max_precision >= 0`, it means that the currency precision is max_precision digits after the decimal point;
+- When `max_precision < 0`, it means that the precision of the currency is an integer, and the precision is the abs(max_precision) subdivision of 10
+
+`min_size`: minimum deposit and withdrawal amount
+
+`status`: currency status
+
+`type`: Currency type, `fiat` is fiat currency, `crypto` is digital currency
+
+`details`: chain information, only digital currency type will have this part of information
+
+`deposit_status`: fiat deposit status
+
+`withdraw_status`: fiat withdrawal status
+
+- `dispaly_name`: display name
+- `network_confirmations`: minimum number of network confirmations
+- `currency`: currency name
+- `accuracy`: crypto deposit and withdrawal accuracy
+- `deposit_status`: crypto deposit status
+- `withdraw_status`: crypto withdrawal status
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|currency|currency name|string|
+|accuracy|fiat deposit and withdrawal accuracy|string|
+|max_precision|maximum precision |string|
+|min_size|Minimum deposit and withdrawal amount|string|
+|status|currency status|string|
+|type|currency type|string|
+|details|chain information |string|
+|deposit_status|fiat deposit status|string|
+|withdraw_status|fiat withdrawal status|string|
