@@ -1,6 +1,6 @@
 # Currency Information
 
-<h2 id="Get all known currencies"><font class="httpget">GET</font> Get all known currencies</h2>
+<h2 id="Get all known currencies">GET Get all known currencies</h2>
 
 
 Get information list of all currencies
@@ -91,7 +91,7 @@ RESPONSE PARAMETERS
 |withdraw_status|fiat withdrawal status|string|
 
 
-<h2 id="Get single currency information"><font class="httpget">GET</font> Get single currency information</h2>
+<h2 id="Get single currency information">GET get single currency information</h2>
 
 
 Get the information of the specified currency

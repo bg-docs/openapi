@@ -1,8 +1,9 @@
-# WEBSOCKET PRIVATE V2
+<h1 id="v2-private-ws">WEBSOCKET private channel V2</h1>
+
 
 - [Private channel V2 address](#WS_HOST_PRIVATE_V2)
 
-## V2 private channel login authentication
+<h2 id="v2-private-auth">Private channel login authentication</h2>
 
 Login authentication is required before subscribing to a private channel. Only authenticated users can subscribe to the user's asset information and order status change information.
 
@@ -15,9 +16,9 @@ Login authentication is required before subscribing to a private channel. Only a
   "event": "login",
   "params": {
     "type": "api",
-    "access-key": "de0535f81d51c998b7fbcf00f189f294",
-    "access-sign": "sign",
-    "access-timestamp": 14000000000
+    "access_key": "de0535f81d51c998b7fbcf00f189f294",
+    "access_sign": "sign",
+    "access_timestamp": 14000000000
   }
 }
 ```
@@ -35,42 +36,37 @@ Login authentication is required before subscribing to a private channel. Only a
 ```
 
 
-> Login Failure Response Example [Error Code Comparison Table](#ERR2)
-
-```json
-{
-  "ts": 1690368819855,
-  "code": 40001,
-  "status": "ACCESS_KEY cannot be empty",
-  "event": "login"
-}
-```
-
-#### Login request parameter description
-
-| parameter name          | required | type   | description                                               |
-|:------------------------|:---------|:-------|-----------------------------------------------------------|
-| params.type             | Yes      | string | Authentication method: <br/>`api`: apiKey authentication; |
-| params.access-key       | Yes      | string | [Authentication Description](#auth)                       |
-| params.access-sign      | Yes      | string | [Authentication Description](#auth)                       |
-| params.access-timestamp | is       | long   | [authentication description](#auth)                       |
-| event                   | yes      | string | event name [event list](#events)                          |
+> Login failure response example [Please refer to the general error description](#error_ws_request_response_demo)
 
 
 
-#### Login response parameter description
+<h4 id="v2-private-login-req">Login request parameter description</h4>
+
+
+| parameter name | required | type | description |
+|:----------------------|:----|:-------|------- --------------------|
+| params.type | yes | string | authentication method: <br/>`api`:apiKey authentication; |
+| params.access_key | Yes | string | [Authentication Description](#auth) |
+| params.access_sign | Yes | string | [Authentication Description](#auth) |
+| params.access_timestamp | yes | long | [authentication description](#auth) |
+| event | yes | string | event name [event list](#events) |
+
+
+
+<h4 id="v2-private-login-rep">Login response parameter description</h4>
+
 
 | parameter name | type | description |
 |:-------|:-------|----------------------|
 | event | string | event name [event list](#events) |
-| status | string | status information |
+| status | string | status information can be ignored |
 | code | int | status code [status code comparison table](#WSERR) |
 | ts | long | unix timestamp |
 
 
 
+<h2 id="v2-private-assess">Private channel assets</h2>
 
-## V2 Private Channel Assets
 
 Subscriber's asset changes will be pushed only when there is data update. Currently only supports subscription by product.
 
@@ -105,20 +101,6 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
 ```
 
 
-> Subscription failure response example [Error code comparison table](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "assets",
-  "product": "ETH_USDT",
-  "ts": 1690362052646,
-  "code": 500,
-  "status": "FAIL",
-  "event": "sub"
-}
-```
-
 > Asset push data example, this example is just to illustrate the data structure, the actual push data may only contain asset information of one currency
 
 ```json
@@ -130,12 +112,12 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
   "data":
   [
     {
-      "symbol": "USDT",
+      "currency": "USDT",
       "available": "999970.5238",
       "hold": "29.4762"
     },
     {
-      "symbol": "ETH",
+      "currency": "ETH",
       "available": "999970.5238",
       "hold": "29.4762"
     }
@@ -152,7 +134,7 @@ Asset push data field description
 | parameter name | type | description |
 |:----------------|:-------|---------|
 | product | string | product name/trading pair |
-| $data.symbol | string | currency name |
+| $data.currency | string | currency name |
 | $data.available | string | available quantity |
 | $data.hold | string | hold amount |
 
@@ -185,33 +167,18 @@ Asset push data field description
   "data":
   [
     {
-      "symbol": "USDT",
+      "currency": "USDT",
       "available": "999970.5238",
       "hold": "29.4762"
     },
     {
-      "symbol": "BTC",
+      "currency": "BTC",
       "available": "999970.5238",
       "hold": "29.4762"
     }
   ]
 }
 ```
-
-> Response example for failed request [Error code comparison table](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "assets",
-  "product": "BTC_USDT",
-  "ts": 1690376130387,
-  "code": 500,
-  "status": "FAIL",
-  "event": "req"
-}
-```
-
 
 <aside>
 Request Asset Data Field Descriptions
@@ -222,17 +189,17 @@ Request Asset Data Field Descriptions
 |:----------------|:-------|---------|
 | product | string | product name/trading pair |
 | ts | long | unix timestamp |
-| $data.symbol | string | currency name |
+| $data.currency | string | currency name |
 | $data.available | string | available quantity |
 | $data.hold | string | hold amount |
 
-## V2 private channel order
+<h2 id="v2-private-orders">Private Channel Orders</h2>
 
 The status change of the subscription user's order will be pushed only when there is data update. Currently supports order status change subscription for all trading pairs. Supports asynchronous query of the user's current entrusted order data for a single trading pair.
 
 Please refer to [Common Request Parameter Description](#v2-req-param) and [General Response Parameter Description](#v2-rep-param) for request and response parameter description
 
-**Note: The order data supports subscribing to the full amount of trading pairs. When subscribing to orders for all trading pairs at once, please note that the `type` parameter uses `orders`, and the `product` parameter uses `all` (ignoring case)**
+**Note: The order data supports subscribing to the full amount of trading pairs. When subscribing to orders of all trading pairs at once, please note that the `product` parameter uses `all` (ignoring case)**
 
 
 **Subscription order transaction pair order data**
@@ -286,20 +253,6 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
   "ts": 1690363716709,
   "code": 200,
   "status": "OK",
-  "event": "sub"
-}
-```
-
-> Example of Order Failure Response for Subscription Order [Error Code Comparison Table](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "orders",
-  "product": "ETH_USDT",
-  "ts": 1690362052646,
-  "code": 500,
-  "status": "FAIL",
   "event": "sub"
 }
 ```
@@ -373,20 +326,6 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
 }
 ```
 
-> Response example for failed request [Error code comparison table](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "orders",
-  "product": "BTC_USDT",
-  "ts": 1690376130387,
-  "code": 500,
-  "status": "FAIL",
-  "event": "req"
-}
-```
-
 
 > An example of a successful response to requesting a single transaction from the user for the current entrusted order data
 
@@ -410,18 +349,18 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
 Description of order data fields, please ignore other fields other than this description
 </aside>
 
-| Parameter name | Parameter description                    | Type   |
-|:---------------|:-----------------------------------------|--------|
-| orders_id      | order ID                                 | string |
-| product        | commodity                                | string |
-| side           | buy/sell                                 | string |
-| price          | price per unit of base currency          | string |
-| size           | Amount of base currency to buy/sell      | string |
-| filled_amount  | filled amount                            | string ||
-| funds          | Amount of quote currency to use          | string |
-| filled_size    | transaction amount                       | string |
-| type           | limit: limit order/market: market order/ | string |
-| status         | status                                   | string |
+| Parameter name | Parameter description | Type |
+|:-------------|:----------------------|-------|
+| orders_id | order ID | string |
+| product | commodity | string |
+| side | buy/sell | string |
+| price | price per unit of base currency | string |
+| size | Amount of base currency to buy/sell | string |
+| filled_amount | filled amount | string ||
+| funds | Amount of quote currency to use | string |
+| filled_size | transaction amount | string |
+| type | limit: limit order/market: market order/ | string |
+| status | status | string |
 
 `status`: transaction status, value range 0-7
 
@@ -439,9 +378,8 @@ Description of order data fields, please ignore other fields other than this des
 ----
 
 
+<h2 id="v2-private-req-param">Private channel general request parameter description</h2>
 
-## V2 private channel general request parameter description
-<a name="v2-req-param"></a>
 
 | parameter name | required | type | description |
 |:----------|:----|:-------|---------------------|
@@ -452,11 +390,11 @@ Description of order data fields, please ignore other fields other than this des
 | zip | yes | bool | whether to enable gzip |
 
 
-## V2 Private Channel General Response Parameter Description
-<a name="v2-rep-param"></a>
+<h2 id="v2-private-rep-param">Private channel general response parameter description</h2>
+
 
 | Parameter name | Type | Mandatory | Description | Reference value |
-|:-------|:-------|:----|---------|------------- -|
+|:-------|:-------|:----|---------|--------------|
 | event | string | yes | request event | [event](#events) |
 | biz | string | yes | line of business | [line of business](#bizs) |
 | type | string | yes | business type | [type](#types) |
@@ -466,29 +404,26 @@ Description of order data fields, please ignore other fields other than this des
 | ts | long | yes | unix timestamp | |
 
 
-## V2 private channel Event list
+<h2 id="v2-private-events">Private channel event list</h2>
 
-<a name="v2-private-events"></a>
 
-| Event Name | Type   | Description                                  |
-|:-----------|:-------|----------------------------------------------|
-| sub        | string | Subscribe to events, initiated by the client |
-| login      | string | login event, initiated by the client         |
-| unsub      | string | unsubscribe event, initiated by the client   |
+| Event Name | Type | Description |
+|:---------|:-------|-----------------|
+| sub | string | Subscribe to events, initiated by the client |
+| login | string | login event, initiated by the client |
+| unsub | string | unsubscribe event, initiated by the client |
+| req | string | request event, initiated by the client |
 
-## V2 Private Channel Biz List
 
-<a name="v2-private-bizs"></a>
+<h2 id="v2-private-bizs">Private Channel Biz List</h2>
 
-| Biz Name | Type   | Description      |
-|:---------|:-------|------------------|
+| Biz Name | Type | Description |
+|:---------|:-------|------|
 | exchange | string | spot transaction |
 
-## V2 private channel Type list
+<h2 id="v2-private-types">Private Channel Type List</h2>
 
-<a name="v2-private-types"></a>
-
-| Type Name | Type   | Description         | Whether to support data push subscription for all trading pairs |
-|:----------|:-------|---------------------|:----------------------------------------------------------------|
-| assets    | string | asset changes       | no                                                              |
-| orders    | string | order status change | yes                                                             |
+| Type Name | Type | Description | Whether to support data push subscription for all trading pairs |
+|:--------|:--------|--------|:----------------|
+| assets | string | asset changes | no |
+| orders | string | order status change | yes |

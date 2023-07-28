@@ -1,6 +1,6 @@
 # 产品
 
-<h2 id="获取所有已知的交易产品"><font class="httpget">GET</font>  获取所有已知的交易产品</h2>
+<h2 id="获取所有已知的交易产品">GET  获取所有已知的交易产品</h2>
 
 获取所有的交易产品信息
 
@@ -112,7 +112,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="获取单个产品详情"><font class="httpget">GET</font>  获取单个产品详情</h2>
+<h2 id="获取单个产品详情">GET  获取单个产品详情</h2>
 
 获取指定的交易产品信息
 

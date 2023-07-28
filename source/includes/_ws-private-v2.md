@@ -1,8 +1,8 @@
-# WEBSOCKET PRIVATE V2
+<h1 id="v2-private-ws">WEBSOCKET私有频道V2</h1>
 
 - [私有频道V2地址](#WS_HOST_PRIVATE_V2)
 
-## V2 私有频道 登录认证
+<h2 id="v2-private-auth">私有频道 登录认证</h2>
 
 订阅私有频道前需要先进行登录认证操作，只有认证过的用户才可以订阅用户的资产信息以及订单状态变化信息。
 
@@ -15,9 +15,9 @@
   "event": "login",
   "params": {
     "type": "api",
-    "access-key": "de0535f81d51c998b7fbcf00f189f294",
-    "access-sign": "sign",
-    "access-timestamp": 14000000000
+    "access_key": "de0535f81d51c998b7fbcf00f189f294",
+    "access_sign": "sign",
+    "access_timestamp": 14000000000
   }
 }
 ```
@@ -35,42 +35,37 @@
 ```
 
 
-> 登录失败响应示例   [错误码对照表](#ERR2)
+> 登录失败响应示例 [请参考通用错误说明](#error_ws_request_response_demo)
 
-```json
-{
-  "ts": 1690368819855,
-  "code": 40001,
-  "status": "ACCESS_KEY不能为空",
-  "event": "login"
-}
-```
 
-#### 登录请求参数说明
+
+<h4 id="v2-private-login-req">登录请求参数说明</h4>
+
 
 | 参数名                     | 必选  | 类型     | 说明                         |
 |:------------------------|:----|:-------|----------------------------|
 | params.type             | 是   | string | 认证方式: <br/>`api`:apiKey认证; |
-| params.access-key       | 是   | string | [鉴权说明](#auth)              |
-| params.access-sign      | 是   | string | [鉴权说明](#auth)              |
-| params.access-timestamp | 是   | long   | [鉴权说明](#auth)              |
+| params.access_key       | 是   | string | [鉴权说明](#auth)              |
+| params.access_sign      | 是   | string | [鉴权说明](#auth)              |
+| params.access_timestamp | 是   | long   | [鉴权说明](#auth)              |
 | event                   | 是   | string | 事件名 [事件列表](#events)        |
 
 
 
-#### 登录响应参数说明
+<h4 id="v2-private-login-rep">登录响应参数说明</h4>
+
 
 | 参数名    | 类型     | 说明                   |
 |:-------|:-------|----------------------|
 | event  | string | 事件名 [事件列表](#events)  |
-| status | string | 状态信息                 |
+| status | string | 状态信息 可忽略             |
 | code   | int    | 状态码 [状态码对照表](#WSERR) |
 | ts     | long   | unix时间戳              |
 
 
 
+<h2 id="v2-private-asstes">私有频道 资产</h2>
 
-## V2 私有频道 资产
 
 订阅用户的资产变更，有数据更新时才推送。目前只支持按照产品进行订阅。
 
@@ -105,20 +100,6 @@
 ```
 
 
-> 订阅失败响应示例 [错误码对照表](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "assets",
-  "product": "ETH_USDT",
-  "ts": 1690362052646,
-  "code": 500,
-  "status": "FAIL",
-  "event": "sub"
-}
-```
-
 > 资产推送数据示例,本示例只是为了说明数据结构，实际推送数据中可能只包含一个币种的资产信息
 
 ```json
@@ -130,12 +111,12 @@
   "data":
   [
     {
-      "symbol": "USDT",
+      "currency": "USDT",
       "available": "999970.5238",
       "hold": "29.4762"
     },
     {
-      "symbol": "ETH",
+      "currency": "ETH",
       "available": "999970.5238",
       "hold": "29.4762"
     }
@@ -152,7 +133,7 @@
 | 参数名             | 类型     | 说明      |
 |:----------------|:-------|---------|
 | product         | string | 产品名/交易对 |
-| $data.symbol    | string | 币种名称    |
+| $data.currency  | string | 币种名称    |
 | $data.available | string | 可用数量    |
 | $data.hold      | string | 冻结数量    |
 
@@ -185,33 +166,18 @@
   "data":
   [
     {
-      "symbol": "USDT",
+      "currency": "USDT",
       "available": "999970.5238",
       "hold": "29.4762"
     },
     {
-      "symbol": "BTC",
+      "currency": "BTC",
       "available": "999970.5238",
       "hold": "29.4762"
     }
   ]
 }
 ```
-
-> 请求失败的响应示例 [错误码对照表](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "assets",
-  "product": "BTC_USDT",
-  "ts": 1690376130387,
-  "code": 500,
-  "status": "FAIL",
-  "event": "req"
-}
-```
-
 
 <aside>
 请求资产数据字段说明
@@ -222,20 +188,20 @@
 |:----------------|:-------|---------|
 | product         | string | 产品名/交易对 |
 | ts              | long   | unix时间戳 |
-| $data.symbol    | string | 币种名称    |
+| $data.currency  | string | 币种名称    |
 | $data.available | string | 可用数量    |
 | $data.hold      | string | 冻结数量    |
 
-## V2 私有频道 订单
+<h2 id="v2-private-orders">私有频道 订单</h2>
 
 订阅用户订单的状态变化，有数据更新时才推送。目前支持所有交易对的订单状态变化订阅。支持异步查询用户单个交易对当前委托订单数据。
 
 请求和响应的参数说明请参考[通用请求参数说明](#v2-req-param)和[通用响应参数说明](#v2-rep-param)
 
-**注意：订单数据支持订阅全量交易对，一次订阅所有交易对订单时请注意`type`参数使用`orders`,`product`参数使用`all`(忽略大小写)**
+**注意：订单数据支持订阅全量交易对，一次订阅所有交易对订单时请注意`product`参数使用`all`(忽略大小写)**
 
 
- **订阅单交易对订单数据**
+**订阅单交易对订单数据**
 
 **订阅所有交易对的订单数据**
 
@@ -286,20 +252,6 @@
   "ts": 1690363716709,
   "code": 200,
   "status": "OK",
-  "event": "sub"
-}
-```
-
-> 订阅单交易对订单失败响应示例 [错误码对照表](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "orders",
-  "product": "ETH_USDT",
-  "ts": 1690362052646,
-  "code": 500,
-  "status": "FAIL",
   "event": "sub"
 }
 ```
@@ -373,20 +325,6 @@
 }
 ```
 
-> 请求失败的响应示例 [错误码对照表](#WSERR)
-
-```json
-{
-  "biz": "exchange",
-  "type": "orders",
-  "product": "BTC_USDT",
-  "ts": 1690376130387,
-  "code": 500,
-  "status": "FAIL",
-  "event": "req"
-}
-```
-
 
 > 请求用户单个交易对当前委托订单数据成功的响应示例
 
@@ -439,9 +377,8 @@
 ----
 
 
+<h2 id="v2-private-req-param">私有频道 通用请求参数说明</h2>
 
-## V2 私有频道 通用请求参数说明
-<a name="v2-req-param"></a>
 
 | 参数名     | 必选  | 类型     | 说明                  |
 |:--------|:----|:-------|---------------------|
@@ -452,8 +389,8 @@
 | zip     | 是   | bool   | 是否启用gzip            |
 
 
-## V2 私有频道 通用响应参数说明
-<a name="v2-rep-param"></a>
+<h2 id="v2-private-rep-param">私有频道 通用响应参数说明</h2>
+
 
 | 参数名     | 类型     | 必选  | 说明      | 参考值           |
 |:--------|:-------|:----|---------|---------------|
@@ -466,27 +403,24 @@
 | ts      | long   | 是   | unix时间戳 |               |
 
 
-## V2 私有频道 Event 列表
+<h2 id="v2-private-events">私有频道Event列表</h2>
 
-<a name="v2-private-events"></a>
 
 | Event 名称 | 类型     | 说明              |
 |:---------|:-------|-----------------|
 | sub      | string | 订阅事件,由客户端主动发起   |
 | login    | string | 登录事件，由客户端主动发起   |
 | unsub    | string | 取消订阅事件,由客户端主动发起 |
+| req      | string | 请求事件,由客户端主动发起   |
 
-## V2 私有频道 Biz 列表
 
-<a name="v2-private-bizs"></a>
+<h2 id="v2-private-bizs">私有频道Biz列表</h2>
 
 | Biz 名称   | 类型     | 说明   |
 |:---------|:-------|------|
 | exchange | string | 现货交易 |
 
-## V2 私有频道 Type 列表
-
-<a name="v2-private-types"></a>
+<h2 id="v2-private-types">私有频道Type列表</h2>
 
 | Type 名称 | 类型     | 说明     | 是否支持全部交易对数据推送订阅 |
 |:--------|:-------|--------|:----------------|

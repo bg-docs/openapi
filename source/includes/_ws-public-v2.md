@@ -1,8 +1,6 @@
-# WEBSOCKET PUBLIC V2
+<h1 id="v2-public-ws">WEBSOCKET公共频道V2</h1>
 
 - [公共频道V2地址](#WS_HOST_PUBLIC_V2)
-
-
 
 **序列号 `seq_id` 说明**
 
@@ -10,15 +8,9 @@
 
 2. `seq_id` 是一个单调递增的数字，最小值为 0。
 
-**常见错误说明**
 
-当使用 WebSocket API 订阅公共频道时，可能会遇到以下错误：
+<h2 id="v2-public-candles">K线频道</h2>
 
-1. 错误码`400`：通常需要检查您提供的请求参数是否正确，或者是否有必填参数未填写。
-
-2. 错误码`500`：此错误通常是服务器出现异常，请稍后重新尝试。
-
-## V2 Candles Subscribe/UnSubscribe and Req
 
 订阅或者请求获取K线(最新一根K线)数据的推送
 
@@ -47,14 +39,14 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `filled_size` 这根K线期间成交额
 - `vol` 这根K线期间成交量
 - `seq_id` 唯一且有序id
-- `count` 这根K线期间成交笔数
+- `cot` 这根K线期间成交笔数
 - `interval` K线间隔
 - `product` 交易对
 
 
-**Subscribe**
+**订阅**
 
-> Subscribe request
+> 请求示例
 
 ```json
 {
@@ -68,7 +60,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> Subscribe response
+> 响应示例
 
 ```json
 {
@@ -85,9 +77,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-**UnSubscribe**
+**取消订阅**
 
-> UnSubscribe request
+> 请求示例
 
 ```json
 {
@@ -101,7 +93,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> UnSubscribe response
+> 响应示例
 
 ```json
 {
@@ -117,9 +109,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**Feed Stream**
+**推送数据**
 
-> Feed Stream
+> 推送数据示例
 
 ```json
 {
@@ -135,7 +127,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -144,13 +136,13 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**Request Candles**
+**请求数据**
 
 **参数说明:**
 
 - `id` 每个K线消息的唯一id
-- `from` 开始时间的unix时间戳
-- `to` 结束时间的unix时间戳
+- `from` 开始时间的ix时间戳
+- `to` 结束时间的ix时间戳
 - `interval` K线间隔
 - `product` 交易对
 
@@ -189,7 +181,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         },
         {
             "id": 1688399100,
@@ -199,7 +191,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         }
     ],
     "event": "req",
@@ -211,7 +203,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ----
 
-## V2 Fills Subscribe/UnSubscribe
+
+<h2 id="v2-public-fills">成交频道</h2>
+
 
 订阅获取产品实时成交增量推送数据
 
@@ -226,9 +220,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `vol` 成交量
 
 
-**Subscribe**
+**订阅**
 
-> Subscribe request
+> 请求示例
 
 ```json
 {
@@ -240,7 +234,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> Subscribe response
+> 响应示例
 
 ```json
 {
@@ -254,9 +248,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**UnSubscribe**
+**取消订阅**
 
-> UnSubscribe request
+> 请求示例
 
 ```json
 
@@ -270,7 +264,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> UnSubscribe response
+> 响应示例
 
 ```json
 {
@@ -284,9 +278,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 
 ```
-**Feed Stream**
+**推送数据**
 
-> Feed Stream
+> 推送数据示例
 
 ```json
 {
@@ -309,7 +303,8 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 -----
 
-## V2 OrderBook Subscribe/UnSubscribe
+<h2 id="v2-public-orderbook">深度频道</h2>
+
 
 订阅获取产品订单薄增量推送数据
 
@@ -350,9 +345,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 
 
-**Subscribe**
+**订阅**
 
-> Subscribe request
+> 请求示例
 
 ```json
 {
@@ -365,7 +360,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> Subscribe response
+> 响应示例
 
 ```json
 {
@@ -380,8 +375,8 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**UnSubscribe**
-> UnSubscribe request
+**取消订阅**
+> 请求示例
 
 ```json
 {
@@ -394,7 +389,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 
 ```
-> UnSubscribe response
+> 响应示例
 
 ```json
 {
@@ -410,9 +405,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**Feed Stream**
+**推送数据**
 
-> Feed Stream
+> 推送数据示例
 
 ```json
 
@@ -478,9 +473,11 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 ----
 
-## V2 Percent10 Subscribe/Unsubscribe
 
-订阅获取产品深度增量推送数据
+<h2 id="v2-public-depth">深度depth频道</h2>
+
+
+订阅获取产品深度图增量推送数据
 
 说明：买卖盘各拿平均价格的10%以内的最多200条，卖1价向上浮动10%内的委托，买1向下浮动10%以内的委托
 
@@ -503,9 +500,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `data.product` 交易对
 
 
-**Subscribe**
+**订阅**
 
-> Subscribe request
+> 请求示例
 
 ```json
 {
@@ -517,7 +514,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> Subscribe response
+> 响应示例
 
 ```json
 {
@@ -530,9 +527,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**UnSubscribe**
+**取消订阅**
 
-> UnSubscribe request
+> 请求示例
 
 ```json
 {
@@ -544,7 +541,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> UnSubscribe response
+> 响应示例
 
 ```json
 {
@@ -559,9 +556,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-**Feed Stream**
+**推送数据**
 
-> Feed Stream
+> 推送数据示例
 
 ```json
 
@@ -600,9 +597,10 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ----
 
 
-## V2 Ticker Subscribe/UnSubscribe and Req
+<h2 id="v2-public-ticker">行情频道</h2>
 
-订阅获取产品24小时ticker增量推送数据
+
+获取产品24小时ticker增量推送数据
 
 **字段说明:**
 
@@ -614,15 +612,15 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `filled_size` 24小时内成交额
 - `vol` 24小时内成交量
 - `seq_id` 唯一且有序id
-- `count` 24小时成交笔数
+- `cot` 24小时成交笔数
 - `change` 24小时价格变化
 - `change_percent` 24小时价格变化(百分比)
 
 
 
-**Subscribe**
+**订阅**
 
-> Subscribe request
+> 请求示例
 
 ```json
 {
@@ -635,7 +633,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-> Subscribe response
+> 响应示例
 
 ```json
 {
@@ -649,9 +647,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**UnSubscribe**
+**取消订阅**
 
-> UnSubscribe request
+> 请求示例
 
 ```json
 {
@@ -664,7 +662,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-> UnSubscribe response
+> 响应示例
 
 ```json
 {
@@ -677,9 +675,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**Feed Stream**
+**推送数据**
 
-> Feed Stream
+> 推送数据示例
 
 ```json
 
@@ -699,7 +697,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "count": 0,
+            "cot": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -707,7 +705,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-#### V2 Request Ticker
+**请求  指定交易对最新行情数据**
 
 > 获取指定交易对最新行情数据请求示例
 
@@ -743,7 +741,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "change": "0",
         "change_percent": "0"
     },
@@ -753,8 +751,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-
-## V2 公共频道 Request 字段说明
+<h2 id="v2-public-req-param">公共频道Request字段说明</h2>
 
 | 参数名      | 类型     | 必选  | 说明        | 参考值           |
 |:---------|:-------|:----|-----------|---------------|
@@ -765,22 +762,24 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 | interval | string | 否   | 频率        | 1min          |
 | zip      | bool   | 是   | 是否启用gzip	 | true,false    |
 
-## V2 公共频道 Response 字段说明
+<h2 id="v2-public-rep-param">公共频道Response字段说明</h2>
 
-| 参数名      | 类型     | 必选  | 说明    | 参考值           |
-|:---------|:-------|:----|-------|---------------|
-| event    | string | 是   | 请求事件  | [事件](#events) |
-| biz      | string | 是   | 业务线   | [业务线](#bizs)  |
-| type     | string | 是   | 业务类型  | [类型](#types)  |
-| product  | string | 是   | 交易对	  | BTC_USDT      |
-| interval | string | 否   | 频率    | 1min          |
-| code     | int    | 是   | 错误码   |               |
-| status   | string | 是   | 错误码状态 ||
-| data     | json   | 否   | 业务数据  | 参考具体业务数据说明    |
 
-## V2 公共频道 Event 列表
+| 参数名      | 类型     | 必选  | 说明      | 参考值           |
+|:---------|:-------|:----|---------|---------------|
+| event    | string | 是   | 请求事件    | [事件](#events) |
+| biz      | string | 是   | 业务线     | [业务线](#bizs)  |
+| type     | string | 是   | 业务类型    | [类型](#types)  |
+| product  | string | 是   | 交易对	    | BTC_USDT      |
+| interval | string | 否   | 频率      | 1min          |
+| code     | int    | 是   | 错误码     |               |
+| status   | string | 是   | 错误码状态   | 可忽略           |
+| ts       | long   | 是   | unix时间戳 | 可忽略           |
+| data     | json   | 否   | 业务数据    | 参考具体业务数据说明    |
 
-<a name="v2-publilc-events"></a>
+
+<h2 id="v2-publilc-events">公共频道Event列表</h2>
+
 
 | Event 名称 | 类型     | 说明              |
 |:---------|:-------|-----------------|
@@ -789,16 +788,16 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 | req      | string | 请求数据事件，由客户端主动发起 |
 
 
-## V2 公共频道 Biz 列表
-
-<a name="v2-publilc-bizs"></a>
+<h2 id="v2-publilc-bizs">公共频道Biz列表</h2>
 
 | Biz 名称 | 类型     | 说明   |
 |:-------|:-------|------|
 | market | string | 现货行情 |
 
-## V2 公共频道 Type 列表
-<a name="v2-publilc-types"></a>
+
+
+<h2 id="v2-publilc-types">公共频道Type列表</h2>
+
 
 | Type 名称   | 类型     | 说明         |
 |:----------|:-------|------------|
@@ -806,7 +805,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 | candles   | string | K线数据       |
 | orderbook | string | 订单薄        |
 | ticker    | string | 24小时ticker |
-| percent10 | string | 有限档位深度     |
+| percent10 | string | 深度depth    |
 
 
 ----

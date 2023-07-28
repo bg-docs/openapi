@@ -8,19 +8,14 @@ Email: <a href="mailto:api@bg.exchange" id="api-support">api@bg.exchange</a>
 **HTTP request address**<br>
 
 <a id="HTTP-HOST"></a>
-HOST: `https:api.bg.exchange/hk`
+HOST: `https://api.bg.exchange/hk`
 
 **WEBSOCKET request address**
 
-- ~~WebSocket private channel (DEPRECATED): `wss://ws.bg.exchange`~~
-- ~~WebSocket public channel (DEPRECATED): `wss://ws.bg.exchange/ws`~~
-- WebSocket public channel V2: `wss://ws.bg.exchange/v2/ws`
-- WebSocket private channel V2: `wss://ws.bg.exchange/v2/ws`
-
-[^1^]: [Link](#WS_HOST_PRIVATE)
-[^2^]: [Link](#WS_HOST_PUBLIC)
-[^3^]: [Link](#WS_HOST_PUBLIC_V2)
-[^4^]: [Link](#WS_HOST_PRIVATE_V2)
+- ~~WebSocket private channel (DEPRECATED)<a id="WS_HOST_PUBLIC"></a>: `wss://ws.bg.exchange`~~
+- ~~WebSocket public channel (DEPRECATED)<a id="WS_HOST_PRIVATE"></a>: `wss://ws.bg.exchange/ws`~~
+- WebSocket public channel V2<a id="WS_HOST_PUBLIC_V2"></a>: `wss://ws.bg.exchange/v2/ws`
+- WebSocket private channel V2<a id="WS_HOST_PRIVATE_V2"></a>: `wss://ws.bg.exchange/v2/ws`
 
 
 ##Response Status
@@ -52,7 +47,7 @@ HOST: `https:api.bg.exchange/hk`
 ```json
 {
   "code":500,
-  "message": "Internal Server Error"
+  "message":"Internal Server Error"
 }
 ```
 

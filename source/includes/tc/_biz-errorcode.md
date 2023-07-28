@@ -25,7 +25,7 @@
 | 40006 | 無效的ACCESS_KEY                           |
 | 40007 | 無效的Content_Type，請使用“application/json”格式 |
 | 40008 | 請求時間戳過期                                 |
-| 40010 | api 校驗失敗                                |
+| 40010 | API 校驗失敗                                |
 | 40011 | ACCESS_KEY或者PASSPHRASE錯誤                |
 | 40012 | 無效的API用戶                                |
 | 40013 | 用戶已禁止                                   |

@@ -1,6 +1,6 @@
 # 幣種信息
 
-<h2 id="獲取所有已知貨幣"><font class="httpget">GET</font>  獲取所有已知貨幣</h2>
+<h2 id="獲取所有已知貨幣">GET  獲取所有已知貨幣</h2>
 
 
 獲取所有幣種的信息列表
@@ -91,7 +91,7 @@ RESPONSE PARAMETERS
 |withdraw_status|fiat  取款狀態|string|
 
 
-<h2 id="獲取單個幣種信息"><font class="httpget">GET</font>  獲取單個幣種信息</h2>
+<h2 id="獲取單個幣種信息">GET  獲取單個幣種信息</h2>
 
 
 獲取指定幣種的信息

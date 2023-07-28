@@ -1,6 +1,6 @@
 # Account Information
 
-<h2 id="Get all account balance information"><font class="httpget">GET</font> Get all account balance information</h2>
+<h2 id="Get all account balance information">GET get all account balance information</h2>
 
 Get all the trading account information of the user
 
@@ -18,11 +18,11 @@ GET [HOST](#HTTP-HOST)/v1/accounts
 
 
 
-
-<span style="color: blue;">
+<aside class="notice">
+  <span style="color: blue;">
 Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
-</span>
-
+  </span>
+</aside>
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -53,7 +53,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="Get single account balance information"><font class="httpget">GET</font> Get single account balance information</h2>
+<h2 id="Get single account balance information">GET get single account balance information</h2>
 
 Get the trading account information specified by the user
 
@@ -70,9 +70,11 @@ GET [HOST](#HTTP-HOST)/v1/accounts/{currency}
 > For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 
-<span style="color: blue;">
+<aside class="notice">
+  <span style="color: blue;">
 Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
-</span>
+  </span>
+</aside>
 
 <aside>
 REQUEST PARAMETERS

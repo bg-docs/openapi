@@ -8,19 +8,14 @@ Email: <a href="mailto:api@bg.exchange" id="api-support">api@bg.exchange</a>
 **HTTP請求地址**<br>
 
 <a id="HTTP-HOST"></a>
-HOST: `https:api.bg.exchange/hk`
+HOST: `https://api.bg.exchange/hk`
 
 **WEBSOCKET請求地址**
 
-- ~~WebSocket私有頻道(DEPRECATED): `wss://ws.bg.exchange`~~
-- ~~WebSocket公共頻道(DEPRECATED): `wss://ws.bg.exchange/ws`~~
-- WebSocket公共頻道V2: `wss://ws.bg.exchange/v2/ws`
-- WebSocket私有頻道V2: `wss://ws.bg.exchange/v2/ws`
-
-[^1^]: [鏈接](#WS_HOST_PRIVATE)
-[^2^]: [鏈接](#WS_HOST_PUBLIC)
-[^3^]: [鏈接](#WS_HOST_PUBLIC_V2)
-[^4^]: [鏈接](#WS_HOST_PRIVATE_V2)
+- ~~WebSocket私有頻道(DEPRECATED)<a id="WS_HOST_PUBLIC"></a>: `wss://ws.bg.exchange`~~
+- ~~WebSocket公共頻道(DEPRECATED)<a id="WS_HOST_PRIVATE"></a>: `wss://ws.bg.exchange/ws`~~
+- WebSocket公共頻道V2<a id="WS_HOST_PUBLIC_V2"></a>: `wss://ws.bg.exchange/v2/ws`
+- WebSocket私有頻道V2<a id="WS_HOST_PRIVATE_V2"></a>: `wss://ws.bg.exchange/v2/ws`
 
 
 ##Response Status

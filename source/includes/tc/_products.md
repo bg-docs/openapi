@@ -1,6 +1,6 @@
 # 產品
 
-<h2 id="獲取所有已知的交易產品"><font class="httpget">GET</font>  獲取所有已知的交易產品</h2>
+<h2 id="獲取所有已知的交易產品">GET  獲取所有已知的交易產品</h2>
 
 獲取所有的交易產品信息
 
@@ -112,7 +112,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="獲取單個產品詳情"><font class="httpget">GET</font>  獲取單個產品詳情</h2>
+<h2 id="獲取單個產品詳情">GET  獲取單個產品詳情</h2>
 
 獲取指定的交易產品信息
 

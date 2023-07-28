@@ -1,7 +1,7 @@
 # 数据字典
 
 
-## WEBSOCKET错误码对照表
+## WEBSOCKET状态码对照表
 <a id="WSERR"></a>
 
 | 错误码 | 示意         |
@@ -25,7 +25,7 @@
 | 40006 | 无效的ACCESS_KEY                           |
 | 40007 | 无效的Content_Type，请使用“application/json”格式 |
 | 40008 | 请求时间戳过期                                 |
-| 40010 | api 校验失败                                |
+| 40010 | API 校验失败                                |
 | 40011 | ACCESS_KEY或者PASSPHRASE错误                |
 | 40012 | 无效的API用户                                |
 | 40013 | 用户已禁止                                   |

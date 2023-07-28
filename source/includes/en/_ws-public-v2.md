@@ -1,24 +1,16 @@
-# WEBSOCKET PUBLIC V2
+<h1 id="v2-public-ws">WEBSOCKET public channel V2</h1>
 
 - [Public channel V2 address](#WS_HOST_PUBLIC_V2)
 
-
-
-**Sequence number `seq_id` Description**
+**sequence number `seq_id` description**
 
 1. `seq_id` is a serial number of the exchange market. When a user uses one or more WebSockets to connect to the same channel, in addition to the real-time transaction data, he will receive data pushes with the same serial number, and the user needs to handle the duplication by himself. data, a `seq_id` can be used to build a sequence of messages, which will allow the user to detect packet loss and ordering of messages.
 
 2. `seq_id` is a monotonically increasing number with a minimum value of 0.
 
-**Common Error Description**
 
-When subscribing to a public channel using the WebSocket API, you may encounter the following error:
+<h2 id="v2-public-candles">K-line channel</h2>
 
-1. Error code `400`: Usually you need to check whether the request parameters you provide are correct, or whether there are required parameters that are not filled. 
-
-2. Error code `500`: This error is usually an exception on the server, please try again later.
-
-## V2 Candles Subscribe/UnSubscribe and Req
 
 Subscribe or request to get K-line (the latest K-line) data push
 
@@ -31,8 +23,8 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 - 15min
 - 30min
 - 60min
-- 4hours
-- 1day
+- 4 hours
+- 1 day
 - 1week
 - 1mon
 
@@ -47,14 +39,14 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 - `filled_size` the transaction volume during this K-line
 - `vol` is the trading volume during this K-line
 - `seq_id` unique and ordered id
-- `count` the number of transactions during this K-line period
+- `cot` is the number of transactions during this K-line period
 - `interval` K-line interval
 - `product` trading pair
 
 
-**Subscribe**
+**subscription**
 
-> Subscribe request
+> request example
 
 ```json
 {
@@ -68,7 +60,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 ```
 
-> Subscribe response
+> Response example
 
 ```json
 {
@@ -85,9 +77,9 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 ```
 
 
-**UnSubscribe**
+**unsubscribe**
 
-> UnSubscribe request
+> request example
 
 ```json
 {
@@ -101,7 +93,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 ```
 
-> UnSubscribe response
+> Response example
 
 ```json
 {
@@ -117,9 +109,9 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 ```
 
-**Feed Stream**
+**Push data**
 
-> Feed Stream
+> Push data example
 
 ```json
 {
@@ -135,7 +127,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -144,13 +136,13 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 ```
 
-**Request Candles**
+**request data**
 
 **Parameter Description:**
 
 - `id` the unique id of each candlestick message
-- unix timestamp of `from` start time
-- unix timestamp of `to` end time
+- ix timestamp of `from` start time
+- ix timestamp of `to` end time
 - `interval` K-line interval
 - `product` trading pair
 
@@ -189,7 +181,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         },
         {
             "id": 1688399100,
@@ -199,7 +191,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         }
     ],
     "event": "req",
@@ -211,7 +203,9 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 ----
 
-## V2 Fills Subscribe/UnSubscribe
+
+<h2 id="v2-public-fills">Close channel</h2>
+
 
 Subscribe to obtain real-time transaction incremental push data of products
 
@@ -226,9 +220,9 @@ Get the latest transaction data, and push the transaction data when there is tra
 - `vol` volume
 
 
-**Subscribe**
+**subscription**
 
-> Subscribe request
+> request example
 
 ```json
 {
@@ -240,7 +234,7 @@ Get the latest transaction data, and push the transaction data when there is tra
 }
 ```
 
-> Subscribe response
+> Response example
 
 ```json
 {
@@ -254,9 +248,9 @@ Get the latest transaction data, and push the transaction data when there is tra
 }
 ```
 
-**UnSubscribe**
+**unsubscribe**
 
-> UnSubscribe request
+> request example
 
 ```json
 
@@ -270,7 +264,7 @@ Get the latest transaction data, and push the transaction data when there is tra
 
 ```
 
-> UnSubscribe response
+> Response example
 
 ```json
 {
@@ -284,9 +278,9 @@ Get the latest transaction data, and push the transaction data when there is tra
 }
 
 ```
-**Feed Stream**
+**Push data**
 
-> Feed Stream
+> Push data example
 
 ```json
 {
@@ -309,7 +303,8 @@ Get the latest transaction data, and push the transaction data when there is tra
 
 -----
 
-## V2 OrderBook Subscribe/UnSubscribe
+<h2 id="v2-public-orderbook">Deep Channel</h2>
+
 
 Subscribe to obtain product order book incremental push data
 
@@ -350,9 +345,9 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 
 
 
-**Subscribe**
+**subscription**
 
-> Subscribe request
+> request example
 
 ```json
 {
@@ -365,7 +360,7 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 }
 ```
 
-> Subscribe response
+> Response example
 
 ```json
 {
@@ -380,8 +375,8 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 }
 ```
 
-**UnSubscribe**
-> UnSubscribe request
+**unsubscribe**
+> request example
 
 ```json
 {
@@ -394,7 +389,7 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 }
 
 ```
-> UnSubscribe response
+> Response example
 
 ```json
 {
@@ -410,9 +405,9 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 
 ```
 
-**Feed Stream**
+**Push data**
 
-> Feed Stream
+> Push data example
 
 ```json
 
@@ -478,9 +473,11 @@ Explanation: interval=5, the buyer's price in bids pushed can only be accurate t
 ```
 ----
 
-## V2 Percent10 Subscribe/Unsubscribe
 
-Subscribe to obtain product depth incremental push data
+<h2 id="v2-public-depth">Deep depth channel</h2>
+
+
+Subscribe to obtain product depth map incremental push data
 
 Explanation: Each buy and sell order takes up to 200 orders within 10% of the average price, sell 1 order within 10% of the upward price fluctuation, and buy 1 order within 10% downward fluctuation
 
@@ -503,9 +500,9 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
 - `data.product` trading pair
 
 
-**Subscribe**
+**subscription**
 
-> Subscribe request
+> request example
 
 ```json
 {
@@ -517,7 +514,7 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
 }
 ```
 
-> Subscribe response
+> Response example
 
 ```json
 {
@@ -530,9 +527,9 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
     "product": "BTC_USDT"
 }
 ```
-**UnSubscribe**
+**unsubscribe**
 
-> UnSubscribe request
+> request example
 
 ```json
 {
@@ -544,7 +541,7 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
 }
 ```
 
-> UnSubscribe response
+> Response example
 
 ```json
 {
@@ -559,9 +556,9 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
 ```
 
 
-**Feed Stream**
+**Push data**
 
-> Feed Stream
+> Push data example
 
 ```json
 
@@ -600,9 +597,10 @@ Push once every 500 milliseconds at the fastest, and also push when no event is 
 ----
 
 
-## V2 Ticker Subscribe/UnSubscribe and Req
+<h2 id="v2-public-ticker">Quote channel</h2>
 
-Subscribe to get product 24-hour ticker incremental push data
+
+Obtain product 24-hour ticker incremental push data
 
 **Field Description:**
 
@@ -614,15 +612,15 @@ Subscribe to get product 24-hour ticker incremental push data
 - `filled_size` turnover within 24 hours
 - `vol` volume in 24 hours
 - `seq_id` unique and ordered id
-- `count` the number of transactions in 24 hours
+- `cot` 24-hour transaction count
 - `change` 24 hour price change
 - `change_percent` 24h price change (percentage)
 
 
 
-**Subscribe**
+**subscription**
 
-> Subscribe request
+> request example
 
 ```json
 {
@@ -635,7 +633,7 @@ Subscribe to get product 24-hour ticker incremental push data
 ```
 
 
-> Subscribe response
+> Response example
 
 ```json
 {
@@ -649,9 +647,9 @@ Subscribe to get product 24-hour ticker incremental push data
 }
 ```
 
-**UnSubscribe**
+**unsubscribe**
 
-> UnSubscribe request
+> request example
 
 ```json
 {
@@ -664,7 +662,7 @@ Subscribe to get product 24-hour ticker incremental push data
 ```
 
 
-> UnSubscribe response
+> Response example
 
 ```json
 {
@@ -677,9 +675,9 @@ Subscribe to get product 24-hour ticker incremental push data
     "product": "BTC_USDT"
 }
 ```
-**Feed Stream**
+**Push data**
 
-> Feed Stream
+> Push data example
 
 ```json
 
@@ -699,7 +697,7 @@ Subscribe to get product 24-hour ticker incremental push data
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "count": 0,
+            "cot": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -707,7 +705,7 @@ Subscribe to get product 24-hour ticker incremental push data
 }
 ```
 
-#### V2 Request Ticker
+**Request the latest market data for the specified trading pair**
 
 > Get the latest market data request example for a specified trading pair
 
@@ -743,7 +741,7 @@ Subscribe to get product 24-hour ticker incremental push data
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "change": "0",
         "change_percent": "0"
     },
@@ -753,11 +751,10 @@ Subscribe to get product 24-hour ticker incremental push data
 
 ```
 
-
-## V2 public channel Request field description
+<h2 id="v2-public-req-param">Public channel Request field description</h2>
 
 | Parameter name | Type | Mandatory | Description | Reference value |
-|:---------|:-------|:----|-----------|----------- ----|
+|:---------|:-------|:----|-----------|--------------|
 | event | string | yes | request event | [event](#events) |
 | biz | string | yes | line of business | [line of business](#bizs) |
 | type | string | yes | business type | [type](#types) |
@@ -765,48 +762,50 @@ Subscribe to get product 24-hour ticker incremental push data
 | interval | string | no | frequency | 1min |
 | zip | bool | yes | whether to enable gzip | true, false |
 
-## V2 public channel Response field description
-
-| Parameter name | Type   | Mandatory | Description       | Reference value                              |
-|:---------------|:-------|:----------|-------------------|----------------------------------------------|
-| event          | string | yes       | request event     | [event](#events)                             |
-| biz            | string | yes       | line of business  | [line of business](#bizs)                    |
-| type           | string | yes       | business type     | [type](#types)                               |
-| product        | string | yes       | trading pair      | BTC_USDT                                     |
-| interval       | string | no        | frequency         | 1min                                         |
-| code           | int    | yes       | error code        |                                              |
-| status         | string | yes       | error code status ||
-| data           | json   | no        | business data     | refer to specific business data instructions |
-
-## V2 public channel event list
-
-<a name="v2-publilc-events"></a>
-
-| Event Name | Type   | Description                                  |
-|:-----------|:-------|----------------------------------------------|
-| sub        | string | Subscribe to events, initiated by the client |
-| unsub      | string | unsubscribe event, initiated by the client   |
-| req        | string | request data event, initiated by the client  |
+<h2 id="v2-public-rep-param">Response field description of public channel</h2>
 
 
-## V2 Public Channel Biz List
+| Parameter name | Type | Mandatory | Description | Reference value |
+|:---------|:-------|:----|---------|--------------|
+| event | string | yes | request event | [event](#events) |
+| biz | string | yes | line of business | [line of business](#bizs) |
+| type | string | yes | business type | [type](#types) |
+| product | string | yes | trading pair | BTC_USDT |
+| interval | string | no | frequency | 1min |
+| code | int | yes | error code | |
+| status | string | yes | error code status | can be ignored |
+| ts | long | yes | unix timestamp | ignorable |
+| data | json | no | business data | refer to specific business data instructions |
 
-<a name="v2-publilc-bizs"></a>
 
-| Biz Name | Type   | Description |
-|:---------|:-------|-------------|
-| market   | string | spot market |
+<h2 id="v2-publilc-events">List of public channel events</h2>
 
-## V2 public channel Type list
-<a name="v2-public-types"></a>
 
-| Type Name | Type   | Description         |
-|:----------|:-------|---------------------|
-| fills     | string | transaction data    |
-| candles   | string | candlestick data    |
-| orderbook | string | order book          |
-| ticker    | string | 24 hour ticker      |
-| percent10 | string | limited notch depth |
+| Event Name | Type | Description |
+|:---------|:-------|-----------------|
+| sub | string | Subscribe to events, initiated by the client |
+| unsub | string | unsubscribe event, initiated by the client |
+| req | string | request data event, initiated by the client |
+
+
+<h2 id="v2-publilc-bizs">Public Channel Biz List</h2>
+
+| Biz Name | Type | Description |
+|:-------|:-------|------|
+| market | string | spot market |
+
+
+
+<h2 id="v2-publilc-types">List of Public Channel Types</h2>
+
+
+| Type Name | Type | Description |
+|:----------|:-------|------------|
+| fills | string | transaction data |
+| candles | string | candlestick data |
+| orderbook | string | order book |
+| ticker | string | 24 hour ticker |
+| percent10 | string | depth |
 
 
 ----

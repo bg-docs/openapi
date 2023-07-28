@@ -1,8 +1,7 @@
-# WEBSOCKET PUBLIC V2
+<h1 id="v2-public-ws">WEBSOCKET公共頻道V2</h1>
+
 
 - [公共頻道V2地址](#WS_HOST_PUBLIC_V2)
-
-
 
 **序列號 `seq_id` 說明**
 
@@ -10,15 +9,9 @@
 
 2. `seq_id` 是一個單調遞增的數字，最小值為 0。
 
-**常見錯誤說明**
 
-當使用 WebSocket API 訂閱公共頻道時，可能會遇到以下錯誤：
+<h2 id="v2-public-candles">K線頻道</h2>
 
-1. 錯誤碼`400`：通常需要檢查您提供的請求參數是否正確，或者是否有必填參數未填寫。
-
-2. 錯誤碼`500`：此錯誤通常是服務器出現異常，請稍後重新嘗試。
-
-## V2 Candles Subscribe/UnSubscribe and Req
 
 訂閱或者請求獲取K線(最新一根K線)數據的推送
 
@@ -47,14 +40,14 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `filled_size` 這根K線期間成交額
 - `vol` 這根K線期間成交量
 - `seq_id` 唯一且有序id
-- `count` 這根K線期間成交筆數
+- `cot` 這根K線期間成交筆數
 - `interval` K線間隔
 - `product` 交易對
 
 
-**Subscribe**
+**訂閱**
 
-> Subscribe request
+> 請求示例
 
 ```json
 {
@@ -68,7 +61,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-> Subscribe response
+> 響應示例
 
 ```json
 {
@@ -85,9 +78,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ```
 
 
-**UnSubscribe**
+**取消訂閱**
 
-> UnSubscribe request
+> 請求示例
 
 ```json
 {
@@ -101,7 +94,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-> UnSubscribe response
+> 響應示例
 
 ```json
 {
@@ -117,9 +110,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-**Feed Stream**
+**推送數據**
 
-> Feed Stream
+> 推送數據示例
 
 ```json
 {
@@ -135,7 +128,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -144,13 +137,13 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-**Request Candles**
+**請求數據**
 
 **參數說明:**
 
 - `id` 每個K線消息的唯一id
-- `from` 開始時間的unix時間戳
-- `to` 結束時間的unix時間戳
+- `from` 開始時間的ix時間戳
+- `to` 結束時間的ix時間戳
 - `interval` K線間隔
 - `product` 交易對
 
@@ -189,7 +182,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         },
         {
             "id": 1688399100,
@@ -199,7 +192,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "count": 0
+            "cot": 0
         }
     ],
     "event": "req",
@@ -211,7 +204,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ----
 
-## V2 Fills Subscribe/UnSubscribe
+
+<h2 id="v2-public-fills">成交頻道</h2>
+
 
 訂閱獲取產品實時成交增量推送數據
 
@@ -226,9 +221,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `vol` 成交量
 
 
-**Subscribe**
+**訂閱**
 
-> Subscribe request
+> 請求示例
 
 ```json
 {
@@ -240,7 +235,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-> Subscribe response
+> 響應示例
 
 ```json
 {
@@ -254,9 +249,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-**UnSubscribe**
+**取消訂閱**
 
-> UnSubscribe request
+> 請求示例
 
 ```json
 
@@ -270,7 +265,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-> UnSubscribe response
+> 響應示例
 
 ```json
 {
@@ -284,9 +279,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 
 ```
-**Feed Stream**
+**推送數據**
 
-> Feed Stream
+> 推送數據示例
 
 ```json
 {
@@ -309,7 +304,8 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 -----
 
-## V2 OrderBook Subscribe/UnSubscribe
+<h2 id="v2-public-orderbook">深度頻道</h2>
+
 
 訂閱獲取產品訂單薄增量推送數據
 
@@ -350,9 +346,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 
 
-**Subscribe**
+**訂閱**
 
-> Subscribe request
+> 請求示例
 
 ```json
 {
@@ -365,7 +361,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-> Subscribe response
+> 響應示例
 
 ```json
 {
@@ -380,8 +376,8 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-**UnSubscribe**
-> UnSubscribe request
+**取消訂閱**
+> 請求示例
 
 ```json
 {
@@ -394,7 +390,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 
 ```
-> UnSubscribe response
+> 響應示例
 
 ```json
 {
@@ -410,9 +406,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-**Feed Stream**
+**推送數據**
 
-> Feed Stream
+> 推送數據示例
 
 ```json
 
@@ -478,9 +474,11 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ```
 ----
 
-## V2 Percent10 Subscribe/Unsubscribe
 
-訂閱獲取產品深度增量推送數據
+<h2 id="v2-public-depth">深度depth頻道</h2>
+
+
+訂閱獲取產品深度圖增量推送數據
 
 說明：買賣盤各拿平均價格的10%以內的最多200條，賣1價向上浮動10%內的委託，買1向下浮動10%以內的委託
 
@@ -503,9 +501,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `data.product` 交易對
 
 
-**Subscribe**
+**訂閱**
 
-> Subscribe request
+> 請求示例
 
 ```json
 {
@@ -517,7 +515,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-> Subscribe response
+> 響應示例
 
 ```json
 {
@@ -530,9 +528,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**UnSubscribe**
+**取消訂閱**
 
-> UnSubscribe request
+> 請求示例
 
 ```json
 {
@@ -544,7 +542,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-> UnSubscribe response
+> 響應示例
 
 ```json
 {
@@ -559,9 +557,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ```
 
 
-**Feed Stream**
+**推送數據**
 
-> Feed Stream
+> 推送數據示例
 
 ```json
 
@@ -600,9 +598,10 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ----
 
 
-## V2 Ticker Subscribe/UnSubscribe and Req
+<h2 id="v2-public-ticker">行情頻道</h2>
 
-訂閱獲取產品24小時ticker增量推送數據
+
+獲取產品24小時ticker增量推送數據
 
 **字段說明:**
 
@@ -614,15 +613,15 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `filled_size` 24小時內成交額
 - `vol` 24小時內成交量
 - `seq_id` 唯一且有序id
-- `count` 24小時成交筆數
+- `cot` 24小時成交筆數
 - `change` 24小時價格變化
 - `change_percent` 24小時價格變化(百分比)
 
 
 
-**Subscribe**
+**訂閱**
 
-> Subscribe request
+> 請求示例
 
 ```json
 {
@@ -635,7 +634,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ```
 
 
-> Subscribe response
+> 響應示例
 
 ```json
 {
@@ -649,9 +648,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-**UnSubscribe**
+**取消訂閱**
 
-> UnSubscribe request
+> 請求示例
 
 ```json
 {
@@ -664,7 +663,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 ```
 
 
-> UnSubscribe response
+> 響應示例
 
 ```json
 {
@@ -677,9 +676,9 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**Feed Stream**
+**推送數據**
 
-> Feed Stream
+> 推送數據示例
 
 ```json
 
@@ -699,7 +698,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "count": 0,
+            "cot": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -707,7 +706,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 }
 ```
 
-#### V2 Request Ticker
+**請求  指定交易對最新行情數據**
 
 > 獲取指定交易對最新行情數據請求示例
 
@@ -743,7 +742,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "count": 0,
+        "cot": 0,
         "change": "0",
         "change_percent": "0"
     },
@@ -753,8 +752,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 
 ```
 
-
-## V2 公共頻道 Request 字段說明
+<h2 id="v2-public-req-param">公共頻道Request字段說明</h2>
 
 | 參數名      | 類型     | 必選  | 說明        | 參考值           |
 |:---------|:-------|:----|-----------|---------------|
@@ -765,22 +763,24 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 | interval | string | 否   | 頻率        | 1min          |
 | zip      | bool   | 是   | 是否啟用gzip	 | true,false    |
 
-## V2 公共頻道 Response 字段說明
+<h2 id="v2-public-rep-param">公共頻道Response字段說明</h2>
 
-| 參數名      | 類型     | 必選  | 說明    | 參考值           |
-|:---------|:-------|:----|-------|---------------|
-| event    | string | 是   | 請求事件  | [事件](#events) |
-| biz      | string | 是   | 業務線   | [業務線](#bizs)  |
-| type     | string | 是   | 業務類型  | [類型](#types)  |
-| product  | string | 是   | 交易對	  | BTC_USDT      |
-| interval | string | 否   | 頻率    | 1min          |
-| code     | int    | 是   | 錯誤碼   |               |
-| status   | string | 是   | 錯誤碼狀態 ||
-| data     | json   | 否   | 業務數據  | 參考具體業務數據說明    |
 
-## V2 公共頻道 Event 列表
+| 參數名      | 類型     | 必選  | 說明      | 參考值           |
+|:---------|:-------|:----|---------|---------------|
+| event    | string | 是   | 請求事件    | [事件](#events) |
+| biz      | string | 是   | 業務線     | [業務線](#bizs)  |
+| type     | string | 是   | 業務類型    | [類型](#types)  |
+| product  | string | 是   | 交易對	    | BTC_USDT      |
+| interval | string | 否   | 頻率      | 1min          |
+| code     | int    | 是   | 錯誤碼     |               |
+| status   | string | 是   | 錯誤碼狀態   | 可忽略           |
+| ts       | long   | 是   | unix時間戳 | 可忽略           |
+| data     | json   | 否   | 業務數據    | 參考具體業務數據說明    |
 
-<a name="v2-publilc-events"></a>
+
+<h2 id="v2-publilc-events">公共頻道Event列表</h2>
+
 
 | Event 名稱 | 類型     | 說明              |
 |:---------|:-------|-----------------|
@@ -789,16 +789,16 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 | req      | string | 請求數據事件，由客戶端主動發起 |
 
 
-## V2 公共頻道 Biz 列表
-
-<a name="v2-publilc-bizs"></a>
+<h2 id="v2-publilc-bizs">公共頻道Biz列表</h2>
 
 | Biz 名稱 | 類型     | 說明   |
 |:-------|:-------|------|
 | market | string | 現貨行情 |
 
-## V2 公共頻道 Type 列表
-<a name="v2-publilc-types"></a>
+
+
+<h2 id="v2-publilc-types">公共頻道Type列表</h2>
+
 
 | Type 名稱   | 類型     | 說明         |
 |:----------|:-------|------------|
@@ -806,7 +806,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 | candles   | string | K線數據       |
 | orderbook | string | 訂單薄        |
 | ticker    | string | 24小時ticker |
-| percent10 | string | 有限檔位深度     |
+| percent10 | string | 深度depth    |
 
 
 ----

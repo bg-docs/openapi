@@ -1,6 +1,6 @@
 # 交易和订单
 
-<h2 id="创建新订单"><font class="httpget">POST</font>  创建新订单</h2>
+<h2 id="创建新订单">POST  创建新订单</h2>
 
 
 只有当您的账户有足够的资金才能下单。
@@ -109,7 +109,7 @@ RESPONSE PARAMETERS
 |client_oid|用户自定义订单号，默认"0"|string|
 
 
-<h2 id="根据系统订单号查询单个订单"><font class="httpget">GET</font>  根据系统订单号查询单个订单</h2>
+<h2 id="根据系统订单号查询单个订单">GET  根据系统订单号查询单个订单</h2>
 
 获取指定订单信息。
 
@@ -193,7 +193,7 @@ RESPONSE PARAMETERS
 |updated_at|更新时间|string|
 |client_oid|用户自定义订单号|string|
 
-<h2 id="根据用户自定义订单号查询单个订单"><font class="httpget">GET</font>  根据用户自定义订单号查询单个订单</h2>
+<h2 id="根据用户自定义订单号查询单个订单">GET  根据用户自定义订单号查询单个订单</h2>
 
 当该自定义订单对应多个系统订单时，只返回最新系统订单。
 
@@ -281,7 +281,7 @@ RESPONSE PARAMETERS
 
 <a name="order_detail_demo"></a>
 
-<h2 id="获取交易明细"><font class="httpget">GET</font>  获取交易明细</h2>
+<h2 id="获取交易明细">GET  获取交易明细</h2>
 
 根据不同的查询条件可获得符合条件的交易明细
 
@@ -352,7 +352,7 @@ RESPONSE PARAMETERS
 
 <a name="fills_detail_demo"></a>
 
-<h2 id="获取当前的未完结订单"><font class="httpget">GET</font>  获取当前的未完结订单</h2>
+<h2 id="获取当前的未完结订单">GET  获取当前的未完结订单</h2>
 
 获取没有成交的订单
 
@@ -435,7 +435,7 @@ RESPONSE PARAMETERS
 
 <a name="order_trade_detail_demo"></a>
 
-<h2 id="根据系统订单号撤销单个订单"><font class="httpget">DELETE</font>  根据系统订单号撤销单个订单</h2>
+<h2 id="根据系统订单号撤销单个订单">DELETE  根据系统订单号撤销单个订单</h2>
 
 
 撤销指定的未完成订单
@@ -477,7 +477,7 @@ RESPONSE PARAMETERS
 | -------- | --------  |  -------- | 
 |order_id|订单id|string|
 
-<h2 id="根据用户自定义订单号撤销单个订单"><font class="httpget">DELETE</font>  根据用户自定义订单号撤销单个订单</h2>
+<h2 id="根据用户自定义订单号撤销单个订单">DELETE  根据用户自定义订单号撤销单个订单</h2>
 
  
 可撤销单个订单，若自定义订单对应多个系统订单，撤销最新一个订单，撤销申请成功，返回对应的系统订单号
@@ -518,7 +518,7 @@ RESPONSE PARAMETERS
 
 即将被取消的订单的ID列表
 
-<h2 id="根据商品取消所有订单"><font class="httpget">DELETE</font>  根据商品取消所有订单</h2>
+<h2 id="根据商品取消所有订单">DELETE  根据商品取消所有订单</h2>
 
 
 此方法为异步方法，当用户收到接口返回时，并不代表所有订单已经取消成功。BGE收到请求之后，会查询用户账户下对应商品ID的所有未成交订单，并对这些订单异步进行取消操作。

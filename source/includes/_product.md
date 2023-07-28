@@ -1,6 +1,6 @@
 # 公共数据
 
-<h2 id="K线"><font class="httpget">GET</font>  K线</h2>
+<h2 id="K线">GET  K线</h2>
 
 历史产品的k线图， 数据以数组形式返回，每个对象保函[`close`，`count`，`high`，`low`，`open`，`turnOver`，`vol`]
 
@@ -18,9 +18,9 @@ REQUEST PARAMETERS
 </aside>
 
 |参数名| 必选  |类型|                                                                                                                                                                说明                                                                                                                                                                |
-|:----    |:----|:----- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|:----    |:----|:----- |:--------|
 | product | true   |string |                                                                                          商品，例:ETH_USD                                                                                                                                         商品，例:ETH_USD                                                                                          |
-| period | true   |string | 指标周期  <br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color="red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red">"1mon"</font>] |
+| period | true   |string | 指标周期 ["step0","step5","step10","30min","60min","4hour","1day","1week","1mon"] |
 |start     | true   |string |                                                                               timestamp 毫秒                                                                                                                                                开始  (毫秒)                                                                               |
 |end     | true   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
 |size     | true   |string |                                                                          [1,2000]                                                                                                                                                       数据长度  [1,2000]                                                                           |
@@ -56,7 +56,7 @@ REQUEST PARAMETERS
 RESPONSE PARAMETERS
 </aside>
 |参数名|类型|   说明 |
-|:------:|:----:|:--:|
+|:------|:----|:-----|
 | close | int  |   收盘价格 |
 | high | int  |   最高价格 |
 | low | int  |   最低价格 |
@@ -69,7 +69,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="订单book"><font class="httpget">GET</font>  订单book</h2>
+<h2 id="订单book">GET  订单book</h2>
 
 
 订单book
@@ -89,9 +89,9 @@ REQUEST PARAMETERS
 
 
 |参数名|必选|类型| 说明                                                                                |
-|:----    |:---|:----- |-----------------------------------------------------------------------------------|
+|:----    |:---|:----- |:--------|
 | product |true  |string |      商品，例:ETH_USD                                                                             |
-| interval | true   |string | 指标周期  <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
+| interval | true   |string | 指标周期  [ "1", "11"] |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -202,7 +202,7 @@ RESPONSE PARAMETERS
 | asks   |[] | 卖方  |
 | pairCode   |string | 商品，例:ETH_USD  |
 
-<h2 id="全部币对24小时行情数据"><font class="httpget">GET</font>  全部币对24小时行情数据</h2>
+<h2 id="全部币对24小时行情数据">GET  全部币对24小时行情数据</h2>
 
 行情总览,获取有关交易（报价变动）、最佳买价/卖价和 24 小时交易量的快照信息。
 
@@ -262,7 +262,7 @@ RESPONSE PARAMETERS
 </aside>
 
 |参数名|类型|   说明 |
-|:------:|:----:|:--:|
+|:------|:----|:--|
 | close | int  |   收盘价格 |
 | high | int  |   最高价格 |
 | low | int  |   最低价格 |
@@ -271,7 +271,7 @@ RESPONSE PARAMETERS
 | vol | string  |  交易额 |
 | pairCode | string  |  商品，例:ETH_USD  |
 
-<h2 id="单币对24小时行情数据"><font class="httpget">GET</font>  单币对24小时行情数据</h2>
+<h2 id="单币对24小时行情数据">GET  单币对24小时行情数据</h2>
 
 获取有关最后交易（报价）、最佳买价/卖价和 24 小时交易量的快照信息。
 
@@ -328,7 +328,7 @@ RESPONSE PARAMETERS
 | turnOver |string   | 交易量  |
 | vol |string   | 交易额  |
 
-<h2 id="单币对单条实时成交"><font class="httpget">GET</font>  单币对单条实时成交</h2>
+<h2 id="单币对单条实时成交">GET  单币对单条实时成交</h2>
 
 
 获取产品的最新交易列表
@@ -384,7 +384,7 @@ RESPONSE PARAMETERS
 
 ----
 
-<h2 id="单币对多条实时成交"><font class="httpget">GET</font>  单币对多条实时成交</h2>
+<h2 id="单币对多条实时成交">GET  单币对多条实时成交</h2>
 
 
 获取产品的最新交易列表

@@ -1,6 +1,6 @@
 # Public Data
 
-<h2 id="K line"><font class="httpget">GET</font> K line</h2>
+<h2 id="Kline">GET Kline</h2>
 
 The k-line chart of historical products, the data is returned in the form of an array, and each object guarantees [`close`, `count`, `high`, `low`, `open`, `turnOver`, `vol`]
 
@@ -18,9 +18,9 @@ REQUEST PARAMETERS
 </aside>
 
 |parameter name| required |type| description |
-|:---- |:----|:----- |:------|
+|:---- |:----|:----- |:--------|
 | product | true |string | Commodity, eg: ETH_USD Commodity, eg: ETH_USD |
-| period | true |string | indicator period<br/> [ <font color="red">"step0"</font>, <font color="red">"step5"</font>, <font color= "red">"step10"</font>, <font color="red">"30min"</font>, <font color="red">"60min"</font>, <font color="red" ">"4hour"</font>, <font color="red">"1day"</font>, <font color="red">"1week"</font>, <font color="red"> "1mon"</font>] |
+| period | true |string | indicator period ["step0","step5","step10","30min","60min","4hour","1day","1week","1mon"] |
 |start | true |string | timestamp milliseconds start (milliseconds) |
 |end | true |string | end (milliseconds) |
 |size | true |string | [1,2000] data length [1,2000] |
@@ -56,20 +56,20 @@ REQUEST PARAMETERS
 RESPONSE PARAMETERS
 </aside>
 |parameter name|type| description |
-|:------:|:----:|:--:|
+|:------|:----|:-----|
 | close | int | closing price |
 | high | int | highest price |
 | low | int | lowest price |
 | open | int | opening price |
 | turnOver | string | TurnOver |
 | vol | string | transaction volume |
-| productId | string | commodity, for example: ETH_USD |
+| productId | string | product, for example: ETH_USD |
 
 
 
 
 
-<h2 id="order book"><font class="httpget">GET</font> order book</h2>
+<h2 id="order book">GET order book</h2>
 
 
 order book
@@ -89,9 +89,9 @@ REQUEST PARAMETERS
 
 
 |parameter name|required|type|description|
-|:---- |:---|:----- |------|
-| product |true |string | commodity, for example: ETH_USD|
-| interval | true |string | indicator period <br/> step [ <font color="red">"1"</font>, <font color="red">"11"</font>] |
+|:---- |:---|:----- |:-------|
+| product |true |string | commodity, for example: ETH_USD |
+| interval | true |string | indicator period [ "1", "11"] |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -202,7 +202,7 @@ RESPONSE PARAMETERS
 | asks |[] | seller |
 | pairCode |string | commodity, for example: ETH_USD |
 
-<h2 id="24-hour market data of all currency pairs"><font class="httpget">GET</font> 24-hour market data of all currency pairs</h2>
+<h2 id="24-hour market data of all currency pairs">GET 24-hour market data of all currency pairs</h2>
 
 Market overview, get a snapshot of trades (quote changes), best bid/ask prices and 24-hour volume.
 
@@ -262,7 +262,7 @@ RESPONSE PARAMETERS
 </aside>
 
 |parameter name|type| description |
-|:------:|:----:|:--:|
+|:------|:----|:--|
 | close | int | closing price |
 | high | int | highest price |
 | low | int | lowest price |
@@ -271,7 +271,7 @@ RESPONSE PARAMETERS
 | vol | string | transaction volume |
 | pairCode | string | commodity, for example: ETH_USD |
 
-<h2 id="24-hour market data of single currency pair"><font class="httpget">GET</font> 24-hour market data of single currency pair</h2>
+<h2 id="24-hour market data of single currency pair">GET 24-hour market data of single currency pair</h2>
 
 Get a snapshot of the last deal (quote), best bid/ask and 24-hour volume.
 
@@ -328,7 +328,7 @@ RESPONSE PARAMETERS
 | turnOver |string | TurnOver |
 | vol |string | transaction volume |
 
-<h2 id="Single currency pair real-time transaction"><font class="httpget">GET</font> Single currency pair real-time transaction</h2>
+<h2 id="Single currency pair real-time transaction">GET single currency pair real-time transaction</h2>
 
 
 Get the latest deals list for products
@@ -384,7 +384,7 @@ RESPONSE PARAMETERS
 
 ----
 
-<h2 id="Single currency pair multiple real-time transactions"><font class="httpget">GET</font> Single currency pair multiple real-time transactions</h2>
+<h2 id="Single currency pair multiple real-time transactions">GET Single currency pair multiple real-time transactions</h2>
 
 
 Get the latest deals list for products

@@ -1,6 +1,6 @@
 # Transactions And Orders
 
-<h2 id="Create new order"><font class="httpget">POST</font> Create new order</h2>
+<h2 id="Create new order">POST to create a new order</h2>
 
 
 Orders can only be placed if your account has sufficient funds.
@@ -109,7 +109,7 @@ RESPONSE PARAMETERS
 |client_oid|User-defined order number, default "0"|string|
 
 
-<h2 id="Query a single order according to the system order number"><font class="httpget">GET</font> Query a single order according to the system order number</h2>
+<h2 id="Query a single order according to the system order number">GET query a single order according to the system order number</h2>
 
 Get the specified order information.
 
@@ -193,7 +193,7 @@ RESPONSE PARAMETERS
 |updated_at|updated time|string|
 |client_oid|User-defined order number|string|
 
-<h2 id="Query a single order by user-defined order number"><font class="httpget">GET</font> Query a single order by user-defined order number</h2>
+<h2 id="Query a single order by user-defined order number">GET Query a single order by user-defined order number</h2>
 
 When the custom order corresponds to multiple system orders, only the latest system order will be returned.
 
@@ -281,7 +281,7 @@ RESPONSE PARAMETERS
 
 <a name="order_detail_demo"></a>
 
-<h2 id="Get transaction details"><font class="httpget">GET</font> Get transaction details</h2>
+<h2 id="Get Transaction Details">GET Get Transaction Details</h2>
 
 Qualified transaction details can be obtained according to different query conditions
 
@@ -352,7 +352,7 @@ RESPONSE PARAMETERS
 
 <a name="fills_detail_demo"></a>
 
-<h2 id="Get current unfinished orders"><font class="httpget">GET</font> Get current unfinished orders</h2>
+<h2 id="Get current unfinished orders">GET Get current unfinished orders</h2>
 
 Get orders that have not been executed
 
@@ -435,7 +435,7 @@ RESPONSE PARAMETERS
 
 <a name="order_trade_detail_demo"></a>
 
-<h2 id="Cancel a single order according to the system order number"><font class="httpget">DELETE</font> Cancel a single order according to the system order number</h2>
+<h2 id="Cancel a single order according to the system order number">DELETE Cancel a single order according to the system order number</h2>
 
 
 Cancel the specified outstanding order
@@ -477,7 +477,7 @@ RESPONSE PARAMETERS
 | -------- | -------- | -------- |
 |order_id|order id|string|
 
-<h2 id="Cancel a single order according to the user-defined order number"><font class="httpget">DELETE</font> Cancel a single order according to the user-defined order number</h2>
+<h2 id="Cancel a single order according to the user-defined order number">DELETE Cancel a single order according to the user-defined order number</h2>
 
 
 A single order can be canceled. If the custom order corresponds to multiple system orders, cancel the latest order. If the cancellation application is successful, the corresponding system order number will be returned.
@@ -518,7 +518,7 @@ RESPONSE PARAMETERS
 
 A list of IDs of orders that are about to be canceled
 
-<h2 id="Cancel all orders by item"><font class="httpget">DELETE</font> Cancel all orders by item</h2>
+<h2 id="Cancel all orders by item">DELETE Cancel all orders by item</h2>
 
 
 This method is an asynchronous method. When the user receives the interface return, it does not mean that all orders have been canceled successfully. After BGE receives the request, it will query all unfilled orders corresponding to the commodity ID under the user account, and cancel these orders asynchronously.

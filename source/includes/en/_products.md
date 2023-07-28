@@ -1,6 +1,6 @@
 # Product
 
-<h2 id="Get all known trading products"><font class="httpget">GET</font> Get all known trading products</h2>
+<h2 id="Get all known trading products">GET get all known trading products</h2>
 
 Get all trading product information
 
@@ -112,7 +112,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="Get single product details"><font class="httpget">GET</font> Get single product details</h2>
+<h2 id="Get Single Product Details">GET Get Single Product Details</h2>
 
 Get the specified trading product information
 

@@ -1,6 +1,6 @@
 # 交易和訂單
 
-<h2 id="創建新訂單"><font class="httpget">POST</font>  創建新訂單</h2>
+<h2 id="創建新訂單">POST  創建新訂單</h2>
 
 
 只有當您的賬戶有足夠的資金才能下單。
@@ -109,7 +109,7 @@ RESPONSE PARAMETERS
 |client_oid|用戶自定義訂單號，默認"0"|string|
 
 
-<h2 id="根據系統訂單號查詢單個訂單"><font class="httpget">GET</font>  根據系統訂單號查詢單個訂單</h2>
+<h2 id="根據系統訂單號查詢單個訂單">GET  根據系統訂單號查詢單個訂單</h2>
 
 獲取指定訂單信息。
 
@@ -193,7 +193,7 @@ RESPONSE PARAMETERS
 |updated_at|更新時間|string|
 |client_oid|用戶自定義訂單號|string|
 
-<h2 id="根據用戶自定義訂單號查詢單個訂單"><font class="httpget">GET</font>  根據用戶自定義訂單號查詢單個訂單</h2>
+<h2 id="根據用戶自定義訂單號查詢單個訂單">GET  根據用戶自定義訂單號查詢單個訂單</h2>
 
 當該自定義訂單對應多個系統訂單時，只返回最新系統訂單。
 
@@ -281,7 +281,7 @@ RESPONSE PARAMETERS
 
 <a name="order_detail_demo"></a>
 
-<h2 id="獲取交易明細"><font class="httpget">GET</font>  獲取交易明細</h2>
+<h2 id="獲取交易明細">GET  獲取交易明細</h2>
 
 根據不同的查詢條件可獲得符合條件的交易明細
 
@@ -352,7 +352,7 @@ RESPONSE PARAMETERS
 
 <a name="fills_detail_demo"></a>
 
-<h2 id="獲取當前的未完結訂單"><font class="httpget">GET</font>  獲取當前的未完結訂單</h2>
+<h2 id="獲取當前的未完結訂單">GET  獲取當前的未完結訂單</h2>
 
 獲取沒有成交的訂單
 
@@ -435,7 +435,7 @@ RESPONSE PARAMETERS
 
 <a name="order_trade_detail_demo"></a>
 
-<h2 id="根據系統訂單號撤銷單個訂單"><font class="httpget">DELETE</font>  根據系統訂單號撤銷單個訂單</h2>
+<h2 id="根據系統訂單號撤銷單個訂單">DELETE  根據系統訂單號撤銷單個訂單</h2>
 
 
 撤銷指定的未完成訂單
@@ -477,7 +477,7 @@ RESPONSE PARAMETERS
 | -------- | --------  |  -------- | 
 |order_id|訂單id|string|
 
-<h2 id="根據用戶自定義訂單號撤銷單個訂單"><font class="httpget">DELETE</font>  根據用戶自定義訂單號撤銷單個訂單</h2>
+<h2 id="根據用戶自定義訂單號撤銷單個訂單">DELETE  根據用戶自定義訂單號撤銷單個訂單</h2>
 
 
 可撤銷單個訂單，若自定義訂單對應多個系統訂單，撤銷最新一個訂單，撤銷申請成功，返回對應的系統訂單號
@@ -518,7 +518,7 @@ RESPONSE PARAMETERS
 
 即將被取消的訂單的ID列表
 
-<h2 id="根據商品取消所有訂單"><font class="httpget">DELETE</font>  根據商品取消所有訂單</h2>
+<h2 id="根據商品取消所有訂單">DELETE  根據商品取消所有訂單</h2>
 
 
 此方法為異步方法，當用戶收到接口返回時，並不代表所有訂單已經取消成功。 BGE收到請求之後，會查詢用戶賬戶下對應商品ID的所有未成交訂單，並對這些訂單異步進行取消操作。

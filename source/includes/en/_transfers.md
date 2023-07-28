@@ -1,6 +1,6 @@
 # Transfer Of Funds
 
-<h2 id="Transfer from fund account to transaction account"><font class="httpget">POST</font> Transfer from fund account to transaction account</h2>
+<h2 id="Transfer from fund account to transaction account">POST transfer from fund account to transaction account</h2>
 
 Transfer funds from the fund account to the designated trading account
 
@@ -59,7 +59,7 @@ RESPONSE PARAMETERS
 
 
 
-<h2 id="Transfer from trading account to capital account"><font class="httpget">POST</font>Transfer from trading account to capital account</h2>
+<h2 id="Transfer from transaction account to fund account">POST transfer from transaction account to fund account</h2>
 
 Transfer the funds from the trading account to the capital account. After the transfer, you can carry out the cash withdrawal operation.
 
