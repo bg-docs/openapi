@@ -16,9 +16,9 @@ Before subscribing to messages, you need to establish a WebSocket connection. Co
 ### When subscribing to a public channel, use the address of the public service; when subscribing to a private channel, use the address of the private service
 
 - Public channel: The public channel is a channel broadcast to all clients connected to the exchange, including market conditions, transaction depth and other information.
-  For the access method, please refer to: [WEBSOCKET PUBLIC V2](#websocket-feed-public-v2)
+  For the access method, please refer to: [WEBSOCKET PUBLIC V2](#v2-public-ws)
 - Private channel: A private channel refers to a channel that only pushes personal-related information to specific clients, such as order notifications, account balances, etc.
-  For the access method, please refer to: [WEBSOCKET PRIVATE V2](#websocket-feed-private-v2)
+  For the access method, please refer to: [WEBSOCKET PRIVATE V2](#v2-private-ws)
 
 Please select the corresponding service address to connect to public or private channels according to your needs.
 

@@ -17,9 +17,9 @@ WebSocket 是一種在單個 TCP 連接上進行全雙工通信的網絡協議�
 ### 當訂閱公有頻道時，使用公有服務的地址；當訂閱私有頻道時，使用私有服務的地址
 
 - 公有頻道：公有頻道是向所有連接到交易所的客戶端廣播的頻道，包含市場行情、交易深度等信息。
-  接入方法請參考: [WEBSOCKET PUBLIC V2](#websocket-feed-public-v2)
+  接入方法請參考: [WEBSOCKET PUBLIC V2](#v2-public-ws)
 - 私有頻道：私有頻道是指僅向特定客戶端推送個人相關信息的頻道，例如訂單通知、賬戶餘額等。
-  接入方法請參考: [WEBSOCKET PRIVATE V2](#websocket-feed-private-v2)
+  接入方法請參考: [WEBSOCKET PRIVATE V2](#v2-private-ws)
 
 請根據您的需求選擇相應的服務地址連接到公有或私有頻道。
 
