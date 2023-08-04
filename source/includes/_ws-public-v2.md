@@ -39,7 +39,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `filled_size` 这根K线期间成交额
 - `vol` 这根K线期间成交量
 - `seq_id` 唯一且有序id
-- `cot` 这根K线期间成交笔数
+- `count` 这根K线期间成交笔数
 - `interval` K线间隔
 - `product` 交易对
 
@@ -127,7 +127,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -181,7 +181,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         },
         {
             "id": 1688399100,
@@ -191,7 +191,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         }
     ],
     "event": "req",
@@ -612,7 +612,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 - `filled_size` 24小时内成交额
 - `vol` 24小时内成交量
 - `seq_id` 唯一且有序id
-- `cot` 24小时成交笔数
+- `count` 24小时成交笔数
 - `change` 24小时价格变化
 - `change_percent` 24小时价格变化(百分比)
 
@@ -697,7 +697,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0,
+            "count": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -741,7 +741,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "change": "0",
         "change_percent": "0"
     },

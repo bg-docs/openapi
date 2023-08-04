@@ -39,7 +39,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 - `filled_size` the transaction volume during this K-line
 - `vol` is the trading volume during this K-line
 - `seq_id` unique and ordered id
-- `cot` is the number of transactions during this K-line period
+- `count` is the number of transactions during this K-line period
 - `interval` K-line interval
 - `product` trading pair
 
@@ -127,7 +127,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -181,7 +181,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         },
         {
             "id": 1688399100,
@@ -191,7 +191,7 @@ min -> minute; hour -> hour; day -> day; week -> week; mon -> month
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         }
     ],
     "event": "req",
@@ -612,7 +612,7 @@ Obtain product 24-hour ticker incremental push data
 - `filled_size` turnover within 24 hours
 - `vol` volume in 24 hours
 - `seq_id` unique and ordered id
-- `cot` 24-hour transaction count
+- `count` 24-hour transaction count
 - `change` 24 hour price change
 - `change_percent` 24h price change (percentage)
 
@@ -697,7 +697,7 @@ Obtain product 24-hour ticker incremental push data
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0,
+            "count": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -741,7 +741,7 @@ Obtain product 24-hour ticker incremental push data
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "change": "0",
         "change_percent": "0"
     },

@@ -40,7 +40,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `filled_size` 這根K線期間成交額
 - `vol` 這根K線期間成交量
 - `seq_id` 唯一且有序id
-- `cot` 這根K線期間成交筆數
+- `count` 這根K線期間成交筆數
 - `interval` K線間隔
 - `product` 交易對
 
@@ -128,7 +128,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "seq_id": 112588635
     },
     "product": "BTC_USDT",
@@ -182,7 +182,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         },
         {
             "id": 1688399100,
@@ -192,7 +192,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.3706",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0
+            "count": 0
         }
     ],
     "event": "req",
@@ -613,7 +613,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
 - `filled_size` 24小時內成交額
 - `vol` 24小時內成交量
 - `seq_id` 唯一且有序id
-- `cot` 24小時成交筆數
+- `count` 24小時成交筆數
 - `change` 24小時價格變化
 - `change_percent` 24小時價格變化(百分比)
 
@@ -698,7 +698,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
             "low": "3.7366",
             "filled_size": "0",
             "vol": "0",
-            "cot": 0,
+            "count": 0,
             "change": "0",
             "change_percent": "0"
         }
@@ -742,7 +742,7 @@ min -> 分鐘; hour -> 小時; day -> 天; week -> 週; mon -> 月
         "low": "3.7366",
         "filled_size": "0",
         "vol": "0",
-        "cot": 0,
+        "count": 0,
         "change": "0",
         "change_percent": "0"
     },
