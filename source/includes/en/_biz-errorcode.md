@@ -85,4 +85,23 @@
 | 1084 | No current order |
 | 1085 | Exceeded the maximum number of orders |
 | 1087 | No data found |
+| 1088 | No way to verify user identity |
+| 1089 | One of order_id or product_id cannot be empty |
+| 1090 | client_oid already exists |
+| 1091 | client_oid does not meet the rules |
+| 1092 | The available balance of the current trading account is insufficient, whether to automatically transfer the ${0} in the fund account to the trading account, and initiate an order |
+| 1093 | Insufficient account balance |
+| 1094 | Transfer fail |
+| 1095 | The quantity is too large |
 | 1096 | Account does not exist |
+| 1097 | System timeout                             |
+| 1098 | The system is busy                             |
+
+
+
+
+
+
+
+
+
