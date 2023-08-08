@@ -563,7 +563,7 @@
             <a href="#b0c18f57d6" class="toc-h1 toc-link" data-title="數據字典">數據字典</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#websocket" class="toc-h2 toc-link" data-title="WEBSOCKET錯誤碼對照表">WEBSOCKET錯誤碼對照表</a>
+                    <a href="#websocket" class="toc-h2 toc-link" data-title="WEBSOCKET狀態碼對照表">WEBSOCKET狀態碼對照表</a>
                   </li>
                   <li>
                     <a href="#99da7dcd63" class="toc-h2 toc-link" data-title="用戶認證錯誤碼對照表">用戶認證錯誤碼對照表</a>
@@ -7305,7 +7305,7 @@ RESPONSE PARAMETERS
                         <span class="o">.</span><span class="na">characterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)</span>
                         <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">))</span>
                         <span class="o">.</span><span class="na">contentType</span><span class="o">(</span><span class="nc">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">)</span>
-</code></pre></div><h1 id='b0c18f57d6'>數據字典</h1><h2 id='websocket'>WEBSOCKET錯誤碼對照表</h2>
+</code></pre></div><h1 id='b0c18f57d6'>數據字典</h1><h2 id='websocket'>WEBSOCKET狀態碼對照表</h2>
 <p><a id="WSERR"></a></p>
 
 <table><thead>
@@ -7362,7 +7362,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>40007</td>
-<td>無效的Content_Type，請使用“application/json”格式</td>
+<td>無效的Content_Type，請使用「application/json」格式</td>
 </tr>
 <tr>
 <td>40008</td>
@@ -7394,7 +7394,7 @@ RESPONSE PARAMETERS
 </tr>
 </tbody></table>
 <h2 id='683d075a21'>業務錯誤碼對照表</h2>
-<p><code>amount limit value</code> 為產品所配置的交易金額/數量上下限，BGE 為保護市場穩定，根據市場實時行情限定了交易限制，具體數額會隨市場交易情況實時波動。
+<p><code>amount limit value</code> 為產品所配置的交易金額/數量上下限，BGE 為保護市場穩定，根據市場實時行情限定了交易限製，具體數額會隨市場交易情況實時波動。
 <a id="ERR1"></a></p>
 
 <table><thead>
@@ -7445,7 +7445,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>1055</td>
-<td>金額小於餘額</td>
+<td>金額小於余額</td>
 </tr>
 <tr>
 <td>1056</td>
@@ -7493,7 +7493,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>1100</td>
-<td>可用餘額不足</td>
+<td>可用余額不足</td>
 </tr>
 <tr>
 <td>1064</td>
@@ -7537,7 +7537,7 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>1074</td>
-<td>賬戶餘額不足</td>
+<td>賬戶余額不足</td>
 </tr>
 <tr>
 <td>1075</td>
@@ -7577,19 +7577,59 @@ RESPONSE PARAMETERS
 </tr>
 <tr>
 <td>1084</td>
-<td>無當前委託訂單</td>
+<td>無當前委托訂單</td>
 </tr>
 <tr>
 <td>1085</td>
-<td>超過最大委託數</td>
+<td>超過最大委托數</td>
 </tr>
 <tr>
 <td>1087</td>
 <td>查找不到數據</td>
 </tr>
 <tr>
+<td>1088</td>
+<td>無法驗證用戶身份</td>
+</tr>
+<tr>
+<td>1089</td>
+<td>order_id或者product_id有一個不能為空</td>
+</tr>
+<tr>
+<td>1090</td>
+<td>client_oid已經存在</td>
+</tr>
+<tr>
+<td>1091</td>
+<td>client_oid不符合規則</td>
+</tr>
+<tr>
+<td>1092</td>
+<td>當前交易賬戶可用余額不足，是否自動將資金賬戶的${0}劃轉至交易賬戶，並發起下單</td>
+</tr>
+<tr>
+<td>1093</td>
+<td>資金賬戶余額不足</td>
+</tr>
+<tr>
+<td>1094</td>
+<td>劃轉失敗</td>
+</tr>
+<tr>
+<td>1095</td>
+<td>超過最大數量</td>
+</tr>
+<tr>
 <td>1096</td>
 <td>賬戶不存在</td>
+</tr>
+<tr>
+<td>1097</td>
+<td>系統超時</td>
+</tr>
+<tr>
+<td>1098</td>
+<td>系統繁忙</td>
 </tr>
 </tbody></table>
 
