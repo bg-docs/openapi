@@ -1,6 +1,5 @@
 <h1 id="v2-private-ws">WEBSOCKET private channel V2</h1>
 
-
 - [Private channel V2 address](#WS_HOST_PRIVATE_V2)
 
 <h2 id="v2-private-auth">Private channel login authentication</h2>
@@ -278,8 +277,7 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
   "biz": "exchange",
   "type": "orders",
   "product": "BTC_USDT",
-  "data":
-  [
+  "data": [
     {
       "orders_id": "179577241915696235",
       "product": "BTC_USDT",
@@ -290,7 +288,8 @@ Please refer to [Common Request Parameter Description](#v2-req-param) and [Gener
       "funds": "1.00000000",
       "filled_size": "0.00000000",
       "type": "limit",
-      "status": "1"
+      "status": "1",
+      "client_oid": ""
     }
   ]
 }
@@ -356,11 +355,12 @@ Description of order data fields, please ignore other fields other than this des
 | side | buy/sell | string |
 | price | price per unit of base currency | string |
 | size | Amount of base currency to buy/sell | string |
-| filled_amount | filled amount | string ||
+| filled_amount | filled amount | string |
 | funds | Amount of quote currency to use | string |
 | filled_size | transaction amount | string |
 | type | limit: limit order/market: market order/ | string |
 | status | status | string |
+| client_oid | user-defined order number | string |
 
 `status`: transaction status, value range 0-7
 
@@ -394,7 +394,7 @@ Description of order data fields, please ignore other fields other than this des
 
 
 | Parameter name | Type | Mandatory | Description | Reference value |
-|:-------|:-------|:----|---------|--------------|
+|:-------|:-------|:----|---------|------------- -|
 | event | string | yes | request event | [event](#events) |
 | biz | string | yes | line of business | [line of business](#bizs) |
 | type | string | yes | business type | [type](#types) |

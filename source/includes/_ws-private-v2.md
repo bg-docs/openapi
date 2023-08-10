@@ -277,8 +277,7 @@
   "biz": "exchange",
   "type": "orders",
   "product": "BTC_USDT",
-  "data":
-  [
+  "data": [
     {
       "orders_id": "179577241915696235",
       "product": "BTC_USDT",
@@ -289,7 +288,8 @@
       "funds": "1.00000000",
       "filled_size": "0.00000000",
       "type": "limit",
-      "status": "1"
+      "status": "1",
+      "client_oid": ""
     }
   ]
 }
@@ -355,11 +355,12 @@
 | side          | buy/sell              | string |
 | price         | 每单位基础货币的价格            | string |
 | size          | 买入/卖出的基础货币数量          | string |
-| filled_amount | 成交数量                  | string ||
+| filled_amount | 成交数量                  | string |
 | funds         | 想要使用的报价货币数量           | string |
 | filled_size   | 成交金额                  | string |
 | type          | limit:限价单/market:市价单/ | string |
 | status        | 状态                    | string |
+| client_oid    | 用户自定义订单号              | string |
 
 `status`: 交易状态，取值范围0-7
 

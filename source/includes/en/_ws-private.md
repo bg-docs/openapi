@@ -1,6 +1,6 @@
 # ~~WEBSOCKET PRIVATE(DEPRECATED)~~
 
-- [Private channel address(DEPRECATED)](#WS_HOST_PRIVATE)
+- [Private channel address (DEPRECATED)](#WS_HOST_PRIVATE)
 
 
 ## Login
@@ -187,6 +187,7 @@ Subscribe to status changes for all orders
 | type | string | [protocol type](#types) |
 | product |string | product name|
 | data.result |bool | Whether the subscription is successful |
+
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -203,6 +204,8 @@ RESPONSE PARAMETERS
 |filled_size| transaction amount |string||
 |type|limit: limit order/market: market order/|string||
 |status|status|string||
+|client_oid| user-defined order number | string ||
+
 
 `status`: transaction status, value range 0-7
 
@@ -233,7 +236,8 @@ RESPONSE PARAMETERS
     "funds": "1",
     "filled_size": "0",
     "type": "limit",
-    "status": 0
+    "status": "1",
+    "client_oid": ""
   }
 }
 ```

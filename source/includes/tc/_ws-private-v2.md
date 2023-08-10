@@ -43,7 +43,7 @@
 
 
 | 參數名                     | 必選  | 類型     | 說明                         |
-|:------------------------|:----|:-------|----------------------------|
+|:------------------------|:----|:-------|-------- --------------------|
 | params.type             | 是   | string | 認證方式: <br/>`api`:apiKey認證; |
 | params.access_key       | 是   | string | [鑑權說明](#auth)              |
 | params.access_sign      | 是   | string | [鑑權說明](#auth)              |
@@ -277,8 +277,7 @@
   "biz": "exchange",
   "type": "orders",
   "product": "BTC_USDT",
-  "data":
-  [
+  "data": [
     {
       "orders_id": "179577241915696235",
       "product": "BTC_USDT",
@@ -289,7 +288,8 @@
       "funds": "1.00000000",
       "filled_size": "0.00000000",
       "type": "limit",
-      "status": "1"
+      "status": "1",
+      "client_oid": ""
     }
   ]
 }
@@ -355,11 +355,12 @@
 | side          | buy/sell              | string |
 | price         | 每單位基礎貨幣的價格            | string |
 | size          | 買入/賣出的基礎貨幣數量          | string |
-| filled_amount | 成交數量                  | string ||
+| filled_amount | 成交數量                  | string |
 | funds         | 想要使用的報價貨幣數量           | string |
 | filled_size   | 成交金額                  | string |
 | type          | limit:限價單/market:市價單/ | string |
 | status        | 狀態                    | string |
+| client_oid    | 用戶自定義訂單號              | string |
 
 `status`: 交易狀態，取值範圍0-7
 
@@ -393,7 +394,7 @@
 
 
 | 參數名     | 類型     | 必選  | 說明      | 參考值           |
-|:--------|:-------|:----|---------|---------------|
+|:--------|:-------|:----|---------|-------------- -|
 | event   | string | 是   | 請求事件    | [事件](#events) |
 | biz     | string | 是   | 業務線     | [業務線](#bizs)  |
 | type    | string | 是   | 業務類型    | [類型](#types)  |

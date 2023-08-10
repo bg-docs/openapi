@@ -187,6 +187,7 @@
 | type | string |  [協議類型](#types) |
 | product    |string | 產品名|
 | data.result     |bool | 訂閱是否成功 |
+
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -203,6 +204,8 @@ RESPONSE PARAMETERS
 |filled_size| 成交金額 |string||
 |type|limit:限價單/market:市價單/|string||
 |status|狀態|string||
+|client_oid| 用戶自定義訂單號 | string ||
+
 
 `status`: 交易狀態，取值範圍0-7
 
@@ -233,7 +236,8 @@ RESPONSE PARAMETERS
     "funds": "1",
     "filled_size": "0",
     "type": "limit",
-    "status": 0
+    "status": "1",
+    "client_oid": ""
   }
 }
 ```
