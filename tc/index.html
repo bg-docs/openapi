@@ -4452,45 +4452,13 @@ ERROR REQUEST EXAMPLE
 
 <h4 id="v2-private-login-req">登錄請求參數說明</h4>
 
-<table><thead>
-<tr>
-<th style="text-align: left">參數名</th>
-<th style="text-align: left">必選</th>
-<th style="text-align: left">類型</th>
-<th>說明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">params.type</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td>認證方式: <br/><code>api</code>:apiKey認證;</td>
-</tr>
-<tr>
-<td style="text-align: left">params.access_key</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td><a href="#auth">鑑權說明</a></td>
-</tr>
-<tr>
-<td style="text-align: left">params.access_sign</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td><a href="#auth">鑑權說明</a></td>
-</tr>
-<tr>
-<td style="text-align: left">params.access_timestamp</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">long</td>
-<td><a href="#auth">鑑權說明</a></td>
-</tr>
-<tr>
-<td style="text-align: left">event</td>
-<td style="text-align: left">是</td>
-<td style="text-align: left">string</td>
-<td>事件名 <a href="#events">事件列表</a></td>
-</tr>
-</tbody></table>
+<p>| 參數名                     | 必選  | 類型     | 說明                         |
+|:------------------------|:----|:-------|-------- --------------------|
+| params.type             | 是   | string | 認證方式: <br/><code>api</code>:apiKey認證; |
+| params.access_key       | 是   | string | <a href="#auth">鑑權說明</a>              |
+| params.access_sign      | 是   | string | <a href="#auth">鑑權說明</a>              |
+| params.access_timestamp | 是   | long   | <a href="#auth">鑑權說明</a>              |
+| event                   | 是   | string | 事件名 <a href="#events">事件列表</a>        |</p>
 
 <h4 id="v2-private-login-rep">登錄響應參數說明</h4>
 
@@ -4765,8 +4733,7 @@ ERROR REQUEST EXAMPLE
   </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exchange"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"orders_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"179577241915696235"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
@@ -4777,7 +4744,8 @@ ERROR REQUEST EXAMPLE
       </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"client_oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4886,6 +4854,11 @@ ERROR REQUEST EXAMPLE
 <td style="text-align: left">狀態</td>
 <td>string</td>
 </tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: left">用戶自定義訂單號</td>
+<td>string</td>
+</tr>
 </tbody></table>
 
 <p><code>status</code>: 交易狀態，取值範圍0-7</p>
@@ -4947,65 +4920,15 @@ ERROR REQUEST EXAMPLE
 
 <h2 id="v2-private-rep-param">私有頻道 通用響應參數說明</h2>
 
-<table><thead>
-<tr>
-<th style="text-align: left">參數名</th>
-<th style="text-align: left">類型</th>
-<th style="text-align: left">必選</th>
-<th>說明</th>
-<th>參考值</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">event</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">是</td>
-<td>請求事件</td>
-<td><a href="#events">事件</a></td>
-</tr>
-<tr>
-<td style="text-align: left">biz</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">是</td>
-<td>業務線</td>
-<td><a href="#bizs">業務線</a></td>
-</tr>
-<tr>
-<td style="text-align: left">type</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">是</td>
-<td>業務類型</td>
-<td><a href="#types">類型</a></td>
-</tr>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">是</td>
-<td>交易對</td>
-<td>BTC_USDT</td>
-</tr>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">number</td>
-<td style="text-align: left">是</td>
-<td>錯誤碼</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">是</td>
-<td>錯誤碼狀態</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left">ts</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">是</td>
-<td>unix時間戳</td>
-<td></td>
-</tr>
-</tbody></table>
+<p>| 參數名     | 類型     | 必選  | 說明      | 參考值           |
+|:--------|:-------|:----|---------|-------------- -|
+| event   | string | 是   | 請求事件    | <a href="#events">事件</a> |
+| biz     | string | 是   | 業務線     | <a href="#bizs">業務線</a>  |
+| type    | string | 是   | 業務類型    | <a href="#types">類型</a>  |
+| product | string | 是   | 交易對      | BTC_USDT      |
+| code    | number | 是   | 錯誤碼     |               |
+| status  | string | 是   | 錯誤碼狀態   ||
+| ts      | long   | 是   | unix時間戳 |               |</p>
 
 <h2 id="v2-private-events">私有頻道Event列表</h2>
 
@@ -6961,6 +6884,12 @@ RESPONSE PARAMETERS
 <td>string</td>
 <td></td>
 </tr>
+<tr>
+<td>client_oid</td>
+<td>用戶自定義訂單號</td>
+<td>string</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <p><code>status</code>: 交易狀態，取值範圍0-7</p>
@@ -6992,7 +6921,8 @@ RESPONSE PARAMETERS
     </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='144f936dab-2'>推送數據</h4>

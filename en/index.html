@@ -4733,8 +4733,7 @@ Request Asset Data Field Descriptions
   </span><span class="nl">"biz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exchange"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"orders_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"179577241915696235"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
@@ -4745,7 +4744,8 @@ Request Asset Data Field Descriptions
       </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"client_oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4854,6 +4854,11 @@ Description of order data fields, please ignore other fields other than this des
 <td style="text-align: left">status</td>
 <td>string</td>
 </tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: left">user-defined order number</td>
+<td>string</td>
+</tr>
 </tbody></table>
 
 <p><code>status</code>: transaction status, value range 0-7</p>
@@ -4915,65 +4920,15 @@ Description of order data fields, please ignore other fields other than this des
 
 <h2 id="v2-private-rep-param">Private channel general response parameter description</h2>
 
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: left">Mandatory</th>
-<th>Description</th>
-<th>Reference value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">event</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">yes</td>
-<td>request event</td>
-<td><a href="#events">event</a></td>
-</tr>
-<tr>
-<td style="text-align: left">biz</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">yes</td>
-<td>line of business</td>
-<td><a href="#bizs">line of business</a></td>
-</tr>
-<tr>
-<td style="text-align: left">type</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">yes</td>
-<td>business type</td>
-<td><a href="#types">type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">yes</td>
-<td>trading pair</td>
-<td>BTC_USDT</td>
-</tr>
-<tr>
-<td style="text-align: left">code</td>
-<td style="text-align: left">number</td>
-<td style="text-align: left">yes</td>
-<td>error code</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">yes</td>
-<td>error code status</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left">ts</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">yes</td>
-<td>unix timestamp</td>
-<td></td>
-</tr>
-</tbody></table>
+<p>| Parameter name | Type | Mandatory | Description | Reference value |
+|:-------|:-------|:----|---------|------------- -|
+| event | string | yes | request event | <a href="#events">event</a> |
+| biz | string | yes | line of business | <a href="#bizs">line of business</a> |
+| type | string | yes | business type | <a href="#types">type</a> |
+| product | string | yes | trading pair | BTC_USDT |
+| code | number | yes | error code | |
+| status | string | yes | error code status ||
+| ts | long | yes | unix timestamp | |</p>
 
 <h2 id="v2-private-events">Private channel event list</h2>
 
@@ -6504,7 +6459,7 @@ Description of order data fields, please ignore other fields other than this des
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='websocket-private-deprecated'><del>WEBSOCKET PRIVATE(DEPRECATED)</del></h1>
 <ul>
-<li><a href="#WS_HOST_PRIVATE">Private channel address(DEPRECATED)</a></li>
+<li><a href="#WS_HOST_PRIVATE">Private channel address (DEPRECATED)</a></li>
 </ul>
 <h2 id='login'>Login</h2>
 <p>Perform WS channel user authentication. Only authenticated channels can subscribe to the user&#39;s asset information and order status change information</p>
@@ -6929,6 +6884,12 @@ RESPONSE PARAMETERS
 <td>string</td>
 <td></td>
 </tr>
+<tr>
+<td>client_oid</td>
+<td>user-defined order number</td>
+<td>string</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <p><code>status</code>: transaction status, value range 0-7</p>
@@ -6960,7 +6921,8 @@ RESPONSE PARAMETERS
     </span><span class="nl">"funds"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='push-data-2'>push data</h4>
