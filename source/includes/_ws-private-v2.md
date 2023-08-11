@@ -360,7 +360,7 @@
 | filled_size   | 成交金额                  | string |
 | type          | limit:限价单/market:市价单/ | string |
 | status        | 状态                    | string |
-| client_oid    | 用户自定义订单号              | string |
+| client_oid    | 默认"0"，用户自定义订单号              | string |
 
 `status`: 交易状态，取值范围0-7
 

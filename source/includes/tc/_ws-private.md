@@ -204,7 +204,7 @@ RESPONSE PARAMETERS
 |filled_size| 成交金額 |string||
 |type|limit:限價單/market:市價單/|string||
 |status|狀態|string||
-|client_oid| 用戶自定義訂單號 | string ||
+|client_oid| 默認"0"，用戶自定義訂單號 | string ||
 
 
 `status`: 交易狀態，取值範圍0-7

@@ -360,7 +360,7 @@ Description of order data fields, please ignore other fields other than this des
 | filled_size | transaction amount | string |
 | type | limit: limit order/market: market order/ | string |
 | status | status | string |
-| client_oid | user-defined order number | string |
+| client_oid | default "0", user-defined order number | string |
 
 `status`: transaction status, value range 0-7
 
