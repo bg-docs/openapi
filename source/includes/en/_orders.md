@@ -48,7 +48,7 @@ REQUEST PARAMETERS
 - `limit`: limit order
 - `market`: market order
 
-`client_oid`: Optional, default "0", user-defined order number, used for users to manage their own orders. The ID is non-unique, a string type with a length of no more than 64 characters, and must be composed of elements in uppercase and lowercase letters A-Z/a-z, numbers 0-9, underline_, and dash-, and special symbols other than those are not supported
+`client_oid`: Optional, default "0", user-defined order number, used for users to manage their own orders. The ID is non-unique, a string type with a length of no more than 32 characters, and must be composed of elements in uppercase and lowercase letters A-Z/a-z, numbers 0-9, underline_, and dash-, and special symbols other than those are not supported
 
 `stp`: ie `self trade prevention`. BGE prohibits users from dealing with themselves. Users can use the `stp` option to specify the order processing strategy when the self-transaction scenario occurs.
 
