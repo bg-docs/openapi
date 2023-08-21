@@ -86,7 +86,7 @@
 | 1085 | Exceeded the maximum number of orders |
 | 1087 | No data found |
 | 1088 | No way to verify user identity |
-| 1089 | One of order_id or product_id cannot be empty |
+| 1089 | One of order_id or product cannot be empty |
 | 1090 | client_oid already exists |
 | 1091 | client_oid does not meet the rules |
 | 1092 | The available balance of the current trading account is insufficient, whether to automatically transfer the ${0} in the fund account to the trading account, and initiate an order |
