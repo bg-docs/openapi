@@ -23,14 +23,13 @@
 | 40003 | ACCESS_TIMESTAMP不能为空                    |
 | 40005 | 无效的ACCESS_TIMESTAMP                     |
 | 40006 | 无效的ACCESS_KEY                           |
-| 40007 | 无效的Content_Type，请使用“application/json”格式 |
 | 40008 | 请求时间戳过期                                 |
 | 40010 | API 校验失败                                |
-| 40011 | ACCESS_KEY或者PASSPHRASE错误                |
 | 40012 | 无效的API用户                                |
 | 40013 | 用户已禁止                                   |
 | 40014 | 用户已冻结                                   |
 | 40015 | 无效的IP请求                                 |
+| 40016 | API_KEY已过期                                 |
 
 ## 业务错误码对照表
 

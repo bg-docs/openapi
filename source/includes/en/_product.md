@@ -1,4 +1,4 @@
-# Public Data
+# ~~Public Data (DEPRECATED)~~
 
 <h2 id="Kline">GET Kline</h2>
 
@@ -17,13 +17,13 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/candles
 REQUEST PARAMETERS
 </aside>
 
-|parameter name| required |type| description |
-|:---- |:----|:----- |:--------|
-| product | true |string | Commodity, eg: ETH_USD Commodity, eg: ETH_USD |
-| period | true |string | indicator period ["step0","step5","step10","30min","60min","4hour","1day","1week","1mon"] |
-|start | true |string | timestamp milliseconds start (milliseconds) |
-|end | true |string | end (milliseconds) |
-|size | true |string | [1,2000] data length [1,2000] |
+|parameter name| required |type| description                                                            |
+|:---- |:------|:----- |:-----------------------------------------------------------------------|
+| product | true |string | path parameter commodity, example: ETH_USD commodity, example: ETH_USD |
+| period | true |string | indicator period [1min,5min,15min,30min,60min,4hour,1day,1week,1mon]   |
+|start | true |string | timestamp milliseconds start (milliseconds)                            |
+|end | true |string | end (milliseconds)                                                     |
+|size | false |string | The data length defaults to 500, and the maximum is 1000[1,1000]       |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -55,6 +55,7 @@ REQUEST PARAMETERS
 <aside>
 RESPONSE PARAMETERS
 </aside>
+
 |parameter name|type| description |
 |:------|:----|:-----|
 | close | int | closing price |
@@ -89,98 +90,98 @@ REQUEST PARAMETERS
 
 
 |parameter name|required|type|description|
-|:---- |:---|:----- |:-------|
-| product |true |string | commodity, for example: ETH_USD |
-| interval | true |string | indicator period [ "1", "11"] |
+|:---- |:---|:----- |:-----------------------------------------------------------------|
+| product |true |string | path parameter commodity, for example: ETH_USD |
+| interval | true |string | Indicator period Valid value range `step0-step11` Please refer to [Deep Channel Subscription](#v2-public-orderbook) |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 
 ```json
 {
-"interval": "step1",
-"status": "ok",
-"ts": 1641378313942,
-"type": "orderBook",
-"tick": {
-"seqId": 9996,
-"id": 1641378313,
-"bids": [
-[1, 65]
-],
-"asks": [
-[48349.99, 5.3795],
-[48562.27, 94.1076],
-[48998.82, 49.924],
-[49322.83, 15.03636],
-[49324.72, 8.1281],
-[49334.76, 82.7552],
-[49342.59, 44.9204],
-[49364.66, 28.5769],
-[49365.2, 6.2237],
-[49390.8, 44.7102],
-[49414.67, 92.3859],
-[49428.24, 46.7245],
-[49430.6, 66.2994],
-[49435.96, 68.4281],
-[49437.07, 20.5226],
-[49443.47, 51.3443],
-[49444.4, 73.2709],
-[49448.78, 41.5535],
-[49454.19, 77.954],
-[49458.74, 29.2196],
-[49477.83, 50.3074],
-[49492.03, 93.2679],
-[49500.02, 11.1431],
-[49506.89, 74.3294],
-[49519.14, 45.8255],
-[49525.62, 19.6835],
-[49538.88, 97.1741],
-[49544.83, 70.238],
-[49551.81, 38.3689],
-[49557.84, 69.0679],
-[49565.77, 55.5486],
-[49571.15, 55.1521],
-[49589.14, 83.2236],
-[49590.11, 1.5069],
-[49593.9, 45.1853],
-[49601.42, 21.826],
-[49602.74, 2.7914],
-[49609.3, 79.3817],
-[49615.55, 81.7304],
-[49653.07, 12.2331],
-[49662.5, 68.8741],
-[49675.13, 31.3474],
-[49686.03, 6.1158],
-[49690.92, 79.5905],
-[49699.37, 91.9541],
-[49719.33, 80.5142],
-[49724.29, 61.7956],
-[49726.37, 96.1342],
-[49752.36, 71.4982],
-[49769.78, 49.3641],
-[49785.77, 43.4184],
-[49815.95, 91.9892],
-[49820.16, 74.1338],
-[49847.76, 20.297],
-[49888.07, 76.3738],
-[49888.44, 8.6581],
-[49907.97, 12.634],
-[49932.43, 63.1484],
-[49951.37, 5.0352],
-[49952.08, 81.9681],
-[49958.58, 99.3703],
-[49977.74, 62.3056],
-[49986.53, 34.2252],
-[49998.03, 47.7642],
-[49998.3, 88.6624]
-],
-"ts": 1641378313486,
-"version": 1641378313,
-"type": "orderBook",
-"pairCode": "BTC_USDT",
-"interval": "1"
-}
+  "interval": "step1",
+  "status": "ok",
+  "ts": 1641378313942,
+  "type": "orderBook",
+  "tick": {
+    "seqId": 9996,
+    "id": 1641378313,
+    "bids": [
+      [1, 65]
+    ],
+    "asks": [
+      [48349.99, 5.3795],
+      [48562.27, 94.1076],
+      [48998.82, 49.924],
+      [49322.83, 15.03636],
+      [49324.72, 8.1281],
+      [49334.76, 82.7552],
+      [49342.59, 44.9204],
+      [49364.66, 28.5769],
+      [49365.2, 6.2237],
+      [49390.8, 44.7102],
+      [49414.67, 92.3859],
+      [49428.24, 46.7245],
+      [49430.6, 66.2994],
+      [49435.96, 68.4281],
+      [49437.07, 20.5226],
+      [49443.47, 51.3443],
+      [49444.4, 73.2709],
+      [49448.78, 41.5535],
+      [49454.19, 77.954],
+      [49458.74, 29.2196],
+      [49477.83, 50.3074],
+      [49492.03, 93.2679],
+      [49500.02, 11.1431],
+      [49506.89, 74.3294],
+      [49519.14, 45.8255],
+      [49525.62, 19.6835],
+      [49538.88, 97.1741],
+      [49544.83, 70.238],
+      [49551.81, 38.3689],
+      [49557.84, 69.0679],
+      [49565.77, 55.5486],
+      [49571.15, 55.1521],
+      [49589.14, 83.2236],
+      [49590.11, 1.5069],
+      [49593.9, 45.1853],
+      [49601.42, 21.826],
+      [49602.74, 2.7914],
+      [49609.3, 79.3817],
+      [49615.55, 81.7304],
+      [49653.07, 12.2331],
+      [49662.5, 68.8741],
+      [49675.13, 31.3474],
+      [49686.03, 6.1158],
+      [49690.92, 79.5905],
+      [49699.37, 91.9541],
+      [49719.33, 80.5142],
+      [49724.29, 61.7956],
+      [49726.37, 96.1342],
+      [49752.36, 71.4982],
+      [49769.78, 49.3641],
+      [49785.77, 43.4184],
+      [49815.95, 91.9892],
+      [49820.16, 74.1338],
+      [49847.76, 20.297],
+      [49888.07, 76.3738],
+      [49888.44, 8.6581],
+      [49907.97, 12.634],
+      [49932.43, 63.1484],
+      [49951.37, 5.0352],
+      [49952.08, 81.9681],
+      [49958.58, 99.3703],
+      [49977.74, 62.3056],
+      [49986.53, 34.2252],
+      [49998.03, 47.7642],
+      [49998.3, 88.6624]
+    ],
+    "ts": 1641378313486,
+    "version": 1641378313,
+    "type": "orderBook",
+    "pairCode": "BTC_USDT",
+    "interval": "1"
+  }
 }
 
 ```
@@ -219,9 +220,9 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/tickers
 REQUEST PARAMETERS
 </aside>
 
-| parameter name |required|type|description|
-|:-------|:---|:----- |----- |
-| product |true |string | commodity, for example: ETH_USD |
+| Parameter name | Required | Type | Description |
+|:-------|:---|:----- |-------------------|
+| product |true |string | path parameter commodity, for example: ETH_USD |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -289,8 +290,8 @@ REQUEST PARAMETERS
 </aside>
 
 | Parameter name | Required | Type | Description |
-|:--------|:---|:----- |-----|
-| product |true |string | commodity, for example: ETH_USD |
+|:-------|:---|:----- |-------------------|
+| product |true |string | path parameter commodity, for example: ETH_USD |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -346,9 +347,9 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trade
 REQUEST PARAMETERS
 </aside>
 
-| parameter name |required|type|description|
-|:-------|:---|:----- |----- |
-| product |true |string | commodity, for example: ETH_USD |
+| Parameter name | Required | Type | Description |
+|:-------|:---|:----- |-------------------|
+| product |true |string | path parameter commodity, for example: ETH_USD |
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
@@ -356,19 +357,19 @@ REQUEST PARAMETERS
 
 ```json
 {
-"status": "ok",
-"tick": {
-"data": [{
-"direction": "sell",
-"id": 28730000,
-"price": "11.9",
-"ts": 1639585820376,
-"vol": "1"
-}],
-"id": 1641379110358,
-"ts": 1641379110358
-},
-"ts": 1641379110358
+  "status": "ok",
+  "tick": {
+    "data": [{
+      "direction": "sell",
+      "id": 28730000,
+      "price": "11.9",
+      "ts": 1639585820376,
+      "vol": "1"
+    }],
+    "id": 1641379110358,
+    "ts": 1641379110358
+  },
+  "ts": 1641379110358
 }
 ```
 
@@ -384,7 +385,7 @@ RESPONSE PARAMETERS
 
 ----
 
-<h2 id="Single currency pair multiple real-time transactions">GET Single currency pair multiple real-time transactions</h2>
+<h2 id="Single currency pair multiple real-time transactions">GET single currency pair multiple real-time transactions</h2>
 
 
 Get the latest deals list for products
@@ -402,46 +403,46 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trades
 REQUEST PARAMETERS
 </aside>
 
-| parameter name | required | type | description |
-|:-------|:---|:-------|------|
-| product |true | string | commodity, for example: ETH_USD |
-| size |true | int | data length |
+| parameter name | required | type | description                                    |
+|:-------|:------|:-------|------------------------------------------------|
+| product | true | string | path parameter commodity, for example: ETH_USD |
+| size | false | int | data length default 500, maximum 1000[1,1000]  |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 
 ```json
 {
-"data": [{
-"data": [{
-"direction": "buy",
-"id": 28470000,
-"price": "11",
-"ts": 1639585820373,
-"vol": "1"
-}],
-"id": 2847,
-"ts": 1639585820373,
-"type": "fills"
-}, {
-"data": null,
-"id": 2871,
-"ts": 1639585820376,
-"type": "fills"
-}, {
-"data": [{
-"direction": "sell",
-"id": 28730000,
-"price": "11.9",
-"ts": 1639585820376,
-"vol": "1"
-}],
-"id": 2873,
-"ts": 1639585820376,
-"type": "fills"
-}],
-"status": "ok",
-"ts": 1641379702364
+  "data": [{
+    "data": [{
+      "direction": "buy",
+      "id": 28470000,
+      "price": "11",
+      "ts": 1639585820373,
+      "vol": "1"
+    }],
+    "id": 2847,
+    "ts": 1639585820373,
+    "type": "fills"
+  }, {
+    "data": null,
+    "id": 2871,
+    "ts": 1639585820376,
+    "type": "fills"
+  }, {
+    "data": [{
+      "direction": "sell",
+      "id": 28730000,
+      "price": "11.9",
+      "ts": 1639585820376,
+      "vol": "1"
+    }],
+    "id": 2873,
+    "ts": 1639585820376,
+    "type": "fills"
+  }],
+  "status": "ok",
+  "ts": 1641379702364
 }
 ```
 

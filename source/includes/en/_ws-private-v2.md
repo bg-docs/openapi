@@ -43,7 +43,7 @@ Login authentication is required before subscribing to a private channel. Only a
 
 
 | parameter name | required | type | description |
-|:----------------------|:----|:-------|------- --------------------|
+|:----------------------|:----|:-------|---------------------------|
 | params.type | yes | string | authentication method: <br/>`api`:apiKey authentication; |
 | params.access_key | Yes | string | [Authentication Description](#auth) |
 | params.access_sign | Yes | string | [Authentication Description](#auth) |
@@ -394,7 +394,7 @@ Description of order data fields, please ignore other fields other than this des
 
 
 | Parameter name | Type | Mandatory | Description | Reference value |
-|:-------|:-------|:----|---------|------------- -|
+|:-------|:-------|:----|---------|--------------|
 | event | string | yes | request event | [event](#events) |
 | biz | string | yes | line of business | [line of business](#bizs) |
 | type | string | yes | business type | [type](#types) |

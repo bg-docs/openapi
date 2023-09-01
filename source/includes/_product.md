@@ -1,4 +1,4 @@
-# 公共数据
+# ~~公共数据(DEPRECATED)~~
 
 <h2 id="K线">GET  K线</h2>
 
@@ -17,13 +17,13 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/candles
 REQUEST PARAMETERS
 </aside>
 
-|参数名| 必选  |类型|                                                                                                                                                                说明                                                                                                                                                                |
-|:----    |:----|:----- |:--------|
-| product | true   |string |                                                                                          商品，例:ETH_USD                                                                                                                                         商品，例:ETH_USD                                                                                          |
-| period | true   |string | 指标周期 ["step0","step5","step10","30min","60min","4hour","1day","1week","1mon"] |
-|start     | true   |string |                                                                               timestamp 毫秒                                                                                                                                                开始  (毫秒)                                                                               |
-|end     | true   |string |                                                                                                                                                            结束   (毫秒)                                                                                                                                                             |
-|size     | true   |string |                                                                          [1,2000]                                                                                                                                                       数据长度  [1,2000]                                                                           |
+|参数名| 必选    |类型| 说明                                                                                                                                                                     |
+|:----    |:------|:----- |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| product | true  |string | 路径参数 商品，例:ETH_USD                                                                                                                                         商品，例:ETH_USD |
+| period | true  |string | 指标周期 [1min,5min,15min,30min,60min,4hour,1day,1week,1mon]                                                                                                               |
+|start     | true  |string | timestamp 毫秒                                                                                                                                                开始  (毫秒)   |
+|end     | true  |string | 结束   (毫秒)                                                                                                                                                              |
+|size     | false |string | 数据长度默认500 ，最大1000[1,1000]                                                                                                                                              |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -55,6 +55,7 @@ REQUEST PARAMETERS
 <aside>
 RESPONSE PARAMETERS
 </aside>
+
 |参数名|类型|   说明 |
 |:------|:----|:-----|
 | close | int  |   收盘价格 |
@@ -88,10 +89,10 @@ REQUEST PARAMETERS
 </aside>
 
 
-|参数名|必选|类型| 说明                                                                                |
-|:----    |:---|:----- |:--------|
-| product |true  |string |      商品，例:ETH_USD                                                                             |
-| interval | true   |string | 指标周期  [ "1", "11"] |
+|参数名|必选|类型| 说明                                                            |
+|:----    |:---|:----- |:--------------------------------------------------------------|
+| product |true  |string | 路径参数 商品，例:ETH_USD                                             |
+| interval | true   |string | 指标周期  有效取值范围 `step0-step11`请参考 [深度频道订阅](#v2-public-orderbook) |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -219,9 +220,9 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/tickers
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     |必选|类型|说明|
-|:--------|:---|:----- |-----   |
-| product |true  |string | 商品，例:ETH_USD   |
+| 参数名     |必选|类型| 说明                |
+|:--------|:---|:----- |-------------------|
+| product |true  |string | 路径参数 商品，例:ETH_USD |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -288,9 +289,9 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/ticker
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     |必选|类型| 说明  |
-|:--------|:---|:----- |-----|
-| product |true  |string | 商品，例:ETH_USD  |
+| 参数名     |必选|类型| 说明                |
+|:--------|:---|:----- |-------------------|
+| product |true  |string | 路径参数 商品，例:ETH_USD |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -346,9 +347,9 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trade
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     |必选|类型|说明|
-|:--------|:---|:----- |-----   |
-| product |true  |string | 商品，例:ETH_USD   |
+| 参数名     |必选|类型| 说明                |
+|:--------|:---|:----- |-------------------|
+| product |true  |string | 路径参数 商品，例:ETH_USD |
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
@@ -402,10 +403,10 @@ GET [HOST](#HTTP-HOST)/public/v1/products/{product}/trades
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     |必选| 类型     | 说明   |
-|:--------|:---|:-------|------|
-| product |true  | string | 商品，例:ETH_USD  |
-| size       |true  | int      | 数据长度 |
+| 参数名     | 必选    | 类型     | 说明                         |
+|:--------|:------|:-------|----------------------------|
+| product | true  | string | 路径参数 商品，例:ETH_USD          |
+| size       | false | int      | 数据长度 默认500 ，最大1000[1,1000] |
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 

@@ -23,14 +23,13 @@
 | 40003 | ACCESS_TIMESTAMP cannot be empty |
 | 40005 | Invalid ACCESS_TIMESTAMP |
 | 40006 | Invalid ACCESS_KEY |
-| 40007 | Invalid Content_Type, please use "application/json" format |
 | 40008 | Request timestamp expired |
 | 40010 | API verification failed |
-| 40011 | ACCESS_KEY or PASSPHRASE error |
 | 40012 | Invalid API User |
 | 40013 | User banned |
 | 40014 | User frozen |
 | 40015 | Invalid IP request |
+| 40016 | API_KEY has expired |
 
 ## Business error code comparison table
 
