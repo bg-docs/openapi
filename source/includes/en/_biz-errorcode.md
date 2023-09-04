@@ -69,8 +69,8 @@
 | 1069 | Transaction amount precision is incorrect |
 | 1070 | Quantity precision is incorrect |
 | 1071 | Incorrect price precision |
-| 1072 | Order quantity cannot be 0 |
-| 1073 | Order price cannot be 0 |
+| 1072 | The order quantity cannot be less than or equal to 0 |
+| 1073 | The order price cannot be less than or equal to 0 |
 | 1074 | Insufficient account balance |
 | 1075 | Quantity, Amount ≥ ${amount limit value} |
 | 1076 | Quantity, Amount ≤ ${amount limit value} |
