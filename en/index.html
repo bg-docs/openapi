@@ -339,13 +339,13 @@
               </ul>
           </li>
           <li>
-            <a href="#transfer-of-funds" class="toc-h1 toc-link" data-title="Transfer Of Funds">Transfer Of Funds</a>
+            <a href="#fund-transfer" class="toc-h1 toc-link" data-title="Fund Transfer">Fund Transfer</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#Transfer from fund account to transaction account" class="toc-h2 toc-link" data-title="POST transfer from fund account to transaction account">POST transfer from fund account to transaction account</a>
+                    <a href="#transfer-from-fund-account-to-trading-account" class="toc-h2 toc-link" data-title="Transfer from Fund Account to Trading Account">Transfer from Fund Account to Trading Account</a>
                   </li>
                   <li>
-                    <a href="#Transfer from transaction account to fund account" class="toc-h2 toc-link" data-title="POST transfer from transaction account to fund account">POST transfer from transaction account to fund account</a>
+                    <a href="#transfer-from-trading-account-to-fund-account" class="toc-h2 toc-link" data-title="Transfer from Trading Account to Fund Account">Transfer from Trading Account to Fund Account</a>
                   </li>
               </ul>
           </li>
@@ -841,105 +841,46 @@ RESPONSE PARAMETERS
 <td>string</td>
 </tr>
 </tbody></table>
-<h1 id='transfer-of-funds'>Transfer Of Funds</h1>
-<h2 id="Transfer from fund account to transaction account">POST transfer from fund account to transaction account</h2>
+<h1 id='fund-transfer'>Fund Transfer</h1><h2 id='transfer-from-fund-account-to-trading-account'>Transfer from Fund Account to Trading Account</h2>
+<p><font class="httppost">POST</font> <em>/v1/deposits/account</em></p>
 
-<p>Transfer funds from the fund account to the designated trading account</p>
+<p><strong>Request Data Type</strong>:<code>application/json</code></p>
 
-<p><strong>Speed limit: 10 times/s</strong></p>
-
-<p><strong>Speed limit rules: ApiKey</strong></p>
-
-<p><strong>HTTP request</strong></p>
-
-<p>POST <a href="#HTTP-HOST">HOST</a>/v1/deposits/account</p>
+<p>Transfer funds from the Fund Account to a specified Trading Account.</p>
 
 <blockquote>
 <p>Authentication information</p>
 
-<p>For authentication information of private information, please refer to <a href="#auth">Authentication Instructions</a></p>
-
-<p><a name="ReeuestExample">REQUEST EXAMPLE</a></p>
+<p>For the authentication information of private information, please refer to <a href="#Authentication%20Specifications">Authentication Specifications</a></p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+
 <aside>
 REQUEST PARAMETERS
 </aside>
 
 <table><thead>
 <tr>
-<th>Parameter name</th>
-<th>Parameter description</th>
-<th>Required</th>
-<th>Data type</th>
+<th>Parameter Name</th>
+<th>Parameter Description</th>
+<th>Mandatory</th>
+<th>Data Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>amount</td>
-<td>transfer amount</td>
-<td>true</td>
+<td>Transfer amount</td>
+<td>false</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>Transfer asset name</td>
-<td>true</td>
+<td>Name of transfer asset</td>
+<td>false</td>
 <td>string</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th>Parameter name</th>
-<th>Parameter description</th>
-<th>Type</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>transfer amount</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Transfer asset name</td>
-<td>string</td>
-</tr>
-</tbody></table>
-
-<h2 id="Transfer from transaction account to fund account">POST transfer from transaction account to fund account</h2>
-
-<p>Transfer the funds from the trading account to the capital account. After the transfer, you can carry out the cash withdrawal operation.</p>
-
-<p><strong>Speed limit: 10 times/s</strong></p>
-
-<p><strong>Speed limit rules: ApiKey</strong></p>
-
-<p><strong>HTTP request</strong></p>
-
-<p>POST <a href="#HTTP-HOST">HOST</a>/v1/withdrawals/account</p>
-
-<blockquote>
-<p>Authentication information</p>
-
-<p>For authentication information of private information, please refer to <a href="#auth">Authentication Instructions</a></p>
-
 <p>REQUEST EXAMPLE</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -948,33 +889,104 @@ RESPONSE PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
-REQUEST PARAMETERS
+RESPONSE STATUS
 </aside>
 
 <table><thead>
 <tr>
-<th>Parameter name</th>
-<th>Parameter description</th>
-<th>Required</th>
-<th>Data type</th>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success Request</td>
+<td><a href="#ResonpseExample1">Examples</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>message</code> string</td>
+</tr>
+</tbody></table>
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter Name</th>
+<th>Parameter Description</th>
+<th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>amount</td>
-<td>transfer amount</td>
-<td>true</td>
+<td>Transfer amount</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>Transfer asset name</td>
-<td>true</td>
+<td>Name of transfer asset</td>
 <td>string</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+<p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='transfer-from-trading-account-to-fund-account'>Transfer from Trading Account to Fund Account</h2>
+<p><font class="httppost">POST</font> <em>/v1/withdrawals/account</em></p>
+
+<p><strong>Request Data Type:</strong>:<code>application/json</code></p>
+
+<p>Transfer funds from the Trading Account to the Fund Account. Withdrawal operations allowed after the transfer.</p>
+
+<blockquote>
+<p>Authentication information</p>
+
+<p>For the authentication information of private information, please refer to <a href="#Authentication%20Specifications">Authentication Specifications</a></p>
+</blockquote>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th>Parameter Name</th>
+<th>Parameter Description</th>
+<th>Mandatory</th>
+<th>Data Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>Transfer amount</td>
+<td>false</td>
+<td>string</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Name of transfer asset</td>
+<td>false</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>REQUEST EXAMPLE</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
@@ -982,28 +994,64 @@ REQUEST PARAMETERS
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside>
+RESPONSE STATUS
+</aside>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success Request</td>
+<td><a href="#ResonpseExample1">Examples</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong, See <a href="#Authentication%20Specifications">Authentication Specifications</a></td>
+<td><code>message</code> string</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>message</code> string</td>
+</tr>
+</tbody></table>
+
+<aside>
 RESPONSE PARAMETERS
 </aside>
 
 <table><thead>
 <tr>
-<th>Parameter name</th>
-<th>Parameter description</th>
+<th>Parameter Name</th>
+<th>Parameter Description</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>amount</td>
-<td>transfer amount</td>
+<td>Transfer amount</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>Transfer asset name</td>
+<td>Name of transfer asset</td>
 <td>string</td>
 </tr>
 </tbody></table>
-<h1 id='product'>Product</h1>
+
+<blockquote>
+<p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='product'>Product</h1>
 <h2 id="Get all known trading products">GET get all known trading products</h2>
 
 <p>Get all trading product information</p>
