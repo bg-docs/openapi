@@ -10,7 +10,7 @@
 
 **HTTP請求**
 
-POST [HOST](#HTTP-HOST)/v1/deposits/accounttrue
+POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 
 > 鑑權信息
@@ -70,7 +70,7 @@ RESPONSE PARAMETERS
 
 **HTTP請求**
 
-POST [HOST](#HTTP-HOST)/v1/withdrawals/accounttrue
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
 
 > 鑑權信息

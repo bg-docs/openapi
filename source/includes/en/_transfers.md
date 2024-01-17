@@ -10,7 +10,7 @@ Transfer funds from the fund account to the designated trading account
 
 **HTTP request**
 
-POST [HOST](#HTTP-HOST)/v1/deposits/accounttrue
+POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 
 > Authentication information
@@ -70,7 +70,7 @@ Transfer the funds from the trading account to the capital account. After the tr
 
 **HTTP request**
 
-POST [HOST](#HTTP-HOST)/v1/withdrawals/accounttrue
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
 
 > Authentication information
