@@ -21,6 +21,16 @@ POST [HOST](#HTTP-HOST)/v1/deposits/account
 > 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
 
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
 <aside>
 REQUEST PARAMETERS
 </aside>
@@ -44,14 +54,7 @@ RESPONSE PARAMETERS
 |amount|划转数量|string|
 |currency|划转资产名称|string|
 
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 
 
@@ -75,6 +78,15 @@ POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 > 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
 
 
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
 <aside>
 REQUEST PARAMETERS
 </aside>
@@ -97,13 +109,6 @@ RESPONSE PARAMETERS
 |amount|划转数量|string|
 |currency|划转资产名称|string|
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 
