@@ -904,6 +904,14 @@ REQUEST PARAMETERS
 </tr>
 </tbody></table>
 
+<blockquote>
+<p><a name="ResponseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -927,14 +935,6 @@ RESPONSE PARAMETERS
 </tr>
 </tbody></table>
 
-<blockquote>
-<p><a name="ResponseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
 <h2 id="交易账户划转到资金账户">POST  交易账户划转到资金账户</h2>
 
 <p>将资金从交易账户划转到资金账户，划转后，可以进行提现操作。</p>
@@ -983,20 +983,16 @@ REQUEST PARAMETERS
 <td>false</td>
 <td>string</td>
 </tr>
-<tr>
-<td>amount</td>
-<td>划转数量</td>
-<td>true</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>划转资产名称</td>
-<td>true</td>
-<td>string</td>
-</tr>
 </tbody></table>
 
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -1019,15 +1015,7 @@ RESPONSE PARAMETERS
 <td>string</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='6cc98552a9'>产品</h1>
+<h1 id='6cc98552a9'>产品</h1>
 <h2 id="获取所有已知的交易产品">GET  获取所有已知的交易产品</h2>
 
 <p>获取所有的交易产品信息</p>
