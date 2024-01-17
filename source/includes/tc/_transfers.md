@@ -35,8 +35,8 @@ REQUEST PARAMETERS
 
 | 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |false|string||
-|currency|劃轉資產名稱|false|string||
+|amount|劃轉數量 |true|string||
+|currency|劃轉資產名稱|true|string||
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
@@ -93,8 +93,8 @@ REQUEST PARAMETERS
 
 | 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |false|string||
-|currency|劃轉資產名稱|false|string||
+|amount|劃轉數量 |true|string||
+|currency|劃轉資產名稱|true|string||
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>

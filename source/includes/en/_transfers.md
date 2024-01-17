@@ -17,7 +17,6 @@ POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 > Authentication information
 
-> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
 > For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 
@@ -37,8 +36,8 @@ REQUEST PARAMETERS
 
 | Parameter Name | Parameter Description | Mandatory  | Data Type | 
 | -------- | -------- | -------- | -------- | 
-|amount|Transfer amount|false|string||
-|currency|Name of transfer asset|false|string||
+|amount|Transfer amount|true|string||
+|currency|Name of transfer asset|true|string||
 
 
 
@@ -97,8 +96,8 @@ REQUEST PARAMETERS
 
 | Parameter Name | Parameter Description | Mandatory  | Data Type | 
 | -------- | -------- | -------- | -------- | 
-|amount|Transfer amount|false|string||
-|currency|Name of transfer asset|false|string||
+|amount|Transfer amount|true|string||
+|currency|Name of transfer asset|true|string||
 
 
 

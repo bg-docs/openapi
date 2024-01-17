@@ -37,8 +37,8 @@ REQUEST PARAMETERS
 
 | 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |false|string||
-|currency|划转资产名称|false|string||
+|amount|划转数量 |true|string||
+|currency|划转资产名称|true|string||
 
 > <a name="ResponseExample">RESPONSE EXAMPLE</a>
 
@@ -98,8 +98,8 @@ REQUEST PARAMETERS
 
 | 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |false|string||
-|currency|划转资产名称|false|string||
+|amount|划转数量 |true|string||
+|currency|划转资产名称|true|string||
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
