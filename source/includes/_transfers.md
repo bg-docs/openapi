@@ -39,8 +39,6 @@ REQUEST PARAMETERS
 | -------- | -------- | -------- | -------- | 
 |amount|划转数量 |false|string||
 |currency|划转资产名称|false|string||
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
 
 > <a name="ResponseExample">RESPONSE EXAMPLE</a>
 
