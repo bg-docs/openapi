@@ -342,10 +342,10 @@
             <a href="#e5b26fc342" class="toc-h1 toc-link" data-title="資金劃轉">資金劃轉</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#25f6b5c33f" class="toc-h2 toc-link" data-title="資金賬戶劃轉到交易賬戶">資金賬戶劃轉到交易賬戶</a>
+                    <a href="#資金賬戶劃轉到交易賬戶" class="toc-h2 toc-link" data-title="POST  資金賬戶劃轉到交易賬戶">POST  資金賬戶劃轉到交易賬戶</a>
                   </li>
                   <li>
-                    <a href="#be52ac9346" class="toc-h2 toc-link" data-title="交易賬戶劃轉到資金賬戶">交易賬戶劃轉到資金賬戶</a>
+                    <a href="#交易賬戶劃轉到資金賬戶" class="toc-h2 toc-link" data-title="POST  交易賬戶劃轉到資金賬戶">POST  交易賬戶劃轉到資金賬戶</a>
                   </li>
               </ul>
           </li>
@@ -841,19 +841,30 @@ RESPONSE PARAMETERS
 <td>string</td>
 </tr>
 </tbody></table>
-<h1 id='e5b26fc342'>資金劃轉</h1><h2 id='25f6b5c33f'>資金賬戶劃轉到交易賬戶</h2>
+<h1 id='e5b26fc342'>資金劃轉</h1>
+<h2 id="資金賬戶劃轉到交易賬戶">POST  資金賬戶劃轉到交易賬戶</h2>
+
+<p>將資金從資金賬戶劃轉到指定的交易賬戶。
+<strong>限速：10次/s</strong></p>
+
+<p><strong>限速規則：ApiKey</strong></p>
+
+<p><strong>HTTP請求</strong></p>
+
 <p>POST <a href="#HTTP-HOST">HOST</a>/v1/deposits/account</p>
-
-<p><strong>請求數據類型</strong>:<code>application/json</code></p>
-
-<p>將資金從資金賬戶劃轉到指定的交易賬戶。</p>
 
 <blockquote>
 <p>鑑權信息</p>
 
 <p>私有信息的鑑權信息，請參考 <a href="#auth">鑑權說明</a></p>
-</blockquote>
 
+<p><a name="RequestExample">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside>
 REQUEST PARAMETERS
 </aside>
@@ -878,44 +889,28 @@ REQUEST PARAMETERS
 <td>false</td>
 <td>string</td>
 </tr>
+<tr>
+<td>amount</td>
+<td>劃轉數量</td>
+<td>true</td>
+<td>string</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>劃轉資產名稱</td>
+<td>true</td>
+<td>string</td>
+</tr>
 </tbody></table>
 
 <blockquote>
-<p>REQUEST EXAMPLE</p>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -939,26 +934,30 @@ RESPONSE PARAMETERS
 </tr>
 </tbody></table>
 
-<blockquote>
-<p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='be52ac9346'>交易賬戶劃轉到資金賬戶</h2>
-<p>POST <a href="#HTTP-HOST">HOST</a>/v1/withdrawals/account</p>
-
-<p><strong>請求數據類型</strong>:<code>application/json</code></p>
+<h2 id="交易賬戶劃轉到資金賬戶">POST  交易賬戶劃轉到資金賬戶</h2>
 
 <p>將資金從交易賬戶劃轉到資金賬戶，劃轉後，可以進行提現操作。</p>
 
+<p><strong>限速：10次/s</strong></p>
+
+<p><strong>限速規則：ApiKey</strong></p>
+
+<p><strong>HTTP請求</strong></p>
+
+<p>POST <a href="#HTTP-HOST">HOST</a>/v1/withdrawals/account</p>
+
 <blockquote>
 <p>鑑權信息</p>
 
 <p>私有信息的鑑權信息，請參考 <a href="#auth">鑑權說明</a></p>
-</blockquote>
 
+<p><a name="RequestExample">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside>
 REQUEST PARAMETERS
 </aside>
@@ -983,44 +982,28 @@ REQUEST PARAMETERS
 <td>false</td>
 <td>string</td>
 </tr>
+<tr>
+<td>amount</td>
+<td>劃轉數量</td>
+<td>true</td>
+<td>string</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>劃轉資產名稱</td>
+<td>true</td>
+<td>string</td>
+</tr>
 </tbody></table>
 
 <blockquote>
-<p>REQUEST EXAMPLE</p>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside>
-RESPONSE STATUS
-</aside>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>Meaning</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success Request</td>
-<td><a href="#ResonpseExample1">參考示例</a></td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong, See <a href="#auth">鑑權說明</a></td>
-<td><code>message</code> string</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-<td><code>message</code> string</td>
-</tr>
-</tbody></table>
-
 <aside>
 RESPONSE PARAMETERS
 </aside>
@@ -1043,15 +1026,7 @@ RESPONSE PARAMETERS
 <td>string</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p><a name="ResonpseExample">RESONPSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HKD"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='8d2df33185'>產品</h1>
+<h1 id='8d2df33185'>產品</h1>
 <h2 id="獲取所有已知的交易產品">GET  獲取所有已知的交易產品</h2>
 
 <p>獲取所有的交易產品信息</p>
