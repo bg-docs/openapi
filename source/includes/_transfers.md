@@ -1,20 +1,19 @@
 # 资金划转
 
-## 资金账户划转到交易账户
+<h2 id="资金账户划转到交易账户">POST  资金账户划转到交易账户</h2>
+
+ 
+将资金从资金账户划转到指定的交易账户
+
+**限速：10次/s**
+
+**限速规则：ApiKey**
+
+**HTTP请求**
+
 
 
 POST [HOST](#HTTP-HOST)/v1/deposits/account
-
-
-**请求数据类型**:`application/json`
-
-
-将资金从资金账户划转到指定的交易账户。
-
-
-
-
-
 
 
 > 鉴权信息
@@ -30,25 +29,11 @@ REQUEST PARAMETERS
 | -------- | -------- | -------- | -------- | 
 |amount|划转数量 |false|string||
 |currency|划转资产名称|false|string||
+|amount|划转数量 |true|string||
+|currency|划转资产名称|true|string||
 
-> REQUEST EXAMPLE
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -59,7 +44,7 @@ RESPONSE PARAMETERS
 |amount|划转数量|string|
 |currency|划转资产名称|string|
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 {
@@ -69,18 +54,20 @@ RESPONSE PARAMETERS
 ```
 
 
-## 交易账户划转到资金账户
 
-POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
-**请求数据类型**:`application/json`
+<h2 id="交易账户划转到资金账户">POST  交易账户划转到资金账户</h2>
 
 将资金从交易账户划转到资金账户，划转后，可以进行提现操作。
 
 
+**限速：10次/s**
 
+**限速规则：ApiKey**
 
+**HTTP请求**
 
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
 
 > 鉴权信息
@@ -96,25 +83,10 @@ REQUEST PARAMETERS
 | -------- | -------- | -------- | -------- | 
 |amount|划转数量 |false|string||
 |currency|划转资产名称|false|string||
+|amount|划转数量 |true|string||
+|currency|划转资产名称|true|string||
 
-> REQUEST EXAMPLE
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-<aside>
-RESPONSE STATUS
-</aside>
-
-Status Code | Meaning | Example
----------- | ------- | --------
-200 | Success Request | [参考示例](#ResonpseExample1)
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
-500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
