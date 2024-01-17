@@ -1,32 +1,26 @@
 # 資金劃轉
 
-<h2 id="資金賬戶劃轉到交易賬戶">POST  資金賬戶劃轉到交易賬戶</h2>
+## 資金賬戶劃轉到交易賬戶
 
-將資金從資金賬戶劃轉到指定的交易賬戶
 
-**限速：10次/s**
+<font class="httppost">POST</font> */v1/deposits/account*
 
-**限速規則：ApiKey**
 
-**HTTP請求**
+**請求數據類型**:`application/json`
 
-POST [HOST](#HTTP-HOST)/v1/deposits/account
+
+將資金從資金賬戶劃轉到指定的交易賬戶。
+
+
+
+
+
 
 
 > 鑑權信息
 
 > 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
 
-
-> <a name="ReeuestExample">REQUEST EXAMPLE</a>
-
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 <aside>
 REQUEST PARAMETERS
@@ -34,49 +28,8 @@ REQUEST PARAMETERS
 
 | 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |true|string||
-|currency|劃轉資產名稱|true|string||
-
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| 參數名稱 | 參數說明 | 類型 | 
-| -------- | -------- | ----- |
-|amount|劃轉數量|string|
-|currency|劃轉資產名稱|string|
-
-
-
-
-<h2 id="交易賬戶劃轉到資金賬戶">POST  交易賬戶劃轉到資金賬戶</h2>
-
-將資金從交易賬戶劃轉到資金賬戶，劃轉後，可以進行提現操作。
-
-
-**限速：10次/s**
-
-**限速規則：ApiKey**
-
-**HTTP請求**
-
-POST [HOST](#HTTP-HOST)/v1/withdrawals/account
-
-
-> 鑑權信息
-
-> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
-
+|amount|劃轉數量 |false|string||
+|currency|劃轉資產名稱|false|string||
 
 > REQUEST EXAMPLE
 
@@ -88,23 +41,14 @@ POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 ```
 
 <aside>
-REQUEST PARAMETERS
+RESPONSE STATUS
 </aside>
 
-| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
-| -------- | -------- | -------- | -------- | 
-|amount|劃轉數量 |true|string||
-|currency|劃轉資產名稱|true|string||
-
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [參考示例](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -114,3 +58,79 @@ RESPONSE PARAMETERS
 | -------- | -------- | ----- |
 |amount|劃轉數量|string|
 |currency|劃轉資產名稱|string|
+
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
+## 交易賬戶劃轉到資金賬戶
+
+<font class="httppost">POST</font> */v1/withdrawals/account*
+
+**請求數據類型**:`application/json`
+
+將資金從交易賬戶劃轉到資金賬戶，劃轉後，可以進行提現操作。
+
+
+
+
+
+
+
+> 鑑權信息
+
+> 私有信息的鑑權信息，請參考 [鑑權說明](#auth)
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| 參數名稱 | 參數說明 | 是否必須 | 數據類型 | 
+| -------- | -------- | -------- | -------- | 
+|amount|劃轉數量 |false|string||
+|currency|劃轉資產名稱|false|string||
+
+> REQUEST EXAMPLE
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+<aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [參考示例](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [鑑權說明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| 參數名稱 | 參數說明 | 類型 | 
+| -------- | -------- | ----- |
+|amount|劃轉數量|string|
+|currency|劃轉資產名稱|string|
+
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+

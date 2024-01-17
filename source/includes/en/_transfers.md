@@ -1,82 +1,35 @@
-# Transfer Of Funds
+# Fund Transfer
 
-<h2 id="Transfer from fund account to transaction account">POST transfer from fund account to transaction account</h2>
+## Transfer from Fund Account to Trading Account
 
-Transfer funds from the fund account to the designated trading account
 
-**Speed limit: 10 times/s**
+<font class="httppost">POST</font> */v1/deposits/account*
 
-**Speed limit rules: ApiKey**
 
-**HTTP request**
+**Request Data Type**:`application/json`
 
-POST [HOST](#HTTP-HOST)/v1/deposits/account
+
+Transfer funds from the Fund Account to a specified Trading Account.
+
+
+
+
+
 
 
 > Authentication information
 
-> For authentication information of private information, please refer to [Authentication Instructions](#auth)
+> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
 
-
-> <a name="ReeuestExample">REQUEST EXAMPLE</a>
-
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| Parameter name | Parameter description | Required | Data type |
-| -------- | -------- | -------- | -------- |
-|amount|transfer amount |true|string||
-|currency|Transfer asset name|true|string||
-
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| Parameter name | Parameter description | Type |
-| -------- | -------- | ----- |
-|amount|transfer amount|string|
-|currency|Transfer asset name|string|
-
-
-
-
-<h2 id="Transfer from transaction account to fund account">POST transfer from transaction account to fund account</h2>
-
-Transfer the funds from the trading account to the capital account. After the transfer, you can carry out the cash withdrawal operation.
-
-
-**Speed limit: 10 times/s**
-
-**Speed limit rules: ApiKey**
-
-**HTTP request**
-
-POST [HOST](#HTTP-HOST)/v1/withdrawals/account
-
-
-> Authentication information
-
-> For authentication information of private information, please refer to [Authentication Instructions](#auth)
-
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
+| -------- | -------- | -------- | -------- | 
+|amount|Transfer amount|false|string||
+|currency|Name of transfer asset|false|string||
 
 > REQUEST EXAMPLE
 
@@ -88,16 +41,63 @@ POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 ```
 
 <aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| Parameter Name | Parameter Description | Type | 
+| -------- | -------- | ----- |
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
+
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
+## Transfer from Trading Account to Fund Account
+
+<font class="httppost">POST</font> */v1/withdrawals/account*
+
+**Request Data Type:**:`application/json`
+
+Transfer funds from the Trading Account to the Fund Account. Withdrawal operations allowed after the transfer.
+
+
+
+
+
+
+
+> Authentication information
+
+> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
+
+
+<aside>
 REQUEST PARAMETERS
 </aside>
 
-| Parameter name | Parameter description | Required | Data type |
-| -------- | -------- | -------- | -------- |
-|amount|transfer amount |true|string||
-|currency|Transfer asset name|true|string||
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
+| -------- | -------- | -------- | -------- | 
+|amount|Transfer amount|false|string||
+|currency|Name of transfer asset|false|string||
 
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+> REQUEST EXAMPLE
 
 ```json
 {
@@ -107,10 +107,31 @@ REQUEST PARAMETERS
 ```
 
 <aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [Examples](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [Authentication Specifications](#Authentication Specifications) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
 RESPONSE PARAMETERS
 </aside>
 
-| Parameter name | Parameter description | Type |
+| Parameter Name | Parameter Description | Type | 
 | -------- | -------- | ----- |
-|amount|transfer amount|string|
-|currency|Transfer asset name|string|
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
+
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+

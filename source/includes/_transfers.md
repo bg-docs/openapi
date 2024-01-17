@@ -1,32 +1,26 @@
 # 资金划转
 
-<h2 id="资金账户划转到交易账户">POST  资金账户划转到交易账户</h2>
+## 资金账户划转到交易账户
 
-将资金从资金账户划转到指定的交易账户
 
-**限速：10次/s**
+<font class="httppost">POST</font> */v1/deposits/account*
 
-**限速规则：ApiKey**
 
-**HTTP请求**
+**请求数据类型**:`application/json`
 
-POST [HOST](#HTTP-HOST)/v1/deposits/account
+
+将资金从资金账户划转到指定的交易账户。
+
+
+
+
+
 
 
 > 鉴权信息
 
 > 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
 
-
-> <a name="ReeuestExample">REQUEST EXAMPLE</a>
-
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 <aside>
 REQUEST PARAMETERS
@@ -34,49 +28,8 @@ REQUEST PARAMETERS
 
 | 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
-
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| 参数名称 | 参数说明 | 类型 | 
-| -------- | -------- | ----- |
-|amount|划转数量|string|
-|currency|划转资产名称|string|
-
-
-
-
-<h2 id="交易账户划转到资金账户">POST  交易账户划转到资金账户</h2>
-
- 将资金从交易账户划转到资金账户，划转后，可以进行提现操作。
-
-
-**限速：10次/s**
-
-**限速规则：ApiKey**
-
-**HTTP请求**
-
-POST [HOST](#HTTP-HOST)/v1/withdrawals/account
-
-
-> 鉴权信息
-
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
-
+|amount|划转数量 |false|string||
+|currency|划转资产名称|false|string||
 
 > REQUEST EXAMPLE
 
@@ -88,23 +41,14 @@ POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 ```
 
 <aside>
-REQUEST PARAMETERS
+RESPONSE STATUS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
-| -------- | -------- | -------- | -------- | 
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
-
-
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [参考示例](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 <aside>
 RESPONSE PARAMETERS
@@ -115,5 +59,79 @@ RESPONSE PARAMETERS
 |amount|划转数量|string|
 |currency|划转资产名称|string|
 
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
+## 交易账户划转到资金账户
+
+<font class="httppost">POST</font> */v1/withdrawals/account*
+
+**请求数据类型**:`application/json`
+
+将资金从交易账户划转到资金账户，划转后，可以进行提现操作。
+
+
+
+
+
+
+
+> 鉴权信息
+
+> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
+| -------- | -------- | -------- | -------- | 
+|amount|划转数量 |false|string||
+|currency|划转资产名称|false|string||
+
+> REQUEST EXAMPLE
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+<aside>
+RESPONSE STATUS
+</aside>
+
+Status Code | Meaning | Example
+---------- | ------- | --------
+200 | Success Request | [参考示例](#ResonpseExample1)
+401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| 参数名称 | 参数说明 | 类型 | 
+| -------- | -------- | ----- |
+|amount|划转数量|string|
+|currency|划转资产名称|string|
+
+> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
 
 
