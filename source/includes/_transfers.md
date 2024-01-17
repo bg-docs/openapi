@@ -42,7 +42,14 @@ REQUEST PARAMETERS
 |amount|划转数量 |true|string||
 |currency|划转资产名称|true|string||
 
+> <a name="ResponseExample">RESPONSE EXAMPLE</a>
 
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
 
 
 <aside>
@@ -54,14 +61,7 @@ RESPONSE PARAMETERS
 |amount|划转数量|string|
 |currency|划转资产名称|string|
 
-> <a name="ResponseExample">RESPONSE EXAMPLE</a>
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 
 
@@ -102,10 +102,16 @@ REQUEST PARAMETERS
 | -------- | -------- | -------- | -------- | 
 |amount|划转数量 |false|string||
 |currency|划转资产名称|false|string||
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
 
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
 
 <aside>
 RESPONSE PARAMETERS
@@ -117,13 +123,6 @@ RESPONSE PARAMETERS
 |currency|划转资产名称|string|
 
 
-> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
 
 
