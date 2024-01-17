@@ -3,7 +3,7 @@
 ## 資金賬戶劃轉到交易賬戶
 
 
-<font class="httppost">POST</font> */v1/deposits/account*
+POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 
 **請求數據類型**:`application/json`
@@ -71,7 +71,7 @@ RESPONSE PARAMETERS
 
 ## 交易賬戶劃轉到資金賬戶
 
-<font class="httppost">POST</font> */v1/withdrawals/account*
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
 **請求數據類型**:`application/json`
 

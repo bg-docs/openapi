@@ -3,7 +3,7 @@
 ## Transfer from Fund Account to Trading Account
 
 
-<font class="httppost">POST</font> */v1/deposits/account*
+POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 
 **Request Data Type**:`application/json`
@@ -71,7 +71,7 @@ RESPONSE PARAMETERS
 
 ## Transfer from Trading Account to Fund Account
 
-<font class="httppost">POST</font> */v1/withdrawals/account*
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 
 **Request Data Type:**:`application/json`
 
