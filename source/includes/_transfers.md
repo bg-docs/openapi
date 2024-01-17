@@ -78,7 +78,7 @@ POST [HOST](#HTTP-HOST)/v1/withdrawals/account
 > 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
 
 
-> <a name="ResonpseExample">RESONPSE EXAMPLE</a>
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 ```json
 {
