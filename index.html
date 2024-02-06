@@ -300,9 +300,9 @@
         <img src="images/logo-7362dcfc.png" class="logo" alt="" />
       </a>
          <div class="localizable_tabs">
+                      <a href="/openapi/en/">English</a>
                       <a href="/openapi/">中文</a>
                       <a href="/openapi/tc/">繁體中文</a>
-                      <a href="/openapi/en/">English</a>
                 </div>
 
         <div class="search">
@@ -361,26 +361,6 @@
               </ul>
           </li>
           <li>
-            <a href="#v2-public-market" class="toc-h1 toc-link" data-title="公共数据V2">公共数据V2</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#http-kline" class="toc-h2 toc-link" data-title="GET  K线">GET  K线</a>
-                  </li>
-                  <li>
-                    <a href="#http-orderbook" class="toc-h2 toc-link" data-title="GET  订单book">GET  订单book</a>
-                  </li>
-                  <li>
-                    <a href="#http-get-all-tickers" class="toc-h2 toc-link" data-title="GET  全部币对24小时行情数据">GET  全部币对24小时行情数据</a>
-                  </li>
-                  <li>
-                    <a href="#http-get-ticker" class="toc-h2 toc-link" data-title="GET  单币对24小时行情数据">GET  单币对24小时行情数据</a>
-                  </li>
-                  <li>
-                    <a href="#http-get-fiils" class="toc-h2 toc-link" data-title="GET  单币对实时成交数据">GET  单币对实时成交数据</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#b4258c5371" class="toc-h1 toc-link" data-title="币种信息">币种信息</a>
               <ul class="toc-list-h2">
                   <li>
@@ -417,6 +397,26 @@
                   </li>
                   <li>
                     <a href="#根据商品取消所有订单" class="toc-h2 toc-link" data-title="DELETE  根据商品取消所有订单">DELETE  根据商品取消所有订单</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#v2-public-market" class="toc-h1 toc-link" data-title="公共数据V2">公共数据V2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-kline" class="toc-h2 toc-link" data-title="GET  K线">GET  K线</a>
+                  </li>
+                  <li>
+                    <a href="#http-orderbook" class="toc-h2 toc-link" data-title="GET  订单book">GET  订单book</a>
+                  </li>
+                  <li>
+                    <a href="#http-get-all-tickers" class="toc-h2 toc-link" data-title="GET  全部币对24小时行情数据">GET  全部币对24小时行情数据</a>
+                  </li>
+                  <li>
+                    <a href="#http-get-ticker" class="toc-h2 toc-link" data-title="GET  单币对24小时行情数据">GET  单币对24小时行情数据</a>
+                  </li>
+                  <li>
+                    <a href="#http-get-fiils" class="toc-h2 toc-link" data-title="GET  单币对实时成交数据">GET  单币对实时成交数据</a>
                   </li>
               </ul>
           </li>
@@ -1386,609 +1386,6 @@ RESPONSE PARAMETERS
 <td>string</td>
 </tr>
 </tbody></table>
-<h1 id="v2-public-market">公共数据V2</h1>
-
-<h2 id="http-kline">GET  K线</h2>
-
-<p>获取K线数据。K线数据按请求的粒度分组返回，K线数据最多可获取最近2,000条。</p>
-
-<p><strong>限速：无</strong></p>
-
-<p><strong>限速规则：无</strong></p>
-
-<p><strong>HTTP请求</strong></p>
-
-<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/candles</p>
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">必选</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">路径参数 商品，如:ETH_USD</td>
-</tr>
-<tr>
-<td style="text-align: left">interval</td>
-<td style="text-align: left">false</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">时间粒度 默认值 <code>1min</code> 参考值：[1min,5min,15min,30min,60min,4hour,1day,1week,1mon] 具体请参考 <a href="#v2-public-candles">K线频道订阅</a></td>
-</tr>
-<tr>
-<td style="text-align: left">from</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">开始时间 ，请求此时间戳之后的数据(秒)</td>
-</tr>
-<tr>
-<td style="text-align: left">to</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">结束时间 ，请求次时间戳之前的数据(秒)</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: left">false</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">默认500 ，最大1000[1,1000]</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><a name="candles-req-demo">REQUEST EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span><span class="err">GET</span><span class="w"> </span><span class="err">/public/v</span><span class="mi">2</span><span class="err">/products/ETH_USDT/candles?interval=</span><span class="mi">1</span><span class="err">min&amp;from=</span><span class="mi">1639584000</span><span class="err">&amp;to=</span><span class="mi">1639584000</span><span class="err">&amp;size=</span><span class="mi">100</span><span class="w">
-
-</span></code></pre></div>
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690952460</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690952520</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">这根K线期间末一笔成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">这根K线期间最高成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">这根K线期间最低成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">这根K线期间第一笔成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">filled_size</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">成交额</td>
-</tr>
-<tr>
-<td style="text-align: left">count</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">这根k线期间的成交笔数</td>
-</tr>
-<tr>
-<td style="text-align: left">vol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">成交量</td>
-</tr>
-<tr>
-<td style="text-align: left">id</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">唯一id</td>
-</tr>
-</tbody></table>
-
-<h2 id="http-orderbook">GET  订单book</h2>
-
-<p>获取订单簿（Order-book)数据。Order-book数据按价格从高到低排序，价格相同的按照时间优先排序。</p>
-
-<p><strong>限速：无</strong></p>
-
-<p><strong>限速规则：无</strong></p>
-
-<p><strong>HTTP请求</strong></p>
-
-<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/orderbook</p>
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">必选</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">路径参数 商品，如:ETH_USD</td>
-</tr>
-<tr>
-<td style="text-align: left">interval</td>
-<td style="text-align: left">false</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">指标周期 默认值 <code>0</code> 有效取值范围 <code>0-11</code> 请参考 <a href="#v2-public-orderbook">深度频道订阅</a></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><a name="req-orderbook-demo">REQUEST EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
-GET /public/v2/products/ETH_USDT/orderbook?interval=0
-
-</span></code></pre></div>
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w">
-    </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"5"</span><span class="p">,</span><span class="w">   </span><span class="err">//价格</span><span class="w">
-        </span><span class="s2">"3.6"</span><span class="w">  </span><span class="err">//数量</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"3"</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w">
-    </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18867339</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">seq_id</td>
-<td style="text-align: left">string</td>
-<td>有序且唯一id</td>
-</tr>
-<tr>
-<td style="text-align: left">bids</td>
-<td style="text-align: left">[]</td>
-<td>买方</td>
-</tr>
-<tr>
-<td style="text-align: left">asks</td>
-<td style="text-align: left">[]</td>
-<td>卖方</td>
-</tr>
-</tbody></table>
-
-<h2 id="http-get-all-tickers">GET  全部币对24小时行情数据</h2>
-
-<p>获取所有产品行情信息</p>
-
-<p><strong>限速：无</strong></p>
-
-<p><strong>限速规则：无</strong></p>
-
-<p><strong>HTTP请求</strong></p>
-
-<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/overview/tickers</p>
-
-<blockquote>
-<p><a name="req-overview-demo">REQUEST EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
-GET /public/v2/products/overview/tickers
-
-</span></code></pre></div>
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691132221</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2713"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9313"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1979.89"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3.8587"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22757</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6916.093957"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"change_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.5412"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时最新成交价格</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时内最高成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时内最低成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时前开始第一笔成交价格</td>
-</tr>
-<tr>
-<td style="text-align: left">filled_size</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时内成交额</td>
-</tr>
-<tr>
-<td style="text-align: left">vol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时内成交量</td>
-</tr>
-<tr>
-<td style="text-align: left">change</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时价格变化</td>
-</tr>
-<tr>
-<td style="text-align: left">change_percent</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时价格变化(百分比)</td>
-</tr>
-<tr>
-<td style="text-align: left">seq_id</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">唯一且有序id</td>
-</tr>
-<tr>
-<td style="text-align: left">count</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时成交笔数</td>
-</tr>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">商品，例:ETH_USD</td>
-</tr>
-<tr>
-<td style="text-align: left">id</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">唯一id</td>
-</tr>
-</tbody></table>
-
-<h2 id="http-get-ticker">GET  单币对24小时行情数据</h2>
-
-<p>获取产品行情信息</p>
-
-<p><strong>限速：无</strong></p>
-
-<p><strong>限速规则：无</strong></p>
-
-<p><strong>HTTP请求</strong></p>
-
-<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/ticker</p>
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">必选</th>
-<th style="text-align: left">类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">string</td>
-<td>路径参数 商品，如:ETH_USD</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><a name="req-ticker-demo">REQUEST EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
-GET /public/v2/products/ETH_USDT/ticker
-
-</span></code></pre></div>
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691132024</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2713"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9313"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1979.89"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3.8587"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22757</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6916.093957"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"change_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.5412"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">类型</th>
-<th style="text-align: left">说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时最新成交价格</td>
-</tr>
-<tr>
-<td style="text-align: left">high</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时内最高成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">low</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时内最低成交价</td>
-</tr>
-<tr>
-<td style="text-align: left">open</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时前开始第一笔成交价格</td>
-</tr>
-<tr>
-<td style="text-align: left">filled_size</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时内成交额</td>
-</tr>
-<tr>
-<td style="text-align: left">vol</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时内成交量</td>
-</tr>
-<tr>
-<td style="text-align: left">change</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时价格变化</td>
-</tr>
-<tr>
-<td style="text-align: left">change_percent</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">24小时价格变化(百分比)</td>
-</tr>
-<tr>
-<td style="text-align: left">seq_id</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">唯一且有序id</td>
-</tr>
-<tr>
-<td style="text-align: left">count</td>
-<td style="text-align: left">int</td>
-<td style="text-align: left">24小时成交笔数</td>
-</tr>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">string</td>
-<td style="text-align: left">商品，例:ETH_USD</td>
-</tr>
-<tr>
-<td style="text-align: left">id</td>
-<td style="text-align: left">long</td>
-<td style="text-align: left">唯一id</td>
-</tr>
-</tbody></table>
-
-<h2 id="http-get-fiils">GET  单币对实时成交数据</h2>
-
-<p>获取产品的最新交易列表</p>
-
-<p><strong>限速：无</strong></p>
-
-<p><strong>限速规则：无</strong></p>
-
-<p><strong>HTTP请求</strong></p>
-
-<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/trades</p>
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">必选</th>
-<th style="text-align: left">类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">product</td>
-<td style="text-align: left">true</td>
-<td style="text-align: left">string</td>
-<td>路径参数 商品，如:ETH_USD</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: left">false</td>
-<td style="text-align: left">int</td>
-<td>每次请求的数量：默认值 <code>500</code> 最大值 <code>1000</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p><a name="req-fills-demo">REQUEST EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
-GET /public/v2/products/ETH_USDT/trades?size=1
-
-</span></code></pre></div>
-<blockquote>
-<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691029846352</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17078143</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-<table><thead>
-<tr>
-<th style="text-align: left">参数名</th>
-<th style="text-align: left">类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">direction</td>
-<td style="text-align: left">string</td>
-<td>成交方向 buy / sell</td>
-</tr>
-<tr>
-<td style="text-align: left">price</td>
-<td style="text-align: left">string</td>
-<td>成交价格</td>
-</tr>
-<tr>
-<td style="text-align: left">vol</td>
-<td style="text-align: left">string</td>
-<td>成交量</td>
-</tr>
-<tr>
-<td style="text-align: left">id</td>
-<td style="text-align: left">string</td>
-<td>唯一id</td>
-</tr>
-<tr>
-<td style="text-align: left">ts</td>
-<td style="text-align: left">long</td>
-<td>成交时间戳</td>
-</tr>
-</tbody></table>
-
-<hr>
 <h1 id='b4258c5371'>币种信息</h1>
 <h2 id="获取所有已知货币">GET  获取所有已知货币</h2>
 
@@ -3234,6 +2631,609 @@ RESPONSE PARAMETERS
 </aside>
 
 <p>即将被取消的订单的ID列表</p>
+<h1 id="v2-public-market">公共数据V2</h1>
+
+<h2 id="http-kline">GET  K线</h2>
+
+<p>获取K线数据。K线数据按请求的粒度分组返回，K线数据最多可获取最近2,000条。</p>
+
+<p><strong>限速：无</strong></p>
+
+<p><strong>限速规则：无</strong></p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/candles</p>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">必选</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">路径参数 商品，如:ETH_USD</td>
+</tr>
+<tr>
+<td style="text-align: left">interval</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">时间粒度 默认值 <code>1min</code> 参考值：[1min,5min,15min,30min,60min,4hour,1day,1week,1mon] 具体请参考 <a href="#v2-public-candles">K线频道订阅</a></td>
+</tr>
+<tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">开始时间 ，请求此时间戳之后的数据(秒)</td>
+</tr>
+<tr>
+<td style="text-align: left">to</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">结束时间 ，请求次时间戳之前的数据(秒)</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">默认500 ，最大1000[1,1000]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><a name="candles-req-demo">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">GET</span><span class="w"> </span><span class="err">/public/v</span><span class="mi">2</span><span class="err">/products/ETH_USDT/candles?interval=</span><span class="mi">1</span><span class="err">min&amp;from=</span><span class="mi">1639584000</span><span class="err">&amp;to=</span><span class="mi">1639584000</span><span class="err">&amp;size=</span><span class="mi">100</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690952460</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1690952520</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">这根K线期间末一笔成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">这根K线期间最高成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">这根K线期间最低成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">这根K线期间第一笔成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_size</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交额</td>
+</tr>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">这根k线期间的成交笔数</td>
+</tr>
+<tr>
+<td style="text-align: left">vol</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">唯一id</td>
+</tr>
+</tbody></table>
+
+<h2 id="http-orderbook">GET  订单book</h2>
+
+<p>获取订单簿（Order-book)数据。Order-book数据按价格从高到低排序，价格相同的按照时间优先排序。</p>
+
+<p><strong>限速：无</strong></p>
+
+<p><strong>限速规则：无</strong></p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/orderbook</p>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">必选</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">路径参数 商品，如:ETH_USD</td>
+</tr>
+<tr>
+<td style="text-align: left">interval</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">指标周期 默认值 <code>0</code> 有效取值范围 <code>0-11</code> 请参考 <a href="#v2-public-orderbook">深度频道订阅</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><a name="req-orderbook-demo">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
+GET /public/v2/products/ETH_USDT/orderbook?interval=0
+
+</span></code></pre></div>
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"5"</span><span class="p">,</span><span class="w">   </span><span class="err">//价格</span><span class="w">
+        </span><span class="s2">"3.6"</span><span class="w">  </span><span class="err">//数量</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"3.5334"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"3"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18867339</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">seq_id</td>
+<td style="text-align: left">string</td>
+<td>有序且唯一id</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">[]</td>
+<td>买方</td>
+</tr>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">[]</td>
+<td>卖方</td>
+</tr>
+</tbody></table>
+
+<h2 id="http-get-all-tickers">GET  全部币对24小时行情数据</h2>
+
+<p>获取所有产品行情信息</p>
+
+<p><strong>限速：无</strong></p>
+
+<p><strong>限速规则：无</strong></p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/overview/tickers</p>
+
+<blockquote>
+<p><a name="req-overview-demo">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
+GET /public/v2/products/overview/tickers
+
+</span></code></pre></div>
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691132221</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC_USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2713"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9313"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1979.89"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3.8587"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22757</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6916.093957"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"change_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.5412"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时最新成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时内最高成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时内最低成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时前开始第一笔成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_size</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时内成交额</td>
+</tr>
+<tr>
+<td style="text-align: left">vol</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时内成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">change</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时价格变化</td>
+</tr>
+<tr>
+<td style="text-align: left">change_percent</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时价格变化(百分比)</td>
+</tr>
+<tr>
+<td style="text-align: left">seq_id</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">唯一且有序id</td>
+</tr>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时成交笔数</td>
+</tr>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">商品，例:ETH_USD</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">唯一id</td>
+</tr>
+</tbody></table>
+
+<h2 id="http-get-ticker">GET  单币对24小时行情数据</h2>
+
+<p>获取产品行情信息</p>
+
+<p><strong>限速：无</strong></p>
+
+<p><strong>限速规则：无</strong></p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/ticker</p>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">必选</th>
+<th style="text-align: left">类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">string</td>
+<td>路径参数 商品，如:ETH_USD</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><a name="req-ticker-demo">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
+GET /public/v2/products/ETH_USDT/ticker
+
+</span></code></pre></div>
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691132024</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.2713"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.13"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.9313"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1979.89"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-3.8587"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seq_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22757</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"filled_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6916.093957"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"change_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.5412"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时最新成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时内最高成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时内最低成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时前开始第一笔成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_size</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时内成交额</td>
+</tr>
+<tr>
+<td style="text-align: left">vol</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时内成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">change</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时价格变化</td>
+</tr>
+<tr>
+<td style="text-align: left">change_percent</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">24小时价格变化(百分比)</td>
+</tr>
+<tr>
+<td style="text-align: left">seq_id</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">唯一且有序id</td>
+</tr>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: left">int</td>
+<td style="text-align: left">24小时成交笔数</td>
+</tr>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">商品，例:ETH_USD</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">唯一id</td>
+</tr>
+</tbody></table>
+
+<h2 id="http-get-fiils">GET  单币对实时成交数据</h2>
+
+<p>获取产品的最新交易列表</p>
+
+<p><strong>限速：无</strong></p>
+
+<p><strong>限速规则：无</strong></p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>GET <a href="#HTTP-HOST">HOST</a>/public/v2/products/{product}/trades</p>
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">必选</th>
+<th style="text-align: left">类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">product</td>
+<td style="text-align: left">true</td>
+<td style="text-align: left">string</td>
+<td>路径参数 商品，如:ETH_USD</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">int</td>
+<td>每次请求的数量：默认值 <code>500</code> 最大值 <code>1000</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><a name="req-fills-demo">REQUEST EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">
+GET /public/v2/products/ETH_USDT/trades?size=1
+
+</span></code></pre></div>
+<blockquote>
+<p><a name="ResonpseExample">RESPONSE EXAMPLE</a></p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1691029846352</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17078143</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">direction</td>
+<td style="text-align: left">string</td>
+<td>成交方向 buy / sell</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">string</td>
+<td>成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">vol</td>
+<td style="text-align: left">string</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">string</td>
+<td>唯一id</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">long</td>
+<td>成交时间戳</td>
+</tr>
+</tbody></table>
+
+<hr>
 <h1 id="v2-base-ws">WEBSOCKET</h1>
 
 <p>欢迎使用BGE数字币交易所 WebSocket 订阅消息协议。该协议允许您通过 WebSocket 连接实时订阅并接收市场数据、交易信息和其他相关信息。</p>
