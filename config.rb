@@ -2,7 +2,7 @@
 require './lib/unique_head.rb'
 
 # activate :i18n
-activate :i18n, :langs => [:zh,:tc,:en],:path => ":locale/"
+activate :i18n, :langs => [:en,:tc,:zh],:path => ":locale/"
 
 # Markdown
 set :markdown_engine, :redcarpet
