@@ -1,15 +1,15 @@
-# 币种信息
+# Currency Information
 
-<h2 id="获取所有已知货币">GET  获取所有已知货币</h2>
+<h2 id="Get all known currencies">GET Get all known currencies</h2>
 
 
-获取所有币种的信息列表
+Get information list of all currencies
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/currencies
 
@@ -50,57 +50,57 @@ RESPONSE PARAMETERS
 
 
 
-`currency`: 币种名称，可唯一标识币种
+`currency`: currency name, which can uniquely identify the currency
 
-`accuracy`: fiat存取款精度
+`accuracy`: fiat deposit and withdrawal accuracy
 
-`max_precision` : 最大精度。取之范围在`[18,-18]`
+`max_precision` : Maximum precision. Take the range in `[18,-18]`
 
-- `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
-- `max_precision < 0` 时，代表币种精度为整数，且精度为 10 的 abs(max_precision) 次方位
+- When `max_precision >= 0`, it means that the currency precision is max_precision digits after the decimal point;
+- When `max_precision < 0`, it means that the precision of the currency is an integer, and the precision is the abs(max_precision) subdivision of 10
 
-`min_size`: 最小出入金数量
+`min_size`: minimum deposit and withdrawal amount
 
-`status`: 币种状态
+`status`: currency status
 
-`type`: 货币类型，`fiat` 为法币, `crypto` 为数字币
+`type`: Currency type, `fiat` is fiat currency, `crypto` is digital currency
 
-`details`: 链信息，只有数字币类型才会有此部分信息
+`details`: chain information, only digital currency type will have this part of information
 
-`deposit_status`: fiat 存款状态
+`deposit_status`: fiat deposit status
 
-`withdraw_status`: fiat  取款状态
+`withdraw_status`: fiat withdrawal status
 
-- `dispaly_name`: 显示名称
-- `network_confirmations`: 最低网络确认次数
-- `currency`: 币种名称，可唯一标识币种
-- `accuracy`: crypto存取款精度
-- `deposit_status`: crypto 存款状态
-- `withdraw_status`: crypto 取款状态
+- `dispaly_name`: display name
+- `network_confirmations`: minimum number of network confirmations
+- `currency`: currency name, which can uniquely identify the currency
+- `accuracy`: crypto deposit and withdrawal accuracy
+- `deposit_status`: crypto deposit status
+- `withdraw_status`: crypto withdrawal status
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter name | Parameter description | Type |
 | -------- | -------- | ----- |
-|currency|币种名称|string|
-|accuracy|fiat存取款精度|string|
-|max_precision|最大精度|string|
-|min_size|最小出入金数量|string|
-|status|币种状态|string|
-|type|货币类型|string|
-|details|链信息|string|
-|deposit_status|fiat 存款状态|string|
-|withdraw_status|fiat  取款状态|string|
+|currency|currency name|string|
+|accuracy|fiat deposit and withdrawal accuracy|string|
+|max_precision|maximum precision |string|
+|min_size|Minimum deposit and withdrawal amount|string|
+|status|currency status|string|
+|type|currency type|string|
+|details|chain information |string|
+|deposit_status|fiat deposit status|string|
+|withdraw_status|fiat withdrawal status|string|
 
 
-<h2 id="获取单个币种信息">GET  获取单个币种信息</h2>
+<h2 id="Get single currency information">GET get single currency information</h2>
 
 
-获取指定币种的信息
+Get the information of the specified currency
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/currencies/{currency}
 
@@ -109,9 +109,9 @@ GET [HOST](#HTTP-HOST)/v1/currencies/{currency}
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
-| -------- | -------- | -------- | -------- | 
-|currency|币种名称，例:BTC|true|string|
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|currency|currency name, for example: BTC|true|string|
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -143,44 +143,42 @@ REQUEST PARAMETERS
 RESPONSE PARAMETERS
 </aside>
 
-`currency`: 币种名称，可唯一标识币种
+`currency`: currency name, which can uniquely identify the currency
 
-`accuracy`: fiat存取款精度
+`accuracy`: fiat deposit and withdrawal accuracy
 
-`max_precision` : 最大精度。取之范围在`[18,-18]`
+`max_precision` : Maximum precision. Take the range in `[18,-18]`
 
-- `max_precision >= 0` 时，代表币种精度在小数点后 max_precision 位；
-- `max_precision < 0` 时，代表币种精度为整数，且精度为 10 的 abs(max_precision) 次方位
+- When `max_precision >= 0`, it means that the currency precision is max_precision digits after the decimal point;
+- When `max_precision < 0`, it means that the precision of the currency is an integer, and the precision is the abs(max_precision) subdivision of 10
 
-`min_size`: 最小出入金数量
+`min_size`: minimum deposit and withdrawal amount
 
-`status`: 币种状态
+`status`: currency status
 
-`type`: 货币类型，`fiat` 为法币, `crypto` 为数字币
+`type`: Currency type, `fiat` is fiat currency, `crypto` is digital currency
 
-`details`: 链信息，只有数字币类型才会有此部分信息
+`details`: chain information, only digital currency type will have this part of information
 
-`deposit_status`: fiat 存款状态
+`deposit_status`: fiat deposit status
 
-`withdraw_status`: fiat  取款状态
+`withdraw_status`: fiat withdrawal status
 
-- `dispaly_name`: 显示名称
-- `network_confirmations`: 最低网络确认次数
-- `currency`: 币种名称
-- `accuracy`: crypto存取款精度
-- `deposit_status`: crypto 存款状态
-- `withdraw_status`: crypto 取款状态
+- `dispaly_name`: display name
+- `network_confirmations`: minimum number of network confirmations
+- `currency`: currency name
+- `accuracy`: crypto deposit and withdrawal accuracy
+- `deposit_status`: crypto deposit status
+- `withdraw_status`: crypto withdrawal status
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter name | Parameter description | Type |
 | -------- | -------- | ----- |
-|currency|币种名称|string|
-|accuracy|fiat存取款精度|string|
-|max_precision|最大精度|string|
-|min_size|最小出入金数量|string|
-|status|币种状态|string|
-|type|货币类型|string|
-|details|链信息|string|
-|deposit_status|fiat 存款状态|string|
-|withdraw_status|fiat  取款状态|string|
-
-
+|currency|currency name|string|
+|accuracy|fiat deposit and withdrawal accuracy|string|
+|max_precision|maximum precision |string|
+|min_size|Minimum deposit and withdrawal amount|string|
+|status|currency status|string|
+|type|currency type|string|
+|details|chain information |string|
+|deposit_status|fiat deposit status|string|
+|withdraw_status|fiat withdrawal status|string|

@@ -1,6 +1,6 @@
 # ~~WEBSOCKET PUBLIC(DEPRECATED)~~
 
-- [公共频道地址(DEPRECATED)](#WS_HOST_PUBLIC)
+- [Public channel address (DEPRECATED)](#WS_HOST_PUBLIC)
 
 ## Candles Subscribe/UnSubscribe
 
@@ -11,7 +11,7 @@
 ```json
 {
     "event": "sub",
-    "params":{
+    "params": {
         "biz": "market",
         "type": "candles",
         "product": "ETH_BNB",
@@ -21,46 +21,46 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
-|:----    |:---|:----- |------|
-| params .biz | 是  |string |      |
-| params .type     |是  |string | 订阅类型 |
-| params .product     |是  |string | 币对   |
-| params .interval     |是  |string | 周期   |
-| event     |是  |string | 事件 Subscribe  |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
 
 ```json
 {
-	"channel": "subscribe",
-	"biz": "market",
-	"type": "candles",
-	"product": "ETH_BNB",
-	"interval": "30min",
-	"ts": 1639655425910,
-	"status": "ok"
+"channel": "subscribe",
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "30min",
+"ts": 1639655425910,
+"status": "ok"
 }
 ```
 
-#### 返回参数
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .open     |string | 这根K线期间第一笔成交价 |
-| data .close    |string | 这根K线期间末一笔成交价 |
-| data .low     |string | 这根K线期间最低成交价 |
-| data .high     |string | 这根K线期间最高成交价 |
-| data .vol     |string | 这根K线期间成交量 |
-| data .turnOver     |string | 这根K线期间成交额 |
-| data .id     | int | 唯一且有序id |
-| data .count     | int | 这根K线期间成交笔数 |
+#### return parameters
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
 
 
 #### UnSubscribe
@@ -68,59 +68,59 @@
 > unsub request
 
 ```json
-	{
-		"event": "unsub",
-		"params": {
-			"biz": "market",
-			"type": "candles",
-			"product": "ETH_BNB",
-			"interval": "1day"
-		},
-		"zip":true
-	}	
+{
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "1day"
+},
+"zip": true
+}
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明            |
-|:----    |:---|:----- |---------------|
-| params .biz | 是  |string |               |
-| params .type     |是  |string | 订阅类型        |
-| params .product     |是  |string | 币对            |
-| params .interval     |是  |string | 周期            |
-| event     |是  |string | 事件 UnSubscribe |
-| zip     |是  |bool | 是否启用gzip      |
+|parameter name|required|type|description|
+|:---- |:---|:----- |---------------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event UnSubscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > unsub response
 
 ```json
 {
-	"channel":"unsubscribe",
-	"biz": "market",
-	"type": "candles",
-	"product": "ETH_BNB",
-	"interval": "1day",
-	"ts": 1639655425910,
-	"status": "ok"
+"channel": "unsubscribe",
+"biz": "market",
+"type": "candles",
+"product": "ETH_BNB",
+"interval": "1day",
+"ts": 1639655425910,
+"status": "ok"
 }
 ```
 
-#### 返回参数
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| data .open     |string | 这根K线期间第一笔成交价 |
-| data .close    |string | 这根K线期间末一笔成交价 |
-| data .low     |string | 这根K线期间最低成交价 |
-| data .high     |string | 这根K线期间最高成交价 |
-| data .vol     |string | 这根K线期间成交量 |
-| data .turnOver     |string | 这根K线期间成交额 |
-| data .id     | int | 唯一且有序id |
-| data .count     | int | 这根K线期间成交笔数 |
-| data .seqId     |int | 有序且唯一id |
+#### return parameters
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
+| data .seqId |int | ordered and unique id |
 
 
 
@@ -156,7 +156,7 @@
 ```
 ----
 
-##  Fills Subscribe/UnSubscribe
+## Fills Subscribe/UnSubscribe
 
 #### Subscribe
 
@@ -175,13 +175,13 @@
 ```
 
 
-|参数名|必选|类型| 说明       |
-|:----    |:---|:----- |----------|
-| params .biz | 是  |string |          |
-| params .type     |是  |string | 订阅类型类型   |
-| params .product     |是  |string | 币对       |
-| event     |是  |string | 事件 Subscribe      |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type type |
+| params .product |is |string | currency pair |
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 > sub response
 
@@ -198,27 +198,27 @@
 
 #### UnSubscribe
 
-|参数名|必选|类型| 说明       |
-|:----    |:---|:----- |----------|
-| params .biz | 是  |string |          |
-| params .type     |是  |string | 订阅类型类型   |
-| params .product     |是  |string | 币对       |
-| params .interval     |是  |string | 周期       |
-| event     |是  |string | 事件 Subscribe      |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----------|
+| params .biz | is |string | |
+| params.type | yes | string | subscription type type |
+| params .product |is |string | currency pair |
+|params.interval|is |string|period|
+| event | is | string | event Subscribe |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub request
 
 ```json
 {
-	"event": "unsub",
-	"params": {
-		"biz": "market",
-		"type": "fills",
-		"product": "ETH_USDT"
-	},
-	"zip": false
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "fills",
+"product": "ETH_USDT"
+},
+"zip": false
 }
 
 ```
@@ -238,18 +238,18 @@
 ```
 #### Feed Stream
 
-|参数名|类型|说明|
-|:----    |:---|:----- |-----   |
-| id | int | 无符号整数 此消息唯一id |
-| type | string |  订阅类型 |
-| interval     |string | 间隔  |
-| product    |string | 币对|
-| pairCode    |string | 忽略|
-| data .price     |string | 价格 |
-| data .vol     |string | 成交量 |
-| data .ts     |int  | 时间戳 |
-| data .direction     |string |  方向|
-| data .id     |int |  成交id|
+|parameter name|type|description|
+|:---- |:---|:----- |----- |
+| id | int | unsigned integer unique id of this message |
+| type | string | subscription type |
+| interval | string | interval |
+| product |string | currency pair|
+| pairCode |string | ignore|
+| data.price |string | price |
+| data .vol |string | volume |
+| data.ts |int | timestamp |
+| data.direction |string | direction|
+| data .id |int | transaction id|
 
 
 > feed stream
@@ -275,7 +275,7 @@
 }
 
 
-``` 
+```
 
 -----
 
@@ -298,14 +298,14 @@
 
 #### Subscribe
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | _周期_ |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+|params.interval|is |string|_period_|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
@@ -324,14 +324,14 @@
 
 #### UnSubscribe
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| params .interval     |是  |string | _周期_ |
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+|params.interval|is |string|_period_|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 
@@ -382,17 +382,17 @@
     "seqId": 0,
     "interval": "1",
     "bids": [
-		[3781.85, 0.30656],
-		[3781.78, 0.0219],
-		[360, 4.59207],
-		[10, 11]
-	],
+[3781.85, 0.30656],
+[3781.78, 0.0219],
+[360, 4.59207],
+[10, 11]
+],
     "asks": [
-		[3835, 0.19948],
-		[3836.98, 0.00026],
-		[3837.33, 0.4445],
-		[3839, 0.2]
-	]
+[3835, 0.19948],
+[3836.98, 0.00026],
+[3837.33, 0.4445],
+[3839, 0.2]
+]
 }
 
 ```
@@ -414,16 +414,16 @@
         "product": "ETH_USDT"
     },
     "zip": false
-}	
+}
 ```
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 > sub response
 
@@ -454,14 +454,14 @@
 }
 ```
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| params .pairCode     |是  |string | 币对(忽略)|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| params .pairCode | is |string | currency pair (ignore)|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 > unsub response
 
@@ -492,18 +492,18 @@
     "version": 1689934879,
     "seqId": 0,
     "bids": [
-		[11.994, 0.10124]
-	],
+[11.994, 0.10124]
+],
     "asks": [
-		[12.006, 0]
-	]
+[12.006, 0]
+]
 }
 ```
 
 ----
 
 
-##  Ticker Subscribe\UnSubscribe
+## Ticker Subscribe\UnSubscribe
 
 
 
@@ -512,25 +512,25 @@
 > sub request
 
 ```json
-	{
-		"event": "sub",
-		"params": {
-			"biz": "market",
-			"type": "ticker",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+"event": "sub",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
+}
 ```
 
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > sub response
@@ -553,25 +553,25 @@
 > unsub request
 
 ```json
-	{
-		"event": "unsub",
-		"params": {
-			"biz": "market",
-			"type": "ticker",
-			"product": "ETH_USDT"
-		},
-		"zip":false
-	}	
+{
+"event": "unsub",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
+}
 ```
 
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params .biz | 是  |string |   |
-| params .type     |是  |string | 订阅类型  |
-| params .product     |是  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params .biz | is |string | |
+| params.type | yes | string | subscription type |
+| params .product |is |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
 > unsub response
@@ -588,23 +588,23 @@
 ```
 #### Feed Stream
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| type | string |  订阅类型 |
-| ts     | int | 时间戳  |
-| product    |string | 币对|
-| msg    | string | 忽略|
-| code    | int | 忽略|
-| data .open     |string | 24小时前开始第一笔成交价格 |
-| data .close    |string | 24小时最新成交价格 |
-| data .low     |string | 24小时内最低成交价 |
-| data .high     |string | 24小时内最高成交价 |
-| data .vol     |string | 24小时内成交量 |
-| data .turnOver     |string | 24小时内成交额 |
-| data .count     | int | 24小时成交笔数 |
-| data .change     | int | 24小时价格变化 |
-| data .changePercent     | int | 24小时价格变化(百分比) |
-| data .pairCode     |string | 忽略 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| type | string | subscription type |
+| ts | int | timestamp |
+| product |string | currency pair|
+| msg | string | ignore|
+| code | int | ignore|
+| data .open |string | The first transaction price started 24 hours ago |
+| data .close |string | 24-hour latest transaction price |
+| data .low |string | The lowest transaction price within 24 hours |
+| data .high |string | The highest transaction price within 24 hours |
+| data .vol |string | Trading volume within 24 hours |
+| data .turnOver |string | turnover within 24 hours |
+| data .count | int | Number of transactions in 24 hours |
+| data .change | int | 24-hour price change |
+| data .changePercent | int | 24-hour price change (percentage) |
+| data .pairCode |string | ignore |
 
 > feed stream
 
@@ -615,7 +615,7 @@
     "msg": "success",
     "ts": 1689935550508,
     "type": "ticker",
-	"product": "BTC_USDT",
+"product": "BTC_USDT",
     "data":
     {
         "pairCode": "BTC_USDT",
@@ -640,48 +640,48 @@
 
 ```json
 {
-	"event": "req",
-	"params": {
-		"biz": "market",
-		"type": "candles",
-		"product": "BTC_USDT",
-		"interval": "1day",
-		"size": 301,
-		"from": 1613692800,
-		"to": 1639699200
-	},
-	"zip":false
+"event": "req",
+"params": {
+"biz": "market",
+"type": "candles",
+"product": "BTC_USDT",
+"interval": "1day",
+"size": 301,
+"from": 1613692800,
+"to": 1639699200
+},
+"zip": false
 }
 ```
-| 参数名             | 必选  |类型| 说明       |
+| Parameter name | Required |Type | Description |
 |:----------------|:----|:----- |----------|
-| params.biz      | 是   |string |          |
-| params.type     | 是   |string | 类型       |
-| params.product | 是   |string | 币对       |
-| params.interval | 是   |string | 周期       |
-| params.from     | 是   |string | 开始时间     |
-| params.to       | 是   |string | 结束时间     |
-| event           | 是   |string | 事件       |
-| zip             | 是   |bool | 是否启用gzip |
+| params.biz | is |string | |
+| params.type | is | string | type |
+| params.product | is |string | currency pair |
+| params.interval | is |string | period |
+| params.from | is |string | start time |
+| params.to | is |string | end time |
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 
-###### 返回结构
+###### return structure
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| biz | string |  行情 |
-| ts     | int | 时间戳  |
-| product    |string | 币对|
-| interval    | string | 间隔 1day|
-| event    | string | req |
-| data .open     |string | 这根K线期间第一笔成交价 |
-| data .close    |string | 这根K线期间末一笔成交价 |
-| data .low     |string | 这根K线期间最低成交价 |
-| data .high     |string | 这根K线期间最高成交价 |
-| data .vol     |string | 这根K线期间成交量 |
-| data .turnOver     |string | 这根K线期间成交额 |
-| data .id     | int | 唯一且有序id |
-| data .count     | int | 这根K线期间成交笔数 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| biz | string | Quote |
+| ts | int | timestamp |
+| product |string | currency pair|
+| interval | string | interval 1day|
+| event | string | req |
+| data .open |string | The first transaction price during this K-line period |
+| data .close |string | The last transaction price of this K-line period |
+| data .low |string | The lowest transaction price during this K-line period |
+| data .high |string | The highest transaction price during this K-line |
+| data .vol |string | Trading volume during this K-line |
+| data .turnOver |string | Turnover during this K-line |
+| data .id | int | unique and ordered id |
+| data .count | int | Number of transactions during this K-line period |
 
 > req response
 
@@ -723,48 +723,48 @@
 
 ## Request Ticker
 
-#### 请求结构
+#### Request structure
 
-|参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-| params.biz | 是  |string |   |
-| params.type     |否  |string | 类型 |
-| params.product     |否  |string | 币对|
-| event     |是  |string | 事件 |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |----- |
+| params.biz | is |string | |
+| params.type | no | string | type |
+| params.product |no |string | currency pair|
+| event | is |string | event |
+| zip | yes | bool | whether to enable gzip |
 
 > req request
 
 ```json
-	{
-	"event": "req",
-	"params": {
-		"biz": "market",
-		"type": "ticker",
-		"product": "ETH_USDT"
-	},
-	"zip":false
+{
+"event": "req",
+"params": {
+"biz": "market",
+"type": "ticker",
+"product": "ETH_USDT"
+},
+"zip": false
 }
 ```
 
-#### 返回参数
+#### return parameters
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| biz | string |  行情 |
-| type     | string | ticker  |
-| ts     | int | 时间戳  |
-| product    |string | 币对|
-| event    | string | req |
-| data .open     |string | 24小时前开始第一笔成交价格 |
-| data .close    |string | 24小时最新成交价格 |
-| data .low     |string | 24小时内最低成交价 |
-| data .high     |string | 24小时内最高成交价 |
-| data .vol     |string | 24小时内成交量 |
-| data .turnOver     |string | 24小时内成交额 |
-| data .count     | int | 24小时成交笔数 |
-| data .change     | int | 24小时价格变化 |
-| data .changePercent     | int | 24小时价格变化(百分比) |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| biz | string | Quote |
+| type | string | ticker |
+| ts | int | timestamp |
+| product |string | currency pair|
+| event | string | req |
+| data .open |string | The first transaction price started 24 hours ago |
+| data .close |string | 24-hour latest transaction price |
+| data .low |string | The lowest transaction price within 24 hours |
+| data .high |string | The highest transaction price within 24 hours |
+| data .vol |string | Trading volume within 24 hours |
+| data .turnOver |string | turnover within 24 hours |
+| data .count | int | Number of transactions in 24 hours |
+| data .change | int | 24-hour price change |
+| data .changePercent | int | 24-hour price change (percentage) |
 
 
 > req response
@@ -791,4 +791,3 @@
     }
 }
 ```
-

@@ -1,26 +1,26 @@
-# 账户信息
+# Account Information
 
-<h2 id="获取所有账户余额信息">GET  获取所有账户余额信息</h2>
+<h2 id="Get all account balance information">GET get all account balance information</h2>
 
-获取用户所有的交易账户信息
+Get all the trading account information of the user
 
-**限速：10次/s**
+**Speed limit: 10 times/s**
 
-**限速规则：ApiKey**
+**Speed limit rules: ApiKey**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/accounts
 
-> 鉴权信息
+> Authentication information
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 
 
 <aside class="notice">
   <span style="color: blue;">
-冻结账户：当用户下单完成，自己会被划拨到冻结账户。被划拨到冻结账户的资金不能被用于其他交易，以及提现操作。当订单成交或被取消，冻结账户的资金会被释放。
+Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
   </span>
 </aside>
 
@@ -43,36 +43,36 @@ GET [HOST](#HTTP-HOST)/v1/accounts
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter name | Parameter description | Type |
 | -------- | -------- | ----- |
-|available|可用额度|string|
-|hold|冻结额度|string|
-|balance|余额,包含 可用额度为冻结额度之和|string|
-|currency|资产名称|string|
+|available|Available Quota|string|
+|hold|Freeze Quota|string|
+|balance| balance, including the available amount is the sum of the frozen amount |string|
+|currency|Asset name|string|
 
 
 
 
-<h2 id="获取单个账户余额信息">GET  获取单个账户余额信息</h2>
+<h2 id="Get single account balance information">GET get single account balance information</h2>
 
-获取用户指定的交易账户信息
+Get the trading account information specified by the user
 
-**限速：10次/s**
+**Speed limit: 10 times/s**
 
-**限速规则：ApiKey**
+**Speed limit rules: ApiKey**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/accounts/{currency}
 
-> 鉴权信息
+> Authentication information
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 
 <aside class="notice">
   <span style="color: blue;">
-冻结账户：当用户下单完成，自己会被划拨到冻结账户。被划拨到冻结账户的资金不能被用于其他交易，以及提现操作。当订单成交或被取消，冻结账户的资金会被释放。
+Frozen account: When the user places an order, he or she will be transferred to the frozen account. The funds transferred to the frozen account cannot be used for other transactions and withdrawal operations. When the order is executed or canceled, the funds in the frozen account will be released.
   </span>
 </aside>
 
@@ -80,9 +80,9 @@ GET [HOST](#HTTP-HOST)/v1/accounts/{currency}
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
-| -------- | -------- | -------- | -------- | 
-|currency|资产名称，例:BTC|true|string|
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|currency|Asset name, for example: BTC|true|string|
 
 
 
@@ -103,9 +103,9 @@ REQUEST PARAMETERS
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter name | Parameter description | Type |
 | -------- | -------- | ----- |
-|available|可用额度|string|
-|hold|冻结额度|string|
-|balance|余额,包含 可用额度与冻结额度之和|string|
-|currency|资产名称|string|
+|available|Available Quota|string|
+|hold|Freeze Quota|string|
+|balance| balance, including the sum of available quota and frozen quota |string|
+|currency|Asset name|string|

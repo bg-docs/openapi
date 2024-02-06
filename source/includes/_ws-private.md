@@ -1,11 +1,11 @@
 # ~~WEBSOCKET PRIVATE(DEPRECATED)~~
 
-- [私有频道地址(DEPRECATED)](#WS_HOST_PRIVATE)
+- [Private channel address (DEPRECATED)](#WS_HOST_PRIVATE)
 
 
 ## Login
 
-进行WS通道用户认证。只有认证过的通道才可以进行订阅用户的资产信息以及订单状态变化信息
+Perform WS channel user authentication. Only authenticated channels can subscribe to the user's asset information and order status change information
 
 ### Subscribe
 
@@ -23,15 +23,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
-|:----    |:---|:----- |------|
-| params.type | 是  |string | 认证方式: <br/>`api`:apiKey认证;`token`:token认证     |
-| params.access-key     |是  |string | [鉴权说明](#auth)   |
-| params.access-sign     |是  |string | [鉴权说明](#auth)    |
-| params.access-timestamp     |是  |long | [鉴权说明](#auth)    |
-| event     |是  |string | 事件名 [事件列表](#events)  |
+|parameter name|required|type|description|
+|:---- |:---|:----- |------|
+| params.type | is |string | authentication method: <br/>`api`: apiKey authentication; `token`: token authentication |
+| params.access-key | is |string | [authentication description](#auth) |
+| params.access-sign | is |string | [authentication description](#auth) |
+| params.access-timestamp | is |long | [authentication description](#auth) |
+| event |is |string | event name [event list](#events) |
 
 > response
 
@@ -45,14 +45,14 @@
 }
 ```
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| result    |string | [数据频道](#channels)|
-| data.result     |bool | 订阅是否成功 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| result |string | [Data Channels](#channels)|
+| data.result |bool | Whether the subscription is successful |
 
 ## Assets
 
-订阅用户的资产变更。目前只支持按照产品进行订阅。订阅全量的资产变更信息正在开发中。
+Subscribe to user's asset changes. Currently only supports subscription by product. Subscription to full asset change information is under development.
 
 ### Subscribe
 
@@ -70,15 +70,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
-|:----    |:---|:----- |------|
-| params.biz | 是  |string | [订阅模块类型](#bizs)     |
-| params.type     |是  |string | [订阅业务类型](#types)  |
-| params.product     |是  |string | 产品信息   |
-| event     |是  |string | 事件名 [事件列表](#events)  |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |------|
+| params.biz | is |string | [subscription module type](#bizs) |
+| params.type | is |string | [subscription business type](#types) |
+| params.product | is |string | product information |
+| event |is |string | event name [event list](#events) |
+| zip | yes | bool | whether to enable gzip |
 
 > response
 
@@ -94,15 +94,15 @@
 }
 ```
 
-#### 返回参数
+#### return parameters
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| data.result     |bool | 订阅是否成功 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| channel |string | [data channel](#channels)|
+| biz |string | [Business Line](#bizs) |
+| type | string | [protocol type](#types) |
+| product |string | product name|
+| data.result |bool | Whether the subscription is successful |
 
 > feed
 
@@ -122,21 +122,21 @@
 }
 ```
 
-#### 推送数据
+#### push data
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| $data.currency     |string | 币种名称 |
-| $data.available     |bigdecimal | 可用数量名称 |
-| $data.hold     |bigdecimal | 冻结数量币种名称 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| channel |string | [data channel](#channels)|
+| biz |string | [Business Line](#bizs) |
+| type | string | [protocol type](#types) |
+| product |string | product name|
+| $data.currency |string | currency name |
+| $data.available | bigdecimal | available quantity name |
+| $data.hold |bigdecimal | Currency name of the frozen quantity |
 
 ## Orders
 
-订阅所有订单的状态变化
+Subscribe to status changes for all orders
 
 ### Subscribe
 
@@ -154,15 +154,15 @@
 }
 ```
 
-#### 请求参数
+#### Request parameters
 
-|参数名|必选|类型| 说明   |
-|:----    |:---|:----- |------|
-| params.biz | 是  |string | [订阅模块类型](#bizs)     |
-| params.type     |是  |string | [订阅业务类型](#types)  |
-| params.product     |是  |string | 产品名   |
-| event     |是  |string | 事件名 [事件列表](#events)  |
-| zip     |是  |bool | 是否启用gzip |
+|parameter name|required|type|description|
+|:---- |:---|:----- |------|
+| params.biz | is |string | [subscription module type](#bizs) |
+| params.type | is |string | [subscription business type](#types) |
+| params.product | is |string | product name |
+| event |is |string | event name [event list](#events) |
+| zip | yes | bool | whether to enable gzip |
 
 > response
 
@@ -178,45 +178,45 @@
 }
 ```
 
-#### 返回参数
+#### return parameters
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| data.result     |bool | 订阅是否成功 |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| channel |string | [data channel](#channels)|
+| biz |string | [Business Line](#bizs) |
+| type | string | [protocol type](#types) |
+| product |string | product name|
+| data.result |bool | Whether the subscription is successful |
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | schema |
-| -------- | -------- | ----- |----- | 
-|order_id|订单编号|string||
-|product|商品|string||
+| parameter name | parameter description | type | schema |
+| -------- | -------- | ----- |----- |
+|order_id|order number|string||
+|product|commodity|string||
 |side| buy/sell |string||
-|price|每单位基础货币的价格|string||
-|size|买入/卖出的基础货币数量|string||
-|filled_amount|成交数量|string||
-|funds|想要使用的报价货币数量|string||
-|filled_size| 成交金额 |string||
-|type|limit:限价单/market:市价单/|string||
-|status|状态|string||
-|client_oid| 默认"0"，用户自定义订单号 | string ||
+|price|price per unit of base currency|string||
+|size|Amount of base currency to buy/sell|string||
+|filled_amount|Amount of transaction|string||
+|funds|Amount of quote currency to use |string||
+|filled_size| transaction amount |string||
+|type|limit: limit order/market: market order/|string||
+|status|status|string||
+|client_oid| default "0", user-defined order number | string ||
 
 
-`status`: 交易状态，取值范围0-7
+`status`: transaction status, value range 0-7
 
-- 0: 已经收到订单
-- 1: 已经提交订单
-- 2: 订单部分成交
-- 3: 订单已完全成交
-- 4: 订单发起撤销
-- 5: 订单已经撤销
-- 6: 订单交易失败
-- 7: 订单被减量
+- 0: order has been received
+- 1: The order has been submitted
+- 2: The order is partially executed
+- 3: The order has been completely filled
+- 4: The order is canceled
+- 5: The order has been canceled
+- 6: Order transaction failed
+- 7: The order is reduced
 
 
 
@@ -242,38 +242,38 @@ RESPONSE PARAMETERS
 }
 ```
 
-#### 推送数据
+#### push data
 
-|参数名|类型|说明|
-|:----    |:----- |-----   |
-| channel    |string | [数据频道](#channels)|
-| biz    |string | [业务线](#bizs) |
-| type | string |  [协议类型](#types) |
-| product    |string | 产品名|
-| $data    |object | [订单详情](#order_detail) |
+|parameter name|type|description|
+|:---- |:----- |----- |
+| channel |string | [data channel](#channels)|
+| biz |string | [Business Line](#bizs) |
+| type | string | [protocol type](#types) |
+| product |string | product name|
+| $data |object | [order details](#order_detail) |
 
-## Event 列表
+## Event list
 
 <a name="events"></a>
 
-|Event 名称|类型|说明|
-|:----    |:----- |-----   |
-| sub    |string | 订阅事件,由客户端主动发起|
-| login    |string | 登录事件，由客户端主动发起 |
+|Event Name|Type|Description|
+|:---- |:----- |----- |
+| sub |string | Subscribe to events, initiated by the client |
+| login |string | login event, initiated by the client |
 
-## Biz 列表
+## Biz list
 
 <a name="bizs"></a>
 
-|Biz 名称|类型|说明|
-|:----    |:----- |-----   |
-| exchange    |string | 现货交易|
+|Biz Name|Type|Description|
+|:---- |:----- |----- |
+| exchange |string | spot transaction|
 
-## Type 列表
+## List of Types
 
 <a name="types"></a>
 
-|Type 名称|类型|说明|
-|:----    |:----- |-----   |
-| assets    |string | 资产变更|
-| orders    |string | 订单状态变更|
+|Type Name|Type|Description|
+|:---- |:----- |----- |
+| assets |string | asset changes|
+| orders |string | order status change|

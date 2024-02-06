@@ -1,14 +1,14 @@
-# 产品
+# Product
 
-<h2 id="获取所有已知的交易产品">GET  获取所有已知的交易产品</h2>
+<h2 id="Get all known trading products">GET get all known trading products</h2>
 
-获取所有的交易产品信息
+Get all trading product information
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/products
 
@@ -47,91 +47,91 @@ RESPONSE PARAMETERS
 
 </aside>
 
-`product`: 商品
+`product`: product
 
-`base_currency`: 基础资产名
+`base_currency`: base asset name
 
-`quote_currency` : 计价资产名
+`quote_currency` : quote asset name
 
-`display_name`: 交易产品展示名，下单时，作为交易产品唯一标识
+`display_name`: The display name of the transaction product, which is used as the unique identifier of the transaction product when placing an order
 
-`status` : 交易产品状态
-- `on`: 已上线，该产品开放交易，可以正常下单交易。
-- `off`: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
-- `pause`: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消
-
-
-`amount_precision`: 交易货币数量单位精度
-
-`quote_precision`: 计价货币数量单位精度
-
-`trade_precision`: 交易货币价格单位精度
-
-`maker_fees_rate`: 卖单方费率
-
-`taker_fees_rate`: 买单方费率
-
-`max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
-
-`max_sell_price_rate`: 限价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
-
-`max_trade_usd_per_order`: 限价每笔订单最大下单金额。该金额会被折合成`美元`进行计算。
-
-`min_trade_usd_per_order`: 限价每笔订单最小下单金额。该金额会被折合成`美元`进行计算。
-
-`max_market_taker_trade_rate`: 市价买入价不能高于最新价格的比率，超过比率，订单下单失败。
-
-`min_market_taker_trade_rate` : 市价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
-
-`max_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
-
-`min_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
-
-| 参数名称 | 参数说明 | 类型 | 
-| -------- | -------- | ----- | 
-|product|商品|string|
-|base_currency|基础资产|string|
-|quote_currency|计价资产名|string|
-|display_name|显示名称|string|
-|amount_precision|交易货币数量单位精度|string|
-|quote_precision|计价货币数量单位精度|string|
-|trade_precision|	交易货币价格单位精度|string|
-|maker_fees_rate|卖单方费率|string|
-|taker_fees_rate|买单方费率|string|
-|max_buy_price_rate|买入价格不能高于最新价(%)|string|
-|max_sell_price_rate|卖出价格不能低于最新价(%)|string|
-|max_trade_usd_per_order|单笔最大下单金额|string|
-|min_trade_usd_per_order|单笔最小下单金额|string|
-|max_market_taker_trade_rate|买单成交价格上限(%)|string|
-|min_market_taker_trade_rate|买单成交价格下限(%)|string|
-|max_market_trade_usd_per_order|单笔最大下单金额|string|
-|min_market_trade_usd_per_order|单笔最小下单金额|string|
-|status|状态|string|
+`status` : trading product status
+- `on`: has been launched, the product is open for trading, and orders can be placed and traded normally.
+- `off`: offline. This product closes all transactions, and orders that already have pending orders will be automatically canceled by the system.
+- `pause`: Trading is paused, the product closes some trades, but existing pending orders will not be canceled
 
 
+`amount_precision`: transaction currency amount unit precision
+
+`quote_precision`: Quotation currency quantity unit precision
+
+`trade_precision`: trade currency price unit precision
+
+`maker_fees_rate`: Maker fee rate
+
+`taker_fees_rate`: taker fee rate
+
+`max_buy_price_rate`: The rate at which the limit buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`max_sell_price_rate`: The rate at which a limit sell order cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_trade_usd_per_order`: The maximum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`min_trade_usd_per_order`: The minimum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`max_market_taker_trade_rate`: The rate at which the market buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`min_market_taker_trade_rate` : The rate at which market taker orders cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+`min_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | ----- |
+|product|product|string|
+|base_currency|base asset|string|
+|quote_currency|Price asset name|string|
+|display_name|display name |string|
+|amount_precision|trading currency amount unit precision |string|
+|quote_precision|quote currency quantity unit precision|string|
+|trade_precision| trade currency price unit precision |string|
+|maker_fees_rate|Seller fee rate|string|
+|taker_fees_rate|taker fee rate|string|
+|max_buy_price_rate|The buying price cannot be higher than the latest price (%)|string|
+|max_sell_price_rate|The selling price cannot be lower than the latest price (%)|string|
+|max_trade_usd_per_order|The maximum amount of a single order|string|
+|min_trade_usd_per_order|Single minimum order amount|string|
+|max_market_taker_trade_rate|The upper limit of taker trade price (%)|string|
+|min_market_taker_trade_rate|Minimum limit of taker trade price (%)|string|
+|max_market_trade_usd_per_order|The maximum amount of a single order|string|
+|min_market_trade_usd_per_order|Single minimum order amount|string|
+|status|status|string|
 
 
 
-<h2 id="获取单个产品详情">GET  获取单个产品详情</h2>
 
-获取指定的交易产品信息
 
-**限速：无**
+<h2 id="Get Single Product Details">GET Get Single Product Details</h2>
 
-**限速规则：无**
+Get the specified trading product information
 
-**HTTP请求**
+**Speed Limit: None**
+
+**Speed limit rules: None**
+
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/v1/products/{product}
 
- 
+
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
-| -------- | -------- | -------- | -------- | 
-|product|商品，例:ETH_USD|true|string|
+| Parameter name | Parameter description | Required | Data type |
+| -------- | -------- | -------- | -------- |
+|product|commodity, for example: ETH_USD|true|string|
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
@@ -165,66 +165,63 @@ REQUEST PARAMETERS
 RESPONSE PARAMETERS
 </aside>
 
-`product`: 商品
+`product`: product
 
-`base_currency`: 基础资产名
+`base_currency`: base asset name
 
-`quote_currency` : 计价资产名
+`quote_currency` : quote asset name
 
-`display_name`: 交易产品展示名，下单时，作为交易产品唯一标识
+`display_name`: The display name of the transaction product, which is used as the unique identifier of the transaction product when placing an order
 
-`status` : 交易产品状态
-- `on`: 已上线，该产品开放交易，可以正常下单交易。
-- `off`: 已下线。该产品关闭一切交易，已经存在挂单的订单，会被系统自动撤销。
-- `pause`: 交易暂停，该产品关闭一些交易，但已经存在的挂单，不会被取消
-
-
-`amount_precision`: 交易货币数量单位精度
-
-`quote_precision`: 计价货币数量单位精度
-
-`trade_precision`: 交易货币价格单位精度
-
-`maker_fees_rate`: 卖单方费率
-
-`taker_fees_rate`: 买单方费率
-
-`max_buy_price_rate`: 限价买入价不能高于最新价格的比率，超过比率，订单下单失败。
-
-`max_sell_price_rate`: 限价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
-
-`max_trade_usd_per_order`: 限价每笔订单最大下单金额。该金额会被折合成`美元`进行计算。
-
-`min_trade_usd_per_order`: 限价每笔订单最小下单金额。该金额会被折合成`美元`进行计算。
-
-`max_market_taker_trade_rate`: 市价买入价不能高于最新价格的比率，超过比率，订单下单失败。
-
-`min_market_taker_trade_rate` : 市价卖单不可以低于最新价格的比率。超过比率，订单下单失败。
-
-`max_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
-
-`min_market_trade_usd_per_order` : 市价单笔最小下单金额。该金额会被折合成`美元`进行计算。
-
-| 参数名称 | 参数说明 | 类型 | 
-| -------- | -------- | -----| 
-|product|商品|string|
-|base_currency|基础资产|string|
-|quote_currency|计价资产名|string|
-|display_name|显示名称|string|
-|amount_precision|交易货币数量单位精度|string|
-|quote_precision|计价货币数量单位精度|string|
-|trade_precision|	交易货币价格单位精度|string|
-|maker_fees_rate|卖单方费率|string|
-|taker_fees_rate|买单方费率|string|
-|max_buy_price_rate|买入价格不能高于最新价(%)|string|
-|max_sell_price_rate|卖出价格不能低于最新价(%)|string|
-|max_trade_usd_per_order|单笔最大下单金额|string|
-|min_trade_usd_per_order|单笔最小下单金额|string|
-|max_market_taker_trade_rate|买单成交价格上限(%)|string|
-|min_market_taker_trade_rate|买单成交价格下限(%)|string|
-|max_market_trade_usd_per_order|单笔最大下单金额|string|
-|min_market_trade_usd_per_order|单笔最小下单金额|string|
-|status|状态|string|
+`status` : trading product status
+- `on`: has been launched, the product is open for trading, and orders can be placed and traded normally.
+- `off`: offline. This product closes all transactions, and orders that already have pending orders will be automatically canceled by the system.
+- `pause`: Trading is paused, the product closes some trades, but existing pending orders will not be canceled
 
 
+`amount_precision`: transaction currency amount unit precision
 
+`quote_precision`: Quotation currency quantity unit precision
+
+`trade_precision`: trade currency price unit precision
+
+`maker_fees_rate`: Maker fee rate
+
+`taker_fees_rate`: taker fee rate
+
+`max_buy_price_rate`: The rate at which the limit buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`max_sell_price_rate`: The rate at which a limit sell order cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_trade_usd_per_order`: The maximum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`min_trade_usd_per_order`: The minimum order amount per order at the limit price. The amount will be converted into `USD` for calculation.
+
+`max_market_taker_trade_rate`: The rate at which the market buy price cannot be higher than the latest price. If the rate exceeds the rate, the order will fail.
+
+`min_market_taker_trade_rate` : The rate at which market taker orders cannot be lower than the latest price. If the ratio is exceeded, the order will fail to be placed.
+
+`max_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+`min_market_trade_usd_per_order` : The minimum order amount for a single order at the market price. The amount will be converted into `USD` for calculation.
+
+| Parameter name | Parameter description | Type |
+| -------- | -------- | -----|
+|product|product|string|
+|base_currency|base asset|string|
+|quote_currency|Price asset name|string|
+|display_name|display name |string|
+|amount_precision|trading currency amount unit precision |string|
+|quote_precision|quote currency quantity unit precision|string|
+|trade_precision| trade currency price unit precision |string|
+|maker_fees_rate|Seller fee rate|string|
+|taker_fees_rate|taker fee rate|string|
+|max_buy_price_rate|The buying price cannot be higher than the latest price (%)|string|
+|max_sell_price_rate|The selling price cannot be lower than the latest price (%)|string|
+|max_trade_usd_per_order|The maximum amount of a single order|string|
+|min_trade_usd_per_order|Single minimum order amount|string|
+|max_market_taker_trade_rate|The upper limit of taker trade price (%)|string|
+|min_market_taker_trade_rate|Minimum limit of taker trade price (%)|string|
+|max_market_trade_usd_per_order|The maximum amount of a single order|string|
+|min_market_trade_usd_per_order|Single minimum order amount|string|
+|status|status|string|

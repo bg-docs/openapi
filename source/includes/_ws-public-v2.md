@@ -1,52 +1,52 @@
-<h1 id="v2-public-ws">WEBSOCKET公共频道V2</h1>
+<h1 id="v2-public-ws">WEBSOCKET public channel V2</h1>
 
-- [公共频道V2地址](#WS_HOST_PUBLIC_V2)
+- [Public channel V2 address](#WS_HOST_PUBLIC_V2)
 
-**序列号 `seq_id` 说明**
+**sequence number `seq_id` description**
 
-1. `seq_id` 是交易所行情的一个序列号，当用户使用一个或多个 WebSocket 连接到同一个频道时，除了实时成交数据外，都会收到相同序列号的数据推送，用户需要自己处理重复数据，可以使用 `seq_id` 来构建消息序列，这将允许用户检测数据包丢失和消息的排序。
+1. `seq_id` is a serial number of the exchange market. When a user uses one or more WebSockets to connect to the same channel, in addition to the real-time transaction data, he will receive data pushes with the same serial number, and the user needs to handle the duplication by himself. data, a `seq_id` can be used to build a sequence of messages, which will allow the user to detect packet loss and ordering of messages.
 
-2. `seq_id` 是一个单调递增的数字，最小值为 0。
-
-
-<h2 id="v2-public-candles">K线频道</h2>
+2. `seq_id` is a monotonically increasing number with a minimum value of 0.
 
 
-订阅或者请求获取K线(最新一根K线)数据的推送
+<h2 id="v2-public-candles">K-line channel</h2>
 
-**K线图间隔参数:**
 
-min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
+Subscribe or request to get K-line (the latest K-line) data push
+
+**K-line chart interval parameters:**
+
+min -> minute; hour -> hour; day -> day; week -> week; mon -> month
 
 - 1min
 - 5min
 - 15min
 - 30min
 - 60min
-- 4hour
-- 1day
+- 4 hours
+- 1 day
 - 1week
 - 1mon
 
 
-**字段说明:**
+**Field Description:**
 
-- `id` 消息唯一id
-- `open` 这根K线期间第一笔成交价
-- `close` 这根K线期间末一笔成交价
-- `low` 这根K线期间最低成交价
-- `high` 这根K线期间最高成交价
-- `filled_size` 这根K线期间成交额
-- `vol` 这根K线期间成交量
-- `seq_id` 唯一且有序id
-- `count` 这根K线期间成交笔数
-- `interval` K线间隔
-- `product` 交易对
+- `id` message unique id
+- `open` the first transaction price during this K-line period
+- `close` the last transaction price during this K-line period
+- `low` the lowest transaction price during this K-line period
+- `high` is the highest transaction price during this K-line period
+- `filled_size` the transaction volume during this K-line
+- `vol` is the trading volume during this K-line
+- `seq_id` unique and ordered id
+- `count` is the number of transactions during this K-line period
+- `interval` K-line interval
+- `product` trading pair
 
 
-**订阅**
+**subscription**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -60,7 +60,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -77,9 +77,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-**取消订阅**
+**unsubscribe**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -93,7 +93,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -109,9 +109,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**推送数据**
+**Push data**
 
-> 推送数据示例
+> Push data example
 
 ```json
 {
@@ -136,17 +136,17 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**请求数据**
+**request data**
 
-**参数说明:**
+**Parameter Description:**
 
-- `id` 每个K线消息的唯一id
-- `from` 开始时间的ix时间戳
-- `to` 结束时间的ix时间戳
-- `interval` K线间隔
-- `product` 交易对
+- `id` the unique id of each candlestick message
+- ix timestamp of `from` start time
+- ix timestamp of `to` end time
+- `interval` K-line interval
+- `product` trading pair
 
-> 获取指定范围的K线数据请求示例
+> Get the K-line data request example of the specified range
 
 ```json
 {
@@ -161,7 +161,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> 获取指定范围的K线数据响应示例
+> Get the K-line data response example in the specified range
 
 ```json
 {
@@ -204,25 +204,25 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ----
 
 
-<h2 id="v2-public-fills">成交频道</h2>
+<h2 id="v2-public-fills">Close channel</h2>
 
 
-订阅获取产品实时成交增量推送数据
+Subscribe to obtain real-time transaction incremental push data of products
 
-获取最近的成交数据，有成交数据就推送，每次推送可能包含多条成交数据。
+Get the latest transaction data, and push the transaction data when there is transaction data. Each push may contain multiple transaction data.
 
-**字段说明:**
+**Field Description:**
 
-- `id` 消息唯一id
-- `ts` 成交时间戳
-- `direction` 成交方向
-- `price` 成交价格
-- `vol` 成交量
+- `id` message unique id
+- `ts` transaction timestamp
+- `direction` transaction direction
+- `price` transaction price
+- `vol` volume
 
 
-**订阅**
+**subscription**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -234,7 +234,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -248,9 +248,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**取消订阅**
+**unsubscribe**
 
-> 请求示例
+> request example
 
 ```json
 
@@ -264,7 +264,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -278,9 +278,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 
 ```
-**推送数据**
+**Push data**
 
-> 推送数据示例
+> Push data example
 
 ```json
 {
@@ -298,56 +298,56 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
         }
     ],
     "product": "BTC_USDT"
-} 
+}
 ```
 
 -----
 
-<h2 id="v2-public-orderbook">深度频道</h2>
+<h2 id="v2-public-orderbook">Deep Channel</h2>
 
 
-订阅获取产品订单薄增量推送数据
+Subscribe to obtain product order book incremental push data
 
-最快500毫秒推送一次，没有触发事件时也推送，盘口无数据 bids 和 asks可能为空数组
+Push once every 500 milliseconds at the fastest, and also push when no event is triggered, bids and asks may be empty arrays if there is no data in the handicap
 
-**OrderBook订阅interval参数：[当前档位支持最大精度, 当前档位支持最大深度]:**
+**OrderBook subscription interval parameters: [The current gear supports the maximum precision, the current gear supports the maximum depth]:**
 
-- 0 : [0.000000000000000001, 150]
+- 0 : [0.0000000000000000001, 150]
 - 1 : [0.00001, 150]
 - 2 : [0.0001, 150]
 - 3 : [0.001, 150]
 - 4 : [0.01, 150]
 - 5 : [0.1, 150]
-- 6 : [0.000000000000000001, 20]
+- 6 : [0.0000000000000000001, 20]
 - 7 : [0.00001, 20]
 - 8 : [0.0001, 20]
 - 9 : [0.001, 20]
 - 10 : [0.01, 20]
 - 11 : [0.1, 20]
 
-说明：interval=5，推送的bids里的买方价格只能精确到小数点后一位，bids的数组大小最大是150
+Explanation: interval=5, the buyer's price in bids pushed can only be accurate to one decimal place, and the maximum array size of bids is 150
 
 
-**字段说明:**
+**Field Description:**
 
-- `id` 消息唯一id
-- `biz` 业务线
-- `type` 类型
-- `data.seq_id` 忽略
-- `data.bids` 买方
-- `data.bids[][0]` 买方价格
-- `data.bids[][1]` 买方数量
-- `data.asks` 卖方
-- `data.asks[][0]` 卖方价格
-- `data.asks[][1]` 卖方数量
-- `data.product` 交易对
-- `data.interval` 档位
+- `id` message unique id
+- `biz` line of business
+- `type` type
+- `data.seq_id` is ignored
+- `data.bids` buyers
+- `data.bids[][0]` bid price
+- `data.bids[][1]` number of buyers
+- `data.asks` seller
+- `data.asks[][0]` ask price
+- `data.asks[][1]` number of sellers
+- `data.product` trading pair
+- `data.interval` slots
 
 
 
-**订阅**
+**subscription**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -360,7 +360,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -375,8 +375,8 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**取消订阅**
-> 请求示例
+**unsubscribe**
+> request example
 
 ```json
 {
@@ -389,7 +389,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 
 ```
-> 响应示例
+> Response example
 
 ```json
 {
@@ -405,9 +405,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-**推送数据**
+**Push data**
 
-> 推送数据示例
+> Push data example
 
 ```json
 
@@ -417,12 +417,12 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "type": "orderbook",
     "data":
     {
-        "seq_id":112588640,//有序且唯一id
-        "bids":           //买方
+        "seq_id": 112588640, //ordered and unique id
+        "bids": //buyer
         [
             [
-                "3.7366", //价格
-                "0.66"    //数量
+                "3.7366", //price
+                "0.66" //quantity
             ],
             [
                 "3.6866",
@@ -457,15 +457,15 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
                 "0.73"
             ]
         ],
-        "asks":           //卖方
+        "asks": //Seller
         [
             [
-                "3.9966", //价格
-                "0.9"     //数量
+                "3.9966", //price
+                "0.9" //quantity
             ]
         ]
     },
-    "product": "BTC_USDT",//交易对
+    "product": "BTC_USDT",//trading pair
     "interval": "0"
 }
 
@@ -474,35 +474,35 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ----
 
 
-<h2 id="v2-public-depth">深度depth频道</h2>
+<h2 id="v2-public-depth">Deep depth channel</h2>
 
 
-订阅获取产品深度图增量推送数据
+Subscribe to obtain product depth map incremental push data
 
-说明：买卖盘各拿平均价格的10%以内的最多200条，卖1价向上浮动10%内的委托，买1向下浮动10%以内的委托
+Explanation: Each buy and sell order takes up to 200 orders within 10% of the average price, sell 1 order within 10% of the upward price fluctuation, and buy 1 order within 10% downward fluctuation
 
-最快500毫秒推送一次，没有触发事件时也推送，盘口无数据 bids 和 asks可能为空数组
-
-
-**字段说明:**
-
-- `id` 消息唯一id
-- `biz` 业务线
-- `seq_id` 忽略
-- `type` 类型
-- `data.bids` 买方深度
-- `data.bids[][0]` 买方深度价格
-- `data.bids[][1]` 买方深度数量
-- `data.asks` 卖方深度
-- `data.asks[][0]` 卖方深度价格
-- `data.asks[][1]` 卖方深度数量
-- `data.seq_id` 有序且唯一id
-- `data.product` 交易对
+Push once every 500 milliseconds at the fastest, and also push when no event is triggered, bids and asks may be empty arrays if there is no data in the handicap
 
 
-**订阅**
+**Field Description:**
 
-> 请求示例
+- `id` message unique id
+- `biz` line of business
+- `seq_id` is ignored
+- `type` type
+- `data.bids` buyer depth
+- `data.bids[][0]` Bid depth price
+- `data.bids[][1]` the number of bids in depth
+- `data.asks` depth of asks
+- `data.asks[][0]` deep ask price
+- `data.asks[][1]` depth number of asks
+- `data.seq_id` ordered and unique id
+- `data.product` trading pair
+
+
+**subscription**
+
+> request example
 
 ```json
 {
@@ -514,7 +514,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -527,9 +527,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**取消订阅**
+**unsubscribe**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -541,7 +541,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -556,31 +556,31 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-**推送数据**
+**Push data**
 
-> 推送数据示例
+> Push data example
 
 ```json
 
 {
-    "id": "1689143539",     //消息唯一id
+    "id": "1689143539", //The unique id of the message
     "biz": "market",
-    "seq_id": 112588640,     //有序且唯一id
-    "type": "percent10",    //业务类型
+    "seq_id": 112588640, //ordered and unique id
+    "type": "percent10", //business type
     "data":
     {
-        "bids":             //买方
+        "bids": //buyer
         [
             [
-                "3.8646667",//价格
-                "0"         //数量
+                "3.8646667", //price
+                "0" //quantity
             ]
         ],
-        "asks":             //卖方
+        "asks": //Seller
         [
             [
-                "3.8685333",//价格
-                "0"         //数量
+                "3.8685333", //price
+                "0" //quantity
             ],
             [
                 "3.8704666",
@@ -597,30 +597,30 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ----
 
 
-<h2 id="v2-public-ticker">行情频道</h2>
+<h2 id="v2-public-ticker">Quote channel</h2>
 
 
-获取产品24小时ticker增量推送数据
+Obtain product 24-hour ticker incremental push data
 
-**字段说明:**
+**Field Description:**
 
-- `id` 消息唯一id
-- `open` 24小时前开始第一笔成交价格
-- `close` 24小时最新成交价格
-- `low` 24小时内最低成交价
-- `high` 24小时内最高成交价
-- `filled_size` 24小时内成交额
-- `vol` 24小时内成交量
-- `seq_id` 唯一且有序id
-- `count` 24小时成交笔数
-- `change` 24小时价格变化
-- `change_percent` 24小时价格变化(百分比)
+- `id` message unique id
+- `open` started the first transaction price 24 hours ago
+- `close` 24 hours latest transaction price
+- `low` The lowest transaction price within 24 hours
+- `high` The highest transaction price within 24 hours
+- `filled_size` turnover within 24 hours
+- `vol` volume in 24 hours
+- `seq_id` unique and ordered id
+- `count` 24-hour transaction count
+- `change` 24 hour price change
+- `change_percent` 24h price change (percentage)
 
 
 
-**订阅**
+**subscription**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -629,11 +629,11 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "type": "ticker",
     "product": "BTC_USDT",
     "zip": false
-}	
+}
 ```
 
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -647,9 +647,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**取消订阅**
+**unsubscribe**
 
-> 请求示例
+> request example
 
 ```json
 {
@@ -662,7 +662,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 ```
 
 
-> 响应示例
+> Response example
 
 ```json
 {
@@ -675,9 +675,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
     "product": "BTC_USDT"
 }
 ```
-**推送数据**
+**Push data**
 
-> 推送数据示例
+> Push data example
 
 ```json
 
@@ -705,9 +705,9 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 }
 ```
 
-**请求  指定交易对最新行情数据**
+**Request the latest market data for the specified trading pair**
 
-> 获取指定交易对最新行情数据请求示例
+> Get the latest market data request example for a specified trading pair
 
 
 ```json
@@ -721,7 +721,7 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-> 获取指定交易对最新行情数据响应示例
+> Example of getting the latest market data response for a specified trading pair
 
 
 ```json
@@ -751,62 +751,61 @@ min -> 分钟; hour -> 小时; day -> 天; week -> 周; mon -> 月
 
 ```
 
-<h2 id="v2-public-req-param">公共频道Request字段说明</h2>
+<h2 id="v2-public-req-param">Public channel Request field description</h2>
 
-| 参数名      | 类型     | 必选  | 说明        | 参考值           |
-|:---------|:-------|:----|-----------|---------------|
-| event    | string | 是   | 请求事件      | [事件](#events) |
-| biz      | string | 是   | 业务线       | [业务线](#bizs)  |
-| type     | string | 是   | 业务类型      | [类型](#types)  |
-| product  | string | 是   | 交易对	      | BTC_USDT      |
-| interval | string | 否   | 频率        | 1min          |
-| zip      | bool   | 是   | 是否启用gzip	 | true,false    |
+| Parameter name | Type | Mandatory | Description | Reference value |
+|:---------|:-------|:----|-----------|--------------|
+| event | string | yes | request event | [event](#events) |
+| biz | string | yes | line of business | [line of business](#bizs) |
+| type | string | yes | business type | [type](#types) |
+| product | string | yes | trading pair | BTC_USDT |
+| interval | string | no | frequency | 1min |
+| zip | bool | yes | whether to enable gzip | true, false |
 
-<h2 id="v2-public-rep-param">公共频道Response字段说明</h2>
-
-
-| 参数名      | 类型     | 必选  | 说明      | 参考值           |
-|:---------|:-------|:----|---------|---------------|
-| event    | string | 是   | 请求事件    | [事件](#events) |
-| biz      | string | 是   | 业务线     | [业务线](#bizs)  |
-| type     | string | 是   | 业务类型    | [类型](#types)  |
-| product  | string | 是   | 交易对	    | BTC_USDT      |
-| interval | string | 否   | 频率      | 1min          |
-| code     | int    | 是   | 错误码     |               |
-| status   | string | 是   | 错误码状态   | 可忽略           |
-| ts       | long   | 是   | unix时间戳 | 可忽略           |
-| data     | json   | 否   | 业务数据    | 参考具体业务数据说明    |
+<h2 id="v2-public-rep-param">Response field description of public channel</h2>
 
 
-<h2 id="v2-publilc-events">公共频道Event列表</h2>
+| Parameter name | Type | Mandatory | Description | Reference value |
+|:---------|:-------|:----|---------|--------------|
+| event | string | yes | request event | [event](#events) |
+| biz | string | yes | line of business | [line of business](#bizs) |
+| type | string | yes | business type | [type](#types) |
+| product | string | yes | trading pair | BTC_USDT |
+| interval | string | no | frequency | 1min |
+| code | int | yes | error code | |
+| status | string | yes | error code status | can be ignored |
+| ts | long | yes | unix timestamp | ignorable |
+| data | json | no | business data | refer to specific business data instructions |
 
 
-| Event 名称 | 类型     | 说明              |
+<h2 id="v2-publilc-events">List of public channel events</h2>
+
+
+| Event Name | Type | Description |
 |:---------|:-------|-----------------|
-| sub      | string | 订阅事件,由客户端主动发起   |
-| unsub    | string | 取消订阅事件，由客户端主动发起 |
-| req      | string | 请求数据事件，由客户端主动发起 |
+| sub | string | Subscribe to events, initiated by the client |
+| unsub | string | unsubscribe event, initiated by the client |
+| req | string | request data event, initiated by the client |
 
 
-<h2 id="v2-publilc-bizs">公共频道Biz列表</h2>
+<h2 id="v2-publilc-bizs">Public Channel Biz List</h2>
 
-| Biz 名称 | 类型     | 说明   |
+| Biz Name | Type | Description |
 |:-------|:-------|------|
-| market | string | 现货行情 |
+| market | string | spot market |
 
 
 
-<h2 id="v2-publilc-types">公共频道Type列表</h2>
+<h2 id="v2-publilc-types">List of Public Channel Types</h2>
 
 
-| Type 名称   | 类型     | 说明         |
+| Type Name | Type | Description |
 |:----------|:-------|------------|
-| fills     | string | 成交数据       |
-| candles   | string | K线数据       |
-| orderbook | string | 订单薄        |
-| ticker    | string | 24小时ticker |
-| percent10 | string | 深度depth    |
+| fills | string | transaction data |
+| candles | string | candlestick data |
+| orderbook | string | order book |
+| ticker | string | 24 hour ticker |
+| percent10 | string | depth |
 
 
 ----
-

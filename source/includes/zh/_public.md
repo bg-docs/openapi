@@ -187,17 +187,17 @@ Status Code **200**
 |»» baseSymbol|string|false|none|交易货币 如:LTC/ETC|
 |»» id|integer(int64)|false|none|none|
 |»» lastPrice|number|false|none|最新价格|
-|»» makerFeesRate|number|false|none|Rate of maker fees|
-|»» maxPrice|integer(int32)|false|none|Highest price|
+|»» makerFeesRate|number|false|none|卖单方费率|
+|»» maxPrice|integer(int32)|false|none|最高价格|
 |»» maxVolume|integer(int32)|false|none|最大成交量|
 |»» minTrade|number|false|none|最小委托|
-|»» online|integer(int32)|false|none|Y否上线|
+|»» online|integer(int32)|false|none|是否上线|
 |»» pairCode|string|false|none|交易对|
 |»» quoteIncrement|number|false|none|最小交易单位|
-|»» quotePrecision|integer(int32)|false|none|Precision of amount unit of the quotation currency|
+|»» quotePrecision|integer(int32)|false|none|计价货币数量单位精度|
 |»» quoteSymbol|string|false|none|计价货币 例人民币/美元/BTC|
 |»» sort|integer(int32)|false|none|none|
-|»» tickerFeesRate|number|false|none|Rate of taker fees|
+|»» tickerFeesRate|number|false|none|买单方费率|
 
 <aside class="success">
 This operation does not require authentication

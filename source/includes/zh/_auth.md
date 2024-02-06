@@ -1,44 +1,43 @@
-# Authentication information
+# 鉴权信息
 
 <a id="auth"></a>
 
-Each user can create up to 50 APIKeys;
+每个用户最多可以创建50个APIKey；
 
-Do not disclose your APIKey to anyone else to avoid loss of assets. It is recommended to bind the APIKey to an IP address for better security of your account. Multiple IP addresses are separated in English, and a maximum of 10 IP addresses are supported. API not bound to an IP address is only valid for 180 days;
+请勿将您的APIKey透露给任何人，以免造成资产损失。建议为APIKey绑定IP地址，以提高您账户的安全性，多个IP地址用英文分割,最多支持10个IP地址,未绑定IP地址的API有效期只有180天；
 
-Please note that binding an APIKey to a third-party platform may pose security risks that you should act with caution;
+请注意，将APIKey绑定在第三方平台，可能有安全隐患，请您谨慎操作；
 
-To access the private information interface, the following request headers will have to be added
-
+访问私有信息接口，需要在加入如下请求头
 
 Header Name | Meaning
 ---------- | -------
-ACCESS-KEY | API KEY created by the user on the BGE platform
-ACCESS-SIGN | Signature for the request, which is generated based on the user-created API KEY to authenticate the request’s legitimacy  [ACCESS-SING generation algorithm](#access-sign-gen)
-ACCESS-TIMESTAMP | Request time, usually the current timestamp Example:`2022-01-08T07:19:56.339Z`,or a millisecond timestamp
+ACCESS-KEY | 用户在BGE平台创建的API KEY
+ACCESS-SIGN | 根据用户创建的API KEY 对请求所作出的签名信息，以验证请求的合法性 [ACCESS-SING生成算法](#access-sign-gen)
+ACCESS-TIMESTAMP | 请求时间，一般为当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳
 
-<a name="access-sign-gen">ACCESS-SING generation algorithm</a>
+<a name="access-sign-gen">ACCESS-SING生成算法</a>
 
 <aside> 
-Generate signatures using OpenAPiUtils.createSign
+使用OpenAPiUtils.createSign 生成 sign 
 </aside>
 
-`requestPath`: Consistent with the path in the documentation, e.g. `/v1/products`
+`requestPath`: 与文档中给出的路径相一致,例如 `/v1/products`
 
-`queryString`: List of request parameters. Note: Parameters needs to be orderly arranged. See [remarks](#sign_query_warning)
+`queryString`: 请求参数列表，注：参数顺序需要保持有序。见 [备注](#sign_query_warning)
 
-`params`: When the request is `GET` or `DELETE` or WEBSOCKET channel for authentication, fill in ""
+`params`: 当请求为 `GET` 或者 `DELETE` 或者为WEBSOCKET channel 进行认证时，填 ""
 
-| Parameter Name|Parameter Type|Description| 
+| 参数名|参数类型|说明| 
 |----|----|----|
-|method|string| GET or POST or DELETE；"" when calculating ws sign|
-|secretKey|string| API KEY name created by the user on BGE|
-|requestPath|string| Request path; "" for ws sign calculation|
-|queryString|string| Request parameter; "" for ws sign calculation|
-|params|string| Transfer data content; "" for ws sign calculation|
-|timestamp|string| Current timestamp e.g.`2022-01-08T07:19:56.339Z`,or millisecond timestamp |
+|method|string| GET or POST or DELETE；计算ws sign时为""|
+|secretKey|string| 用户在BGE创建的API KEY名称|
+|requestPath|string| 请求路径 ；计算ws sign时为""|
+|queryString|string| 请求参数 ；计算ws sign时为""|
+|params|string| 传输数据内容 ；计算ws sign时为""|
+|timestamp|string| 当前时间戳 例：`2022-01-08T07:19:56.339Z`,或毫秒时间戳 |
 
-> Sign http request
+> 计算http请求 sign 
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
@@ -49,7 +48,7 @@ Generate signatures using OpenAPiUtils.createSign
   s,timestamp);
 ```
 
-> Sign web socket request
+> 计算web socket 请求 sign
 
 ```java
   String timestamp=OpenAPiUtils.createTimestamp();
@@ -58,7 +57,7 @@ Generate signatures using OpenAPiUtils.createSign
 
 
 
-> Generation algorithm tool class
+> sign 生成算法工具类
 
 ```java
 import org.apache.commons.codec.binary.Base64;
@@ -83,13 +82,13 @@ public class OpenAPiUtils {
   }
 
   /**
-   * sign
+   * 计算签名
    * @param method POST or GET or DELETE
-   * @param secretKey for example：HKBGE-xxxxx
-   * @param requestPath for example：/v1/orders
-   * @param queryString Request parameters
-   * @param body string empty when method is `GET`
-   * @param timestamp  for example：2022-01-08T07:19:56.339Z
+   * @param secretKey 例：HKBGE-xxxxx
+   * @param requestPath 例：/v1/orders
+   * @param queryString 请求参数
+   * @param body string GET时为空
+   * @param timestamp 当前时间戳 例：2022-01-08T07:19:56.339Z
    * @return string
    */
   public static String createSign(String method, String secretKey, String requestPath, String queryString, String body, String timestamp) {
@@ -147,29 +146,31 @@ public class OpenAPiUtils {
 }
 ```
 <aside class="warning">
-Remarks
+备注
 </aside>
 <a name="sign_query_warning"></a>
 
-When calculating data signatures, the parameters must be transmitted in the same order as the signature string, and the queryString must not start with “?” or end with “&” to avoid authentication failure. For example: 
-when calculating the signature for `GET "http://api.bg.exchange/hk/v1/demo?a=2&b=3"`
+计算数据签名时，参数的传递顺序需要与签名串顺序一致，且queryString不以`?`开头，不以`&`结尾  否则鉴权失败。例如：给 `GET "http://api.bg.exchange/hk/v1/demo?a=2&b=3"`
+计算签名时，
 
-- Correct: preHash = ... + "a=2&b=3" + ...;
-- Incorrect: preHash = ... + "b=3&a=2" + ...;
-- Incorrect: preHash = ... + "?b=3&a=2" + ...;
-- Incorrect: preHash = ... + "b=3&a=2&" + ...;
+- 正确使用: preHash = ... + "a=2&b=3" + ...;
 
+- 错误使用: preHash = ... + "b=3&a=2" + ...;
+
+- 错误使用: preHash = ... + "?b=3&a=2" + ...;
+
+- 错误使用: preHash = ... + "b=3&a=2&" + ...;
 
 
 
 
 <aside> 
-Fill in the HTTP HEADERS in requests
+请求时填充HTTP HEADERS
 </aside>
 
-Add the api key, sign and timestamp generated by the user on BGE to the http request header.
+将用户在BGE生成的api key 与 sign 与 时间戳加入到 http请求头中。
 
-> Fill in the HTTP HEADERS in requests
+> 填充HTTP HEADERS
 
 ```java
 RequestBuilders.post("/openapi/exchange/BTC_USDT/orders")

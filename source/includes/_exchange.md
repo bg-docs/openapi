@@ -100,6 +100,14 @@ fetch('/example.com/openapi/exchange/orders',
 ]
 ```
 
+<h3 id="获取订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 <h3 id="获取订单-responseschema">Response Schema</h3>
 
@@ -250,6 +258,16 @@ fetch('/example.com/openapi/exchange/{pairCode}/bulkOrders',
 ]
 ```
 
+<h3 id="批量下单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 <h3 id="批量下单-responseschema">Response Schema</h3>
 
 Status Code **200**
@@ -334,6 +352,14 @@ fetch('/example.com/openapi/exchange/{pairCode}/cancel-all',
 |---|---|---|---|---|
 |pairCode|path|string|true|pairCode|
 
+<h3 id="撤销指定交易对的全部订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|None|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|No Content|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 
 <aside class="success">
 This operation does not require authentication
@@ -395,6 +421,14 @@ fetch('/example.com/openapi/exchange/{pairCode}/cancel-price',
 |pairCode|path|string|true|交易对|
 |side|query|string|false|side|
 
+<h3 id="批量撤销指定交易对订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|None|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|No Content|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 
 <aside class="success">
 This operation does not require authentication
@@ -476,6 +510,14 @@ fetch('/example.com/openapi/exchange/{pairCode}/cancelByIds?ids=0',
 }
 ```
 
+<h3 id="批量撤销指定交易对下的订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|No Content|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
 
 <h3 id="批量撤销指定交易对下的订单-responseschema">Response Schema</h3>
 
@@ -589,6 +631,14 @@ fetch('/example.com/openapi/exchange/{pairCode}/fulfillment',
 ]
 ```
 
+<h3 id="获取指定交易对下的完成订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 <h3 id="获取指定交易对下的完成订单-responseschema">Response Schema</h3>
 
@@ -711,6 +761,16 @@ fetch('/example.com/openapi/exchange/{pairCode}/orders',
 ```json
 118001244083232 //订单号
 ```
+
+<h3 id="添加交易对订单-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|integer|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|None|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 <aside class="success">
 This operation does not require authentication

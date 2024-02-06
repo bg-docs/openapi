@@ -1,27 +1,27 @@
-# 资金划转
+# Fund Transfer
 
-<h2 id="资金账户划转到交易账户">POST  资金账户划转到交易账户</h2>
+<h2 id="Transfer from fund account to transaction account">POST Transfer from fund account to transaction account</h2>
 
- 
-将资金从资金账户划转到指定的交易账户
+Transfer funds from the Fund Account to a specified Trading Account.
 
-**限速：10次/s**
+**Speed limit: 10 times/s**
 
-**限速规则：ApiKey**
+**Speed limit rules: ApiKey**
 
-**HTTP请求**
+**HTTP request**
 
 
 
 POST [HOST](#HTTP-HOST)/v1/deposits/account
 
 
-> 鉴权信息
+> Authentication information
 
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
 
 
-> <a name="RequestExample">REQUEST EXAMPLE</a>
+> <a name="ReeuestExample">REQUEST EXAMPLE</a>
+
 
 ```json
 {
@@ -29,77 +29,16 @@ POST [HOST](#HTTP-HOST)/v1/deposits/account
   "currency": "HKD"
 }
 ```
-
 
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
 | -------- | -------- | -------- | -------- | 
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
+|amount|Transfer amount|true|string||
+|currency|Name of transfer asset|true|string||
 
-> <a name="ResponseExample">RESPONSE EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-
-<aside>
-RESPONSE PARAMETERS
-</aside>
-
-| 参数名称 | 参数说明 | 类型 | 
-| -------- | -------- | ----- |
-|amount|划转数量|string|
-|currency|划转资产名称|string|
-
-
-
-
-
-
-<h2 id="交易账户划转到资金账户">POST  交易账户划转到资金账户</h2>
-
-将资金从交易账户划转到资金账户，划转后，可以进行提现操作。
-
-
-**限速：10次/s**
-
-**限速规则：ApiKey**
-
-**HTTP请求**
-
-POST [HOST](#HTTP-HOST)/v1/withdrawals/account
-
-
-> 鉴权信息
-
-> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
-
-> <a name="RequestExample">REQUEST EXAMPLE</a>
-
-```json
-{
-  "amount": 100,
-  "currency": "HKD"
-}
-```
-
-
-<aside>
-REQUEST PARAMETERS
-</aside>
-
-| 参数名称 | 参数说明 | 是否必须 | 数据类型 | 
-| -------- | -------- | -------- | -------- | 
-|amount|划转数量 |true|string||
-|currency|划转资产名称|true|string||
 
 
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
@@ -111,16 +50,73 @@ REQUEST PARAMETERS
 }
 ```
 
+
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名称 | 参数说明 | 类型 | 
+| Parameter Name | Parameter Description | Type |
 | -------- | -------- | ----- |
-|amount|划转数量|string|
-|currency|划转资产名称|string|
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
+
+
+<h2 id="Transfer from trading account to capital account">POST Transfer from trading account to capital account</h2>
+
+Transfer the funds from the trading account to the capital account. After the transfer, you can carry out the cash withdrawal operation.
+
+
+**Speed limit: 10 times/s**
+
+**Speed limit rules: ApiKey**
+
+**HTTP request**
+
+POST [HOST](#HTTP-HOST)/v1/withdrawals/account
+
+
+> Authentication information
+
+> For authentication information of private information, please refer to [Authentication Instructions](#auth)
+
+
+> <a name="RequestExample">REQUEST EXAMPLE</a>
+
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
+<aside>
+REQUEST PARAMETERS
+</aside>
+
+| Parameter Name | Parameter Description | Mandatory  | Data Type | 
+| -------- | -------- | -------- | -------- | 
+|amount|Transfer amount|true|string||
+|currency|Name of transfer asset|true|string||
 
 
 
+> <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
+```json
+{
+  "amount": 100,
+  "currency": "HKD"
+}
+```
+
+
+<aside>
+RESPONSE PARAMETERS
+</aside>
+
+| Parameter Name | Parameter Description | Type |
+| -------- | -------- | ----- |
+|amount|Transfer amount|string|
+|currency|Name of transfer asset|string|
 

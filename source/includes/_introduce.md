@@ -1,22 +1,21 @@
+# Interface Description
 
-# 接口说明
-
-##反馈邮箱
+## Feedback Email
 
 Email: <a href="mailto:api@bg.exchange" id="api-support">api@bg.exchange</a>
 
-##请求地址
-**HTTP请求地址**<br>
+## request address
+**HTTP request address**<br>
 
 <a id="HTTP-HOST"></a>
 HOST: `https://api.bg.exchange/hk`
 
-**WEBSOCKET请求地址**
+**WEBSOCKET request address**
 
-- ~~WebSocket私有频道(DEPRECATED)<a id="WS_HOST_PUBLIC"></a>: `wss://ws.bg.exchange`~~
-- ~~WebSocket公共频道(DEPRECATED)<a id="WS_HOST_PRIVATE"></a>: `wss://ws.bg.exchange/ws`~~
-- WebSocket公共频道V2<a id="WS_HOST_PUBLIC_V2"></a>: `wss://ws.bg.exchange/v2/ws`
-- WebSocket私有频道V2<a id="WS_HOST_PRIVATE_V2"></a>: `wss://ws.bg.exchange/v2/ws`
+- ~~WebSocket private channel (DEPRECATED)<a id="WS_HOST_PUBLIC"></a>: `wss://ws.bg.exchange`~~
+- ~~WebSocket public channel (DEPRECATED)<a id="WS_HOST_PRIVATE"></a>: `wss://ws.bg.exchange/ws`~~
+- WebSocket public channel V2<a id="WS_HOST_PUBLIC_V2"></a>: `wss://ws.bg.exchange/v2/ws`
+- WebSocket private channel V2<a id="WS_HOST_PRIVATE_V2"></a>: `wss://ws.bg.exchange/v2/ws`
 
 
 ##Response Status
@@ -27,7 +26,7 @@ HOST: `https://api.bg.exchange/hk`
 ```json
 {
   "code":1087,
-  "message":"查找不到数据"
+  "message": "No data found"
 }
 ```
 
@@ -38,7 +37,7 @@ HOST: `https://api.bg.exchange/hk`
 ```json
 {
   "code":40001,
-  "message":"ACCESS_KEY不能为空"
+  "message": "ACCESS_KEY cannot be empty"
 }
 ```
 
@@ -58,15 +57,13 @@ HOST: `https://api.bg.exchange/hk`
 Status Code | Meaning | Example
 ---------- | ------- | --------
 200 | Success Request |
-400 | Bad Request  -- The client should not repeat this request without modification. | <code>message</code> string
-401 | Unauthorized -- Your API key is wrong, See [鉴权说明](#auth) | <code>message</code> string
+400 | Bad Request -- The client should not repeat this request without modification. | <code>message</code> string
+401 | Unauthorized -- Your API key is wrong, See [Authentication Description](#auth) | <code>message</code> string
 500 | Internal Server Error -- We had a problem with our server. Try again later. | <code>message</code> string
 
 
-# 名词解释
-|名词|示意|
+# Glossary
+|noun|suggestion|
 |---|---|
-|currency|币种, 例如 BTC, USDT,HKD, USD|
-|product|交易产品,例如 BTC_HKD|
-
-
+|currency| currency, such as BTC, USDT,HKD, USD|
+|product|trading product, such as BTC_HKD|

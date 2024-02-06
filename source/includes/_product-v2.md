@@ -1,35 +1,35 @@
-<h1 id="v2-public-market">公共数据V2</h1>
+<h1 id="v2-public-market">Public Data V2</h1>
 
-<h2 id="http-kline">GET  K线</h2>
+<h2 id="http-kline">GET Kline</h2>
 
-获取K线数据。K线数据按请求的粒度分组返回，K线数据最多可获取最近2,000条。
+Get K-line data. The K-line data is grouped and returned according to the requested granularity, and the most recent 2,000 K-line data can be retrieved.
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/public/v2/products/{product}/candles
 
- 
+
 <aside>
 REQUEST PARAMETERS
 </aside>
 
-| 参数名      | 必选    | 类型     | 说明                                                                                                         |
-|:---------|:------|:-------|:-----------------------------------------------------------------------------------------------------------|
-| product  | true  | string | 路径参数 商品，如:ETH_USD                                                                                          |
-| interval | false | string | 时间粒度 默认值 `1min` 参考值：[1min,5min,15min,30min,60min,4hour,1day,1week,1mon] 具体请参考 [K线频道订阅](#v2-public-candles) |
-| from     | true  | long   | 开始时间 ，请求此时间戳之后的数据(秒)                                                                                       |
-| to       | true | long   | 结束时间 ，请求次时间戳之前的数据(秒)                                                                                       |
-| size     | false | int    | 默认500 ，最大1000[1,1000]                                                                                      |
+| parameter name | required | type | description                                                                                                                                                                                 |
+|:---------|:------|:-------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| product | true | string | path parameter commodity, such as: ETH_USD                                                                                                                                                  |
+| interval | false | string | Default time granularity `1min` Reference value: [1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1week, 1mon] For details, please refer to [K Line Channel Subscription](#v2-public-candles) |
+| from | true | long | start time, request data after this timestamp (seconds)                                                                                                                                     |
+| to | true | long | end time, the data (seconds) before the requested timestamp                                                                                                                                 |
+| size | false | int | default 500, maximum 1000[1,1000]                                                                                                                                                           |
 
 
 > <a name="candles-req-demo">REQUEST EXAMPLE</a>
 
 
-```json 
+```json
 
 GET /public/v2/products/ETH_USDT/candles?interval=1min&from=1639584000&to=1639584000&size=100
 
@@ -42,7 +42,7 @@ GET /public/v2/products/ETH_USDT/candles?interval=1min&from=1639584000&to=163958
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 
-```json 
+```json
 {
   "code": 200,
   "data":
@@ -78,29 +78,29 @@ GET /public/v2/products/ETH_USDT/candles?interval=1min&from=1639584000&to=163958
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名         | 类型     | 说明           |
+| parameter name | type | description |
 |:------------|:-------|:-------------|
-| close       | string | 这根K线期间末一笔成交价 |
-| high        | string | 这根K线期间最高成交价  |
-| low         | string | 这根K线期间最低成交价  |
-| open        | string | 这根K线期间第一笔成交价 |
-| filled_size | string | 成交额          |
-| count       | int    | 这根k线期间的成交笔数  |
-| vol         | string | 成交量          |
-| id          | long   | 唯一id         |
+| close | string | The last transaction price during this K-line period |
+| high | string | The highest transaction price during this K-line |
+| low | string | The lowest transaction price during this K-line period |
+| open | string | The first transaction price during this K-line period |
+| filled_size | string | turnover |
+| count | int | The number of transactions during this k-line period |
+| vol | string | volume |
+| id | long | unique id |
 
 
 
-<h2 id="http-orderbook">GET  订单book</h2>
+<h2 id="http-orderbook">GET order book</h2>
 
 
-获取订单簿（Order-book)数据。Order-book数据按价格从高到低排序，价格相同的按照时间优先排序。
+Get Order-book data. Order-book data is sorted by price from high to low, and those with the same price are sorted by time.
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/public/v2/products/{product}/orderbook
 
@@ -110,10 +110,10 @@ REQUEST PARAMETERS
 </aside>
 
 
-| 参数名      | 必选    | 类型     | 说明                                                            |
-|:---------|:------|:-------|:--------------------------------------------------------------|
-| product  | true  | string | 路径参数 商品，如:ETH_USD                                             |
-| interval | false | string | 指标周期 默认值 `0` 有效取值范围 `0-11` 请参考 [深度频道订阅](#v2-public-orderbook) |
+| parameter name | required | type | description |
+|:---------|:------|:-------|:----------------------------------------------------------------|
+| product | true | string | path parameter commodity, such as: ETH_USD |
+| interval | false | string | Indicator period Default value `0` Valid value range `0-11` Please refer to [Deep Channel Subscription](#v2-public-orderbook) |
 
 
 > <a name="req-orderbook-demo">REQUEST EXAMPLE</a>
@@ -132,7 +132,7 @@ GET /public/v2/products/ETH_USDT/orderbook?interval=0
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 
-```json 
+```json
 {
   "code": 200,
   "data":
@@ -140,8 +140,8 @@ GET /public/v2/products/ETH_USDT/orderbook?interval=0
     "bids":
     [
       [
-        "5",   //价格
-        "3.6"  //数量
+        "5", //price
+        "3.6" //quantity
       ],
       [
         "3.5334",
@@ -162,22 +162,22 @@ GET /public/v2/products/ETH_USDT/orderbook?interval=0
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名    | 类型     | 说明      |
+| parameter name | type | description |
 |:-------|:-------|---------|
-| seq_id | string | 有序且唯一id |
-| bids   | []     | 买方      |
-| asks   | []     | 卖方      |
+| seq_id | string | ordered and unique id |
+| bids | [] | buyer |
+| asks | [] | seller |
 
 
-<h2 id="http-get-all-tickers">GET  全部币对24小时行情数据</h2>
+<h2 id="http-get-all-tickers">GET 24-hour market data of all currency pairs</h2>
 
-获取所有产品行情信息
+Get all product market information
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/public/v2/products/overview/tickers
 
@@ -224,34 +224,34 @@ RESPONSE PARAMETERS
 
 
 
-| 参数名            | 类型     | 说明             |
+| parameter name | type | description |
 |:---------------|:-------|:---------------|
-| close          | int    | 24小时最新成交价格     |
-| high           | int    | 24小时内最高成交价     |
-| low            | int    | 24小时内最低成交价     |
-| open           | int    | 24小时前开始第一笔成交价格 |
-| filled_size    | string | 24小时内成交额       |
-| vol            | string | 24小时内成交量       |
-| change         | string | 24小时价格变化       |
-| change_percent | string | 24小时价格变化(百分比)  |
-| seq_id         | long   | 唯一且有序id        |
-| count          | int    | 24小时成交笔数       |
-| product        | string | 商品，例:ETH_USD   |
-| id             | long   | 唯一id           |
+| close | int | 24-hour latest transaction price |
+| high | int | The highest transaction price within 24 hours |
+| low | int | The lowest transaction price within 24 hours |
+| open | int | The first transaction price started 24 hours ago |
+| filled_size | string | turnover within 24 hours |
+| vol | string | Trading volume within 24 hours |
+| change | string | 24 hour price change |
+| change_percent | string | 24 hour price change (percentage) |
+| seq_id | long | unique and ordered id |
+| count | int | 24-hour transaction count |
+| product | string | commodity, for example: ETH_USD |
+| id | long | unique id |
 
 
 
 
 
-<h2 id="http-get-ticker">GET  单币对24小时行情数据</h2>
+<h2 id="http-get-ticker">GET single currency pair 24-hour market data</h2>
 
-获取产品行情信息
+Obtain product market information
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/public/v2/products/{product}/ticker
 
@@ -260,9 +260,9 @@ GET [HOST](#HTTP-HOST)/public/v2/products/{product}/ticker
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     | 必选   | 类型     | 说明                |
-|:--------|:-----|:-------|-------------------|
-| product | true | string | 路径参数 商品，如:ETH_USD |
+| parameter name | required | type | description |
+|:-------|:-----|:-------|-------------------|
+| product | true | string | path parameter commodity, such as: ETH_USD |
 
 
 
@@ -305,32 +305,32 @@ RESPONSE PARAMETERS
 </aside>
 
 
-| 参数名            | 类型     | 说明             |
+| parameter name | type | description |
 |:---------------|:-------|:---------------|
-| close          | int    | 24小时最新成交价格     |
-| high           | int    | 24小时内最高成交价     |
-| low            | int    | 24小时内最低成交价     |
-| open           | int    | 24小时前开始第一笔成交价格 |
-| filled_size    | string | 24小时内成交额       |
-| vol            | string | 24小时内成交量       |
-| change         | string | 24小时价格变化       |
-| change_percent | string | 24小时价格变化(百分比)  |
-| seq_id         | long   | 唯一且有序id        |
-| count          | int    | 24小时成交笔数       |
-| product        | string | 商品，例:ETH_USD   |
-| id             | long   | 唯一id           |
+| close | int | 24-hour latest transaction price |
+| high | int | The highest transaction price within 24 hours |
+| low | int | The lowest transaction price within 24 hours |
+| open | int | The first transaction price started 24 hours ago |
+| filled_size | string | turnover within 24 hours |
+| vol | string | Trading volume within 24 hours |
+| change | string | 24 hour price change |
+| change_percent | string | 24 hour price change (percentage) |
+| seq_id | long | unique and ordered id |
+| count | int | 24-hour transaction count |
+| product | string | commodity, for example: ETH_USD |
+| id | long | unique id |
 
 
-<h2 id="http-get-fiils">GET  单币对实时成交数据</h2>
+<h2 id="http-get-fiils">GET single currency pair real-time transaction data</h2>
 
 
-获取产品的最新交易列表
+Get the latest deals list for products
 
-**限速：无**
+**Speed Limit: None**
 
-**限速规则：无**
+**Speed limit rules: None**
 
-**HTTP请求**
+**HTTP request**
 
 GET [HOST](#HTTP-HOST)/public/v2/products/{product}/trades
 
@@ -339,10 +339,10 @@ GET [HOST](#HTTP-HOST)/public/v2/products/{product}/trades
 REQUEST PARAMETERS
 </aside>
 
-| 参数名     | 必选    | 类型     | 说明                           |
-|:--------|:------|:-------|------------------------------|
-| product | true  | string | 路径参数 商品，如:ETH_USD            |
-| size    | false | int    | 每次请求的数量：默认值 `500` 最大值 `1000` |
+| parameter name | required | type | description                                                |
+|:-------|:------|:-------|------------------------------------------------------------|
+| product | true | string | path parameter commodity, such as: ETH_USD                 |
+| size | false | int | size per request: default value `500` maximum value `1000` |
 
 
 
@@ -358,7 +358,7 @@ GET /public/v2/products/ETH_USDT/trades?size=1
 > <a name="ResonpseExample">RESPONSE EXAMPLE</a>
 
 
-```json 
+```json
 {
   "code": 200,
   "data":
@@ -379,14 +379,13 @@ GET /public/v2/products/ETH_USDT/trades?size=1
 RESPONSE PARAMETERS
 </aside>
 
-| 参数名       | 类型     | 说明              |
+| parameter name | type | description |
 |:----------|:-------|-----------------|
-| direction | string | 成交方向 buy / sell |
-| price     | string | 成交价格            |
-| vol       | string | 成交量             |
-| id        | string | 唯一id            |
-| ts        | long   | 成交时间戳           |
+| direction | string | transaction direction buy / sell |
+| price | string | transaction price |
+| vol | string | volume |
+| id | string | unique id |
+| ts | long | transaction time stamp |
 
 
 ----
-

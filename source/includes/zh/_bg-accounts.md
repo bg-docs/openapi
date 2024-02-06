@@ -6,16 +6,15 @@
 
 获取用户所有可用的BGE钱包/账户（用户可以用这些钱包/账户在 www.bg.exchange 上进行买入和卖出活动）。
 
-> Authentication information 
+> 鉴权信息 
 
-> For the authentication information of private information, please refer to [Authentication Specifications](#Authentication Specifications)
-
+> 私有信息的鉴权信息，请参考 [鉴权说明](#auth)
 
 <aside>
 RESPONSE PARAMETERS
 </aside>
 
-| Parameter Name | Parameter Description | Type | schema |
+| 参数名称 | 参数说明 | 类型 | schema |
 | -------- | -------- | ----- |----- | 
 |active|active|boolean||
 |available_on_consumer|available_on_consumer|boolean||

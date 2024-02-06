@@ -75,6 +75,15 @@ fetch('/example.com/openapi/exchange/assets',
 ```
 
 
+<h3 id="获取资产信息-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+
 <h3 id="获取资产信息-responseschema">Response Schema</h3>
 
 Status Code **200**
@@ -174,6 +183,15 @@ fetch('/example.com/openapi/exchange/{currency}/assets',
   "withdrawLimit": 0
 }
 ```
+
+<h3 id="获取币种下资产信息-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[UserAssetsDTO](#schemauserassetsdto)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|None|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|None|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 <h3 id="获取资产信息-responseschema">Response Schema</h3>
 Status Code **200**

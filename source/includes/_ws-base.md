@@ -1,63 +1,62 @@
 <h1 id="v2-base-ws">WEBSOCKET</h1>
 
+Welcome to the BGE digital currency exchange WebSocket subscription message protocol. The protocol allows you to subscribe to and receive market data, trading information and other relevant information in real time through a WebSocket connection.
 
-欢迎使用BGE数字币交易所 WebSocket 订阅消息协议。该协议允许您通过 WebSocket 连接实时订阅并接收市场数据、交易信息和其他相关信息。
-
-希望该文档能够帮助您快速了解我们的数字币交易所 WebSocket 订阅消息协议。如果您有任何疑问或需要进一步的帮助，请随时联系我们的技术支持团队。祝您使用愉快！
+Hope this document can help you quickly understand our digital currency exchange WebSocket subscription message protocol. If you have any questions or need further assistance, please do not hesitate to contact our technical support team. I wish you a happy use!
 
 
-## WEBSOCKET 基本说明
+## WEBSOCKET basic instructions
 
-WebSocket 是一种在单个 TCP 连接上进行全双工通信的网络协议，它提供了一种在客户端和服务器之间进行实时数据传输的方式。通过使用 WebSocket，您可以实时地订阅和接收来自数字币交易所的实时市场数据和其他信息。
+WebSocket is a network protocol for full-duplex communication over a single TCP connection, which provides a means of real-time data transfer between a client and a server. By using WebSocket, you can subscribe and receive real-time market data and other information from digital currency exchanges in real time.
 
-## 连接说明
+## Connection instructions
 
-在订阅消息之前，您需要建立 WebSocket 连接。连接说明如下：
+Before subscribing to messages, you need to establish a WebSocket connection. Connection instructions are as follows:
 
-### 当订阅公有频道时，使用公有服务的地址；当订阅私有频道时，使用私有服务的地址
+### When subscribing to a public channel, use the address of the public service; when subscribing to a private channel, use the address of the private service
 
-- 公有频道：公有频道是向所有连接到交易所的客户端广播的频道，包含市场行情、交易深度等信息。
-  接入方法请参考: [WEBSOCKET PUBLIC V2](#v2-public-ws)
-- 私有频道：私有频道是指仅向特定客户端推送个人相关信息的频道，例如订单通知、账户余额等。
-  接入方法请参考: [WEBSOCKET PRIVATE V2](#v2-private-ws)
+- Public channel: The public channel is a channel broadcast to all clients connected to the exchange, including market conditions, transaction depth and other information.
+  For the access method, please refer to: [WEBSOCKET PUBLIC V2](#v2-public-ws)
+- Private channel: A private channel refers to a channel that only pushes personal-related information to specific clients, such as order notifications, account balances, etc.
+  For the access method, please refer to: [WEBSOCKET PRIVATE V2](#v2-private-ws)
 
-请根据您的需求选择相应的服务地址连接到公有或私有频道。
+Please select the corresponding service address to connect to public or private channels according to your needs.
 
-## 订阅限制
+## Subscription Limits
 
-每个连接1s 最多可以发送 50 条消息，否则强制关闭连接
+Each connection can send up to 50 messages in 1s, otherwise the connection will be closed forcibly
 
-为了保持连接的稳定性和公平性，我们对发送消息做了限制，每个连接每秒最多可以发送 50 条消息。如果您在 1 秒内发送超过 50 条消息，系统将强制关闭连接，请注意遵守此限制。
+In order to maintain the stability and fairness of the connection, we have set a limit on sending messages, and each connection can send up to 50 messages per second. If you send more than 50 messages within 1 second, the connection will be forcibly closed, please be aware of this limit.
 
-## 连接保持
+## keep the connection
 
 <aside class="notice">
   <span style="color: blue;">
-注意：此说明目前仅适用于V2版本。  </span>
+NOTE: This instruction currently only applies to the V2 release. </span>
 </aside>
 
-我们会定时发送 ping消息，期待您返回 pong消息作为回应，如果超过 30s 没有收到您的响应服务器会关闭连接
+We will send ping messages regularly, expecting you to return pong messages as a response, if you do not receive your response for more than 30s, the server will close the connection
 
-同时，需要注意以下情况：
+At the same time, you need to pay attention to the following situations:
 
-网络问题：如果出现网络问题，系统会自动断开连接。
+Network problems: If there are network problems, the system will automatically disconnect.
 
-连接超时：如果连接成功后 30 秒内未订阅或订阅后 30 秒内服务器未向用户推送数据，系统会自动断开连接。
+Connection timeout: If the user does not subscribe within 30 seconds after the connection is successful or the server does not push data to the user within 30 seconds after the subscription, the system will automatically disconnect.
 
-为了确保连接的活跃性，我们会定时向客户端发送 JSON 格式的 ping 消息：`{"ping": timestamp}`。您需要在收到 ping 消息后，及时发送 `{"pong": timestamp}` 文本消息，以表明连接处于活跃状态。如果在 30 秒内没有收到您的响应，我们将关闭连接，建议您进行以下操作：
+In order to ensure the liveness of the connection, we will regularly send ping messages in JSON format to the client: `{"ping": timestamp}`. You need to send a `{"pong": timestamp}` text message promptly after receiving the ping message to indicate that the connection is alive. If we do not receive a response from you within 30 seconds, we will close the connection and recommend the following:
 
-1. 每次接收到`{"ping": timestamp}`消息后，立即回复一个`{"pong": timestamp}`。
+1. Reply a `{"pong": timestamp}` immediately after receiving a `{"ping": timestamp}` message.
 
-2. 期待一个文字字符串 `{"ping": timestamp}`  作为心跳消息。如果在 N 秒内未收到，请发出错误或重新连接。
+2. Expect a literal string `{"ping": timestamp}` as heartbeat message. If not received within N seconds, issue an error or reconnect.
 
-3. 您回复的pong消息中的时间戳应该使用收到的ping消息中的时间戳。
+3. The timestamp in the pong message you reply should use the timestamp in the received ping message.
 
 <aside>
 PING PONG EXAMPLE
 </aside>
 <a name="ping_pong_demo"></a>
 
-> ping消息示例
+> ping message example
 
 ```json
 
@@ -66,7 +65,7 @@ PING PONG EXAMPLE
 }
 
 ```
-> pong消息示例
+> pong message example
 
 ```json
 
@@ -76,35 +75,35 @@ PING PONG EXAMPLE
 
 ```
 
-## 请求错误
+## request error
 
 <aside class="notice">
   <span style="color: blue;">
-注意：此说明目前仅适用于V2版本。  </span>
+NOTE: This instruction currently only applies to the V2 release. </span>
 </aside>
 
-不论私有频道或公有频道，当您发送的请求服务器处理失败时，服务器将返回统一的错误消息，便于客户端进行处理。
+Regardless of the private channel or public channel, when the server fails to process the request you send, the server will return a unified error message, which is convenient for the client to process.
 
-错误消息主要由两部分组成：错误代码和消息。代码是通用的，但是消息可能会有所不同。
+Error messages mainly consist of two parts: error code and message. Codes are generic, but messages may vary.
 
-错误代码和消息请参考：[状态码对照表](#WSERR) ，[其他错误状态码对照表](#ERR2)
+For error codes and messages, please refer to: [Status Code Comparison Table](#WSERR), [Other Error Status Code Comparison Table](#ERR2)
 
-**错误消息响应参数说明**
+**Error Message Response Parameter Description**
 
-| 参数名   | 类型     | 说明                       |
+| parameter name | type | description |
 |:------|:-------|--------------------------|
-| event | string | 用户发送的事件名 [事件列表](#events) |
-| msg   | string | 错误消息                     |
-| code  | int    | 状态码 [状态码对照表](#WSERR)     |
+| event | string | event name sent by user [event list](#events) |
+| msg | string | error message |
+| code | int | status code [status code comparison table](#WSERR) |
 
 
-### 常见错误码说明
+### Description of common error codes
 
-1. **错误码 `400`**：通常需要检查您提供的请求参数是否正确，或者是否有必填参数未填写。
+1. **Error code `400`**: Usually you need to check whether the request parameters you provide are correct, or whether there are required parameters that are not filled.
 
-2. **错误码 `401`**：通常需要确保您已收到成功登录响应，未登录进行私有频道订阅会出现此错误。
+2. **Error code `401`**: Usually you need to ensure that you have received a successful login response, and this error will occur when you subscribe to a private channel without logging in.
 
-3. **错误码 `500`**：通常是服务器内部错误，建议您稍后重试。
+3. **Error code `500`**: It is usually an internal server error. It is recommended that you try again later.
 
 <aside id="ws-error-ex-demo">
 ERROR REQUEST EXAMPLE
@@ -112,7 +111,7 @@ ERROR REQUEST EXAMPLE
 
 <a id="error_ws_request_response_demo" name="error_ws_request_response_demo"></a>
 
-> 错误请求示例 `1` 此示例使用的请求结构是错误的，请根据您的实际请求参数进行替换。
+> Bad request example `1` The request structure used in this example is wrong, please replace it with your actual request parameters.
 
 
 ```json
@@ -127,19 +126,19 @@ ERROR REQUEST EXAMPLE
 }
 ```
 
-> 错误请求响应示例 `1`
+> Bad request response example `1`
 
 ```json
 {
     "event": "sub",
     "code": "400",
-    "msg": "Invalid request: {\"event\":\"sub\",\"para\":{\"biz\":\"market\",\"type\":\"percent10\",\"pairCode\":\"ETH_USDT\"},\"zip\":true}"
+    "msg": "Invalid request: {\"event\":\"sub\",\"para\":{\"biz\":\"market\",\"type\":\"percent10\ ",\"pairCode\":\"ETH_USDT\"},\"zip\":true}"
 }
 
 ```
 
 
-> 错误请求示例 `2` 此示例使用的access_key值为空,请确保必填参数已填写。
+> Bad request example `2` The access_key value used in this example is empty, please ensure that the required parameters are filled.
 
 ```json
 {
@@ -154,12 +153,12 @@ ERROR REQUEST EXAMPLE
 
 ```
 
-> 错误请求响应示例 `2`
+> Bad request response example `2`
 
 ```json
 {
   "event": "login",
   "code": 40001,
-  "msg": "ACCESS_KEY不能为空"
+  "msg": "ACCESS_KEY cannot be empty"
 }
 ```

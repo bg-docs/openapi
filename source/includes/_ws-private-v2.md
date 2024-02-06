@@ -1,14 +1,14 @@
-<h1 id="v2-private-ws">WEBSOCKET私有频道V2</h1>
+<h1 id="v2-private-ws">WEBSOCKET private channel V2</h1>
 
-- [私有频道V2地址](#WS_HOST_PRIVATE_V2)
+- [Private channel V2 address](#WS_HOST_PRIVATE_V2)
 
-<h2 id="v2-private-auth">私有频道 登录认证</h2>
+<h2 id="v2-private-auth">Private channel login authentication</h2>
 
-订阅私有频道前需要先进行登录认证操作，只有认证过的用户才可以订阅用户的资产信息以及订单状态变化信息。
+Login authentication is required before subscribing to a private channel. Only authenticated users can subscribe to the user's asset information and order status change information.
 
-### 注意:如果未进行登录认证操作，订阅私有频道会返回错误信息
+### Note: If no login authentication operation is performed, subscribing to a private channel will return an error message
 
-> 登录请求示例
+> Login request example
 
 ```json
 {
@@ -23,7 +23,7 @@
 ```
 
 
-> 登录成功响应示例 [状态码对照表](#WSERR)
+> Login success response example [status code comparison table](#WSERR)
 
 ```json
 {
@@ -35,45 +35,45 @@
 ```
 
 
-> 登录失败响应示例 [请参考通用错误说明](#error_ws_request_response_demo)
+> Login failure response example [Please refer to the general error description](#error_ws_request_response_demo)
 
 
 
-<h4 id="v2-private-login-req">登录请求参数说明</h4>
+<h4 id="v2-private-login-req">Login request parameter description</h4>
 
 
-| 参数名                     | 必选  | 类型     | 说明                         |
-|:------------------------|:----|:-------|----------------------------|
-| params.type             | 是   | string | 认证方式: <br/>`api`:apiKey认证; |
-| params.access_key       | 是   | string | [鉴权说明](#auth)              |
-| params.access_sign      | 是   | string | [鉴权说明](#auth)              |
-| params.access_timestamp | 是   | long   | [鉴权说明](#auth)              |
-| event                   | 是   | string | 事件名 [事件列表](#events)        |
+| parameter name | required | type | description |
+|:----------------------|:----|:-------|---------------------------|
+| params.type | yes | string | authentication method: <br/>`api`:apiKey authentication; |
+| params.access_key | Yes | string | [Authentication Description](#auth) |
+| params.access_sign | Yes | string | [Authentication Description](#auth) |
+| params.access_timestamp | yes | long | [authentication description](#auth) |
+| event | yes | string | event name [event list](#events) |
 
 
 
-<h4 id="v2-private-login-rep">登录响应参数说明</h4>
+<h4 id="v2-private-login-rep">Login response parameter description</h4>
 
 
-| 参数名    | 类型     | 说明                   |
+| parameter name | type | description |
 |:-------|:-------|----------------------|
-| event  | string | 事件名 [事件列表](#events)  |
-| status | string | 状态信息 可忽略             |
-| code   | int    | 状态码 [状态码对照表](#WSERR) |
-| ts     | long   | unix时间戳              |
+| event | string | event name [event list](#events) |
+| status | string | status information can be ignored |
+| code | int | status code [status code comparison table](#WSERR) |
+| ts | long | unix timestamp |
 
 
 
-<h2 id="v2-private-asstes">私有频道 资产</h2>
+<h2 id="v2-private-assess">Private channel assets</h2>
 
 
-订阅用户的资产变更，有数据更新时才推送。目前只支持按照产品进行订阅。
+Subscriber's asset changes will be pushed only when there is data update. Currently only supports subscription by product.
 
-请求和响应的参数说明请参考[通用请求参数说明](#v2-req-param)和[通用响应参数说明](#v2-rep-param)
+Please refer to [Common Request Parameter Description](#v2-req-param) and [General Response Parameter Description](#v2-rep-param) for request and response parameter description
 
-### 订阅资产数据
+### Subscribe to asset data
 
-> 订阅请求示例
+> Subscription request example
 
 ```json
 {
@@ -85,7 +85,7 @@
 }
 ```
 
-> 订阅成功响应示例
+> Subscription success response example
 
 ```json
 {
@@ -100,7 +100,7 @@
 ```
 
 
-> 资产推送数据示例,本示例只是为了说明数据结构，实际推送数据中可能只包含一个币种的资产信息
+> Asset push data example, this example is just to illustrate the data structure, the actual push data may only contain asset information of one currency
 
 ```json
 
@@ -126,22 +126,22 @@
 ```
 
 <aside>
-资产推送数据字段说明
+Asset push data field description
 </aside>
 
 
-| 参数名             | 类型     | 说明      |
+| parameter name | type | description |
 |:----------------|:-------|---------|
-| product         | string | 产品名/交易对 |
-| $data.currency  | string | 币种名称    |
-| $data.available | string | 可用数量    |
-| $data.hold      | string | 冻结数量    |
+| product | string | product name/trading pair |
+| $data.currency | string | currency name |
+| $data.available | string | available quantity |
+| $data.hold | string | hold amount |
 
 
-### 请求用户单个交易对资产数据
+### Request the user's asset data for a single trading pair
 
 
-> 请求单个交易对资产数据示例
+> Request a single trading pair asset data example
 
 ```json
 {
@@ -152,7 +152,7 @@
   "zip": false
 }
 ```
-> 请求单个交易对资产数据响应示例
+> Request a single transaction pair asset data response example
 
 ```json
 {
@@ -180,32 +180,32 @@
 ```
 
 <aside>
-请求资产数据字段说明
+Request Asset Data Field Descriptions
 </aside>
 
 
-| 参数名             | 类型     | 说明      |
+| parameter name | type | description |
 |:----------------|:-------|---------|
-| product         | string | 产品名/交易对 |
-| ts              | long   | unix时间戳 |
-| $data.currency  | string | 币种名称    |
-| $data.available | string | 可用数量    |
-| $data.hold      | string | 冻结数量    |
+| product | string | product name/trading pair |
+| ts | long | unix timestamp |
+| $data.currency | string | currency name |
+| $data.available | string | available quantity |
+| $data.hold | string | hold amount |
 
-<h2 id="v2-private-orders">私有频道 订单</h2>
+<h2 id="v2-private-orders">Private Channel Orders</h2>
 
-订阅用户订单的状态变化，有数据更新时才推送。目前支持所有交易对的订单状态变化订阅。支持异步查询用户单个交易对当前委托订单数据。
+The status change of the subscription user's order will be pushed only when there is data update. Currently supports order status change subscription for all trading pairs. Supports asynchronous query of the user's current entrusted order data for a single trading pair.
 
-请求和响应的参数说明请参考[通用请求参数说明](#v2-req-param)和[通用响应参数说明](#v2-rep-param)
+Please refer to [Common Request Parameter Description](#v2-req-param) and [General Response Parameter Description](#v2-rep-param) for request and response parameter description
 
-**注意：订单数据支持订阅全量交易对，一次订阅所有交易对订单时请注意`product`参数使用`all`(忽略大小写)**
+**Note: The order data supports subscribing to the full amount of trading pairs. When subscribing to orders of all trading pairs at once, please note that the `product` parameter uses `all` (ignoring case)**
 
 
-**订阅单交易对订单数据**
+**Subscription order transaction pair order data**
 
-**订阅所有交易对的订单数据**
+**Subscribe to order data for all trading pairs**
 
-> 订阅单交易对订单请求示例
+> Subscription order trading pair order request example
 
 ```json
 {
@@ -216,7 +216,7 @@
   "zip": false
 }
 ```
-> 订阅所有交易对订单请求示例
+> Subscribe to all trading pairs order request example
 
 ```json
 {
@@ -228,9 +228,9 @@
 }
 ```
 
-> 订阅单交易对订单响应成功示例
+> Subscription order transaction pair order response success example
 
-```json 
+```json
 {
   "biz": "exchange",
   "type": "orders",
@@ -242,9 +242,9 @@
 }
 ```
 
-> 订阅所有交易对订单响应成功示例
+> Subscribe to all transaction pairs order response success example
 
-```json 
+```json
 {
   "biz": "exchange",
   "type": "orders",
@@ -256,7 +256,7 @@
 }
 ```
 
-> 订阅所有交易对订单数据失败响应示例 [错误码对照表](#WSERR)
+> Subscribe to all trading pairs order data failure response example [error code comparison table](#WSERR)
 
 ```json
 {
@@ -270,7 +270,7 @@
 }
 ```
 
-> 订阅单交易对推送订单数据示例
+> Subscription order trading pair push order data example
 
 ```json
 {
@@ -296,24 +296,24 @@
 ```
 
 
-> 订阅所有交易对推订单送数据示例
+> Subscribe to all trading pairs to push orders and send data examples
 
 ```json
 {
   "biz": "exchange",
-  "type": "orders",//注意此处和单交易对不同
-  "product": "all",//注意此处和单交易对不同
+  "type": "orders",//Note that this is different from a single trading pair
+  "product": "all",//Note that this is different from a single trading pair
   "data":
   [
-    //....结构参考单交易对推送订单数据示例
+    //....Structure reference single transaction pair push order data example
   ]
 }
 ```
 
 
-**请求单个交易对当前委托订单数据,如果请求失败,会返回失败的响应。**
+**Request a single transaction pair for the current entrusted order data, if the request fails, a failed response will be returned. **
 
-> 请求用户单个交易对当前委托订单数据示例
+> Request the user's single transaction pair current entrusted order data example
 
 ```json
 {
@@ -326,7 +326,7 @@
 ```
 
 
-> 请求用户单个交易对当前委托订单数据成功的响应示例
+> An example of a successful response to requesting a single transaction from the user for the current entrusted order data
 
 ```json
 {
@@ -338,92 +338,92 @@
   "status": "OK",
   "data":
   [
-    //....结构参考单交易对推送订单数据示例
+    //....Structure reference single transaction pair push order data example
   ],
   "event": "req"
 }
 ```
 
 <aside>
-订单数据字段说明,本说明以外的其他字段请忽略
+Description of order data fields, please ignore other fields other than this description
 </aside>
 
-| 参数名称          | 参数说明                  | 类型     | 
-|:--------------|:----------------------|--------|
-| orders_id     | 订单编号                  | string |
-| product       | 商品                    | string |
-| side          | buy/sell              | string |
-| price         | 每单位基础货币的价格            | string |
-| size          | 买入/卖出的基础货币数量          | string |
-| filled_amount | 成交数量                  | string |
-| funds         | 想要使用的报价货币数量           | string |
-| filled_size   | 成交金额                  | string |
-| type          | limit:限价单/market:市价单/ | string |
-| status        | 状态                    | string |
-| client_oid    | 默认"0"，用户自定义订单号              | string |
+| Parameter name | Parameter description | Type |
+|:-------------|:----------------------|-------|
+| orders_id | order ID | string |
+| product | commodity | string |
+| side | buy/sell | string |
+| price | price per unit of base currency | string |
+| size | Amount of base currency to buy/sell | string |
+| filled_amount | filled amount | string |
+| funds | Amount of quote currency to use | string |
+| filled_size | transaction amount | string |
+| type | limit: limit order/market: market order/ | string |
+| status | status | string |
+| client_oid | default "0", user-defined order number | string |
 
-`status`: 交易状态，取值范围0-7
+`status`: transaction status, value range 0-7
 
-- 0: 已经收到订单
-- 1: 已经提交订单
-- 2: 订单部分成交
-- 3: 订单已完全成交
-- 4: 订单发起撤销
-- 5: 订单已经撤销
-- 6: 订单交易失败
-- 7: 订单被减量
+- 0: order has been received
+- 1: The order has been submitted
+- 2: The order is partially executed
+- 3: The order has been completely filled
+- 4: The order is canceled
+- 5: The order has been canceled
+- 6: Order transaction failed
+- 7: The order is reduced
 
 
 
 ----
 
 
-<h2 id="v2-private-req-param">私有频道 通用请求参数说明</h2>
+<h2 id="v2-private-req-param">Private channel general request parameter description</h2>
 
 
-| 参数名     | 必选  | 类型     | 说明                  |
-|:--------|:----|:-------|---------------------|
-| biz     | 是   | string | [订阅模块类型](#bizs)     |
-| type    | 是   | string | [订阅业务类型](#types)    |
-| product | 是   | string | 产品信息                |
-| event   | 是   | string | 事件名 [事件列表](#events) |
-| zip     | 是   | bool   | 是否启用gzip            |
+| parameter name | required | type | description |
+|:----------|:----|:-------|---------------------|
+| biz | is | string | [subscription module type](#bizs) |
+| type | yes | string | [subscription business type](#types) |
+| product | yes | string | product information |
+| event | yes | string | event name [event list](#events) |
+| zip | yes | bool | whether to enable gzip |
 
 
-<h2 id="v2-private-rep-param">私有频道 通用响应参数说明</h2>
+<h2 id="v2-private-rep-param">Private channel general response parameter description</h2>
 
 
-| 参数名     | 类型     | 必选  | 说明      | 参考值           |
-|:--------|:-------|:----|---------|---------------|
-| event   | string | 是   | 请求事件    | [事件](#events) |
-| biz     | string | 是   | 业务线     | [业务线](#bizs)  |
-| type    | string | 是   | 业务类型    | [类型](#types)  |
-| product | string | 是   | 交易对	    | BTC_USDT      |
-| code    | number | 是   | 错误码     |               |
-| status  | string | 是   | 错误码状态   ||
-| ts      | long   | 是   | unix时间戳 |               |
+| Parameter name | Type | Mandatory | Description | Reference value |
+|:-------|:-------|:----|---------|--------------|
+| event | string | yes | request event | [event](#events) |
+| biz | string | yes | line of business | [line of business](#bizs) |
+| type | string | yes | business type | [type](#types) |
+| product | string | yes | trading pair | BTC_USDT |
+| code | number | yes | error code | |
+| status | string | yes | error code status ||
+| ts | long | yes | unix timestamp | |
 
 
-<h2 id="v2-private-events">私有频道Event列表</h2>
+<h2 id="v2-private-events">Private channel event list</h2>
 
 
-| Event 名称 | 类型     | 说明              |
+| Event Name | Type | Description |
 |:---------|:-------|-----------------|
-| sub      | string | 订阅事件,由客户端主动发起   |
-| login    | string | 登录事件，由客户端主动发起   |
-| unsub    | string | 取消订阅事件,由客户端主动发起 |
-| req      | string | 请求事件,由客户端主动发起   |
+| sub | string | Subscribe to events, initiated by the client |
+| login | string | login event, initiated by the client |
+| unsub | string | unsubscribe event, initiated by the client |
+| req | string | request event, initiated by the client |
 
 
-<h2 id="v2-private-bizs">私有频道Biz列表</h2>
+<h2 id="v2-private-bizs">Private Channel Biz List</h2>
 
-| Biz 名称   | 类型     | 说明   |
+| Biz Name | Type | Description |
 |:---------|:-------|------|
-| exchange | string | 现货交易 |
+| exchange | string | spot transaction |
 
-<h2 id="v2-private-types">私有频道Type列表</h2>
+<h2 id="v2-private-types">Private Channel Type List</h2>
 
-| Type 名称 | 类型     | 说明     | 是否支持全部交易对数据推送订阅 |
-|:--------|:-------|--------|:----------------|
-| assets  | string | 资产变更   | 否               |
-| orders  | string | 订单状态变更 | 是               |
+| Type Name | Type | Description | Whether to support data push subscription for all trading pairs |
+|:--------|:--------|--------|:----------------|
+| assets | string | asset changes | no |
+| orders | string | order status change | yes |
