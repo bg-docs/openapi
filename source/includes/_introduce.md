@@ -12,8 +12,6 @@ HOST: `https://api.bg.exchange/hk`
 
 **WEBSOCKET request address**
 
-- ~~WebSocket private channel (DEPRECATED)<a id="WS_HOST_PUBLIC"></a>: `wss://ws.bg.exchange`~~
-- ~~WebSocket public channel (DEPRECATED)<a id="WS_HOST_PRIVATE"></a>: `wss://ws.bg.exchange/ws`~~
 - WebSocket public channel V2<a id="WS_HOST_PUBLIC_V2"></a>: `wss://ws.bg.exchange/v2/ws`
 - WebSocket private channel V2<a id="WS_HOST_PRIVATE_V2"></a>: `wss://ws.bg.exchange/v2/ws`
 
